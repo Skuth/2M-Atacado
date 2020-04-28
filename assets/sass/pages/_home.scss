@@ -1,0 +1,126 @@
+.container {
+  .slide {
+    position: relative;
+    height: 512px;
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background-color: black;
+      opacity: 0.6;
+      @include select();
+    }
+    .controls {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      bottom: 50%;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      span {
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+        @include textShadow(0 0 20px black);
+      }
+    } 
+    .banner {
+      display: block;
+      width: 100%;
+      height: 100%;
+      .text {
+        position: absolute;
+        width: 70%;
+        height: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        p {
+          text-transform: uppercase;
+          color: white;
+          font-weight: 600;
+          font-size: 34px;
+        }
+        span {
+          font-size: 22px;
+          color: $grey;
+          margin-top: 20px;
+          line-height: 1.4em;
+        }
+        p, span {
+          @include textShadow(0 0 20px black);
+        }
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @include select();
+      }
+    }
+  }
+  .tags {
+    padding: 80px 0;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    h2 {
+      font-size: 34px;
+      font-weight: 400;
+      color: $black;
+    }
+    &-container {
+      margin-top: 20px;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .box {
+        $size: 90px;
+        background: $mediumblue;
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-decoration: none;
+        color: white;
+        margin: 0 10px;
+        &:first-child {
+          margin-left: 0;
+        }
+        @include transition(all, 0.5s);
+        .text {
+          opacity: 0;
+          font-size: 0;
+          @include transition(all, 0.5s);
+        }
+        &:hover {
+          transform: rotate(360deg);
+          background: $darkblue;
+          .text {
+            opacity: 1;
+            font-size: 16px;
+            padding: 4px 0;
+          }
+        }
+      }
+    }
+  }
+}

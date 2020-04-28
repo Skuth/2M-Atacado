@@ -1,0 +1,21 @@
+{
+    "name": "skuth/2m",
+    "type": "project",
+    "require": {
+        "rain/raintpl": "3.0.0",
+        "slim/slim": "4.4.0",
+        "slim/psr7": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Skuth",
+            "email": "the.skuth@gmail.com"
+        }
+    ],
+    "description": "Vitrine online da loja 2M atacado com aviso de promoções e novidades",
+    "autoload": {
+        "psr-4": {
+            "Skuth\\": "vendor\\skuth\\php-classes\\src"
+        }
+    }
+}

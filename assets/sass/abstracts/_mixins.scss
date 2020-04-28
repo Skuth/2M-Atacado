@@ -1,0 +1,27 @@
+@mixin transition($type, $duration) {
+  transition: $type $duration;
+  -webkit-transition: $type $duration;
+  -moz-transition: $type $duration;
+  -o-transition: $type $duration;
+}
+
+@mixin textShadow($params) {
+  text-shadow: $params;
+  -webkit-text-shadow: $params;
+  -moz-text-shadow: $params;
+  -o-text-shadow: $params;
+}
+
+@mixin boxShadow($params) {
+  box-shadow: $params;
+  -webkit-box-shadow: $params;
+  -moz-box-shadow: $params;
+  -o-box-shadow: $params;
+}
+
+@mixin select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+}
