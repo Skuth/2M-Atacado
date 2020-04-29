@@ -1,8 +1,8 @@
 <div class="container">
   <div class="slide">
     <div class="controls">
-      <span>LEFT</span>
-      <span>RIGHT</span>
+      <span><i class="icofont-thin-left"></i></span>
+      <span><i class="icofont-thin-right"></i></span>
     </div>
     <div class="banner">
       <div class="text">
@@ -13,17 +13,19 @@
     </div>
   </div>
 
-  <div class="tags">
+  <div class="departments">
     <h2>Departamentos</h2>
-    <div class="tags-container">
-      <a class="box" href="#">
+    <div class="departments-container">
+      {loop="$departments"}
+      <a class="box" href="/departments/{$value.href}">
         <div class="icon">
-          HOME
+          <i class="{$value.icon}"></i>
         </div>
         <div class="text">
-          <p>CASA</p>
+          <p>{$value.text}</p>
         </div>
       </a>
+      {/loop}
     </div>
   </div>
 </div>

@@ -23,7 +23,7 @@
   left: 0;
   right: 0;
   @include select();
-  @include transition(all, 0.5s)
+  @include transition(all, 0.5s);
   &-header {
     background: $darkblue;
     .header-container {
@@ -71,6 +71,24 @@
           margin: 0 10px;
           &:hover {
             background: $darkblue;
+          }
+        }
+        &.right li a {
+          font-size: 22px;
+          position: relative;
+          &:first-child {
+            margin-left: 20px;
+          }
+          .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 12px;
+            background: $red;
+            padding: 5px;
+            text-align: center;
+            min-width: calc(26px - 5px * 2);
+            border-radius: 4px;
           }
         }
       }

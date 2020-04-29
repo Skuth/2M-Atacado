@@ -9,7 +9,7 @@ class Sql extends Config {
 
   public function __construct() {
     $this->conn = new \PDO("mysql:host=".self::HOSTNAME.";dbname=".self::DBNAME, self::USERNAME, self::PASSWORD);
-    $this->conn->exect("SET NAMES utf8");
+    $this->conn->exec("SET NAMES utf8");
   }
 
   public function setParams($stmt, $params = array()) {

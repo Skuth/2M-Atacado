@@ -7,6 +7,7 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="./assets/css/style.min.css">
+  <link rel="stylesheet" href="./assets/css/icofont.min.css">
 </head>
 <body>
   

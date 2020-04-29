@@ -13,8 +13,13 @@
         <li><a href="#">Home</a></li>
       </ul>
       <ul class="right">
-        <li><a href="#">Cart</a></li>
-        <li><a href="#">Search</a></li>
+        <li><a href="#">
+          <i class="icofont-bag"></i>
+          <?php if( isset($_SESSION['cart']) ){ ?>
+          <span class="badge" id="cart">0</span>
+          <?php } ?>
+        </a></li>
+        <li><a href="#"><i class="icofont-search"></i></a></li>
       </ul>
     </div>
   </div>
