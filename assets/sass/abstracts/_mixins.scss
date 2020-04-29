@@ -19,6 +19,20 @@
   -o-box-shadow: $params;
 }
 
+@mixin transform($params) {
+  transform: $params;
+  -webkit-transform: $params;
+  -moz-transform: $params;
+  -o-transform: $params;
+}
+
+@mixin filter($params) {
+  filter: $params;
+  -webkit-filter: $params;
+  -moz-filter: $params;
+  -o-filter: $params;
+}
+
 @mixin select {
   user-select: none;
   -webkit-user-select: none;

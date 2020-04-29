@@ -1,0 +1,74 @@
+.distributor {
+  background: $mediumblue;
+  padding: 20px;
+  width: calc(100% - 20px * 2);
+  margin: 0 auto;
+  position: relative;
+  margin-top: 80px;
+  &-slider {
+    text-align: center;
+    padding: 10px 20px;
+    width: calc(95% - 20px * 2);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    img {
+      width: 150px;
+      @include filter(grayscale(1) brightness(10));
+      @include transition(all, 0.5s);
+      &:hover {
+        @include filter(grayscale(0));
+      }
+    }
+  }
+  &-controls {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    overflow: hidden;
+    @include transform(translateY(-50%));
+    span {
+      font-size: em(60);
+      color: white;
+      @include transition(all, 0.5s);
+      &:hover {
+        @include transform(scale(1.1));
+      }
+    }
+  }
+}
+
+.footer {
+  background: $darkblue;
+  width: calc(100% - 20px * 2);
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $grey;
+  &-logo {
+    width: 100px;
+    display: block;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    @include select();
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  &-info, &-contact {
+    margin-bottom: 20px;
+    ul {
+      text-align: center;
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

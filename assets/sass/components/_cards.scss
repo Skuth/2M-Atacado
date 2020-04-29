@@ -1,0 +1,73 @@
+.card-container {
+  width: 100%;
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  .card {
+    text-decoration: none;
+    background: $grey;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px;
+    @include transition(all, 0.5s);
+    &:hover {
+      @include boxShadow(5px 8px 20px rgba(0,0,0,0.2));
+    }
+    &-header {
+      position: relative;
+      padding: 20px;
+      svg {
+        width: 90%;
+        max-width: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .card-svg-header {
+        fill: $darkblue;
+        &.red {
+          fill: $red;
+        }
+        &.orange {
+          fill: $orange;
+        }
+      }
+      &-text {
+        position: relative;
+        z-index: 3;
+        color: white;
+        margin-left: 30px;
+        p {
+          font-size: em(25px);
+          font-weight: 600;
+          line-height: 1.4em;
+          &.price {
+            font-weight: 300;
+            font-size: em(20px);
+            span {
+              font-weight: 600;
+              font-size: em(25px);
+              &:last-child {
+                font-size: em(15px);
+              }
+            }
+          }
+        }
+      }
+    }
+    &-image {
+      display: block;
+      width: 80%;
+      max-width: 200px;
+      float: right;
+      margin-top: -60px;
+      @include select();
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+.products-box {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 0;
+  @include select();
+  &-header {
+    padding: 40px 0px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 80px;
+    .title {
+      text-align: center;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        z-index: 1;
+        @include transform(scale(1.1));
+      }
+      p {
+        padding: 15px 50px;
+        background: $darkblue;
+        text-align: center;
+        color: white;
+        font-size: em(20);
+        border-radius: 30px;
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+      } 
+    }
+    &::before {
+      content: "";
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      background: $darkblue;
+      @include transform(translateY(-50%));
+    }
+  }
+}
+
+.product-box-container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  row-gap: 60px;
+  .product-box {
+    width: calc(100% - 40px * 2);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $grey;
+    border-radius: 10px;
+    position: relative;
+    padding: 40px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: $black;
+    @include transition(all, 0.5s);
+    &:hover {
+      @include boxShadow(5px 8px 20px rgba(0,0,0,0.2));
+    }
+    .product-brand {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      @include transform(translateY(-50%));
+      span {
+        display: block;
+        color: white;
+        background: $darkblue;
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-size: em(18);
+      }
+    }
+    .product-picture {
+      margin: 0 auto;
+      padding: 20px 10px;
+      width: calc(100% - 10px * 2);
+      max-width: 250px;
+      display: block;
+      text-align: center;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .product-info {
+      .title {
+        font-size: em(24);
+        font-weight: 600;
+        padding: 20px 0;
+      }
+      .product-price {
+        p {
+          font-weight: 400;
+          font-size: em(15);
+          span {
+            font-size: em(25);
+            font-weight: 600;
+            &:last-child {
+              font-size: em(20px);
+            }
+          }
+        }
+        .old-price {
+          font-size: em(15);
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
