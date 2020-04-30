@@ -7,7 +7,7 @@
   <div class="navigation-links">
     <div class="links-container">
       <ul class="left">
-        <li><a href="#">Home</a></li>
+        <li><a href="./">Inicio</a></li>
         <li><a href="#">Home</a></li>
         <li><a href="#">Home</a></li>
         <li><a href="#">Home</a></li>

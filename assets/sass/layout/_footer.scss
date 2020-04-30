@@ -5,6 +5,12 @@
   margin: 0 auto;
   position: relative;
   margin-top: 80px;
+  a.slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
   &-slider {
     text-align: center;
     padding: 10px 20px;
@@ -35,6 +41,7 @@
     span {
       font-size: em(60);
       color: white;
+      cursor: pointer;
       @include transition(all, 0.5s);
       &:hover {
         @include transform(scale(1.1));

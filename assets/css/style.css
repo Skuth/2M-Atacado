@@ -34,7 +34,8 @@ footer, header, hgroup, menu, nav, section {
   display: block; }
 
 body {
-  line-height: 1; }
+  line-height: 1;
+  background: #F2F2F2; }
 
 ol, ul {
   list-style: none; }
@@ -334,11 +335,10 @@ textarea {
   column-gap: 20px; }
   .card-container .card {
     text-decoration: none;
-    background: #F2F2F2;
-    border-radius: 10px;
+    background: white;
+    border-radius: 4px;
     overflow: hidden;
     width: 100%;
-    margin: 10px;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -396,7 +396,7 @@ textarea {
 
 .products-box {
   width: 90%;
-  max-width: 1600px;
+  max-width: 1420px;
   margin: 0 auto;
   padding: 40px 0;
   user-select: none;
@@ -418,7 +418,7 @@ textarea {
         position: absolute;
         top: 0;
         left: 0;
-        background: white;
+        background: #F2F2F2;
         width: 100%;
         height: 100%;
         border-radius: 30px;
@@ -457,23 +457,44 @@ textarea {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   row-gap: 60px; }
+  .product-box-container.no-bg {
+    column-gap: 1px; }
+    .product-box-container.no-bg .product-box {
+      background: transparent; }
+      .product-box-container.no-bg .product-box:hover {
+        background: white; }
+  .product-box-container.bg {
+    column-gap: 1px;
+    row-gap: 1px; }
+    .product-box-container.bg .product-box {
+      background: white;
+      border-radius: 0; }
+      .product-box-container.bg .product-box .product-brand {
+        margin-top: -20px;
+        position: relative;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -o-transform: translateY(0); }
   .product-box-container .product-box {
     width: calc(100% - 40px * 2);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #F2F2F2;
-    border-radius: 10px;
+    background: white;
+    border-radius: 4px;
     position: relative;
     padding: 40px;
     margin: 0 auto;
     text-decoration: none;
     color: #222222;
+    z-index: 1;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s; }
     .product-box-container .product-box:hover {
+      z-index: 2;
       box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
       -webkit-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
       -moz-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
@@ -511,17 +532,20 @@ textarea {
       font-size: 1.5em;
       font-weight: 600;
       padding: 20px 0; }
-    .product-box-container .product-box .product-info .product-price p {
-      font-weight: 400;
-      font-size: 0.9375em; }
-      .product-box-container .product-box .product-info .product-price p span {
-        font-size: 1.5625em;
-        font-weight: 600; }
-        .product-box-container .product-box .product-info .product-price p span:last-child {
-          font-size: 1.25em; }
-    .product-box-container .product-box .product-info .product-price .old-price {
-      font-size: 0.9375em;
-      font-weight: 300; }
+    .product-box-container .product-box .product-info .product-price {
+      border-top: 1px solid #F2F2F2;
+      padding-top: 10px; }
+      .product-box-container .product-box .product-info .product-price p {
+        font-weight: 400;
+        font-size: 0.9375em; }
+        .product-box-container .product-box .product-info .product-price p span {
+          font-size: 1.5625em;
+          font-weight: 600; }
+          .product-box-container .product-box .product-info .product-price p span:last-child {
+            font-size: 1.25em; }
+      .product-box-container .product-box .product-info .product-price .old-price {
+        font-size: 0.9375em;
+        font-weight: 300; }
 
 .navigation {
   z-index: 10;
@@ -537,7 +561,11 @@ textarea {
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
-  -o-transition: all 0.5s; }
+  -o-transition: all 0.5s;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2); }
   .navigation.banner {
     position: absolute;
     left: 0;
@@ -547,15 +575,20 @@ textarea {
     .navigation.banner .navigation-header .header-container a {
       margin-top: -75px;
       width: 150px; }
+    .navigation.banner .navigation-links .links-container {
+      padding: 20px 0; }
   .navigation-header {
-    background: #1A3795; }
+    background: #1A3795;
+    width: 100%;
+    margin: 0 auto; }
     .navigation-header .header-container {
-      padding: 20px 40px;
-      width: calc(100% - 40px * 2);
+      margin: 0 auto;
+      padding: 20px 0;
+      width: 90%;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 80%;
+      max-width: 1420px;
       margin: 0 auto; }
       .navigation-header .header-container a {
         width: 70px;
@@ -567,13 +600,21 @@ textarea {
           width: 100%;
           display: block; }
   .navigation-links {
-    background: #337DEC; }
+    background: #337DEC;
+    width: 100%;
+    margin: 0 auto; }
     .navigation-links .links-container {
-      padding: 20px 40px;
-      width: calc(100% - 40px * 2);
+      margin: 0 auto;
+      padding: 15px;
+      width: calc(90% + 10px * 2);
       display: flex;
       align-content: center;
-      justify-content: space-between; }
+      justify-content: space-between;
+      max-width: 1440px;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s; }
       .navigation-links .links-container ul {
         display: flex;
         align-items: center;
@@ -617,6 +658,11 @@ textarea {
   margin: 0 auto;
   position: relative;
   margin-top: 80px; }
+  .distributor a.slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none; }
   .distributor-slider {
     text-align: center;
     padding: 10px 20px;
@@ -656,6 +702,7 @@ textarea {
     .distributor-controls span {
       font-size: 3.75em;
       color: white;
+      cursor: pointer;
       transition: all 0.5s;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -776,7 +823,7 @@ textarea {
 .container .departments {
   padding: 80px 0;
   width: 90%;
-  max-width: 1600px;
+  max-width: 1420px;
   margin: 0 auto;
   margin-top: 160px; }
   .container .departments h2 {
@@ -789,6 +836,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -806,6 +854,7 @@ textarea {
       text-decoration: none;
       color: white;
       margin: 0 10px;
+      outline: none;
       transition: all 0.5s;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -842,4 +891,4 @@ textarea {
 .products-card {
   width: 90%;
   margin: 0 auto;
-  max-width: 1600px; }
+  max-width: 1420px; }

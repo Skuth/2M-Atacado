@@ -80,7 +80,7 @@
   .departments {
     padding: 80px 0;
     width: 90%;
-    max-width: 1600px;
+    max-width: $maxWidth;
     margin: 0 auto;
     margin-top: 160px;
     h2 {
@@ -94,6 +94,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      position: relative;
       @include select();
       .box {
         $size: 90px;
@@ -109,6 +110,7 @@
         text-decoration: none;
         color: white;
         margin: 0 10px;
+        outline: none;
         &:first-child {
           margin-left: 0;
         }
@@ -147,5 +149,5 @@
 .products-card {
   width: 90%;
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: $maxWidth;
 }

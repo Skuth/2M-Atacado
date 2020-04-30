@@ -91,7 +91,7 @@
     </div>
   </div>
 
-  <div class="product-box-container">
+  <div class="product-box-container bg">
     <?php $counter1=-1; $newvar1=array(1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
     <a class="product-box" href="#">
       <div class="product-brand">
@@ -119,7 +119,7 @@
     </div>
   </div>
 
-  <div class="product-box-container">
+  <div class="product-box-container no-bg">
     <?php $counter1=-1; $newvar1=array(1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
     <a class="product-box" href="#">
       <div class="product-brand">

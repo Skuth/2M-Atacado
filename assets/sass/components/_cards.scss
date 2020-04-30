@@ -6,11 +6,10 @@
   column-gap: 20px;
   .card {
     text-decoration: none;
-    background: $grey;
-    border-radius: 10px;
+    background: white;
+    border-radius: 4px;
     overflow: hidden;
     width: 100%;
-    margin: 10px;
     @include transition(all, 0.5s);
     &:hover {
       @include boxShadow(5px 8px 20px rgba(0,0,0,0.2));
