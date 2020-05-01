@@ -1,0 +1,103 @@
+.slide {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  .controls {
+    position: absolute;
+    width: 95%;
+    top: 50%;
+    bottom: 50%;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: white;
+      background: rgba(0,0,0,0.6);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      @include textShadow(0 0 20px black);
+      @include transition(all, 0.5s);
+      &:hover {
+        background: rgba(26, 55, 149,0.8);
+        @include boxShadow(0 0 20px rgba(0,0,0,0.4));
+        i {
+          @include textShadow(0 0 20px white)
+        }
+      }
+      i {
+        font-size: em(60px);
+        display: block;
+      }
+    }
+  } 
+  .container-header-slider {
+    height: 100%;
+    width: 100%;
+    .slick-list {
+      height: 100%;
+      .slick-track {
+        height: 100%;
+      }
+    }
+    .banner {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: $black;
+      .text {
+        position: absolute;
+        width: 70%;
+        height: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        p {
+          text-transform: uppercase;
+          color: white;
+          font-weight: 600;
+          font-size: em(34px);
+        }
+        span {
+          font-size: em(22px);
+          color: $grey;
+          margin-top: 20px;
+          line-height: 1.4em;
+        }
+        p, span {
+          @include textShadow(0 0 20px black);
+        }
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @include select();
+      }
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  .slide {
+    height: initial;
+  }
+}
+
+@media(max-width: 580px) {
+  .slide .controls {
+    display: none;
+  }
+}

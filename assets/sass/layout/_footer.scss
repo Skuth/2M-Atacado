@@ -79,3 +79,13 @@
     }
   }
 }
+
+@media(max-width: $mobileL) {
+  .footer {
+    &-info, &-contact {
+      ul li {
+        font-size: em(12);
+      }
+    }
+  }
+}

@@ -1,82 +1,4 @@
 .container {
-  .slide {
-    position: relative;
-    height: 512px;
-    overflow: hidden;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      background-color: black;
-      opacity: 0.6;
-      @include select();
-    }
-    .controls {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      bottom: 50%;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      span {
-        color: white;
-        padding: 20px;
-        cursor: pointer;
-        @include textShadow(0 0 20px black);
-        i {
-          font-size: em(60px);
-          display: block;
-        }
-      }
-    } 
-    .banner {
-      display: block;
-      width: 100%;
-      height: 100%;
-      .text {
-        position: absolute;
-        width: 70%;
-        height: 80%;
-        max-width: 600px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        z-index: 4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        p {
-          text-transform: uppercase;
-          color: white;
-          font-weight: 600;
-          font-size: em(34px);
-        }
-        span {
-          font-size: em(22px);
-          color: $grey;
-          margin-top: 20px;
-          line-height: 1.4em;
-        }
-        p, span {
-          @include textShadow(0 0 20px black);
-        }
-      }
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        @include select();
-      }
-    }
-  }
   .departments {
     padding: 80px 0;
     width: 90%;
@@ -150,4 +72,48 @@
   width: 90%;
   margin: 0 auto;
   max-width: $maxWidth;
+}
+
+@media(max-width: 1200px) {
+  .container {
+    .departments {
+      margin-top: 0;
+    }
+  }
+}
+
+@media(max-width: $mobileL) {
+  .container {
+    .departments {
+      &-container {
+        .box {
+          $size: 70px;
+          width: $size;
+          height: $size;
+          &:hover {
+            @include transform(rotate(0));
+          .icon {
+            i {
+              font-size: em(20);
+            }
+          }
+          .text {
+            font-size: em(12);
+          }
+          }
+          .icon {
+            i {
+              font-size: em(20);
+            }
+          }
+          .text {
+            padding: 4px 0;
+            font-size: em(12);
+            opacity: 1;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
 }

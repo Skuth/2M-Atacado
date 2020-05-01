@@ -2,6 +2,7 @@
 
 use Skuth\Page;
 use Skuth\Model\Departments;
+use Skuth\Model\Slider;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,7 +16,10 @@ $app->get("/", function(Request $req, Response $res, $args) {
   $departments = new Departments();
   $d = $departments->getAll();
 
-  $page->setTpl("home", ["departments"=>$d]);
+  $slider = new Slider();
+  $s = $slider->getAll();
+
+  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s]);
 
   return $res;
   

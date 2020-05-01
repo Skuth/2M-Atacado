@@ -39,3 +39,19 @@
   -moz-user-select: none;
   -o-user-select: none;
 }
+
+@mixin gradient($type: linear, $angle: 90deg, $color1: #DDD, $color2: #333, $param1: 0%, $param2: 100%) {
+  @if $type == linear {
+    background: linear-gradient($angle, $color1 $param1, $color2 $param2);
+    background: -webkit-linear-gradient($angle, $color1 $param1, $color2 $param2);
+    background: -moz-linear-gradient($angle, $color1 $param1, $color2 $param2);
+    background: -o-linear-gradient($angle, $color1 $param1, $color2 $param2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$color1}",endColorstr="#{$color2}",GradientType=1);
+  } @else {
+    background: radial-gradient(circle, $color1 $param1, $color2 $param2);
+    background: -webkit-radial-gradient(circle, $color1 $param1, $color2 $param2);
+    background: -moz-radial-gradient(circle, $color1 $param1, $color2 $param2);
+    background: -o-radial-gradient(circle, $color1 $param1, $color2 $param2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$color1}",endColorstr="#{$color2}",GradientType=1);
+  }
+}

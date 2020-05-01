@@ -3,10 +3,10 @@
   padding: 20px 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 20px;
+  column-gap: 30px;
   .card {
     text-decoration: none;
-    background: white;
+    @include gradient($angle: 288deg, $color1: white, $color2: lighten($black, 65));
     border-radius: 4px;
     overflow: hidden;
     width: 100%;
@@ -17,12 +17,29 @@
     &-header {
       position: relative;
       padding: 20px;
+      min-height: 110px;
       svg {
         width: 90%;
         max-width: 300px;
         position: absolute;
         top: 0;
         left: 0;
+        text {
+          fill: white;
+          font-size: em(30);
+          font-weight: 600;
+        }
+        text:last-child {
+          font-weight: 300;
+          font-size: em(25);
+          tspan {
+            font-weight: 600;
+            font-size: em(25);
+            &:last-child {
+              font-size: em(15);
+            }
+          }
+        }
       }
       .card-svg-header {
         fill: $darkblue;
@@ -31,28 +48,6 @@
         }
         &.orange {
           fill: $orange;
-        }
-      }
-      &-text {
-        position: relative;
-        z-index: 3;
-        color: white;
-        margin-left: 30px;
-        p {
-          font-size: em(25px);
-          font-weight: 600;
-          line-height: 1.4em;
-          &.price {
-            font-weight: 300;
-            font-size: em(20px);
-            span {
-              font-weight: 600;
-              font-size: em(25px);
-              &:last-child {
-                font-size: em(15px);
-              }
-            }
-          }
         }
       }
     }
@@ -67,6 +62,58 @@
         display: block;
         width: 100%;
       }
+    }
+  }
+}
+
+@media(max-width: $tablet) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 20px;
+    .card-image {
+      max-width: 300px;
+      margin-top: -80px;
+    }
+    .card-header svg {
+      max-width: 350px;
+    }
+  }
+}
+
+@media(max-width: $mobileL) {
+  .card-container{
+    .card-image {
+      max-width: 200px;
+    }
+    .card-header svg {
+      max-width: 250px;
+      text {
+        font-size: em(25);
+      }
+      text:nth-child(3) {
+        @include transform(translateY(-10px));
+      }
+      text:last-child {
+        font-size: em(20);
+        @include transform(translateY(-20px));
+        tspan {
+          font-size: em(25);
+          &:last-child {
+            font-size: em(15);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: $mobileS) {
+  .card-container {
+    .card-image {
+      max-width: 150px;
+    }
+    .card-header svg {
+      max-width: 200px;
     }
   }
 }

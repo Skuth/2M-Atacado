@@ -1,22 +1,25 @@
 .navigation {
-  &.banner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 400px;
-    width: 90%;
-    .navigation-header {
-      .header-container {
-        a {
-          $w: 150px;
-          margin-top: - $w / 2;
-          width: $w;
+  @media(min-width: 1200px) {
+    &.banner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 488px;
+      width: 90%;
+      max-width: $maxWidth;
+      .navigation-header {
+        .header-container {
+          a {
+            $w: 150px;
+            margin-top: - $w / 2;
+            width: $w;
+          }
         }
       }
-    }
-    .navigation-links {
-      .links-container {
-        padding: 20px 0;
+      .navigation-links {
+        .links-container {
+          padding: 20px 0;
+        }
       }
     }
   }
@@ -102,6 +105,46 @@
             text-align: center;
             min-width: calc(26px - 5px * 2);
             border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  .navigation {
+    position: relative;
+  }
+}
+
+@media(max-width: $tablet) {
+  .navigation {
+    &-links .links-container {
+      flex-direction: column;
+      padding: 20px;
+      padding-bottom: 30px;
+      width: calc(100% - 20px * 2);
+      ul {
+        flex-direction: column;
+        align-items: stretch;
+        li {
+          margin-top: 10px;
+          a {
+            margin: 0!important;
+            padding: 20px!important;
+            font-size: em(16)!important;
+            display: block;
+            background: darken($mediumblue, 20);
+            &:hover {
+              background: $darkblue;
+            }
+            .badge {
+              position: relative!important;
+              float: right!important;
+              top: 0!important;
+              right: 0!important;
+            }
           }
         }
       }
