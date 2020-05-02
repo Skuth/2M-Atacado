@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><nav class="navigation <?php echo htmlspecialchars( $navStyle, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><nav class="navigation <?php if( isset($navStyle) ){ ?><?php echo htmlspecialchars( $navStyle, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>">
   <div class="navigation-header">
     <div class="header-container">
       <a href="./"><img src="./assets/img/logo.png" alt="Logo 2M Atacado"></a>
@@ -8,9 +8,7 @@
     <div class="links-container">
       <ul class="left">
         <li><a href="./">Inicio</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
+        <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
         <li><a href="#">

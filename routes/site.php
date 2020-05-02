@@ -25,4 +25,14 @@ $app->get("/", function(Request $req, Response $res, $args) {
   
 });
 
+$app->get("/sobre", function(Request $req, Response $res, $args) {
+
+  $page = new Page();
+
+  $page->setTpl("sobre");
+
+  return $res;
+
+});
+
 ?>

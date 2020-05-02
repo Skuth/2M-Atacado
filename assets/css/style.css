@@ -661,6 +661,73 @@ textarea {
     .product-box-container.bg .product-box .product-info .title {
       font-size: 1em; } }
 
+.reader-container {
+  width: 100%;
+  margin: 0 auto; }
+  .reader-container .reader-header {
+    width: 100%;
+    max-height: 550px;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; }
+    .reader-container .reader-header .reader-text {
+      background: rgba(0, 0, 0, 0.6);
+      text-transform: uppercase;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .reader-container .reader-header .reader-text h2 {
+        color: white;
+        font-size: 2.8125em;
+        font-weight: 600;
+        margin-bottom: 120px; }
+    .reader-container .reader-header .reader-image {
+      width: 100%;
+      height: 100%;
+      display: block; }
+      .reader-container .reader-header .reader-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; }
+  .reader-container .header-content {
+    background: white;
+    padding: 60px;
+    padding-bottom: 150px;
+    width: calc(90% - 60px * 2);
+    max-width: 1420px;
+    margin: 0 auto;
+    margin-top: -120px;
+    position: relative;
+    z-index: 2;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+    .reader-container .header-content span {
+      color: #232323;
+      font-size: 2.5em;
+      font-weight: 600;
+      padding: 10px 0;
+      display: block; }
+      .reader-container .header-content span:first-child {
+        padding-top: 0; }
+    .reader-container .header-content p {
+      display: block;
+      padding: 10px 0;
+      font-weight: 450;
+      font-size: 1.25em;
+      line-height: 1.3em;
+      letter-spacing: 1.3px;
+      padding-bottom: 60px; }
+      .reader-container .header-content p:last-child {
+        padding-bottom: 0; }
+
 .slide {
   position: relative;
   height: 600px;
@@ -766,7 +833,9 @@ textarea {
 
 .navigation {
   z-index: 10;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   width: 100%;
   margin: 0 auto;
   left: 0;

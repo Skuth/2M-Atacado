@@ -1,4 +1,4 @@
-<nav class="navigation {$navStyle}">
+<nav class="navigation {if="isset($navStyle)"}{$navStyle}{/if}">
   <div class="navigation-header">
     <div class="header-container">
       <a href="./"><img src="./assets/img/logo.png" alt="Logo 2M Atacado"></a>
@@ -8,9 +8,7 @@
     <div class="links-container">
       <ul class="left">
         <li><a href="./">Inicio</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
+        <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
         <li><a href="#">
