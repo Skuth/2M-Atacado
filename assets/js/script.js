@@ -91,5 +91,30 @@ $(document).ready(() => {
       nextArrow: document.querySelector(".container .slide .controls").children[1]
     })
   }
-  
+
 })
+
+const readerSlide = () => {
+  $("#reader-pictures").slick({
+    infinite: true,
+    centerMode: true,
+    arrows: false,
+    slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  })
+}

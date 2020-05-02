@@ -19,6 +19,20 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error?</p>
       <span>Title</span>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ducimus consectetur nemo dolore? Architecto cum minus delectus aperiam quidem ratione odit fuga laborum. Voluptate quae itaque soluta numquam necessitatibus. Odit?</p>
+      
+      <div class="content-image">
+        <div id="reader-pictures">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -28,5 +42,6 @@
     let footer = document.querySelector(".distributor")
     footer.style.marginTop = "-50px"
     footer.style.zIndex = "3"
+    readerSlide()
   })
 </script>

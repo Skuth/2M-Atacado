@@ -727,6 +727,15 @@ textarea {
       padding-bottom: 60px; }
       .reader-container .header-content p:last-child {
         padding-bottom: 0; }
+    .reader-container .header-content .content-image {
+      width: 100%;
+      margin: 0 auto;
+      display: block; }
+      .reader-container .header-content .content-image #reader-pictures img {
+        max-width: 300px;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 4px; }
 
 .slide {
   position: relative;
