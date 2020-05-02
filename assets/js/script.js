@@ -27,6 +27,10 @@ $(document).ready(() => {
       })
     }
   }
+  
+  $(".navigation .submenu").hover(function() {
+    $(this).toggleClass("active")
+  })
 
   if($(".distributor-slider").length > 0) {
     $(".distributor-slider").slick({

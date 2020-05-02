@@ -74,6 +74,28 @@
       width: 100%;
       margin: 0 auto;
       display: block;
+      position: relative;
+      &::before {
+        content: "";
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        @include gradient($angle: 0deg, $color1: white, $color2: rgba(255,255,255,0));
+      }
+      &::after {
+        content: "";
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        @include gradient($angle: 180deg, $color1: white, $color2: rgba(255,255,255,0));
+      }
+      @include select();
       #reader-pictures {
         img {
           max-width: 300px;

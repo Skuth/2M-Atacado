@@ -1,0 +1,15 @@
+@keyframes submenuOpen {
+    0% {
+      display: none;
+      opacity: 0;
+      height: 0;
+    }
+    1% {
+      display: block;
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+      height: initial;
+    }
+}

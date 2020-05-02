@@ -8,6 +8,17 @@
     <div class="links-container">
       <ul class="left">
         <li><a href="./">Inicio</a></li>
+        {$departments = getDepartments()}
+        {if="$departments !== NULL"}
+        <li class="submenu">
+          <a>Departamentos <i class="icofont-rounded-down"></i></a>
+          <ul>
+            {loop="$departments"}
+            <li><a href="/departamentos/{$value.href}"><i class="{$value.icon}"></i> {$value.text}</a></li>
+            {/loop}
+          </ul>
+        </li>
+        {/if}
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">

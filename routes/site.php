@@ -7,6 +7,11 @@ use Skuth\Model\Slider;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+function getDepartments() {
+  $departments = new Departments();
+  return $departments->getAll();
+}
+
 $app->get("/", function(Request $req, Response $res, $args) {
 
   $page = new Page(["data"=>["navStyle"=>"banner"]]);
@@ -29,7 +34,7 @@ $app->get("/sobre", function(Request $req, Response $res, $args) {
 
   $page = new Page();
 
-  $page->setTpl("sobre");
+  $page->setTpl("info");
 
   return $res;
 

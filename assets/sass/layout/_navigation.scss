@@ -76,6 +76,7 @@
         justify-content: center;
         li {
           display: inline-block;
+          position: relative;
           a {
             display: block;
             padding: 15px 20px;
@@ -83,6 +84,68 @@
             color: white;
             border-radius: 4px;
             @include transition(background, 0.5s);
+          }
+        }
+        &.left .submenu {
+          >a {
+            i {
+              margin-left: 10px;
+              display: inline-block;
+              @include transition(all, 0.5s);
+            }
+          }
+          &.active {
+            >a i {
+              @include transform(rotate(180deg));
+            }
+            ul {
+              max-height: 300px;
+              height: initial;
+              opacity: 1;
+            }
+          }
+        }
+        &.left {
+          display: flex;
+        }
+        &.left .submenu > ul {
+          flex-direction: column;
+          position: absolute;
+          background: white;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          display: block;
+          max-height: 0;
+          border-radius: 4px;
+          margin: 0 10px;
+          opacity: 0;
+          overflow: hidden;
+          overflow-y: scroll;
+          height: initial;
+          max-height: 0;
+          -webkit-overflow-scrolling: touch;
+          -webkit-transform: translate3d(0,0,0);
+          @include transition(all, 0.5s);
+          @include boxShadow(0 0 20px rgba(0,0,0,0.2));
+          &::-webkit-scrollbar {
+            width: 0;
+          }
+          li {
+            display: block;
+          }
+          li a {
+            display: block;
+            padding: 20px;
+            margin: 0;
+            border-radius: 0;
+            color: $darkblue;
+            i {
+              margin-right: 5px;
+            }
+            &:hover {
+              color: white;
+            }
           }
         }
         &.left li a {
