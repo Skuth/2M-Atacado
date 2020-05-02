@@ -1008,6 +1008,7 @@ textarea {
           max-height: 0;
           -webkit-overflow-scrolling: touch;
           -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
           transition: all 0.5s;
           -webkit-transition: all 0.5s;
           -moz-transition: all 0.5s;

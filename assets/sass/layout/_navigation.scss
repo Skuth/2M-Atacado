@@ -126,6 +126,7 @@
           max-height: 0;
           -webkit-overflow-scrolling: touch;
           -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
           @include transition(all, 0.5s);
           @include boxShadow(0 0 20px rgba(0,0,0,0.2));
           &::-webkit-scrollbar {
