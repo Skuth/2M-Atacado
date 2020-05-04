@@ -4,10 +4,10 @@ namespace Skuth\Model;
 
 use Skuth\DB\Sql;
 
-class Slider {
+class Sliders {
   public function getAll() {
     $sql = new Sql();
-    $query = "SELECT * FROM slider";
+    $query = "SELECT * FROM sliders";
     return $sql->select($query);
   }
 }

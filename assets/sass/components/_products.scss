@@ -106,6 +106,7 @@
       max-width: 250px;
       display: block;
       text-align: center;
+      @include select();
       img {
         display: block;
         width: 100%;
@@ -117,6 +118,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @include select();
       span {
         display: block;
         padding: 10px 30px;

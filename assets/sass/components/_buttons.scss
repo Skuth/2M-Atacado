@@ -1,4 +1,13 @@
+.btn-container {
+  display: block;
+  padding: 20px 0;
+  &-center {
+    text-align: center;
+  }
+}
+
 .btn {
+  display: inline-block;
   text-decoration: none;
   padding: 10px 30px;
   background: white;
@@ -12,6 +21,18 @@
     background: $darkblue;
     color: white;
     @include boxShadow(5px 8px 20px rgba(0,0,0,0.4));
+  }
+
+  &-big {
+    padding: 20px 40px;
+    font-size: em(22);
+  }
+
+  &-upper {
+    text-transform: uppercase;
+  }
+  &-cap {
+    text-transform: capitalize;
   }
 
   &-circle {

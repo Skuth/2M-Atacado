@@ -31,6 +31,18 @@ $(document).ready(() => {
   $(".navigation .submenu").hover(function() {
     $(this).toggleClass("active")
   })
+  
+  $(".products-container-sidebar .sidebar-box").click(function() {
+    
+    $(this).toggleClass("open")
+    let h = this.children[1].scrollHeight
+    if($(this).hasClass("open")) {
+      $(this).children(".sidebar-items").css("max-height", h)
+    } else {
+      $(this).children(".sidebar-items").removeAttr("style")
+    }
+
+  })
 
   if($(".distributor-slider").length > 0) {
     $(".distributor-slider").slick({
