@@ -29,6 +29,7 @@
           color: white;
           border-radius: 4px;
           cursor: pointer;
+          @include select();
           i {
             float: right;
             @include transition(all, 0.5s);

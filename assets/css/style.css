@@ -1319,7 +1319,11 @@ textarea {
         background: #1A3795;
         color: white;
         border-radius: 4px;
-        cursor: pointer; }
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none; }
         .container .products-container-sidebar .sidebar-box span i {
           float: right;
           transition: all 0.5s;
