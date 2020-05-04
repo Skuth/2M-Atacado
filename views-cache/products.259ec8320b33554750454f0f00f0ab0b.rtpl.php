@@ -2,16 +2,16 @@
   <div class="products-container">
 
     <div class="products-container-sidebar">
-      <div class="sidebar-box">
+      <div class="sidebar-box open">
         <span>Marcas <i class="icofont-simple-down"></i></span>
-        <ul class="sidebar-items">
+        <ul class="sidebar-items" style="max-height: 100vh;">
           <li><a href="#">Item ( 14 )</a></li>
           <li><a href="#">Item ( 14 )</a></li>
         </ul>
       </div>
-      <div class="sidebar-box">
+      <div class="sidebar-box open">
         <span>Categorias <i class="icofont-simple-down"></i></span>
-        <ul class="sidebar-items">
+        <ul class="sidebar-items" style="max-height: 100vh;">
           <li><a href="#">Item ( 14 )</a></li>
           <li><a href="#">Item ( 1 )</a></li>
           <li><a href="#">Item ( 14 )</a></li>
