@@ -107,7 +107,6 @@ $(document).ready(() => {
       nextArrow: document.querySelector(".container .slide .controls").children[1]
     })
   }
-
 })
 
 const readerSlide = () => {

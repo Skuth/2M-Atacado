@@ -23,6 +23,9 @@
     @include boxShadow(5px 8px 20px rgba(0,0,0,0.4));
   }
 
+  &-medium {
+    padding: 20px 50px;
+  }
   &-big {
     padding: 20px 40px;
     font-size: em(22);

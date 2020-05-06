@@ -34,6 +34,44 @@ $app->get("/", function(Request $req, Response $res, $args) {
   
 });
 
+$app->get("/produto/{name}", function(Request $req, Response $res, $args) {
+
+  // produto/nome/id
+
+  // Para editor
+
+  // function parseStr($str) {
+
+  //   $str = explode("#", $str);
+  //   foreach ($str as $key => $value) {
+  //     $str[$key] = explode("{", $str[$key]);
+  //     $str[$key] = str_replace("}", "", $str[$key]);
+  //   }
+
+  //   $parses = [];
+
+  //   foreach ($str as $key => $value) {
+  //     if(count($str[$key]) > 1 && $str[$key][0] !== "script") {   
+  //       if($str[$key][0] == "br") {
+  //         $res = "<".$str[$key][0].">";
+  //       } else {
+  //         $res = "<".$str[$key][0].">".$str[$key][1]."</".$str[$key][0].">";
+  //       }
+  //       array_push($parses, $res);
+  //     }
+  //   }
+
+  //   return $parses;
+  // }
+
+  $page = new Page();
+
+  $page->setTpl("product");
+
+  return $res;
+
+});
+
 $app->get("/produtos[/{param}]", function(Request $req, Response $res, $args) {
 
   // marca?=marca | categoria?=categoria
