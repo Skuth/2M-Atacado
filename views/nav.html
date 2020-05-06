@@ -19,6 +19,17 @@
           </ul>
         </li>
         {/if}
+        {$departments = getDepartments()}
+        {if="$departments !== NULL"}
+        <li class="submenu">
+          <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
+          <ul>
+            {loop="$departments"}
+            <li><a href="/sobre/{$value.href}">{$value.text}</a></li>
+            {/loop}
+          </ul>
+        </li>
+        {/if}
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">

@@ -16,7 +16,7 @@ function getSiteUrl() {
   return $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/";
 }
 
-$app->get("/", function(Request $req, Response $res, $args) {
+$app->get("/[inicio]", function(Request $req, Response $res, $args) {
 
   $page = new Page(["data"=>["navStyle"=>"banner"]]);
 
@@ -34,7 +34,7 @@ $app->get("/", function(Request $req, Response $res, $args) {
   
 });
 
-$app->get("/produto/{name}", function(Request $req, Response $res, $args) {
+$app->get("/produto/{nome}/{id}", function(Request $req, Response $res, $args) {
 
   // produto/nome/id
 
@@ -72,7 +72,7 @@ $app->get("/produto/{name}", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/produtos[/{param}]", function(Request $req, Response $res, $args) {
+$app->get("/produtos[/{filtro}]", function(Request $req, Response $res, $args) {
 
   // marca?=marca | categoria?=categoria
 
@@ -84,11 +84,18 @@ $app->get("/produtos[/{param}]", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/sobre", function(Request $req, Response $res, $args) {
+$app->get("/sobre[/{distribuidora}]", function(Request $req, Response $res, $args) {
+
+  if(isset($args["distribuidora"])) {
+    $dist = $args["distribuidora"];
+    $r = $dist;
+  } else {
+    $r = "Sobre nós";
+  }
 
   $page = new Page();
 
-  $page->setTpl("info");
+  $page->setTpl("info", ["content"=>$r]);
 
   return $res;
 

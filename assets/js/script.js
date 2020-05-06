@@ -32,14 +32,16 @@ $(document).ready(() => {
     $(this).toggleClass("active")
   })
   
-  $(".products-container-sidebar .sidebar-box").click(function() {
+  $(".products-container-sidebar .sidebar-box span").click(function(e) {
     
-    $(this).toggleClass("open")
-    let h = this.children[1].scrollHeight
-    if($(this).hasClass("open")) {
-      $(this).children(".sidebar-items").css("max-height", h)
+    $(this).parent().toggleClass("open")
+
+    let h = this.parentElement.children[1].scrollHeight
+
+    if($(this).parent().hasClass("open")) {
+      $(this).parent().children(".sidebar-items").css("max-height", h)
     } else {
-      $(this).children(".sidebar-items").removeAttr("style")
+      $(this).parent().children(".sidebar-items").removeAttr("style")
     }
 
   })

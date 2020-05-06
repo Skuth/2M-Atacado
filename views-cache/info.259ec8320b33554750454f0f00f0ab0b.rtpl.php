@@ -3,7 +3,7 @@
 
     <div class="reader-header">
       <div class="reader-text">
-        <h2>Sobre nós</h2>
+        <h2><?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
       </div>
       <div class="reader-image">
         <img src="https://sensecoaching.com.br/storage/2017/04/artigo_100908.jpg" alt="Sobre nós">

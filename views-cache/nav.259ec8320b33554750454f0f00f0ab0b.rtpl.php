@@ -19,6 +19,17 @@
           </ul>
         </li>
         <?php } ?>
+        <?php $departments = getDepartments(); ?>
+        <?php if( $departments !== NULL ){ ?>
+        <li class="submenu">
+          <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
+          <ul>
+            <?php $counter1=-1;  if( isset($departments) && ( is_array($departments) || $departments instanceof Traversable ) && sizeof($departments) ) foreach( $departments as $key1 => $value1 ){ $counter1++; ?>
+            <li><a href="/sobre/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+            <?php } ?>
+          </ul>
+        </li>
+        <?php } ?>
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
