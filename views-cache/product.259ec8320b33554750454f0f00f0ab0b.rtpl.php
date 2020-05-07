@@ -33,7 +33,7 @@
         <br>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nam atque maxime reiciendis quis eaque natus! Explicabo nemo aliquam et iusto cum, quisquam, impedit, expedita unde numquam fugiat repudiandae maxime!</p>
         <br>
-        <p>Random text</p>
+        <b>Random text</b>
         <br>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nam atque maxime reiciendis quis eaque natus! Explicabo nemo aliquam et iusto cum, quisquam, impedit, expedita unde numquam fugiat repudiandae maxime!</p>
       </div>

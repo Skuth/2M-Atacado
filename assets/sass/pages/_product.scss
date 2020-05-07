@@ -120,3 +120,39 @@
     width: calc(100% - 20px * 2)!important;
   }
 }
+
+@media(max-width: 1000px) {
+  .product-container {
+    .product-page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .product-page-info {
+        text-align: center;
+        .product-page-brand {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: $tablet) {
+  .product-container {
+    .product-page-container {
+      .product-page-picture {
+        display: flex;
+        flex-direction: column-reverse;
+        .product-page-carrossel {
+          display: block;
+          text-align: center;
+          &-box {
+            display: inline-block;
+            margin: 10px!important;
+          }
+        }
+      }
+    }
+  }
+}
