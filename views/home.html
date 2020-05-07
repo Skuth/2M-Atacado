@@ -6,9 +6,9 @@
     </div>
     <div class="container-header-slider">
       {loop="$sliders"}
-        {if="$value.status == 1"}
-        <a class="banner" href="{$value.href}">
-          <img src="{$value.img}" alt="{$value.description}">
+        {if="$value.slider_status == 1"}
+        <a class="banner" href="{$value.slider_href}">
+          <img src="{$value.slider_img}" alt="{$value.slider_description}">
         </a>
         {/if}
       {/loop}
@@ -19,12 +19,12 @@
     <h2>Departamentos</h2>
     <div class="departments-container">
       {loop="$departments"}
-      <a class="box" href="/departamentos/{$value.href}">
+      <a class="box" href="/departamentos/{$value.department_href}">
         <div class="icon">
-          <i class="{$value.icon}"></i>
+          <i class="{$value.department_icon}"></i>
         </div>
         <div class="text">
-          <p>{$value.text}</p>
+          <p>{$value.department_text}</p>
         </div>
       </a>
       {/loop}
@@ -92,7 +92,7 @@
 
   <div class="product-box-container" id="products-off">
     {loop="array(1,1,1,1)"}
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/{$key}">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>
@@ -125,7 +125,7 @@
 
   <div class="product-box-container">
     {loop="array(1,1,1,1)"}
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/{$key}">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>
@@ -158,7 +158,7 @@
 
   <div class="product-box-container">
     {loop="array(1,1,1,1)"}
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/{$key}">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>

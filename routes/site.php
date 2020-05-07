@@ -20,7 +20,7 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
 
   $page = new Page(["data"=>["navStyle"=>"banner"]]);
 
-  $_SESSION["cart"] = [1];
+  $_SESSION["cart"] = [];
 
   $departments = new Departments();
   $d = $departments->getAll();
@@ -38,32 +38,6 @@ $app->get("/produto/{nome}/{id}", function(Request $req, Response $res, $args) {
 
   // produto/nome/id
 
-  // Para editor
-
-  // function parseStr($str) {
-
-  //   $str = explode("#", $str);
-  //   foreach ($str as $key => $value) {
-  //     $str[$key] = explode("{", $str[$key]);
-  //     $str[$key] = str_replace("}", "", $str[$key]);
-  //   }
-
-  //   $parses = [];
-
-  //   foreach ($str as $key => $value) {
-  //     if(count($str[$key]) > 1 && $str[$key][0] !== "script") {   
-  //       if($str[$key][0] == "br") {
-  //         $res = "<".$str[$key][0].">";
-  //       } else {
-  //         $res = "<".$str[$key][0].">".$str[$key][1]."</".$str[$key][0].">";
-  //       }
-  //       array_push($parses, $res);
-  //     }
-  //   }
-
-  //   return $parses;
-  // }
-
   $page = new Page();
 
   $page->setTpl("product");
@@ -75,6 +49,35 @@ $app->get("/produto/{nome}/{id}", function(Request $req, Response $res, $args) {
 $app->get("/produtos[/{filtro}]", function(Request $req, Response $res, $args) {
 
   // marca?=marca | categoria?=categoria
+
+  if(isset($args["filtro"])) {
+    $param = $args["filtro"];
+    
+    if($param === "marca" || $param === "categoria" || $param === "ofertas" || $param === "departamento") {
+      switch ($param) {
+        case 'marca':
+          $marca = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
+
+          // listar na marca
+          break;
+        case 'categoria':
+          $categoria = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
+
+          // listar na categoria
+          break;
+        case 'departamento':
+          $departamento = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
+  
+          // listar na departamento
+          break;
+        case 'ofertas':
+          // listar ofertas
+          break;
+      }
+    } else {
+      return $res->withHeader("Location", "/produtos");
+    }
+  }
 
   $page = new Page();
   

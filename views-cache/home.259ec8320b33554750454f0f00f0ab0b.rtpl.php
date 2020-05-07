@@ -6,9 +6,9 @@
     </div>
     <div class="container-header-slider">
       <?php $counter1=-1;  if( isset($sliders) && ( is_array($sliders) || $sliders instanceof Traversable ) && sizeof($sliders) ) foreach( $sliders as $key1 => $value1 ){ $counter1++; ?>
-        <?php if( $value1["status"] == 1 ){ ?>
-        <a class="banner" href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-          <img src="<?php echo htmlspecialchars( $value1["img"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="<?php echo htmlspecialchars( $value1["description"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <?php if( $value1["slider_status"] == 1 ){ ?>
+        <a class="banner" href="<?php echo htmlspecialchars( $value1["slider_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <img src="<?php echo htmlspecialchars( $value1["slider_img"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="<?php echo htmlspecialchars( $value1["slider_description"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </a>
         <?php } ?>
       <?php } ?>
@@ -19,12 +19,12 @@
     <h2>Departamentos</h2>
     <div class="departments-container">
       <?php $counter1=-1;  if( isset($departments) && ( is_array($departments) || $departments instanceof Traversable ) && sizeof($departments) ) foreach( $departments as $key1 => $value1 ){ $counter1++; ?>
-      <a class="box" href="/departamentos/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+      <a class="box" href="/departamentos/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         <div class="icon">
-          <i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i>
+          <i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i>
         </div>
         <div class="text">
-          <p><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+          <p><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
         </div>
       </a>
       <?php } ?>
@@ -92,7 +92,7 @@
 
   <div class="product-box-container" id="products-off">
     <?php $counter1=-1; $newvar1=array(1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>
@@ -125,7 +125,7 @@
 
   <div class="product-box-container">
     <?php $counter1=-1; $newvar1=array(1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>
@@ -158,7 +158,7 @@
 
   <div class="product-box-container">
     <?php $counter1=-1; $newvar1=array(1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
-    <a class="product-box" href="#">
+    <a class="product-box" href="/produto/nome-do-produto/<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="product-picture">
         <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
       </div>

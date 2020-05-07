@@ -14,7 +14,7 @@
           <a>Departamentos <i class="icofont-rounded-down"></i></a>
           <ul>
             {loop="$departments"}
-            <li><a href="/departamentos/{$value.href}"><i class="{$value.icon}"></i> {$value.text}</a></li>
+            <li><a href="/produtos/departamento?nome={$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text}</a></li>
             {/loop}
           </ul>
         </li>
@@ -25,7 +25,7 @@
           <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
           <ul>
             {loop="$departments"}
-            <li><a href="/sobre/{$value.href}">{$value.text}</a></li>
+            <li><a href="/sobre/{$value.department_href}">{$value.department_text}</a></li>
             {/loop}
           </ul>
         </li>
@@ -33,13 +33,16 @@
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
-        <li><a href="#">
+        <li><a>
           <i class="icofont-bag"></i>
           {if="isset($_SESSION['cart'])"}
-          <span class="badge" id="cart">0</span>
+            {$cart = $_SESSION["cart"]}
+            {if="count($cart) > 0"}
+            <span class="badge" id="cart">{function="count($cart)"}</span>
+            {/if}
           {/if}
         </a></li>
-        <li><a href="#"><i class="icofont-search"></i></a></li>
+        <li><a><i class="icofont-search"></i></a></li>
       </ul>
     </div>
   </div>

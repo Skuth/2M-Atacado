@@ -28,9 +28,15 @@ $(document).ready(() => {
     }
   }
   
-  $(".navigation .submenu").hover(function() {
-    $(this).toggleClass("active")
-  })
+  if($(window).width() > 768) {
+    $(".navigation .submenu").hover(function() {
+      $(this).toggleClass("active")
+    })
+  } else {
+    $(".navigation .submenu").click(function() {
+      $(this).toggleClass("active")
+    })
+  }
   
   $(".products-container-sidebar .sidebar-box span").click(function(e) {
     

@@ -14,7 +14,7 @@
           <a>Departamentos <i class="icofont-rounded-down"></i></a>
           <ul>
             <?php $counter1=-1;  if( isset($departments) && ( is_array($departments) || $departments instanceof Traversable ) && sizeof($departments) ) foreach( $departments as $key1 => $value1 ){ $counter1++; ?>
-            <li><a href="/departamentos/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+            <li><a href="/produtos/departamento?nome=<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
             <?php } ?>
           </ul>
         </li>
@@ -25,7 +25,7 @@
           <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
           <ul>
             <?php $counter1=-1;  if( isset($departments) && ( is_array($departments) || $departments instanceof Traversable ) && sizeof($departments) ) foreach( $departments as $key1 => $value1 ){ $counter1++; ?>
-            <li><a href="/sobre/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+            <li><a href="/sobre/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
             <?php } ?>
           </ul>
         </li>
@@ -33,13 +33,16 @@
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
-        <li><a href="#">
+        <li><a>
           <i class="icofont-bag"></i>
           <?php if( isset($_SESSION['cart']) ){ ?>
-          <span class="badge" id="cart">0</span>
+            <?php $cart = $_SESSION["cart"]; ?>
+            <?php if( count($cart) > 0 ){ ?>
+            <span class="badge" id="cart"><?php echo count($cart); ?></span>
+            <?php } ?>
           <?php } ?>
         </a></li>
-        <li><a href="#"><i class="icofont-search"></i></a></li>
+        <li><a><i class="icofont-search"></i></a></li>
       </ul>
     </div>
   </div>

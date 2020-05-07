@@ -991,6 +991,7 @@ textarea {
             text-decoration: none;
             color: white;
             border-radius: 4px;
+            cursor: pointer;
             transition: background 0.5s;
             -webkit-transition: background 0.5s;
             -moz-transition: background 0.5s;
@@ -1036,12 +1037,16 @@ textarea {
           -webkit-transition: all 0.5s;
           -moz-transition: all 0.5s;
           -o-transition: all 0.5s;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-          -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-          -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-          -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
-          .navigation-links .links-container ul.left .submenu > ul::-webkit-scrollbar {
-            width: 0; }
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+          -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+          -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
+          @media (min-width: 768px) {
+            .navigation-links .links-container ul.left .submenu > ul::-webkit-scrollbar {
+              width: 4px; }
+            .navigation-links .links-container ul.left .submenu > ul::-webkit-scrollbar-thumb {
+              background: rgba(0, 0, 0, 0.4);
+              border-radius: 30px; } }
           .navigation-links .links-container ul.left .submenu > ul li {
             display: block; }
           .navigation-links .links-container ul.left .submenu > ul li a {
@@ -1087,6 +1092,16 @@ textarea {
     .navigation-links .links-container ul {
       flex-direction: column;
       align-items: stretch; }
+      .navigation-links .links-container ul.left .submenu.active > ul {
+        margin: 10px auto; }
+      .navigation-links .links-container ul.left .submenu > ul {
+        position: relative;
+        width: 100%;
+        margin: 0 auto; }
+        .navigation-links .links-container ul.left .submenu > ul li a {
+          background: transparent; }
+          .navigation-links .links-container ul.left .submenu > ul li a:hover {
+            background: #1A3795; }
       .navigation-links .links-container ul li {
         margin-top: 10px; }
         .navigation-links .links-container ul li a {

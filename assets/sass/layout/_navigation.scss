@@ -83,6 +83,7 @@
             text-decoration: none;
             color: white;
             border-radius: 4px;
+            cursor: pointer;
             @include transition(background, 0.5s);
           }
         }
@@ -128,9 +129,15 @@
           -webkit-transform: translate3d(0,0,0);
           transform: translate3d(0,0,0);
           @include transition(all, 0.5s);
-          @include boxShadow(0 0 20px rgba(0,0,0,0.2));
-          &::-webkit-scrollbar {
-            width: 0;
+          @include boxShadow(0 0 20px rgba(0,0,0,0.4));
+          @media(min-width: $tablet) {
+            &::-webkit-scrollbar {
+              width: 4px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: rgba(0,0,0,0.4);
+              border-radius: 30px;
+            }
           }
           li {
             display: block;
@@ -194,6 +201,24 @@
       ul {
         flex-direction: column;
         align-items: stretch;
+        &.left .submenu {
+          &.active {
+            > ul {
+              margin: 10px auto;
+            }
+          }
+          > ul {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            li a {
+              background: transparent;
+              &:hover {
+                background: $darkblue;
+              }
+            }
+          }
+        }
         li {
           margin-top: 10px;
           a {
