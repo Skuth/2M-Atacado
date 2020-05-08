@@ -33,7 +33,7 @@
         <li><a href="/sobre">Sobre</a></li>
       </ul>
       <ul class="right">
-        <li><a>
+        <li><a href="/carrinho">
           <i class="icofont-bag"></i>
           <?php if( isset($_SESSION['cart']) ){ ?>
             <?php $cart = $_SESSION["cart"]; ?>

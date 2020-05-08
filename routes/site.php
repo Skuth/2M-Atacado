@@ -104,4 +104,14 @@ $app->get("/sobre[/{distribuidora}]", function(Request $req, Response $res, $arg
 
 });
 
+$app->get("/carrinho", function(Request $req, Response $res, $args) {
+
+  $page = new Page();
+
+  $page->setTpl("cart");
+
+  return $res;
+
+});
+
 ?>
