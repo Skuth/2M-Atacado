@@ -1,6 +1,6 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><div class="cart-container">
   <div class="cart-content">
-    <?php if( true == true ){ ?>
+    <?php if( true == false ){ ?>
     <div class="cart-content-items">
       <?php $counter1=-1; $newvar1=array(1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
       <div class="box">

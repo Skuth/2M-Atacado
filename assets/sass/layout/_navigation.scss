@@ -132,11 +132,7 @@
           @include boxShadow(0 0 20px rgba(0,0,0,0.4));
           @media(min-width: $tablet) {
             &::-webkit-scrollbar {
-              width: 4px;
-            }
-            &::-webkit-scrollbar-thumb {
-              background: rgba(0,0,0,0.4);
-              border-radius: 30px;
+              width: 0;
             }
           }
           li {

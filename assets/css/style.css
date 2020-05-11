@@ -851,7 +851,7 @@ textarea {
     height: 100%;
     width: 100%; }
     .slide .container-header-slider .slick-list {
-      height: 100%; }
+      height: 100% !important; }
       .slide .container-header-slider .slick-list .slick-track {
         height: 100%; }
     .slide .container-header-slider .banner {
@@ -1043,10 +1043,7 @@ textarea {
           -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
           @media (min-width: 768px) {
             .navigation-links .links-container ul.left .submenu > ul::-webkit-scrollbar {
-              width: 4px; }
-            .navigation-links .links-container ul.left .submenu > ul::-webkit-scrollbar-thumb {
-              background: rgba(0, 0, 0, 0.4);
-              border-radius: 30px; } }
+              width: 0; } }
           .navigation-links .links-container ul.left .submenu > ul li {
             display: block; }
           .navigation-links .links-container ul.left .submenu > ul li a {
