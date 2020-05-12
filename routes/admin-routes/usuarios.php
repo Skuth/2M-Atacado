@@ -100,7 +100,7 @@ $app->get("/admin/usuarios/novo", function(Request $req, Response $res, $args) {
 
   if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
-  $page = new PageAdmin();
+  $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrando usuário", "usuarios/novo")]]);
 
   $page->setTpl("user-cad");
 
