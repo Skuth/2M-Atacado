@@ -46,7 +46,7 @@
                 <td>{$value.last_ip_connect}</td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/{$value.id}"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/{$value.id}"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse usuário?')" href="/admin/usuarios/remover/{$value.id}"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               {/if}

@@ -58,7 +58,7 @@ $app->get("/admin/perfil/{id}", function(Request $req, Response $res, $args) {
 
   if ($_SESSION["user"]["id"] != $id && $_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
 
-  if ($id == 100 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
+  if ($id == 0 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
 
   $panel = new Panel();
 
@@ -98,6 +98,45 @@ $app->get("/admin/usuarios/novo", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $page = new PageAdmin();
+
+  $page->setTpl("user-cad");
+
+  return $res;
+
+});
+
+$app->post("/admin/usuarios/novo", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  if (isset($_POST["save"])) {
+    $fname = ucfirst($_POST["nome"]);
+    $lname = ucfirst($_POST["sobrenome"]);
+    $user = $_POST["usuario"];
+    $pass = $_POST["senha"];
+    $type = $_POST["cargo"];
+
+    if ($fname == NULL || $lname == NULL || $user == NULL || $pass == NULL || $type == NULL) {
+      return $res->withHeader("Location", "/admin/usuarios/novo?error=null");
+    }
+
+    $panel = new Panel();
+
+    $r = $panel->cadUser($fname, $lname, $user, $pass, $type);
+
+    if ($r == true) {
+      return $res->withHeader("Location", "/admin/usuarios?msg=success-cad");
+    } else {
+      return $res->withHeader("Location", "/admin/usuarios?msg=error-cad");
+    }
+    
+  }
+
   return $res;
 
 });
@@ -110,7 +149,7 @@ $app->get("/admin/usuarios/editar/{id}", function(Request $req, Response $res, $
 
   if ($_SESSION["user"]["id"] != $id && $_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
 
-  if ($id == 100 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
+  if ($id == 0 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
 
   $panel = new Panel();
 
@@ -126,7 +165,7 @@ $app->get("/admin/usuarios/editar/{id}", function(Request $req, Response $res, $
 
 });
 
-$app->POST("/admin/usuarios/editar", function(Request $req, Response $res, $args) {
+$app->post("/admin/usuarios/editar", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
@@ -145,6 +184,7 @@ $app->POST("/admin/usuarios/editar", function(Request $req, Response $res, $args
     $r = $panel->editUser($id, $fname, $lname, $user, $pass, $type);
 
     if ($r == true) {
+      if ($id == $_SESSION["user"]["id"] && $pass !== NULL) return $res->withHeader("Location", "/admin/logout");
       return $res->withHeader("Location", "/admin/perfil/".$id."?msg=success");
     } else {
       return $res->withHeader("Location", "/admin/perfil/".$id."?msg=error");
@@ -155,13 +195,24 @@ $app->POST("/admin/usuarios/editar", function(Request $req, Response $res, $args
 
 });
 
-$app->delete("/admin/usuarios/remover", function(Request $req, Response $res, $args) {
+$app->get("/admin/usuarios/remover/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
   $id = $args["id"];
 
-  echo json_encode("Remover usuario de id ".$id);
+  $panel = new Panel();
+
+  $r = $panel->removeUser($id);
+
+  if ($r == true) {
+    if ($id == $_SESSION["user"]["id"]) return $res->withHeader("Location", "/admin/logout");
+    return $res->withHeader("Location", "/admin/usuarios?remove=true");
+  } else {
+    return $res->withHeader("Location", "/admin/usuarios?remove=false");
+  }
 
   return $res;
 

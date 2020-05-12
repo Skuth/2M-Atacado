@@ -46,7 +46,7 @@
                 <td><?php echo htmlspecialchars( $value1["last_ip_connect"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse usuário?')" href="/admin/usuarios/remover/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               <?php } ?>
