@@ -12,13 +12,13 @@
       <div class="card bg-secondary border-0 mb-0">
         <div class="card-body px-lg-5 py-lg-5">
 
-          <form role="form">
+          <form role="form" method="POST" action="/admin/login">
             <div class="form-group mb-3">
               <div class="input-group input-group-merge input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                 </div>
-                <input class="form-control" placeholder="Usuario" type="text">
+                <input class="form-control" name="user" placeholder="Usuario" type="text">
               </div>
             </div>
             <div class="form-group">
@@ -26,10 +26,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Senha" type="password">
+                <input class="form-control" name="pass" placeholder="Senha" type="password">
               </div>
             </div>
-            <button type="button" class="btn btn-primary my-4">Entrar</button>
+            <button type="submit" class="btn btn-primary my-4">
+              <i class="fas fa-sign-in-alt mr-1"></i> Entrar
+            </button>
           </form>
           
         </div>

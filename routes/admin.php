@@ -1,6 +1,7 @@
 <?php
 
 use Skuth\PageAdmin;
+use Skuth\Model\Painel;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -35,15 +36,25 @@ function createPage($p, $h) {
   return $page;
 }
 
-$path = "/admin";
+function getUserSession() {
+  if(isset($_SESSION["user"])) {
+    $user = $_SESSION["user"];
 
-$app->get($path, function(Request $req, Response $res, $args) {
+    return $user;
+  } else {
+    return NULL;
+  }
+}
+
+$app->get("/admin", function(Request $req, Response $res, $args) {
 
   return $res->withHeader("Location", "admin/dashboard");
 
 });
 
-$app->get($path."/login", function(Request $req, Response $res, $args) {
+$app->get("/admin/login", function(Request $req, Response $res, $args) {
+
+  if (Painel::verifyUser() !== false ) return $res->withHeader("Location", "/admin/dashboard");
 
   $page = new PageAdmin(["nav"=>false]);
 
@@ -53,7 +64,41 @@ $app->get($path."/login", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get($path."/dashboard", function(Request $req, Response $res, $args) {
+$app->post("/admin/login", function(Request $req, Response $res, $args) {
+
+  if (Painel::verifyUser() !== false ) return $res->withHeader("Location", "/admin/login");
+
+  $painel = new Painel(); 
+
+  if(isset($_POST["user"]) && isset($_POST["pass"])) {
+    $user = $_POST["user"];
+    $pass = $_POST["pass"];
+
+    if($painel->login($user, $pass)) {
+      return $res->withHeader("Location", "/admin/dashboard");
+    } else {
+      return $res->withHeader("Location", "/admin/login?error=1");
+    }
+
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/logout", function(Request $req, Response $res, $args) {
+
+  if (Painel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  unset($_SESSION["user"]);
+
+  return $res->withHeader("Location", "/admin/login");
+
+});
+
+$app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
+
+  if (Painel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("dashboard", "dashboard")]]);
 
@@ -63,11 +108,17 @@ $app->get($path."/dashboard", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get($path."/usuarios", function(Request $req, Response $res, $args) {
+$app->get("/admin/usuarios", function(Request $req, Response $res, $args) {
+
+  if (Painel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("usuarios", "usuarios")]]);
 
-  $page->setTpl("users");
+  $painel = new Painel();
+
+  $users = $painel->listAll();
+
+  $page->setTpl("users", ["users"=>$users]);
 
   return $res;
 

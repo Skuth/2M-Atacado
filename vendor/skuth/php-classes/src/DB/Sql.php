@@ -14,18 +14,18 @@ class Sql extends Config {
 
   public function setParams($stmt, $params = array()) {
     foreach ($params as $key => $value) {
-      $this->bindParam($stmt, $key, $value);
+      $this->bindParams($stmt, $key, $value);
     }
   }
 
   public function bindParams($stmt, $key, $value) {
-    $stmt->bindparam($key, trim(strip_tags($value)));
+    $stmt->bindparam($key, $value);
   }
 
   public function query($query, $params = array()) {
     $stmt = $this->conn->prepare($query);
     $this->setParams($stmt, $params);
-    $stmt->execute();
+    return $stmt->execute();
   }
 
   public function select($query, $params = array()) {

@@ -9,6 +9,7 @@
       <img src="./assets/admin/img/brand/blue.png" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
+    <?php $user = getUserSession(); ?>
     <ul class="nav align-items-center d-md-none">
       <li class="nav-item dropdown">
         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +23,7 @@
           <div class=" dropdown-header noti-title">
             <h6 class="text-overflow m-0">Bem vindo!</h6>
           </div>
-          <a href="#" class="dropdown-item">
+          <a href="/admin/perfil/<?php echo htmlspecialchars( $user["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="dropdown-item">
             <i class="ni ni-single-02"></i>
             <span>Meu perfil</span>
           </a>
@@ -85,7 +86,7 @@
                 <img alt="Image placeholder" src="./assets/admin/img/theme/avatar.png">
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm font-weight-bold">Flavio Gomes</span>
+                <span class="mb-0 text-sm font-weight-bold"><?php echo htmlspecialchars( $user["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
               </div>
             </div>
           </a>
@@ -93,7 +94,7 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Bem vindo!</h6>
             </div>
-            <a href="#" class="dropdown-item">
+            <a href="/admin/perfil/<?php echo htmlspecialchars( $user["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>Meu perfil</span>
             </a>

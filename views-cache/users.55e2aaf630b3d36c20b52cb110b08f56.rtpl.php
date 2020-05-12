@@ -27,17 +27,25 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <?php $counter1=-1; $newvar1=array(1,1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+              <?php $counter1=-1;  if( isset($users) && ( is_array($users) || $users instanceof Traversable ) && sizeof($users) ) foreach( $users as $key1 => $value1 ){ $counter1++; ?>
+              <?php if( $value1["type"] != 3 ){ ?>
               <tr>
-                <td><?php echo rand(1,100); ?></td>
-                <td>Flavio Gomes</td>
-                <td>theskuth</td>
-                <td><?php echo rand(0, 1); ?></td>
+                <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><?php echo htmlspecialchars( $value1["user"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
-                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/<?php echo rand(1,100); ?>"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/<?php echo rand(1,100); ?>"><i class="fas fa-trash"></i></a>
+                  <?php if( $value1["type"] == 1 ){ ?>
+                    Funcionário 
+                  <?php }else{ ?>
+                    Admin
+                  <?php } ?>
+                </td>
+                <td>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
+              <?php } ?>
               <?php } ?>
             </tbody>
           </table>
