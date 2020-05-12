@@ -56,11 +56,13 @@
       <ul class="navbar-nav">
         {$navItems = getNav()}
         {loop="$navItems"}
+        {if="$value.nivel <= $user.type"}
         <li class="nav-item">
           <a class="nav-link" href="/admin/{$value.href}">
             <i class="{$value.icon} {$value.color}"></i> {function="ucfirst($value.name)"}
           </a>
         </li>
+        {/if}
         {/loop}
       </ul>
     </div>

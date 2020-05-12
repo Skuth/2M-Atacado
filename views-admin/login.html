@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                 </div>
-                <input class="form-control" name="user" placeholder="Usuario" type="text">
+                <input class="form-control" name="user" autofocus placeholder="Usuario" type="text">
               </div>
             </div>
             <div class="form-group">

@@ -23,6 +23,13 @@
                 <th scope="col">Nome</th>
                 <th scope="col">User</th>
                 <th scope="col">Tipo</th>
+
+                {$userOn = $_SESSION["user"]}
+                {if="$userOn['type'] >= 2"}
+                <th scope="col">Última conexão</th>
+                <th scope="col">Último IP conectado</th>
+                {/if}
+
                 <th scope="col">Ação</th>
               </tr>
             </thead>
@@ -31,15 +38,19 @@
               {if="$value.type != 3"}
               <tr>
                 <td>{$value.id}</td>
-                <td>{$value.name}</td>
+                <td>{$value.fname} {$value.lname}</td>
                 <td>{$value.user}</td>
                 <td>
                   {if="$value.type == 1"}
                     Funcionário 
                   {else}
-                    Admin
+                    Administrador
                   {/if}
                 </td>
+                {if="$userOn['type'] >= 2"}
+                <td>{function="date('d/m/Y H:i:s', strtotime($value.last_connect))"}</td>
+                <td>{$value.last_ip_connect}</td>
+                {/if}
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/{$value.id}"><i class="fas fa-edit"></i></a>
                   <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/{$value.id}"><i class="fas fa-trash"></i></a>

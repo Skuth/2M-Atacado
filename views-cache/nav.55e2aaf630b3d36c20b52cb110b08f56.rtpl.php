@@ -56,11 +56,13 @@
       <ul class="navbar-nav">
         <?php $navItems = getNav(); ?>
         <?php $counter1=-1;  if( isset($navItems) && ( is_array($navItems) || $navItems instanceof Traversable ) && sizeof($navItems) ) foreach( $navItems as $key1 => $value1 ){ $counter1++; ?>
+        <?php if( $value1["nivel"] <= $user["type"] ){ ?>
         <li class="nav-item">
           <a class="nav-link" href="/admin/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             <i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $value1["color"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo ucfirst($value1["name"]); ?>
           </a>
         </li>
+        <?php } ?>
         <?php } ?>
       </ul>
     </div>
