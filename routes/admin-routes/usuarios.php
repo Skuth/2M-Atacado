@@ -56,13 +56,17 @@ $app->get("/admin/perfil/{id}", function(Request $req, Response $res, $args) {
 
   $id = $args["id"];
 
-  if ($_SESSION["user"]["id"] != $id) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
+  if ($_SESSION["user"]["id"] != $id && $_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
+
+  if ($id == 100 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
 
   $panel = new Panel();
 
   $user = $panel->getUserById($id);
 
-  $page = new PageAdmin();
+  if (count($user) <= 0) return $res->withHeader("Location", "/admin/perfil/".$_SESSION["user"]["id"]);
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("meu perfil", "perfil/".$id)]]);
 
   $page->setTpl("profile", ["user"=>$user]);
 
@@ -92,29 +96,68 @@ $app->get("/admin/usuarios", function(Request $req, Response $res, $args) {
 
 $app->get("/admin/usuarios/novo", function(Request $req, Response $res, $args) {
 
+  if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
+
   return $res;
 
 });
 
 $app->get("/admin/usuarios/editar/{id}", function(Request $req, Response $res, $args) {
 
+  if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
+
   $id = $args["id"];
+
+  if ($_SESSION["user"]["id"] != $id && $_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
+
+  if ($id == 100 && $_SESSION["user"]["type"] < 3) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
+
+  $panel = new Panel();
+
+  $user = $panel->getUserById($id);
+
+  if (count($user) <= 0) return $res->withHeader("Location", "/admin/usuarios/editar/".$_SESSION["user"]["id"]);
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("editando usuário de id ".$id, "usuarios/editar/".$id)]]);
+
+  $page->setTpl("user-edit", ["user"=>$user]);
 
   return $res;
 
 });
 
-$app->put("/admin/usuarios/editar/{id}", function(Request $req, Response $res, $args) {
+$app->POST("/admin/usuarios/editar", function(Request $req, Response $res, $args) {
 
-  $id = $args["id"];
+  if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
-  echo json_encode("Editar usuario de id ".$id);
+  var_dump($_POST);
+
+  if (isset($_POST["update"])) {
+    $id = $_POST["id"];
+    $fname = $_POST["nome"];
+    $lname = $_POST["sobrenome"];
+    $user = $_POST["usuario"];
+    $pass = ($_POST["senha"] == "password") ? NULL : $_POST["senha"];
+    $type = $_POST["cargo"];
+
+    $panel = new Panel();
+
+    $r = $panel->editUser($id, $fname, $lname, $user, $pass, $type);
+
+    if ($r == true) {
+      return $res->withHeader("Location", "/admin/perfil/".$id."?msg=success");
+    } else {
+      return $res->withHeader("Location", "/admin/perfil/".$id."?msg=error");
+    }
+  }
 
   return $res;
 
 });
 
-$app->delete("/admin/usuarios/remover/{id}", function(Request $req, Response $res, $args) {
+$app->delete("/admin/usuarios/remover", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
   $id = $args["id"];
 

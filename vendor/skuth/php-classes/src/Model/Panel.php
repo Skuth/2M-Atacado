@@ -53,7 +53,7 @@ class Panel {
 
   public function getUserById($id) {
     $sql = new Sql();
-    $query = "SELECT fname, lname, user, type FROM panel WHERE id=:id LIMIT 1";
+    $query = "SELECT id, fname, lname, user, password, type FROM panel WHERE id=:id LIMIT 1";
     $param = ["id"=>$id];
     $res = $sql->select($query, $param);
     if (isset($res[0])) {
@@ -61,6 +61,27 @@ class Panel {
     } else {
       return $res;
     }
+  }
+
+  public function editUser($id, $fname, $lname, $user, $pass, $type) {
+    $sql = new Sql();
+
+    if ($pass == NULL) {
+      $r = $sql->select("SELECT password FROM panel WHERE id=:id LIMIT 1", ["id"=>$id]);
+      $pass = $r[0]["password"];
+    }
+
+    $query = "UPDATE panel SET fname=:fname, lname=:lname, user=:user, password=:pass, type=:type WHERE id=:id";
+    $params = [
+      "id"=>$id,
+      "fname"=>$fname,
+      "lname"=>$lname,
+      "user"=>$user,
+      "pass"=>$pass,
+      "type"=>$type
+    ];
+
+    return $sql->query($query, $params);
   }
 }
 

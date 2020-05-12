@@ -23,13 +23,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">User</th>
                 <th scope="col">Tipo</th>
-
-                <?php $userOn = $_SESSION["user"]; ?>
-                <?php if( $userOn['type'] >= 2 ){ ?>
                 <th scope="col">Última conexão</th>
                 <th scope="col">Último IP conectado</th>
-                <?php } ?>
-
                 <th scope="col">Ação</th>
               </tr>
             </thead>
@@ -47,10 +42,8 @@
                     Administrador
                   <?php } ?>
                 </td>
-                <?php if( $userOn['type'] >= 2 ){ ?>
                 <td><?php echo date('d/m/Y H:i:s', strtotime($value1["last_connect"])); ?></td>
                 <td><?php echo htmlspecialchars( $value1["last_ip_connect"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                <?php } ?>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/usuarios/editar/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
                   <a class="btn btn-icon btn-danger btn-sm" href="/admin/usuarios/remover/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>

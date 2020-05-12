@@ -18,5 +18,4 @@ require_once("admin-routes/marcas.php");
 require_once("admin-routes/categorias.php");
 require_once("admin-routes/banners.php");
 
-
 ?>
