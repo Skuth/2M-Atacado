@@ -38,6 +38,13 @@ function getNav() {
       "nivel"=>2
     ],
     [
+      "name"=>"departamentos",
+      "href"=>"departamentos",
+      "icon"=>"ni ni-scissors",
+      "color"=>"text-primary",
+      "nivel"=>2
+    ],
+    [
       "name"=>"banners",
       "href"=>"banners",
       "icon"=>"ni ni-album-2",

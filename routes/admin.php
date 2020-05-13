@@ -16,6 +16,7 @@ require_once("admin-routes/usuarios.php");
 require_once("admin-routes/produtos.php");
 require_once("admin-routes/marcas.php");
 require_once("admin-routes/categorias.php");
+require_once("admin-routes/departamentos.php");
 require_once("admin-routes/banners.php");
 
 ?>

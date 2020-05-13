@@ -18,6 +18,8 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="./assets/admin/css/argon-dashboard.min.css?v=1.2.0" type="text/css">
+
+  <link rel="stylesheet" href="./assets/css/icofont.min.css">
 </head>
 
 <body>
