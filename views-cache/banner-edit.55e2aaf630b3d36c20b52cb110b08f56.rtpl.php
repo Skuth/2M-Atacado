@@ -35,7 +35,7 @@
 
                 <div class="col-lg-2">
                   <div class="form-group">
-                    <label>Status <?php echo htmlspecialchars( $banner["slider_status"], ENT_COMPAT, 'UTF-8', FALSE ); ?></label>
+                    <label>Status</label>
                     <select class="form-control" name="status">
                       <option value="1" <?php if( $banner["slider_status"] == 1 ){ ?>selected<?php } ?>>Ativado</option>
                       <option value="0" <?php if( $banner["slider_status"] == 0 ){ ?>selected<?php } ?>>Desativado</option>
