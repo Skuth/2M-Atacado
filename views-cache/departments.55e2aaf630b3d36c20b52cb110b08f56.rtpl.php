@@ -33,7 +33,7 @@
                 <td>/departamentos/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/departamento/editar/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa departamento?')" href="/admin/categoria/remover/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa departamento?')" href="/admin/departamento/remover/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               <?php } ?>

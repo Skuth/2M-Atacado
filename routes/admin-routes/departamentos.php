@@ -34,4 +34,93 @@ $app->get("/admin/departamento/novo", function(Request $req, Response $res, $arg
 
 });
 
+$app->post("/admin/departamento/novo", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  if (isset($_POST["save"])) {
+    $icon = $_POST["icone"];
+    $department = ucfirst($_POST["departamento"]);
+    $href = $_POST["href"];
+
+    $dep = new Departments();
+    
+    if ($dep->cadDep($icon, $department, $href) == true) {
+      return $res->withHeader("Location", "/admin/departamentos?cad=true");
+    } else {
+      return $res->withHeader("Location", "/admin/departamentos?cad=false");
+    }
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/departamento/editar/{id}", function (Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $dep = new Departments();
+
+  $d = $dep->getById($id);
+
+  $page = new PageAdmin();
+
+  $page->setTpl("dep-edit", ["department"=>$d]);
+
+  return $res;
+
+});
+
+$app->post("/admin/departamento/editar", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  if (isset($_POST["save"])) {
+    $id = $_POST["id"];
+    $icon = $_POST["icone"];
+    $department = ucfirst($_POST["departamento"]);
+    $href = $_POST["href"];
+
+    $dep = new Departments();
+
+    if ($dep->editDep($id, $icon, $department, $href) == true) {
+      return $res->withHeader("Location", "/admin/departamentos?edit=true");
+    } else {
+      return $res->withHeader("Location", "/admin/departamentos?edit=false");
+    }
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/departamento/remover/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $dep = new Departments();
+
+  if ($dep->removeDep($id) == true) {
+    return $res->withHeader("Location", "/admin/departamentos?remove=true");
+  } else {
+    return $res->withHeader("Location", "/admin/departamentos?remove=false");
+  }
+
+  return $res;
+
+});
+
 ?>

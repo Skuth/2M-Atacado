@@ -24,8 +24,8 @@ function getNav() {
       "nivel"=>1
     ],
     [
-      "name"=>"marcas",
-      "href"=>"marcas",
+      "name"=>"distribuidores",
+      "href"=>"distribuidores",
       "icon"=>"ni ni-books",
       "color"=>"text-success",
       "nivel"=>2

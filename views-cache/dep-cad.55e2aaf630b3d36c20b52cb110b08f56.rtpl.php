@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form method="POST" action="/admin/usuarios/novo">
+          <form method="POST" action="/admin/departamento/novo">
             <div class="pl-lg-4">
 
               <div class="row">
@@ -21,6 +21,8 @@
                   <div class="form-group">
                     <label class="form-control-label">Icone</label>
                     <input type="text" class="form-control" name="icone" required placeholder="Icone">
+                    <br>
+                    <span class="text-muted">Escolha um icone : <a href="https://icofont.com/icons" target="_blank"> icones</a></span>
                   </div>
                 </div>
 
@@ -33,8 +35,8 @@
 
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label">Senha</label>
-                    <input type="password" class="form-control" name="senha" required placeholder="Senha">
+                    <label class="form-control-label">Link</label>
+                    <input type="text" class="form-control" name="href" required placeholder="Link">
                   </div>
                 </div>
               </div>
