@@ -101,7 +101,7 @@ $app->get("/admin/banner/editar/{id}", function(Request $req, Response $res, $ar
 
   $s = $sliders->getById($id);
   
-  $page = new PageAdmin(["data"=>["page"=>createPage("Editando Banner", "banner/novo")]]);
+  $page = new PageAdmin(["data"=>["page"=>createPage("Editando Banner", "banner/editar/".$id)]]);
 
   $page->setTpl("banner-edit", ["banner"=>$s]);
 

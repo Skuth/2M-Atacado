@@ -72,7 +72,7 @@ $app->get("/admin/categoria/editar/{id}", function(Request $req, Response $res, 
 
   $c = $cat->getById($id);
   
-  $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrar categorias", "categoria/novo")]]);
+  $page = new PageAdmin(["data"=>["page"=>createPage("Editando categorias", "categoria/editar/".$id)]]);
 
   $page->setTpl("cat-edit", ["cat"=>$c]);
 

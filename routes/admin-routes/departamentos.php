@@ -26,7 +26,7 @@ $app->get("/admin/departamentos", function(Request $req, Response $res, $args) {
 
 $app->get("/admin/departamento/novo", function(Request $req, Response $res, $args) {
 
-  $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrar departamentos", "departamentos/novo")]]);
+  $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrar departamentos", "departamento/novo")]]);
 
   $page->setTpl("dep-cad");
 
@@ -70,7 +70,7 @@ $app->get("/admin/departamento/editar/{id}", function (Request $req, Response $r
 
   $d = $dep->getById($id);
 
-  $page = new PageAdmin();
+  $page = new PageAdmin(["data"=>["page"=>createPage("Editando departamentos", "departamento/editar/".$id)]]);
 
   $page->setTpl("dep-edit", ["department"=>$d]);
 
