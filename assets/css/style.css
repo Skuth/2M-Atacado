@@ -1257,6 +1257,7 @@ textarea {
       .container .departments-container .box .text {
         opacity: 0;
         font-size: 0;
+        text-align: center;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
