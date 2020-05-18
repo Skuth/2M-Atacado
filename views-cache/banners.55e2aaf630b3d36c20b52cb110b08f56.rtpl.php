@@ -36,7 +36,7 @@
                 <td><span class='badge badge-<?php if( $s == 1 ){ ?>success<?php }else{ ?>danger<?php } ?>'><?php if( $s == 1 ){ ?>Ativado<?php }else{ ?>Desativado<?php } ?></span></td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/banner/editar/<?php echo htmlspecialchars( $value1["slider_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa banner?')" href="/admin/banner/remover/<?php echo htmlspecialchars( $value1["slider_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse banner?')" href="/admin/banner/remover/<?php echo htmlspecialchars( $value1["slider_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               <?php } ?>

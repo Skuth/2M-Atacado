@@ -50,37 +50,15 @@ $app->post("/admin/banner/novo", function(Request $req, Response $res, $args) {
     $desc = $_POST["descricao"];
     $href = $_POST["href"];
     $status = $_POST["status"];
-    $pic = $_FILES["banner"];
-
-    $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/banner/";
-
-    $fileType = explode("/", $pic["type"]);
-    $fileError = $pic["error"];
-
-    $fileName = $pic["name"];
-
-    $fileExtension = explode(".", $fileName);
-    $fileExtension = $fileExtension[count($fileExtension) - 1];
-
-    $fileTmpName = $pic["tmp_name"];
-
-    $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName).".".$fileExtension;
+    $pic = uploadImage($_FILES["banner"], "banner");
 
     $sliders = new Sliders();
 
-    if ($fileError == 0 && $fileType[0] == "image") {
-      if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
-        if ($sliders->cadSlider($fileNewName, $desc, $href, $status) == true) {
-          move_uploaded_file($fileTmpName, $fileFolder.$fileNewName);
-          return $res->withHeader("Location", "/admin/banners?cad=true");
-        } else {
-          return $res->withHeader("Location", "/admin/banners?cad=false");
-        }
-      } else {
-        return $res->withHeader("Location", "/admin/banners?type=false");
-      }
+    if ($sliders->cadSlider($pic, $desc, $href, $status) == true) {
+      return $res->withHeader("Location", "/admin/banners?cad=true");
     } else {
-      return $res->withHeader("Location", "/admin/banners?file=false");
+      deleteImage($pic);
+      return $res->withHeader("Location", "/admin/banners?cad=false");
     }
 
   }
@@ -125,39 +103,17 @@ $app->post("/admin/banner/editar", function(Request $req, Response $res, $args) 
 
     $sliders = new Sliders();
     $oldPic = $sliders->getById($id)["slider_img"];
-    $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/banner/";
 
     if ($pic["error"] != 0) {
       $pic = $oldPic;
     } else {
-
-      $fileType = explode("/", $pic["type"]);
-      $fileError = $pic["error"];
-
-      $fileName = $pic["name"];
-
-      $fileExtension = explode(".", $fileName);
-      $fileExtension = $fileExtension[count($fileExtension) - 1];
-
-      $fileTmpName = $pic["tmp_name"];
-
-      $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName).".".$fileExtension;
-    
-      if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
-        $pic = $fileNewName;
-        unlink($fileFolder.$oldPic);
-        move_uploaded_file($fileTmpName, $fileFolder.$fileNewName);
-      } else {
-        return $res->withHeader("Location", "/admin/banners?type=false");
-      }
+      deleteImage($oldPic, "banner");
+      $pic = uploadImage($pic, "banner");
     }
 
     if ($sliders->editSlider($id, $pic, $desc, $href, $status) == true) {
       return $res->withHeader("Location", "/admin/banners?edit=true");
     } else {
-      if ($pic != $oldPic) {
-        unlink($fileFolder.$pic);
-      }
       return $res->withHeader("Location", "/admin/banners?edit=false");
     }
   }

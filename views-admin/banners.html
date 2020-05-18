@@ -36,7 +36,7 @@
                 <td><span class='badge badge-{if="$s == 1"}success{else}danger{/if}'>{if="$s == 1"}Ativado{else}Desativado{/if}</span></td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/banner/editar/{$value.slider_id}"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa banner?')" href="/admin/banner/remover/{$value.slider_id}"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse banner?')" href="/admin/banner/remover/{$value.slider_id}"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               {/loop}

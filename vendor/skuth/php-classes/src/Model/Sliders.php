@@ -59,7 +59,9 @@ class Sliders {
     $param = ["id"=>$id];
 
     if ($sql->query($query, $param) == true) {
-      unlink($pic);
+      if (file_exists($pic)) {
+        unlink($pic);
+      }
       return true;
     } else {
       return false;

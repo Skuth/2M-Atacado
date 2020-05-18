@@ -82,4 +82,62 @@ function getUserSession() {
   }
 }
 
+function filterDesc($desc) {
+  $desc = explode("\n", $desc);
+
+  for ($i=0; $i < count($desc); $i++) {
+    if(empty(trim($desc[$i]))) {
+      $desc[$i] = "#br{}";
+    } else {
+      if(substr($desc[$i], 0, 1) != "#") {
+        $desc[$i] = "#p{".trim($desc[$i])."}";
+      }
+    }
+  }
+
+  $desc = implode(" ", $desc);
+
+  return $desc;
+}
+
+function parseDesc($desc) {
+  $desc = trim($desc);
+  $desc = str_replace(" #", "\n#", $desc);
+
+  return $desc;
+}
+
+function uploadImage($image, $path) {
+  $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
+  
+  $fileType = explode("/", $image["type"]);
+  $fileError = $image["error"];
+  
+  $fileName = $image["name"];
+  
+  $fileExtension = explode(".", $fileName);
+  $fileExtension = $fileExtension[count($fileExtension) - 1];
+  
+  $fileTmpName = $image["tmp_name"];
+  
+  $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName).".".$fileExtension;
+
+  
+  if ($fileError == 0 && $fileType[0] == "image") {
+    if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
+      move_uploaded_file($fileTmpName, $fileFolder.$fileNewName);
+      return $fileNewName;
+    }
+  }
+}
+
+function deleteImage($image, $path) {
+  $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
+  chmod($fileFolder, 0777);
+
+  if (file_exists($fileFolder.$image) == true) {
+    unlink($fileFolder.$image);
+  }
+}
+
 ?>
