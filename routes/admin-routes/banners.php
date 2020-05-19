@@ -107,13 +107,18 @@ $app->post("/admin/banner/editar", function(Request $req, Response $res, $args) 
     if ($pic["error"] != 0) {
       $pic = $oldPic;
     } else {
-      deleteImage($oldPic, "banner");
       $pic = uploadImage($pic, "banner");
     }
 
     if ($sliders->editSlider($id, $pic, $desc, $href, $status) == true) {
+      if ($pic != $oldPic) {
+        deleteImage($oldPic, "banner");
+      }
       return $res->withHeader("Location", "/admin/banners?edit=true");
     } else {
+      if ($pic != $oldPic) {
+        deleteImage($pic, "banner");
+      }
       return $res->withHeader("Location", "/admin/banners?edit=false");
     }
   }
@@ -131,8 +136,10 @@ $app->get("/admin/banner/remover/{id}", function(Request $req, Response $res, $a
   $id = $args["id"];
 
   $sliders = new Sliders();
+  $s = $sliders->removeSlider($id);
 
-  if ($sliders->removeSlider($id) == true) {
+  if ($s["status"] == true) {
+    deleteImage($s["pic"], "banner");
     return $res->withHeader("Location", "/admin/banners?remove=true");
   } else {
     return $res->withHeader("Location", "/admin/banners?remove=false");

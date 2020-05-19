@@ -53,19 +53,15 @@ class Sliders {
   public function removeSlider($id) {
     $sql = new Sql();
 
-    $pic = $_SERVER["DOCUMENT_ROOT"]."/assets/banner/".$this->getById($id)["slider_img"];
+    $pic = $this->getById($id)["slider_img"];
     
     $query = "DELETE FROM sliders WHERE slider_id=:id";
     $param = ["id"=>$id];
 
-    if ($sql->query($query, $param) == true) {
-      if (file_exists($pic)) {
-        unlink($pic);
-      }
-      return true;
-    } else {
-      return false;
-    }
+    return [
+      "status"=>$sql->query($query, $param),
+      "pic"=>$pic
+    ];
   }
 }
 
