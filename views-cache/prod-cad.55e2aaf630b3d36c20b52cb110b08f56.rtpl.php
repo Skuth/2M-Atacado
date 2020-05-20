@@ -13,14 +13,14 @@
           </div>
         </div>
         <div class="card-body">
-          <form method="POST" action="/admin/produto/novo">
+          <form method="POST" action="/admin/produto/novo" enctype="multipart/form-data">
             <div class="pl-lg-4">
 
               <div class="row">
                 <div class="col-lg-8">
                   <div class="form-group">
                     <label class="form-control-label">Nome</label>
-                    <input type="text" class="form-control" required name="novo" placeholder="Nome">
+                    <input type="text" class="form-control" required name="nome" placeholder="Nome">
                   </div>
                 </div>
 
@@ -34,7 +34,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Preço</label>
-                    <input type="number" class="form-control" required name="preco" placeholder="Preço">
+                    <input type="text" class="form-control" required name="preco" placeholder="Preço">
                   </div>
                 </div>
 
@@ -47,10 +47,12 @@
 
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label">Marca</label>
-                    <select class="form-control" name="cargo">
-                      <option value="1">Funcionário</option>
-                      <option value="2">Administrador</option>
+                    <label class="form-control-label">Distribuidor</label>
+                    <select class="form-control" name="dist">
+                      <option value="" disabled selected>Selecione um distribuidor</option>
+                      <?php $counter1=-1;  if( isset($dist) && ( is_array($dist) || $dist instanceof Traversable ) && sizeof($dist) ) foreach( $dist as $key1 => $value1 ){ $counter1++; ?>
+                      <option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -58,9 +60,11 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Departamento</label>
-                    <select class="form-control" name="cargo">
-                      <option value="1">Funcionário</option>
-                      <option value="2">Administrador</option>
+                    <select class="form-control" name="dep">
+                      <option value="" disabled selected>Selecione um departamento</option>
+                      <?php $counter1=-1;  if( isset($dep) && ( is_array($dep) || $dep instanceof Traversable ) && sizeof($dep) ) foreach( $dep as $key1 => $value1 ){ $counter1++; ?>
+                      <option value="<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -68,9 +72,11 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Categoria</label>
-                    <select class="form-control" name="cargo">
-                      <option value="1">Funcionário</option>
-                      <option value="2">Administrador</option>
+                    <select class="form-control" name="cat">
+                      <option value="" disabled selected>Selecione uma categoria</option>
+                      <?php $counter1=-1;  if( isset($cat) && ( is_array($cat) || $cat instanceof Traversable ) && sizeof($cat) ) foreach( $cat as $key1 => $value1 ){ $counter1++; ?>
+                      <option value="<?php echo htmlspecialchars( $value1["category_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["category_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -85,7 +91,7 @@
                 <div class="col-lg-12 mb-5">
                   <div class="custom-file">
                     <label class="form-control-label">Fotos</label>
-                    <input type="file" class="form-control" multiple accept="image/x-png,image/jpg,image/jpeg" name="fotos[]">
+                    <input type="file" class="form-control" multiple required accept="image/x-png,image/jpg,image/jpeg" name="fotos[]">
                   </div>
                 </div>
               </div>

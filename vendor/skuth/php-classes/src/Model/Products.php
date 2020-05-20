@@ -84,6 +84,28 @@ class Products {
       return $res;
     }
   }
+
+  public function cadProd($nome, $ref, $price, $stock, $dist, $dep, $cat, $desc, $pics) {
+    $sql = new Sql();
+
+    $query = "INSERT INTO products 
+    (product_name, brand_id, product_ref, category_id, department_id, product_description, product_pictures, product_price, product_stock)
+    VALUES (:nome, :dist, :ref, :cat, :dep, :desc, :pics, :price, :stock)";
+
+    $params = [
+      "nome"=>$nome,
+      "dist"=>$dist,
+      "ref"=>$ref,
+      "cat"=>$cat,
+      "dep"=>$dep,
+      "desc"=>$desc,
+      "pics"=>$pics,
+      "price"=>$price,
+      "stock"=>$stock
+    ];
+
+    return $sql->query($query, $params);
+  }
 }
 
 ?>
