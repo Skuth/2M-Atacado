@@ -60,19 +60,25 @@ $app->post("/admin/distribuidor/novo", function(Request $req, Response $res, $ar
     $fotos = $_FILES["fotos"];
     $pics = [];
     
-    for ($i=0; $i < count($fotos["name"]); $i++) { 
-      $pic = [
-        "name"=>$fotos["name"][$i],
-        "type"=>$fotos["type"][$i],
-        "tmp_name"=>$fotos["tmp_name"][$i],
-        "error"=>$fotos["error"][$i],
-        "size"=>$fotos["size"][$i],
-      ];
-      
-      array_push($pics, uploadImage($pic, "distribuidores"));
+    if (strlen($fotos["name"][0]) > 0) {
+      for ($i=0; $i < count($fotos["name"]); $i++) { 
+        $pic = [
+          "name"=>$fotos["name"][$i],
+          "type"=>$fotos["type"][$i],
+          "tmp_name"=>$fotos["tmp_name"][$i],
+          "error"=>$fotos["error"][$i],
+          "size"=>$fotos["size"][$i],
+        ];
+        
+        array_push($pics, uploadImage($pic, "distribuidores"));
+      }
     }
 
-    $pics = implode(",", $pics);
+    if (count($pics) > 0) {
+      $pics = implode(",", $pics);
+    } else {
+      $pics = NULL;
+    }
 
     $distribuitor = new Distributors();
 
@@ -82,10 +88,12 @@ $app->post("/admin/distribuidor/novo", function(Request $req, Response $res, $ar
       deleteImage($logo, "distribuidores");
       deleteImage($banner, "distribuidores");
 
-      $pics = explode(",", $pics);
+      if ($pics !== NULL) {
+        $pics = explode(",", $pics);
 
-      for ($i=0; $i < count($pics); $i++) { 
-        deleteImage($pics[$i], "distribuidores");
+        for ($i=0; $i < count($pics); $i++) { 
+          deleteImage($pics[$i], "distribuidores");
+        }
       }
 
       return $res->withHeader("Location", "/admin/distribuidores?cad=false");

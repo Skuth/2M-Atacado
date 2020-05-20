@@ -134,8 +134,8 @@ function uploadImage($image, $path) {
 function deleteImage($image, $path) {
   $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
   chmod($fileFolder, 0777);
-
-  if (file_exists($fileFolder.$image) == true) {
+  
+  if (file_exists($fileFolder.$image) && $image !== NULL) {
     unlink($fileFolder.$image);
   }
 }

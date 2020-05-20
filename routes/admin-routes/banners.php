@@ -57,7 +57,7 @@ $app->post("/admin/banner/novo", function(Request $req, Response $res, $args) {
     if ($sliders->cadSlider($pic, $desc, $href, $status) == true) {
       return $res->withHeader("Location", "/admin/banners?cad=true");
     } else {
-      deleteImage($pic);
+      deleteImage($pic, "banner");
       return $res->withHeader("Location", "/admin/banners?cad=false");
     }
 
