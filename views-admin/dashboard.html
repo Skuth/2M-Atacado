@@ -102,16 +102,16 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              {loop="array(1,1,1,1,1)"}
+              {loop="$produtos"}
               <tr>
                 <th scope="row">
-                  <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" width="50">
+                  <img src="./assets/produtos/{$value.product_pictures[0]}" width="50">
                 </th>
-                <td><b>{function="rand(111111,999999)"}</b></td>
-                <td><b>Massa corrida</b></td>
-                <td>{function="rand(100, 5000)"}</td>
+                <td><b>{$value.product_ref}</b></td>
+                <td><b>{$value.product_name}</b></td>
+                <td>{$value.product_views}</td>
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success">{function="rand(1, 100)"}%</span> <span class="text-muted">Desde o último mês</span>
+                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success">{function="getPercentage($value.product_views_old, $value.product_views)"}%</span> <span class="text-muted">Desde o último mês</span>
                 </td>
               </tr>
               {/loop}

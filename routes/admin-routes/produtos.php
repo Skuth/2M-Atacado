@@ -125,9 +125,11 @@ $app->get("/admin/produto/remover/{id}", function(Request $req, Response $res, $
 
   $id = $args["id"];
 
-  $prod = new Products();
+  // $prod = new Products();
 
-  $produto = $prod->delProduct($id);
+  // $produto = $prod->delProduct($id);
+
+  var_dump("Removendo id ".$id);
 
   return $res;
 

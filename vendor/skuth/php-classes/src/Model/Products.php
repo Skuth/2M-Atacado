@@ -22,10 +22,10 @@ class Products {
     return $list;
   }
 
-  public function getAll() {
+  public function getAll($param = "") {
     $sql = new Sql();
 
-    $query = "SELECT * FROM products";
+    $query = "SELECT * FROM products ".$param;
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);

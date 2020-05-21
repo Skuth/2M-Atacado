@@ -102,16 +102,16 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <?php $counter1=-1; $newvar1=array(1,1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+              <?php $counter1=-1;  if( isset($produtos) && ( is_array($produtos) || $produtos instanceof Traversable ) && sizeof($produtos) ) foreach( $produtos as $key1 => $value1 ){ $counter1++; ?>
               <tr>
                 <th scope="row">
-                  <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" width="50">
+                  <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50">
                 </th>
-                <td><b><?php echo rand(111111,999999); ?></b></td>
-                <td><b>Massa corrida</b></td>
-                <td><?php echo rand(100, 5000); ?></td>
+                <td><b><?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
+                <td><b><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
+                <td><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo rand(1, 100); ?>%</span> <span class="text-muted">Desde o último mês</span>
+                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo getPercentage($value1["product_views_old"], $value1["product_views"]); ?>%</span> <span class="text-muted">Desde o último mês</span>
                 </td>
               </tr>
               <?php } ?>
