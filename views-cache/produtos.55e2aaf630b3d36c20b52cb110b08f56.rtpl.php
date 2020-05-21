@@ -49,8 +49,29 @@
               <?php } ?>
             </tbody>
           </table>
+
+          <nav class="p-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item <?php if( $pagina == 1 ){ ?>disabled<?php } ?>">
+                <a class="page-link" href="/admin/produtos?pagina=<?php echo htmlspecialchars( $pagina - 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>" tabindex="-1">
+                  <i class="fa fa-angle-left"></i>
+                </a>
+              </li>
+              <?php $counter1=-1;  if( isset($total) && ( is_array($total) || $total instanceof Traversable ) && sizeof($total) ) foreach( $total as $key1 => $value1 ){ $counter1++; ?>
+              <?php $key1 = $key1 + 1; ?>
+              <li class="page-item <?php if( $key1 == $pagina ){ ?>active<?php } ?>"><a class="page-link" href="/admin/produtos?pagina=<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+              <?php } ?>
+              <li class="page-item <?php if( $totalPages == $pagina ){ ?>disabled<?php } ?>">
+                <a class="page-link" href="/admin/produtos?pagina=<?php echo htmlspecialchars( $pagina + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<br><br>

@@ -22,6 +22,12 @@ class Products {
     return $list;
   }
 
+  public function getTotal() {
+    $sql = new Sql();
+
+    return $sql->select("SELECT count(product_id) FROM products")[0]["count(product_id)"];
+  }
+
   public function getAll($param = "") {
     $sql = new Sql();
 
@@ -33,13 +39,14 @@ class Products {
     return $res;
   }
 
-  public function getAllFull() {
+  public function getAllFull($params = "") {
     $sql = new Sql();
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN category b ON b.category_id=products.category_id
-    INNER JOIN departments c ON c.department_id=products.department_id";
+    INNER JOIN departments c ON c.department_id=products.department_id ".$params;
+    var_dump($query);
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);

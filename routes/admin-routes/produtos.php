@@ -17,13 +17,33 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
   
-  $prod = new Products();
+  if (!isset($_GET["pagina"])) {
+    $pagina = 1;
+  } else {
+    $pagina = $_GET["pagina"];
+  }
 
-  $produtos = $prod->getAll();
+  $prod = new Products();
+  
+  $total = $prod->getTotal();
+
+  $totalPage = 5;
+
+  $totalPages = ceil($total / $totalPage);
+
+  $paginas = [];
+
+  for ($i=0; $i < $totalPages; $i++) { 
+    array_push($paginas, $i);
+  }
+
+  $offset = ($pagina - 1) * $totalPage;
+
+  $produtos = $prod->getAll("LIMIT ".$totalPage." OFFSET ".$offset);
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Produtos", "produtos")]]);
   
-  $page->setTpl("produtos", ["produtos"=>$produtos]);
+  $page->setTpl("produtos", ["produtos"=>$produtos, "total"=>$paginas, "pagina"=>$pagina, "totalPages"=>$totalPages]);
 
   return $res;
 
