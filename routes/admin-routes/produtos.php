@@ -145,11 +145,18 @@ $app->get("/admin/produto/remover/{id}", function(Request $req, Response $res, $
 
   $id = $args["id"];
 
-  // $prod = new Products();
+  $prod = new Products();
 
-  // $produto = $prod->delProduct($id);
+  $r = $produto = $prod->removeProd($id);
 
-  var_dump("Removendo id ".$id);
+  if ($r["status"] == true) {
+    foreach ($r["pics"] as $key => $value) {
+      deleteImage($value, "produtos");
+    }
+    return $res->withHeader("Location", "/admin/produtos?remove=true");
+  } else {
+    return $res->withHeader("Location", "/admin/produtos?remove=false");
+  }
 
   return $res;
 

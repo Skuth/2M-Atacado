@@ -113,6 +113,29 @@ class Products {
 
     return $sql->query($query, $params);
   }
+
+  public function editProdt($id) {
+    $sql = new Sql();
+
+    $query = "";
+    $params = [];
+  }
+
+  public function removeProd($id) {
+    $sql = new Sql();
+
+    $prod = $this->getById($id);
+
+    $pics = $prod["product_pictures"];
+
+    $query = "DELETE FROM products WHERE product_id=:id";
+    $param = ["id"=>$id];
+
+    return [
+      "status"=>$sql->query($query, $param),
+      "pics"=>$pics
+    ];
+  }
 }
 
 ?>

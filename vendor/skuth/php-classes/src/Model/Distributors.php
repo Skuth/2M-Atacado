@@ -60,9 +60,11 @@ class Distributors {
   public function removeDist($id) {
     $sql = new Sql();
 
-    $logo = $this->getById($id)["distributor_logo"];
-    $banner = $this->getById($id)["distributor_banner"];
-    $pics = $this->getById($id)["distributor_pictures"];
+    $dist = $this->getById($id);
+
+    $logo = $dist["distributor_logo"];
+    $banner = $dist["distributor_banner"];
+    $pics = $dist["distributor_pictures"];
 
     $query = "DELETE FROM distributors WHERE distributor_id=:id";
     $param = ["id"=>$id];
