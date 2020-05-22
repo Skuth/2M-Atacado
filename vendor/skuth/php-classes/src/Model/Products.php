@@ -46,7 +46,6 @@ class Products {
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN category b ON b.category_id=products.category_id
     INNER JOIN departments c ON c.department_id=products.department_id ".$params;
-    var_dump($query);
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);
@@ -114,11 +113,31 @@ class Products {
     return $sql->query($query, $params);
   }
 
-  public function editProdt($id) {
+  public function editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $price, $stock) {
     $sql = new Sql();
 
-    $query = "";
-    $params = [];
+    $p = $this->getById($id)["product_pictures"];
+
+    if ($pics == NULL) {
+      $pics = $p;
+      $pics = implode(",", $pics);
+    }
+
+    $query = "UPDATE products SET product_name=:nome, brand_id=:dist, product_ref=:ref, category_id=:cat, department_id=:dep, product_description=:desc, product_pictures=:pics, product_price=:price, product_stock=:stock WHERE product_id=:id";
+    $params = [
+      "id"=>$id,
+      "nome"=>$nome,
+      "dist"=>$dist,
+      "ref"=>$ref,
+      "cat"=>$cat,
+      "dep"=>$dep,
+      "desc"=>$desc,
+      "pics"=>$pics,
+      "price"=>$price,
+      "stock"=>$stock
+    ];
+
+    return $sql->query($query, $params);
   }
 
   public function removeProd($id) {

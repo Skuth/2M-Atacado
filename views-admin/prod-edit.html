@@ -1,0 +1,112 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Editando produto</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="/admin/produto/editar" enctype="multipart/form-data">
+            <div class="pl-lg-4">
+
+              <input type="hidden" name="id" value="{$produto.product_id}">
+
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="form-group">
+                    <label class="form-control-label">Nome</label>
+                    <input type="text" class="form-control" required name="nome" value="{$produto.product_name}">
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Ref</label>
+                    <input type="number" class="form-control" required name="ref" value="{$produto.product_ref}">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Preço</label>
+                    <input type="text" class="form-control" required name="preco" value="{$produto.product_price}">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Estoque</label>
+                    <input type="number" class="form-control" required name="estoque" value="{$produto.product_stock}">
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Distribuidor</label>
+                    <select class="form-control" name="dist">
+                      <option value="" disabled>Selecione um distribuidor</option>
+                      {loop="$dist"}
+                      <option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}active{/if}>{$value.distributor_name}</option>
+                      {/loop}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Departamento</label>
+                    <select class="form-control" name="dep">
+                      <option value="" disabled>Selecione um departamento</option>
+                      {loop="$dep"}
+                      <option value="{$value.department_id}" {if="$produto.department_id == $value.department_id"}active{/if}>{$value.department_text}</option>
+                      {/loop}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Categoria</label>
+                    <select class="form-control" name="cat">
+                      <option value="" disabled>Selecione uma categoria</option>
+                      {loop="$cat"}
+                      <option value="{$value.category_id}" {if="$produto.category_id == $value.category_id"}active{/if}>{$value.category_name}</option>
+                      {/loop}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control" name="descricao" rows="6" required>{$produto.product_description}</textarea>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 mb-5">
+                  <div class="custom-file">
+                    <label class="form-control-label">Fotos</label>
+                    <input type="file" class="form-control" multiple accept="image/x-png,image/jpg,image/jpeg" name="fotos[]">
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-icon btn-primary" type="submit" name="save">
+                <span class="btn-inner--icon"><i class="fas fa-save"></i></span>
+                <span class="btn-inner--text">Cadastrar</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>

@@ -170,8 +170,6 @@ $app->post("/admin/distribuidor/editar", function(Request $req, Response $res, $
         array_push($pics, uploadImage($pic, "distribuidores"));
       }
 
-      
-
       $pics = implode(",", $pics);
     } else {
       $pics = $oldPictures;

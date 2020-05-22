@@ -26,7 +26,7 @@
                 <th scope="col">Ref</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
-                <th scope="col">Visualizações</th>
+                <th scope="col">Visitas</th>
                 <th scope="col">Ação</th>
               </tr>
             </thead>

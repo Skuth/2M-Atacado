@@ -51,6 +51,8 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
 $app->get("/admin/produto/visualizar/{id}", function(Request $req, Response $res, $args) {
 
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
   $id = $args["id"];
 
   $prod = new Products();
@@ -130,6 +132,103 @@ $app->post("/admin/produto/novo",function(Request $req, Response $res, $args) {
         deleteImage($value, "produtos");
       }
       return $res->withHeader("Location", "/admin/produtos?cad=false");
+    }
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/produto/editar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $cat = new Category();
+  $c = $cat->getAll();
+
+  $dist = new Distributors();
+  $d = $dist->getAll();
+
+  $dep = new Departments();
+  $dp = $dep->getAll();
+
+  $id = $args["id"];
+
+  $prod = new Products();
+
+  $p = $prod->getById($id);
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("Editando produto", "produto/editar/".$id)]]);
+
+  $page->setTpl("prod-edit", ["cat"=>$c, "dist"=>$d, "dep"=>$dp, "produto"=>$p]);
+
+  return $res;
+  
+});
+
+$app->post("/admin/produto/editar", function(Request $req, Response $res, $args) {
+
+  if (isset($_POST["save"])) {
+    $id = $_POST["id"];
+
+    $prod = new Products();
+    $produto = $prod->getById($id);
+
+    $nome = $_POST["nome"];
+    $ref = $_POST["ref"];
+    $preco = $_POST["preco"];
+    $preco = str_replace(",", ".", $preco);
+    $estoque = $_POST["estoque"];
+    $dist = $_POST["dist"];
+    $dep = $_POST["dep"];
+    $cat = $_POST["cat"];
+    $desc = filterDesc($_POST["descricao"]);
+    $fotos = $_FILES["fotos"];
+    $oldPictures = $produto["product_pictures"];
+
+    $pics = [];
+
+    $oldPics = true;
+
+    if (count($fotos["name"]) > 0 && strlen($fotos["name"][0]) > 0) {
+      for ($i=0; $i < count($fotos["name"]); $i++) { 
+        $pic = [
+          "name"=>$fotos["name"][$i],
+          "type"=>$fotos["type"][$i],
+          "tmp_name"=>$fotos["tmp_name"][$i],
+          "error"=>$fotos["error"][$i],
+          "size"=>$fotos["size"][$i],
+        ];
+        
+        $oldPics = false;
+
+        array_push($pics, uploadImage($pic, "produtos"));
+      }
+
+      $pics = implode(",", $pics);
+    } else {
+      $pics = $oldPictures;
+      $pics = implode(",", $pics);
+    }
+
+    if ($prod->editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $preco, $estoque) == true) {
+      if ($oldPics == false) {
+        $olds = $oldPictures;
+        foreach ($olds as $key => $value) {
+          deleteImage($value, "produtos");
+        }
+      }
+      return $res->withHeader("Location", "/admin/produtos?edit=true");
+    } else {
+      if ($oldPics == false) {
+        $news = explode(",", $pics);
+        foreach ($news as $key => $value) {
+          deleteImage($value, "produtos");
+        }
+      }
+      return $res->withHeader("Location", "/admin/produtos?edit=false");
     }
   }
 
