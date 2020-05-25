@@ -31,31 +31,38 @@ function getNav() {
       "nivel"=>1
     ],
     [
+      "name"=>"cupons",
+      "href"=>"cupons",
+      "icon"=>"fas fa-tag",
+      "color"=>"text-warning",
+      "nivel"=>10
+    ],
+    [
       "name"=>"distribuidores",
       "href"=>"distribuidores",
       "icon"=>"ni ni-books",
-      "color"=>"text-warning",
+      "color"=>"text-primary",
       "nivel"=>2
     ],
     [
       "name"=>"categorias",
       "href"=>"categorias",
-      "icon"=>"fas fa-tags",
-      "color"=>"text-primary",
+      "icon"=>"fas fa-bookmark",
+      "color"=>"text-danger",
       "nivel"=>2
     ],
     [
       "name"=>"departamentos",
       "href"=>"departamentos",
       "icon"=>"ni ni-scissors",
-      "color"=>"text-danger",
+      "color"=>"text-info",
       "nivel"=>2
     ],
     [
       "name"=>"banners",
       "href"=>"banners",
       "icon"=>"ni ni-album-2",
-      "color"=>"text-info",
+      "color"=>"text-success",
       "nivel"=>2
     ]
   ];
