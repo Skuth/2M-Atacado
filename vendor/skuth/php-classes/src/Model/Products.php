@@ -113,6 +113,25 @@ class Products {
     return $sql->query($query, $params);
   }
 
+  public function cadPromo($id, $price, $date, $stock) {
+    $sql = new Sql();
+
+    $query = "UPDATE products SET product_price_off=:price, product_price_off_days=:date, product_stock_quantity_off=:stock WHERE product_id=:id";
+
+    $params = [
+      "id"=>$id,
+      "price"=>$price,
+      "date"=>$date,
+      "stock"=>$stock
+    ];
+
+    return $sql->query($query, $params);
+  }
+
+  public function removePromo($id) {
+    return $this->cadPromo($id, NULL, NULL, NULL);
+  }
+
   public function editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $price, $stock) {
     $sql = new Sql();
 

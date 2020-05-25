@@ -109,7 +109,7 @@
                 </th>
                 <td><b><?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td><b><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
-                <td><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><b><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>
                   <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo getPercentage($value1["product_views_old"], $value1["product_views"]); ?>%</span> <span class="text-muted">Desde o último mês</span>
                 </td>

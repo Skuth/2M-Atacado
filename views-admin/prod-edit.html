@@ -36,7 +36,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Preço</label>
-                    <input type="text" class="form-control" required name="preco" value="{$produto.product_price}">
+                    <input type="number" step="0.01" class="form-control" required name="preco" value="{$produto.product_price}">
                   </div>
                 </div>
 
@@ -100,7 +100,7 @@
 
               <button class="btn btn-icon btn-primary" type="submit" name="save">
                 <span class="btn-inner--icon"><i class="fas fa-save"></i></span>
-                <span class="btn-inner--text">Cadastrar</span>
+                <span class="btn-inner--text">Salvar</span>
               </button>
             </div>
           </form>

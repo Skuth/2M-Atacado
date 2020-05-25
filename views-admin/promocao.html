@@ -1,0 +1,52 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Promoções</h3>
+            </div>
+            {$userOn=$_SESSION["user"]}
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light text-center">
+              <tr>
+                <th scope="col">Foto</th>
+                <th scope="col">Ref</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Preço com desconto</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              {loop="$produtos"}
+              <tr>
+                <td><img src="./assets/produtos/{$value.product_pictures[0]}" width="50"></td>
+                <td><b>{$value.product_ref}</b></td>
+                <td><b>{$value.product_name}</b></td>
+                <td><b>R$ {function="formatMoney($value.product_price)"}</b></td>
+                <td><b>R$ {function="formatMoney($value.product_price_off)"}</b></td>
+                <td>
+                  {if="$userOn['type'] > 1"}
+                  <a class="btn btn-icon btn-success btn-sm" href="/admin/produto/promocao/{$value.product_id}"><i class="fas fa-percentage"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa promoção?')" href="/admin/promocao/remover/{$value.product_id}"><i class="fas fa-trash"></i></a>
+                  {/if}
+                </td>
+              </tr>
+              {/loop}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>

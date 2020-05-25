@@ -100,7 +100,7 @@
 
               <button class="btn btn-icon btn-primary" type="submit" name="save">
                 <span class="btn-inner--icon"><i class="fas fa-save"></i></span>
-                <span class="btn-inner--text">Cadastrar</span>
+                <span class="btn-inner--text">Salvar</span>
               </button>
             </div>
           </form>

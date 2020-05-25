@@ -236,6 +236,51 @@ $app->post("/admin/produto/editar", function(Request $req, Response $res, $args)
 
 });
 
+$app->get("/admin/produto/promocao/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $prod = new Products();
+  $p = $prod->getById($id);
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("Criando promoção", "produto/promocao/".$id)]]);
+
+  $page->setTpl("prod-promo", ["prod"=>$p]);
+
+  return $res;
+  
+});
+
+$app->post("/admin/produto/promocao", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  if (isset($_POST["save"])) {
+    $id = $_POST["id"];
+    $priceOff = strlen($_POST["nPrice"] > 0) ? $_POST["nPrice"] : NULL;
+    $dateOff = strlen($_POST["eDate"] > 0) ? $_POST["eDate"] : NULL;
+    $stockOff = strlen($_POST["sDesc"] > 0) ? $_POST["sDesc"] : NULL;
+    $stockOff = ($stockOff == 0) ? NULL : $stockOff;
+
+    $prod = new Products();
+
+    if ($prod->cadPromo($id, $priceOff, $dateOff, $stockOff)) {
+      return $res->withHeader("Location", "/admin/promocoes?cad=true");
+    } else {
+      return $res->withHeader("Location", "/admin/promocoes?cad=false");
+    }
+  }
+
+  return $res;
+  
+});
+
 $app->get("/admin/produto/remover/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");

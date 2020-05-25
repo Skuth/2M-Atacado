@@ -14,6 +14,7 @@ $app->get("/admin", function(Request $req, Response $res, $args) {
 require_once("admin-routes/dashboard.php");
 require_once("admin-routes/usuarios.php");
 require_once("admin-routes/produtos.php");
+require_once("admin-routes/promocoes.php");
 require_once("admin-routes/distribuidores.php");
 require_once("admin-routes/categorias.php");
 require_once("admin-routes/departamentos.php");
