@@ -96,13 +96,13 @@ function filterDesc($desc) {
     if(empty(trim($desc[$i]))) {
       $desc[$i] = "#br{}";
     } else {
-      if(substr($desc[$i], 0, 1) != "#") {
+      if(substr(trim($desc[$i]), 0, 1) != "#") {
         $desc[$i] = "#p{".trim($desc[$i])."}";
       }
     }
   }
 
-  $desc = implode(" ", $desc);
+  $desc = implode("", $desc);
 
   return $desc;
 }

@@ -124,21 +124,41 @@
   </div>
 
   <div class="product-box-container">
-    {loop="array(1,1,1,1)"}
-    <a class="product-box" href="/produto/nome-do-produto/{$key}">
+    {loop="$prodViews"}
+    {$name = filterName($value.product_name)}
+    
+    {$percentage = getPricePercentage($value.product_price, $value.product_price_off)}
+    
+    {$price = formatMoney($value.product_price)}
+    {$price = explode(",", $price)}
+    
+    {if="$value.product_price_off != NULL"}
+    {$priceOff = formatMoney($value.product_price_off)}
+    {$priceOff = explode(",", $priceOff)}
+    {/if}
+    <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
+      {if="$value.product_price_off != NULL"}
+      <span class="product-percentage">{$percentage} %</span>
+      {/if}
       <div class="product-picture">
-        <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
+        <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
       </div>
       <div class="product-brand">
         <span>
-          <img src="https://logodownload.org/wp-content/uploads/2019/07/coral-logo.png" alt="">
+          <img src="./assets/Distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
         </span>
       </div>
       <div class="product-info">
-        <p class="title">Massa corrida</p>
+        <p class="title">{function="ucfirst($value.product_name)"}</p>
         <div class="product-price">
-          <s class="old-price">R$ <span>59</span><span>,00</span></s>
-          <p>R$ <span>39</span><span>,00</span></p>
+          
+          {if="$value.product_price_off != NULL"}
+          <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
+          <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+          {else}
+          <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
+          {/if}
+          
         </div>
       </div>
     </a>
@@ -156,27 +176,48 @@
     </div>
   </div>
 
-  <div class="product-box-container">
-    {loop="array(1,1,1,1)"}
-    <a class="product-box" href="/produto/nome-do-produto/{$key}">
-      <div class="product-picture">
-        <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
+<div class="product-box-container">
+  {loop="$prodRandom"}
+  {$name = filterName($value.product_name)}
+  
+  {$percentage = getPricePercentage($value.product_price, $value.product_price_off)}
+  
+  {$price = formatMoney($value.product_price)}
+  {$price = explode(",", $price)}
+  
+  {if="$value.product_price_off != NULL"}
+  {$priceOff = formatMoney($value.product_price_off)}
+  {$priceOff = explode(",", $priceOff)}
+  {/if}
+  <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
+    {if="$value.product_price_off != NULL"}
+    <span class="product-percentage">{$percentage} %</span>
+    {/if}
+    <div class="product-picture">
+      <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
+    </div>
+    <div class="product-brand">
+      <span>
+        <img src="./assets/Distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
+      </span>
+    </div>
+    <div class="product-info">
+      <p class="title">{function="ucfirst($value.product_name)"}</p>
+      <div class="product-price">
+        
+        {if="$value.product_price_off != NULL"}
+        <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
+        <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+        {else}
+        <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
+        {/if}
+        
       </div>
-      <div class="product-brand">
-        <span>
-          <img src="https://logodownload.org/wp-content/uploads/2019/07/coral-logo.png" alt="">
-        </span>
-      </div>
-      <div class="product-info">
-        <p class="title">Massa corrida</p>
-        <div class="product-price">
-          <p>R$ <span>39</span><span>,00</span></p>
-        </div>
-      </div>
-    </a>
-    {/loop}
-  </div>
-  <div class="btn-container btn-container-center">
-    <a href="/produtos" class="btn btn-center btn-circle btn-blue btn-big btn-cap">Ver todos</a>
-  </div>
+    </div>
+  </a>
+  {/loop}
+</div>
+<div class="btn-container btn-container-center">
+  <a href="/produtos" class="btn btn-center btn-circle btn-blue btn-big btn-cap">Ver todos</a>
+</div>
 </div>

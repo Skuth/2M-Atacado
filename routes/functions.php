@@ -18,6 +18,33 @@ function filterName($name) {
   return $name;
 }
 
+function parseProductDesc($desc) {
+
+  $desc = explode("#", $desc);
+  foreach ($desc as $key => $value) {
+    $desc[$key] = explode("{", $desc[$key]);
+    $desc[$key] = str_replace("}", "", $desc[$key]);
+  }
+
+  $parses = [];
+
+  foreach ($desc as $key => $value) {
+    if(count($desc[$key]) > 1 && $desc[$key][0] !== "script") {   
+      if($desc[$key][0] == "br") {
+        $res = "<".$desc[$key][0].">";
+      } else {
+        $res = "<".$desc[$key][0].">".$desc[$key][1]."</".$desc[$key][0].">";
+      }
+      array_push($parses, $res);
+    }
+  }
+  
+  $parses = implode("", $parses);
+
+  return $parses;
+  
+}
+
 function getPricePercentage($old, $new) {
   if ($old > 0 && $new > 0) {
     $p = ($new - $old) / $old * 100;

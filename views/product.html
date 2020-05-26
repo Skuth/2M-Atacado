@@ -2,67 +2,102 @@
   <div class="product-page-container">
     <div class="product-page-picture">
       <div class="product-page-carrossel">
+        {loop="$produto.product_pictures"}
         <div class="product-page-carrossel-box">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Carrossel image">
+          <img src="./assets/produtos/{$produto.product_pictures[$key]}" alt="Imagem {$key + 1} do produto - {$produto.product_name}">
         </div>
-        <div class="product-page-carrossel-box">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Carrossel image">
-        </div>
-        <div class="product-page-carrossel-box">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Carrossel image">
-        </div>
+        {/loop}
       </div>
       <div class="product-page-center-image">
-        <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa corrida coral 2-800x800.png" alt="Center image">
+        <img src="./assets/produtos/{$produto.product_pictures[0]}" alt="Imagem do produto - {$produto.product_name}">
       </div>
     </div>
     <div class="product-page-info">
-      <h2>Massa corrida uso interno cinza 20kg</h2>
-      <img src="https://logodownload.org/wp-content/uploads/2019/07/coral-logo.png" alt="Logo Marca" width="50" class="product-page-brand">
-      <span class="ref">REF: 051984156</span>
+      <h2>{$produto.product_name}</h2>
+      <a href="/distribuidor/{$produto.distributor_id}/{function="filterName($produto.distributor_name)"}">
+        <img src="./assets/distribuidores/{$produto.distributor_logo}" alt="Logo da distribuidora {$produto.distributor_name}" width="50" class="product-page-brand">
+      </a>
+      <span class="ref">REF: {$produto.product_ref}</span>
+      {$percentage = getPricePercentage($produto.product_price, $produto.product_price_off)}
+      {if="$produto.product_price_off != NULL"}
+        <span class="product-percentage">{$percentage} % de desconto</span>
+        {if="$produto.product_price_off_days != NULL"}
+        {$date = $produto.product_price_off_days}
+        <span class="product-span">Oferta disponível até dia {function="date('d/m/Y', strtotime($date))"}</span>
+        {/if}
+        {if="$produto.product_stock_quantity_off != NULL"}
+        {$stock = $produto.product_stock_quantity_off}
+        <span class="product-span">Últimos {$stock} disponíveis com desconto</span>
+        {/if}
+      {/if}
+      <input type="number" name="quantity" class="product-quantity" value="1" min="1" max={$produto.product_stock}>
       <div class="product-price">
-        <s class="old-price">R$ <span>59</span><span>,00</span></s>
-        <p>R$ <span>39</span><span>,00</span></p>
+        {$price = formatMoney($produto.product_price)}
+        {$price = explode(",", $price)}
+        
+        {if="$produto.product_price_off != NULL"}
+        {$priceOff = formatMoney($produto.product_price_off)}
+        {$priceOff = explode(",", $priceOff)}
+        <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
+        <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+        {else}
+        <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
+        {/if}
       </div>
       <a href="#" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
     </div>
     <div class="product-page-description">
       <h3>Descrição</h3>
       <div class="product-page-description-box">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nam atque maxime reiciendis quis eaque natus! Explicabo nemo aliquam et iusto cum, quisquam, impedit, expedita unde numquam fugiat repudiandae maxime!</p>
-        <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nam atque maxime reiciendis quis eaque natus! Explicabo nemo aliquam et iusto cum, quisquam, impedit, expedita unde numquam fugiat repudiandae maxime!</p>
-        <br>
-        <b>Random text</b>
-        <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nam atque maxime reiciendis quis eaque natus! Explicabo nemo aliquam et iusto cum, quisquam, impedit, expedita unde numquam fugiat repudiandae maxime!</p>
+        {$desc = parseProductDesc($produto.product_description)}
+        {autoescape="false"}{$desc}{/autoescape}
       </div>
     </div>
   </div>
-
+  
   <div class="products-box">
     <div class="products-box-header">
       <div class="title">
         <p>Quem viu gostou</p>
       </div>
     </div>
-  
+    
     <div class="product-box-container">
-      {loop="array(1,1,1,1)"}
-      <a class="product-box" href="#">
+      {loop="$produtosRandom"}
+      {$name = filterName($value.product_name)}
+      
+      {$percentage = getPricePercentage($value.product_price, $value.product_price_off)}
+      
+      {$price = formatMoney($value.product_price)}
+      {$price = explode(",", $price)}
+      
+      {if="$value.product_price_off != NULL"}
+      {$priceOff = formatMoney($value.product_price_off)}
+      {$priceOff = explode(",", $priceOff)}
+      {/if}
+      <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
+        {if="$value.product_price_off != NULL"}
+        <span class="product-percentage">{$percentage} %</span>
+        {/if}
         <div class="product-picture">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
+          <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
         </div>
         <div class="product-brand">
           <span>
-            <img src="https://logodownload.org/wp-content/uploads/2019/07/coral-logo.png" alt="">
+            <img src="./assets/Distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
           </span>
         </div>
         <div class="product-info">
-          <p class="title">Massa corrida</p>
+          <p class="title">{function="ucfirst($value.product_name)"}</p>
           <div class="product-price">
-            <s class="old-price">R$ <span>59</span><span>,00</span></s>
-            <p>R$ <span>39</span><span>,00</span></p>
+            
+            {if="$value.product_price_off != NULL"}
+            <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
+            <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+            {else}
+            <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
+            {/if}
+            
           </div>
         </div>
       </a>

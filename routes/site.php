@@ -24,19 +24,29 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
   $slider = new Sliders();
   $s = $slider->getAll();
 
-  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s]);
+  $prod = new Products();
+  $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
+  $pv = $prod->getAllFull("ORDER BY product_views DESC LIMIT 4");
+  // $po = $prod->getAllFull("ORDER BY product_price_off DESC LIMIT 4");
+  var_dump($po);
+
+  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s, "prodRandom"=>$pr, "prodViews"=>$pv]);
 
   return $res;
   
 });
 
-$app->get("/produto/{nome}/{id}", function(Request $req, Response $res, $args) {
+$app->get("/produto/{id}/{ref}/{nome}", function(Request $req, Response $res, $args) {
+  
+  $id = $args["id"];
 
-  // produto/nome/id
+  $prod = new Products();
+  $p = $prod->getByIdFull($id);
+  $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
 
   $page = new Page();
 
-  $page->setTpl("product");
+  $page->setTpl("product", ["produto"=>$p, "produtosRandom"=>$pr]);
 
   return $res;
 
