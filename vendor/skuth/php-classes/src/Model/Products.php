@@ -90,7 +90,7 @@ class Products {
       return $res;
     }
   }
-
+  
   public function cadProd($nome, $ref, $price, $stock, $dist, $dep, $cat, $desc, $pics) {
     $sql = new Sql();
 

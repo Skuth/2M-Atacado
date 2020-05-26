@@ -27,10 +27,9 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
   $prod = new Products();
   $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
   $pv = $prod->getAllFull("ORDER BY product_views DESC LIMIT 4");
-  // $po = $prod->getAllFull("ORDER BY product_price_off DESC LIMIT 4");
-  var_dump($po);
+  $po = $prod->getAllFull("WHERE product_price_off IS NOT NULL LIMIT 4");
 
-  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s, "prodRandom"=>$pr, "prodViews"=>$pv]);
+  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s, "prodRandom"=>$pr, "prodViews"=>$pv, "prodOffers"=>$po]);
 
   return $res;
   
@@ -57,6 +56,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   // marca?=marca | categoria?=categoria
   
   $prod = new products();
+  $p = $prod->getAllFull();
 
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
@@ -66,8 +66,14 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
         case 'distribuidor':
           $distribuidor = isset($args["param"]) ? $args["param"] : NULL;
           if ($distribuidor == NULL) return $res->withHeader("Location", "/produtos");
-          // listar na categoria
-          $p = $prod->getAllFull();
+          
+          $dist = $args["param"];
+          foreach ($p as $key => $value) {
+            if ($value["distributor_href"] != $dist) {
+              unset($p[$key]);
+            }
+          }
+          
           break;
         case 'categoria':
           $categoria = isset($args["param"]) ? $args["param"] : NULL;
@@ -78,8 +84,14 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
         case 'departamento':
           $departamento = isset($args["param"]) ? $args["param"] : NULL;
           if ($departamento == NULL) return $res->withHeader("Location", "/produtos");
-          // listar na departamento
-          $p = $prod->getAllFull();
+
+          $dep = $args["param"];
+          foreach ($p as $key => $value) {
+            if ($value["department_href"] != $dep) {
+              unset($p[$key]);
+            }
+          }
+
           break;
         case 'ofertas':
           // listar ofertas
@@ -89,8 +101,6 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
     } else {
       return $res->withHeader("Location", "/produtos");
     }
-  } else {
-    $p = $prod->getAllFull();
   }
 
   $dep = new Departments();
@@ -106,7 +116,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   foreach ($dis as $k => $v) {
     $dis[$k]["products_count"] = 0;
   }
-
+  
   foreach ($prod->getAll() as $key => $value) {
     foreach ($d as $k => $v) {
       if ($value["department_id"] == $v["department_id"]) $d[$k]["products_count"] += 1;

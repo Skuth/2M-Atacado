@@ -151,7 +151,7 @@ function deleteImage($image, $path) {
   $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
   chmod($fileFolder, 0777);
   
-  if (file_exists($fileFolder.$image) && $image !== NULL) {
+  if (file_exists($fileFolder.$image) && $image !== NULL && strlen($image) > 0) {
     unlink($fileFolder.$image);
   }
 }
