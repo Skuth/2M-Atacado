@@ -3,25 +3,19 @@
 
     <div class="products-container-sidebar">
       <div class="sidebar-box open">
-        <span>Marcas <i class="icofont-simple-down"></i></span>
+        <span>Distribuidores <i class="icofont-simple-down"></i></span>
         <ul class="sidebar-items" style="max-height: 100vh;">
-          <li><a href="/produtos/marca?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/marca?nome=Teste">Item ( 14 )</a></li>
+          {loop="$distribuidores"}
+          <li><a href="/produtos/distribuidor/{$value.distributor_href}">{$value.distributor_name} ( {$value.products_count} )</a></li>
+          {/loop}
         </ul>
       </div>
       <div class="sidebar-box open">
-        <span>Categorias <i class="icofont-simple-down"></i></span>
+        <span>Departamentos <i class="icofont-simple-down"></i></span>
         <ul class="sidebar-items" style="max-height: 100vh;">
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 1 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 4 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 62 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 5 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 14 )</a></li>
-          <li><a href="/produtos/categoria?nome=Teste">Item ( 12 )</a></li>
+          {loop="$departamentos"}
+          <li><a href="/produtos/departamento/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text} ( {$value.products_count} )</a></li>
+          {/loop}
         </ul>
       </div>
     </div>
@@ -31,25 +25,46 @@
       <div class="products-header-container">
         <div class="text-info">
           <h2>Todos produtos</h2>
-          <span>87 Produtos</span>
+          <span>{function="count($produtos)"} Produtos</span>
         </div>
       </div>
 
       <div class="product-box-container">
-        {loop="array(1,1,1,1,1,1,1,1,1,1,1,1)"}
-        <a class="product-box" href="#">
+        {loop="$produtos"}
+        {$name = filterName($value.product_name)}
+        
+        {$percentage = getPricePercentage($value.product_price, $value.product_price_off)}
+        
+        {$price = formatMoney($value.product_price)}
+        {$price = explode(",", $price)}
+
+        {if="$value.product_price_off != NULL"}
+          {$priceOff = formatMoney($value.product_price_off)}
+          {$priceOff = explode(",", $priceOff)}
+        {/if}
+        <a class="product-box" href="/produto/{$value.product_ref}/{$name}">
+          {if="$value.product_price_off != NULL"}
+          <span class="product-percentage">{$percentage} %</span>
+          {/if}
           <div class="product-picture">
-            <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="Foto do produto">
+            <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
           </div>
           <div class="product-brand">
             <span>
-              <img src="https://logodownload.org/wp-content/uploads/2019/07/coral-logo.png" alt="">
+              <img src="./assets/Distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
             </span>
           </div>
           <div class="product-info">
-            <p class="title">Massa corrida</p>
+            <p class="title">{function="ucfirst($value.product_name)"}</p>
             <div class="product-price">
-              <p>R$ <span>39</span><span>,00</span></p>
+
+            {if="$value.product_price_off != NULL"}
+              <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
+              <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+            {else}
+              <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
+            {/if}
+              
             </div>
           </div>
         </a>

@@ -7,7 +7,7 @@
     <div class="container-header-slider">
       {loop="$sliders"}
         {if="$value.slider_status == 1"}
-        <a class="banner" href="{$value.slider_href}">
+        <a class="banner" {if="$value.slider_href != NULL"}href="{$value.slider_href}"{/if}>
           <img src="./assets/banner/{$value.slider_img}" alt="{$value.slider_description}">
         </a>
         {/if}
@@ -19,7 +19,7 @@
     <h2>Departamentos</h2>
     <div class="departments-container">
       {loop="$departments"}
-      <a class="box" href="/departamentos/{$value.department_href}">
+      <a class="box" href="/produtos/departamento/{$value.department_href}">
         <div class="icon">
           <i class="{$value.department_icon}"></i>
         </div>

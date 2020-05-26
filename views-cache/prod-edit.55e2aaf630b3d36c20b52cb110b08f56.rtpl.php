@@ -36,7 +36,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Preço</label>
-                    <input type="text" class="form-control" required name="preco" value="<?php echo htmlspecialchars( $produto["product_price"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                    <input type="number" step="0.01" class="form-control" required name="preco" value="<?php echo htmlspecialchars( $produto["product_price"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                   </div>
                 </div>
 

@@ -99,6 +99,21 @@
       z-index: 2;
       @include boxShadow(5px 8px 20px rgba(0,0,0,0.2));
     }
+    .product-percentage {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: block;
+      margin: 0 auto;
+      max-width: 50px;
+      top: -18px;
+      text-align: center;
+      background: $darkblue;
+      padding: 10px 20px;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+    }
     .product-picture {
       margin: 0 auto;
       padding: 20px 10px;

@@ -207,6 +207,9 @@
             position: relative;
             width: 100%;
             margin: 0 auto;
+            li {
+              margin-top: 0;
+            }
             li a {
               background: transparent;
               &:hover {

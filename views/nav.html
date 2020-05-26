@@ -8,24 +8,25 @@
     <div class="links-container">
       <ul class="left">
         <li><a href="./">Inicio</a></li>
+        <li><a href="/produtos">Produtos</a></li>
         {$departments = getDepartments()}
         {if="$departments !== NULL"}
         <li class="submenu">
           <a>Departamentos <i class="icofont-rounded-down"></i></a>
           <ul>
             {loop="$departments"}
-            <li><a href="/produtos/departamento?nome={$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text}</a></li>
+            <li><a href="/produtos/departamento/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text}</a></li>
             {/loop}
           </ul>
         </li>
         {/if}
-        {$departments = getDepartments()}
-        {if="$departments !== NULL"}
+        {$distributors = getDistributors()}
+        {if="$distributors !== NULL"}
         <li class="submenu">
           <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
           <ul>
-            {loop="$departments"}
-            <li><a href="/distribuidor/{$value.department_href}">{$value.department_text}</a></li>
+            {loop="$distributors"}
+            <li><a href="/distribuidor/{$value.distributor_href}">{$value.distributor_name}</a></li>
             {/loop}
           </ul>
         </li>

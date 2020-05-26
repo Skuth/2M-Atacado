@@ -2,19 +2,15 @@
 
 use Skuth\Page;
 use Skuth\Model\Departments;
+use Skuth\Model\Distributors;
 use Skuth\Model\Sliders;
+use Skuth\Model\Products;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-function getDepartments() {
-  $departments = new Departments();
-  return $departments->getAll();
-}
-
-function getSiteUrl() {
-  return $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/";
-}
+require_once("functions.php");
+require_once("admin-functions.php");
 
 $app->get("/[inicio]", function(Request $req, Response $res, $args) {
 
@@ -46,42 +42,73 @@ $app->get("/produto/{nome}/{id}", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/produtos[/{filtro}]", function(Request $req, Response $res, $args) {
+$app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res, $args) {
 
   // marca?=marca | categoria?=categoria
+  
+  $prod = new products();
 
   if(isset($args["filtro"])) {
-    $param = $args["filtro"];
+    $filtro = $args["filtro"];
     
-    if($param === "marca" || $param === "categoria" || $param === "ofertas" || $param === "departamento") {
-      switch ($param) {
-        case 'marca':
-          $marca = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
-
-          // listar na marca
+    if($filtro === "distribuidor" || $filtro === "categoria" || $filtro === "ofertas" || $filtro === "departamento") {
+      switch ($filtro) {
+        case 'distribuidor':
+          $distribuidor = isset($args["param"]) ? $args["param"] : NULL;
+          if ($distribuidor == NULL) return $res->withHeader("Location", "/produtos");
+          // listar na categoria
+          $p = $prod->getAllFull();
           break;
         case 'categoria':
-          $categoria = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
-
+          $categoria = isset($args["param"]) ? $args["param"] : NULL;
+          if ($categoria == NULL) return $res->withHeader("Location", "/produtos");
           // listar na categoria
+          $p = $prod->getAllFull();
           break;
         case 'departamento':
-          $departamento = isset($_GET["nome"]) ? $_GET["nome"] : NULL;
-  
+          $departamento = isset($args["param"]) ? $args["param"] : NULL;
+          if ($departamento == NULL) return $res->withHeader("Location", "/produtos");
           // listar na departamento
+          $p = $prod->getAllFull();
           break;
         case 'ofertas':
           // listar ofertas
+          $p = $prod->getAllFull();
           break;
       }
     } else {
       return $res->withHeader("Location", "/produtos");
     }
+  } else {
+    $p = $prod->getAllFull();
+  }
+
+  $dep = new Departments();
+  $d = $dep->getAll();
+
+  $dist = new Distributors();
+  $dis = $dist->getAll();
+
+  foreach ($d as $k => $v) {
+    $d[$k]["products_count"] = 0;
+  }
+
+  foreach ($dis as $k => $v) {
+    $dis[$k]["products_count"] = 0;
+  }
+
+  foreach ($prod->getAll() as $key => $value) {
+    foreach ($d as $k => $v) {
+      if ($value["department_id"] == $v["department_id"]) $d[$k]["products_count"] += 1;
+    }
+    foreach ($dis as $k => $v) {
+      if ($value["brand_id"] == $v["distributor_id"]) $dis[$k]["products_count"] += 1;
+    }
   }
 
   $page = new Page();
   
-  $page->setTpl("products");
+  $page->setTpl("products", ["produtos"=>$p, "departamentos"=>$d, "distribuidores"=>$dis]);
 
   return $res;
 

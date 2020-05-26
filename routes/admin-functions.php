@@ -115,7 +115,7 @@ function parseDesc($desc) {
 }
 
 function getPercentage($old, $new) {
-  if ($old > 0) {
+  if ($old > 0 && $new > 0) {
     $p = ($new - $old) / $old * 100;
     return number_format($p, 2, ".", "");
   } else {
