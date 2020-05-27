@@ -1,4 +1,4 @@
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
@@ -18,12 +18,12 @@
 
               <div class="row">
 
-                <input type="hidden" name="id" value="{$cat.category_id}">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars( $cat["category_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="form-control-label">Categoria</label>
-                    <input type="text" class="form-control" name="categoria" required value="{$cat.category_name}">
+                    <input type="text" class="form-control" name="categoria" required value="<?php echo htmlspecialchars( $cat["category_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                   </div>
                 </div>
               </div>

@@ -45,24 +45,17 @@ function getNav() {
       "nivel"=>2
     ],
     [
-      "name"=>"categorias",
-      "href"=>"categorias",
-      "icon"=>"fas fa-bookmark",
-      "color"=>"text-danger",
-      "nivel"=>2
-    ],
-    [
       "name"=>"departamentos",
       "href"=>"departamentos",
       "icon"=>"ni ni-scissors",
-      "color"=>"text-info",
+      "color"=>"text-danger",
       "nivel"=>2
     ],
     [
       "name"=>"banners",
       "href"=>"banners",
       "icon"=>"ni ni-album-2",
-      "color"=>"text-success",
+      "color"=>"text-info",
       "nivel"=>2
     ]
   ];

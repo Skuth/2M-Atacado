@@ -104,7 +104,7 @@
     <?php $priceOff = explode(",", $priceOff); ?>
     <?php } ?>
     <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-      <?php if( $value1["product_price_off"] != NULL && $percentage > 0 ){ ?>
+      <?php if( $value1["product_price_off"] != NULL ){ ?>
       <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
       <?php } ?>
       <div class="product-picture">
@@ -157,7 +157,7 @@
     <?php $priceOff = explode(",", $priceOff); ?>
     <?php } ?>
     <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-      <?php if( $value1["product_price_off"] != NULL && $percentage > 0 ){ ?>
+      <?php if( $value1["product_price_off"] != NULL ){ ?>
       <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
       <?php } ?>
       <div class="product-picture">
@@ -210,7 +210,7 @@
   <?php $priceOff = explode(",", $priceOff); ?>
   <?php } ?>
   <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-    <?php if( $value1["product_price_off"] != NULL && $percentage > 0 ){ ?>
+    <?php if( $value1["product_price_off"] != NULL ){ ?>
     <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
     <?php } ?>
     <div class="product-picture">

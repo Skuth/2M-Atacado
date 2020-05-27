@@ -111,7 +111,13 @@
                 <td><b><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td><b><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo getPercentage($value1["product_views_old"], $value1["product_views"]); ?>%</span> <span class="text-muted">Desde o último mês</span>
+                  <?php $prodPer = getPercentage($value1["product_views_old"], $value1["product_views"]); ?>
+                  <?php if( substr($prodPer, 0, 1) == '-' ){ ?>
+                  <?php $prodPer = str_replace("-", "", $prodPer); ?>
+                  <i class="fas fa-arrow-down text-danger mr-3"></i> <span class="text-danger"><?php echo htmlspecialchars( $prodPer, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span> <span class="text-muted">Desde o último mês</span>
+                  <?php }else{ ?>
+                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo htmlspecialchars( $prodPer, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span> <span class="text-muted">Desde o último mês</span>
+                  <?php } ?>
                 </td>
               </tr>
               <?php } ?>

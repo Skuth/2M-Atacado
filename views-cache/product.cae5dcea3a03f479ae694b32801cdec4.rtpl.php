@@ -19,18 +19,27 @@
       </a>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
       <?php $percentage = getPricePercentage($produto["product_price"], $produto["product_price_off"]); ?>
-      <?php if( $produto["product_price_off"] != NULL && $percentage > 0 ){ ?>
+      <?php if( $produto["product_price_off"] != NULL ){ ?>
+
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> % de desconto</span>
+
         <?php if( $produto["product_price_off_days"] != NULL ){ ?>
         <?php $date = $produto["product_price_off_days"]; ?>
         <span class="product-span">Oferta disponível até dia <?php echo date('d/m/Y', strtotime($date)); ?></span>
         <?php } ?>
+
         <?php if( $produto["product_stock_quantity_off"] != NULL ){ ?>
         <?php $stock = $produto["product_stock_quantity_off"]; ?>
         <span class="product-span">Últimos <?php echo htmlspecialchars( $stock, ENT_COMPAT, 'UTF-8', FALSE ); ?> disponíveis com desconto</span>
         <?php } ?>
+
       <?php } ?>
-      <input type="number" name="quantity" class="product-quantity" value="1" min="1" max=<?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?>>
+      <div class="product-quantity-box">
+        <p class="product-action" onclick="handleQuantity('-')">-</p>
+        <p class="product-quantity" id="product-quantity" data-stock="<?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">1</p>
+        <p class="product-action" onclick="handleQuantity('+')">+</p>
+      </div>
+      <span class="product-span text-muted"><?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?> disponíveis no estoque</span>
       <div class="product-price">
         <?php $price = formatMoney($produto["product_price"]); ?>
         <?php $price = explode(",", $price); ?>
@@ -76,7 +85,7 @@
       <?php $priceOff = explode(",", $priceOff); ?>
       <?php } ?>
       <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        <?php if( $value1["product_price_off"] != NULL && $percentage > 0 ){ ?>
+        <?php if( $value1["product_price_off"] != NULL ){ ?>
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
         <?php } ?>
         <div class="product-picture">

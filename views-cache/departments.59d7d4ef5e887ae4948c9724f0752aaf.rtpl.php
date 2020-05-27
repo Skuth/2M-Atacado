@@ -29,7 +29,7 @@
               <?php $counter1=-1;  if( isset($departamentos) && ( is_array($departamentos) || $departamentos instanceof Traversable ) && sizeof($departamentos) ) foreach( $departamentos as $key1 => $value1 ){ $counter1++; ?>
               <tr>
                 <td><i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?> text-primary"></i></td>
-                <td><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><b><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>/departamentos/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/departamento/editar/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>

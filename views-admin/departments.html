@@ -29,7 +29,7 @@
               {loop="$departamentos"}
               <tr>
                 <td><i class="{$value.department_icon} text-primary"></i></td>
-                <td>{$value.department_text}</td>
+                <td><b>{$value.department_text}</b></td>
                 <td>/departamentos/{$value.department_href}</td>
                 <td>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/departamento/editar/{$value.department_id}"><i class="fas fa-edit"></i></a>

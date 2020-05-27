@@ -57,7 +57,7 @@ $app->get("/admin/produto/visualizar/{id}", function(Request $req, Response $res
 
   $prod = new Products();
 
-  $produto = $prod->getById($id);
+  $produto = $prod->getByIdFull($id);
 
   var_dump($produto);
 
@@ -71,9 +71,6 @@ $app->get("/admin/produto/novo",function(Request $req, Response $res, $args) {
 
   if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
-  $cat = new Category();
-  $c = $cat->getAll();
-
   $dist = new Distributors();
   $d = $dist->getAll();
 
@@ -82,7 +79,7 @@ $app->get("/admin/produto/novo",function(Request $req, Response $res, $args) {
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrando produto", "produto/novo")]]);
 
-  $page->setTpl("prod-cad", ["cat"=>$c, "dist"=>$d, "dep"=>$dp]);
+  $page->setTpl("prod-cad", ["dist"=>$d, "dep"=>$dp]);
 
   return $res;
 
@@ -102,7 +99,6 @@ $app->post("/admin/produto/novo",function(Request $req, Response $res, $args) {
     $estoque = $_POST["estoque"];
     $dist = $_POST["dist"];
     $dep = $_POST["dep"];
-    $cat = $_POST["cat"];
     $descricao = filterDesc($_POST["descricao"]);
 
     $fotos = $_FILES["fotos"];
@@ -124,7 +120,7 @@ $app->post("/admin/produto/novo",function(Request $req, Response $res, $args) {
 
     $prod = new Products();
 
-    if ($prod->cadProd($nome, $ref, $preco, $estoque, $dist, $dep, $cat, $descricao, $pics)) {
+    if ($prod->cadProd($nome, $ref, $preco, $estoque, $dist, $dep, $descricao, $pics)) {
       return $res->withHeader("Location", "/admin/produtos?cad=true");
     } else {
       $pics = explode(",", $pics);
@@ -145,9 +141,6 @@ $app->get("/admin/produto/editar/{id}", function(Request $req, Response $res, $a
 
   if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
-  $cat = new Category();
-  $c = $cat->getAll();
-
   $dist = new Distributors();
   $d = $dist->getAll();
 
@@ -162,7 +155,7 @@ $app->get("/admin/produto/editar/{id}", function(Request $req, Response $res, $a
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Editando produto", "produto/editar/".$id)]]);
 
-  $page->setTpl("prod-edit", ["cat"=>$c, "dist"=>$d, "dep"=>$dp, "produto"=>$p]);
+  $page->setTpl("prod-edit", ["dist"=>$d, "dep"=>$dp, "produto"=>$p]);
 
   return $res;
   
@@ -183,7 +176,6 @@ $app->post("/admin/produto/editar", function(Request $req, Response $res, $args)
     $estoque = $_POST["estoque"];
     $dist = $_POST["dist"];
     $dep = $_POST["dep"];
-    $cat = $_POST["cat"];
     $desc = filterDesc($_POST["descricao"]);
     $fotos = $_FILES["fotos"];
     $oldPictures = $produto["product_pictures"];
@@ -213,7 +205,7 @@ $app->post("/admin/produto/editar", function(Request $req, Response $res, $args)
       $pics = implode(",", $pics);
     }
 
-    if ($prod->editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $preco, $estoque) == true) {
+    if ($prod->editProd($id, $nome, $dist, $ref, $dep, $desc, $pics, $preco, $estoque) == true) {
       if ($oldPics == false) {
         $olds = $oldPictures;
         foreach ($olds as $key => $value) {

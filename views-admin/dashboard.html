@@ -111,7 +111,13 @@
                 <td><b>{$value.product_name}</b></td>
                 <td><b>{$value.product_views}</b></td>
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success">{function="getPercentage($value.product_views_old, $value.product_views)"}%</span> <span class="text-muted">Desde o último mês</span>
+                  {$prodPer = getPercentage($value.product_views_old, $value.product_views)}
+                  {if="substr($prodPer, 0, 1) == '-'"}
+                  {$prodPer = str_replace("-", "", $prodPer)}
+                  <i class="fas fa-arrow-down text-danger mr-3"></i> <span class="text-danger">{$prodPer}%</span> <span class="text-muted">Desde o último mês</span>
+                  {else}
+                  <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success">{$prodPer}%</span> <span class="text-muted">Desde o último mês</span>
+                  {/if}
                 </td>
               </tr>
               {/loop}

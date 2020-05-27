@@ -31,7 +31,7 @@
               {loop="$distribuidores"}
               <tr>
                 <td><img src="./assets/distribuidores/{$value.distributor_logo}" width="30"></td>
-                <td>{$value.distributor_name}</td>
+                <td><b>{$value.distributor_name}</b></td>
                 <td>{$value.distributor_address}</td>
                 <td>{function="substr($value.distributor_description, 0, 40)"}{if="strlen($value.distributor_description) > 40"}...{/if}</td>
                 <td>/distribuidor/{$value.distributor_href}</td>

@@ -47,7 +47,7 @@
                   </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Distribuidor</label>
                     <select class="form-control" name="dist">
@@ -59,7 +59,7 @@
                   </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Departamento</label>
                     <select class="form-control" name="dep">
@@ -70,17 +70,6 @@
                     </select>
                   </div>
                 </div>
-
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label">Categoria</label>
-                    <select class="form-control" name="cat">
-                      <option value="" disabled>Selecione uma categoria</option>
-                      <?php $counter1=-1;  if( isset($cat) && ( is_array($cat) || $cat instanceof Traversable ) && sizeof($cat) ) foreach( $cat as $key1 => $value1 ){ $counter1++; ?>
-                      <option value="<?php echo htmlspecialchars( $value1["category_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["category_id"] == $value1["category_id"] ){ ?>active<?php } ?>><?php echo htmlspecialchars( $value1["category_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
                 </div>
 
                 <div class="col-lg-12">

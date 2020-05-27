@@ -45,7 +45,7 @@
                   </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Distribuidor</label>
                     <select class="form-control" name="dist">
@@ -57,25 +57,13 @@
                   </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Departamento</label>
                     <select class="form-control" name="dep">
                       <option value="" disabled selected>Selecione um departamento</option>
                       {loop="$dep"}
                       <option value="{$value.department_id}">{$value.department_text}</option>
-                      {/loop}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label">Categoria</label>
-                    <select class="form-control" name="cat">
-                      <option value="" disabled selected>Selecione uma categoria</option>
-                      {loop="$cat"}
-                      <option value="{$value.category_id}">{$value.category_name}</option>
                       {/loop}
                     </select>
                   </div>

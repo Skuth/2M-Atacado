@@ -12,6 +12,31 @@ const navCheck = (nav, offsetTop, navClass) => {
   } 
 }
 
+const handleQuantity = (o) => {
+  let itemBox = document.querySelector("#product-quantity")
+  let itemCount = Number(itemBox.innerHTML)
+  let maxItems = itemBox.getAttribute("data-stock")
+
+  if (o == "+" || o == "-") {
+    if (o == "+") {
+      if (itemCount >= maxItems) {
+        itemBox.innerHTML = maxItems
+      } else {
+        itemBox.innerHTML = itemCount + 1
+      }
+    }
+
+    if (o == "-") {
+      if (itemCount <= 1) {
+        itemBox.innerHTML = 1
+      } else {
+        itemBox.innerHTML = itemCount - 1
+      }
+    }
+  }
+
+}
+
 $(document).ready(() => {
   
   if($(window).width() >= 1200) {

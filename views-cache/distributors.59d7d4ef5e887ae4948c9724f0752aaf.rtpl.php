@@ -31,7 +31,7 @@
               <?php $counter1=-1;  if( isset($distribuidores) && ( is_array($distribuidores) || $distribuidores instanceof Traversable ) && sizeof($distribuidores) ) foreach( $distribuidores as $key1 => $value1 ){ $counter1++; ?>
               <tr>
                 <td><img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="30"></td>
-                <td><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><b><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td><?php echo htmlspecialchars( $value1["distributor_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td><?php echo substr($value1["distributor_description"], 0, 40); ?><?php if( strlen($value1["distributor_description"]) > 40 ){ ?>...<?php } ?></td>
                 <td>/distribuidor/<?php echo htmlspecialchars( $value1["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>

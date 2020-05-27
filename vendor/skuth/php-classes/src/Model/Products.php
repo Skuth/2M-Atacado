@@ -44,7 +44,6 @@ class Products {
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
-    INNER JOIN category b ON b.category_id=products.category_id
     INNER JOIN departments c ON c.department_id=products.department_id ".$params;
 
     $res = $sql->select($query);
@@ -75,7 +74,6 @@ class Products {
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
-    INNER JOIN category b ON b.category_id=products.category_id
     INNER JOIN departments c ON c.department_id=products.department_id
     WHERE product_id=:id LIMIT 1";
 
@@ -91,18 +89,17 @@ class Products {
     }
   }
   
-  public function cadProd($nome, $ref, $price, $stock, $dist, $dep, $cat, $desc, $pics) {
+  public function cadProd($nome, $ref, $price, $stock, $dist, $dep, $desc, $pics) {
     $sql = new Sql();
 
     $query = "INSERT INTO products 
-    (product_name, brand_id, product_ref, category_id, department_id, product_description, product_pictures, product_price, product_stock)
-    VALUES (:nome, :dist, :ref, :cat, :dep, :desc, :pics, :price, :stock)";
+    (product_name, brand_id, product_ref, department_id, product_description, product_pictures, product_price, product_stock)
+    VALUES (:nome, :dist, :ref, :dep, :desc, :pics, :price, :stock)";
 
     $params = [
       "nome"=>$nome,
       "dist"=>$dist,
       "ref"=>$ref,
-      "cat"=>$cat,
       "dep"=>$dep,
       "desc"=>$desc,
       "pics"=>$pics,
@@ -132,7 +129,7 @@ class Products {
     return $this->cadPromo($id, NULL, NULL, NULL);
   }
 
-  public function editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $price, $stock) {
+  public function editProd($id, $nome, $dist, $ref, $dep, $desc, $pics, $price, $stock) {
     $sql = new Sql();
 
     $p = $this->getById($id);
@@ -146,13 +143,12 @@ class Products {
       $this->removePromo($id);
     }
 
-    $query = "UPDATE products SET product_name=:nome, brand_id=:dist, product_ref=:ref, category_id=:cat, department_id=:dep, product_description=:desc, product_pictures=:pics, product_price=:price, product_stock=:stock WHERE product_id=:id";
+    $query = "UPDATE products SET product_name=:nome, brand_id=:dist, product_ref=:ref, department_id=:dep, product_description=:desc, product_pictures=:pics, product_price=:price, product_stock=:stock WHERE product_id=:id";
     $params = [
       "id"=>$id,
       "nome"=>$nome,
       "dist"=>$dist,
       "ref"=>$ref,
-      "cat"=>$cat,
       "dep"=>$dep,
       "desc"=>$desc,
       "pics"=>$pics,

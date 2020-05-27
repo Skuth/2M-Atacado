@@ -50,6 +50,7 @@ function getPricePercentage($old, $new) {
     $p = ($new - $old) / $old * 100;
     $p =  number_format($p, 0, ".", "");
     $p = str_replace("-", "", $p);
+    if ($p == 0) $p = 1;
     return $p;
   } else {
     return 0;

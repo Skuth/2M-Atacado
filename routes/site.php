@@ -12,11 +12,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 require_once("functions.php");
 require_once("admin-functions.php");
 
+$_SESSION["cart"] = [];
+
 $app->get("/[inicio]", function(Request $req, Response $res, $args) {
 
   $page = new Page(["data"=>["navStyle"=>"banner"]]);
-
-  $_SESSION["cart"] = [];
 
   $departments = new Departments();
   $d = $departments->getAll();
@@ -62,7 +62,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
     
-    if($filtro === "distribuidor" || $filtro === "categoria" || $filtro === "ofertas" || $filtro === "departamento") {
+    if($filtro === "distribuidor" || $filtro === "ofertas" || $filtro === "departamento") {
       switch ($filtro) {
 
         case 'distribuidor':
@@ -78,13 +78,6 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
           $fText = "Produtos do distribuidor - ".ucfirst($dist);
           
-          break;
-
-        case 'categoria':
-          $categoria = isset($args["param"]) ? $args["param"] : NULL;
-          if ($categoria == NULL) return $res->withHeader("Location", "/produtos");
-          // listar na categoria
-          $p = $prod->getAllFull();
           break;
 
         case 'departamento':
@@ -104,7 +97,13 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
         case 'ofertas':
           // listar ofertas
-          $p = $prod->getAllFull();
+          foreach ($p as $key => $value) {
+            if ($value["product_price_off"] == NULL) {
+              unset($p[$key]);
+            }
+          }
+
+          $fText = "Ofertas";
           break;
 
       }
