@@ -1,9 +1,10 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?>  
   <div class="distributor">
     <div class="distributor-slider">
-      <?php $counter1=-1; $newvar1=array(1,1,1,1,1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
-      <a href="/empresa/texsa">
-        <img src="https://ramycia.com/wp-content/uploads/2015/04/logo-texsa1.png" alt="Logo da empresa">
+      <?php $distributors = getDistributors(); ?>
+      <?php $counter1=-1;  if( isset($distributors) && ( is_array($distributors) || $distributors instanceof Traversable ) && sizeof($distributors) ) foreach( $distributors as $key1 => $value1 ){ $counter1++; ?>
+      <a href="/distribuidor/<?php echo htmlspecialchars( $value1["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da empresa <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </a>
       <?php } ?>
     </div>

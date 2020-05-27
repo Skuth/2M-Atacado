@@ -19,7 +19,7 @@
       </a>
       <span class="ref">REF: {$produto.product_ref}</span>
       {$percentage = getPricePercentage($produto.product_price, $produto.product_price_off)}
-      {if="$produto.product_price_off != NULL"}
+      {if="$produto.product_price_off != NULL && $percentage > 0"}
         <span class="product-percentage">{$percentage} % de desconto</span>
         {if="$produto.product_price_off_days != NULL"}
         {$date = $produto.product_price_off_days}
@@ -76,7 +76,7 @@
       {$priceOff = explode(",", $priceOff)}
       {/if}
       <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
-        {if="$value.product_price_off != NULL"}
+        {if="$value.product_price_off != NULL && $percentage > 0"}
         <span class="product-percentage">{$percentage} %</span>
         {/if}
         <div class="product-picture">

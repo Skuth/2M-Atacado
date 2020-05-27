@@ -57,12 +57,14 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   
   $prod = new products();
   $p = $prod->getAllFull();
+  $fText = "Todos produtos";
 
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
     
     if($filtro === "distribuidor" || $filtro === "categoria" || $filtro === "ofertas" || $filtro === "departamento") {
       switch ($filtro) {
+
         case 'distribuidor':
           $distribuidor = isset($args["param"]) ? $args["param"] : NULL;
           if ($distribuidor == NULL) return $res->withHeader("Location", "/produtos");
@@ -73,14 +75,18 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
               unset($p[$key]);
             }
           }
+
+          $fText = "Produtos do distribuidor - ".ucfirst($dist);
           
           break;
+
         case 'categoria':
           $categoria = isset($args["param"]) ? $args["param"] : NULL;
           if ($categoria == NULL) return $res->withHeader("Location", "/produtos");
           // listar na categoria
           $p = $prod->getAllFull();
           break;
+
         case 'departamento':
           $departamento = isset($args["param"]) ? $args["param"] : NULL;
           if ($departamento == NULL) return $res->withHeader("Location", "/produtos");
@@ -92,16 +98,22 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
             }
           }
 
+          $fText = "Produtos do departamento - ".ucfirst($dep);
+
           break;
+
         case 'ofertas':
           // listar ofertas
           $p = $prod->getAllFull();
           break;
+
       }
     } else {
       return $res->withHeader("Location", "/produtos");
     }
   }
+
+  if (count($p) <= 0 && isset($args["filtro"])) return $res->withHeader("Location", "/produtos");
 
   $dep = new Departments();
   $d = $dep->getAll();
@@ -128,7 +140,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
   $page = new Page();
   
-  $page->setTpl("products", ["produtos"=>$p, "departamentos"=>$d, "distribuidores"=>$dis]);
+  $page->setTpl("products", ["produtos"=>$p, "departamentos"=>$d, "distribuidores"=>$dis, "filterText"=>$fText]);
 
   return $res;
 

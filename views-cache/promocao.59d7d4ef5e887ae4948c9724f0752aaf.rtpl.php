@@ -36,6 +36,7 @@
                 <td>
                   <?php if( $userOn['type'] > 1 ){ ?>
                   <a class="btn btn-icon btn-success btn-sm" href="/admin/produto/promocao/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-percentage"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/produto/editar/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
                   <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa promoção?')" href="/admin/promocao/remover/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                   <?php } ?>
                 </td>

@@ -36,7 +36,15 @@
                 <td><img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50"></td>
                 <td><b><?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td><b><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
-                <td><b>R$ <?php echo formatMoney($value1["product_price"]); ?></b></td>
+                <td>
+                  <?php if( $value1["product_price_off"] != NULL ){ ?>
+                  <b><s>R$ <?php echo formatMoney($value1["product_price"]); ?></s></b>
+                  <br>
+                  <b>R$ <?php echo formatMoney($value1["product_price_off"]); ?></b>
+                  <?php }else{ ?>
+                  <b>R$ <?php echo formatMoney($value1["product_price"]); ?></b>
+                  <?php } ?>
+                </td>
                 <td><b><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>
                   <a class="btn btn-icon btn-default btn-sm" href="/admin/produto/visualizar/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-eye"></i></a>

@@ -135,11 +135,15 @@ class Products {
   public function editProd($id, $nome, $dist, $ref, $cat, $dep, $desc, $pics, $price, $stock) {
     $sql = new Sql();
 
-    $p = $this->getById($id)["product_pictures"];
+    $p = $this->getById($id);
 
     if ($pics == NULL) {
-      $pics = $p;
+      $pics = $p["product_pictures"];
       $pics = implode(",", $pics);
+    }
+
+    if ($price != $p["product_price"]) {
+      $this->removePromo($id);
     }
 
     $query = "UPDATE products SET product_name=:nome, brand_id=:dist, product_ref=:ref, category_id=:cat, department_id=:dep, product_description=:desc, product_pictures=:pics, product_price=:price, product_stock=:stock WHERE product_id=:id";

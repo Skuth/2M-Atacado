@@ -18,8 +18,8 @@
     position: relative;
     z-index: 2;
     img {
-      width: 150px;
-      @include filter(grayscale(1) brightness(10));
+      width: 120px;
+      @include filter(grayscale(1) invert(1));
       @include transition(all, 0.5s);
       &:hover {
         @include filter(grayscale(0));

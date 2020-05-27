@@ -19,7 +19,7 @@
       </a>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
       <?php $percentage = getPricePercentage($produto["product_price"], $produto["product_price_off"]); ?>
-      <?php if( $produto["product_price_off"] != NULL ){ ?>
+      <?php if( $produto["product_price_off"] != NULL && $percentage > 0 ){ ?>
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> % de desconto</span>
         <?php if( $produto["product_price_off_days"] != NULL ){ ?>
         <?php $date = $produto["product_price_off_days"]; ?>
@@ -76,7 +76,7 @@
       <?php $priceOff = explode(",", $priceOff); ?>
       <?php } ?>
       <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        <?php if( $value1["product_price_off"] != NULL ){ ?>
+        <?php if( $value1["product_price_off"] != NULL && $percentage > 0 ){ ?>
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
         <?php } ?>
         <div class="product-picture">

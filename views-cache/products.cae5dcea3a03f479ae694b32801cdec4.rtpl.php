@@ -24,7 +24,7 @@
 
       <div class="products-header-container">
         <div class="text-info">
-          <h2>Todos produtos</h2>
+          <h2><?php echo htmlspecialchars( $filterText, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
           <span><?php echo count($produtos); ?> Produtos</span>
         </div>
       </div>

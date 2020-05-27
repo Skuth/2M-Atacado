@@ -1,9 +1,10 @@
   
   <div class="distributor">
     <div class="distributor-slider">
-      {loop="array(1,1,1,1,1,1)"}
-      <a href="/empresa/texsa">
-        <img src="https://ramycia.com/wp-content/uploads/2015/04/logo-texsa1.png" alt="Logo da empresa">
+      {$distributors = getDistributors()}
+      {loop="$distributors"}
+      <a href="/distribuidor/{$value.distributor_href}">
+        <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo da empresa {$value.distributor_name}">
       </a>
       {/loop}
     </div>

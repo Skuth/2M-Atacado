@@ -36,6 +36,7 @@
                 <td>
                   {if="$userOn['type'] > 1"}
                   <a class="btn btn-icon btn-success btn-sm" href="/admin/produto/promocao/{$value.product_id}"><i class="fas fa-percentage"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/produto/editar/{$value.product_id}"><i class="fas fa-edit"></i></a>
                   <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover essa promoção?')" href="/admin/promocao/remover/{$value.product_id}"><i class="fas fa-trash"></i></a>
                   {/if}
                 </td>
