@@ -53,7 +53,7 @@
                     <select class="form-control" name="dist">
                       <option value="" disabled>Selecione um distribuidor</option>
                       {loop="$dist"}
-                      <option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}active{/if}>{$value.distributor_name}</option>
+                      <option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}selected{/if}>{$value.distributor_name}</option>
                       {/loop}
                     </select>
                   </div>
@@ -65,7 +65,7 @@
                     <select class="form-control" name="dep">
                       <option value="" disabled>Selecione um departamento</option>
                       {loop="$dep"}
-                      <option value="{$value.department_id}" {if="$produto.department_id == $value.department_id"}active{/if}>{$value.department_text}</option>
+                      <option value="{$value.department_id}" {if="$produto.department_id == $value.department_id"}selected{/if}>{$value.department_text}</option>
                       {/loop}
                     </select>
                   </div>

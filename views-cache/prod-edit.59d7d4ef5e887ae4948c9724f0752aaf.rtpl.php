@@ -53,7 +53,7 @@
                     <select class="form-control" name="dist">
                       <option value="" disabled>Selecione um distribuidor</option>
                       <?php $counter1=-1;  if( isset($dist) && ( is_array($dist) || $dist instanceof Traversable ) && sizeof($dist) ) foreach( $dist as $key1 => $value1 ){ $counter1++; ?>
-                      <option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["brand_id"] == $value1["distributor_id"] ){ ?>active<?php } ?>><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["brand_id"] == $value1["distributor_id"] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -65,7 +65,7 @@
                     <select class="form-control" name="dep">
                       <option value="" disabled>Selecione um departamento</option>
                       <?php $counter1=-1;  if( isset($dep) && ( is_array($dep) || $dep instanceof Traversable ) && sizeof($dep) ) foreach( $dep as $key1 => $value1 ){ $counter1++; ?>
-                      <option value="<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["department_id"] == $value1["department_id"] ){ ?>active<?php } ?>><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <option value="<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["department_id"] == $value1["department_id"] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                       <?php } ?>
                     </select>
                   </div>
