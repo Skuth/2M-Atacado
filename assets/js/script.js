@@ -37,6 +37,42 @@ const handleQuantity = (o) => {
 
 }
 
+let getUrl = window.location
+let baseUrl = getUrl.protocol + "//" + getUrl.host + "/"
+
+const addCart = (id) => {
+  let itemBox = document.querySelector("#product-quantity")
+  let quantity = Number(itemBox.innerHTML)
+  let add = {
+    "id": id,
+    "quantity": quantity
+  }
+
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"addcart/add",
+    data: {
+      "data": add
+    },
+    success: function (res) {
+      location.reload()
+    }
+  });
+}
+
+const removeCart = (id) => {
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"addcart/remove",
+    data: {
+      "id": id
+    },
+    success: function (res) {
+      location.reload()
+    }
+  });
+}
+
 $(document).ready(() => {
   
   if($(window).width() >= 1200) {

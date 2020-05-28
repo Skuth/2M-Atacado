@@ -53,7 +53,7 @@
         <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
         {/if}
       </div>
-      <a href="#" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
+      <a onclick="addCart({$produto.product_id})" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
     </div>
     <div class="product-page-description">
       <h3>Descrição</h3>

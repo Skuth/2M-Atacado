@@ -9,6 +9,10 @@
   use Slim\Factory\AppFactory;
   use Slim\Psr7\Response;
 
+  if (!isset($_SESSION["cart"])) {
+    $_SESSION["cart"] = [];
+  }
+
   require_once(__DIR__."./vendor/autoload.php");
 
   $app = AppFactory::create();

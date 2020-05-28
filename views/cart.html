@@ -1,39 +1,49 @@
 <div class="cart-container">
   <div class="cart-content">
-    {if="true == false"}
+    {if="count($cart) > 0"}
     <div class="cart-content-items">
-      {loop="array(1,1)"}
+      {loop="$cart"}
       <div class="box">
         <div class="picture">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="">
+          <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Imagem do produto {$value.product_name} | Ref {$value.product_ref}">
         </div>
         <div class="info">
-          <p class="title">Massa corrida</p>
+          <p class="title">{$value.product_name}</p>
           <div class="action">
-            <p class="remove">Excluir</p>
+            <p class="remove" onclick="removeCart({$value.product_id})">Excluir</p>
           </div>
         </div>
         <div class="quantity">
-          <p>1</p>
+          <p>{$value.quantity}</p>
         </div>
         <div class="price">
+          {$percentage = getPricePercentage($value.product_price, $value.product_price_off)}
+      
+          {$price = formatMoney($value.product_price)}
+
+          {if="$value.product_price_off != NULL"}
+          {$priceOff = formatMoney($value.product_price_off)}
           <span class="old-price">
-            <span class="discount">30%</span>
-            <s>R$ 59,00</s>
+            <span class="discount">{$percentage}%</span>
+            <s>R$ {$price}</s>
           </span>
-          <span>R$ 39,00</span>
+          <span>R$ {$priceOff}</span>
+          {else}
+          <span>R$ {$price}</span>
+          {/if}
+
         </div>
       </div>
       {/loop}
     </div>
     <div class="cart-content-info">
       <div class="cart-info">
-        <p>Produtos <span>2</span></p>
-        <p>Total <span>R$ 78,00</span></p>
+        <p>Produtos <span>{$quantity}</span></p>
+        <p>Total <span>R$ {function="formatMoney($total)"}</span></p>
       </div>
     </div>
     <div class="cart-content-info">
-      <a href="#" class="btn btn-circle btn-blue btn-medium">Confirmar orçamento</a>
+      <a class="btn btn-circle btn-blue btn-medium">Confirmar orçamento</a>
     </div>
     {else}
       <div class="cart-content-items">

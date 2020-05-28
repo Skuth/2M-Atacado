@@ -1,39 +1,49 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><div class="cart-container">
   <div class="cart-content">
-    <?php if( true == false ){ ?>
+    <?php if( count($cart) > 0 ){ ?>
     <div class="cart-content-items">
-      <?php $counter1=-1; $newvar1=array(1,1); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+      <?php $counter1=-1;  if( isset($cart) && ( is_array($cart) || $cart instanceof Traversable ) && sizeof($cart) ) foreach( $cart as $key1 => $value1 ){ $counter1++; ?>
       <div class="box">
         <div class="picture">
-          <img src="https://www.texturasdobrasil.com.br/image/cache/data/massa%20corrida%20coral%202-800x800.png" alt="">
+          <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Imagem do produto <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </div>
         <div class="info">
-          <p class="title">Massa corrida</p>
+          <p class="title"><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
           <div class="action">
-            <p class="remove">Excluir</p>
+            <p class="remove" onclick="removeCart(<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>)">Excluir</p>
           </div>
         </div>
         <div class="quantity">
-          <p>1</p>
+          <p><?php echo htmlspecialchars( $value1["quantity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
         </div>
         <div class="price">
+          <?php $percentage = getPricePercentage($value1["product_price"], $value1["product_price_off"]); ?>
+      
+          <?php $price = formatMoney($value1["product_price"]); ?>
+
+          <?php if( $value1["product_price_off"] != NULL ){ ?>
+          <?php $priceOff = formatMoney($value1["product_price_off"]); ?>
           <span class="old-price">
-            <span class="discount">30%</span>
-            <s>R$ 59,00</s>
+            <span class="discount"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span>
+            <s>R$ <?php echo htmlspecialchars( $price, ENT_COMPAT, 'UTF-8', FALSE ); ?></s>
           </span>
-          <span>R$ 39,00</span>
+          <span>R$ <?php echo htmlspecialchars( $priceOff, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+          <?php }else{ ?>
+          <span>R$ <?php echo htmlspecialchars( $price, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+          <?php } ?>
+
         </div>
       </div>
       <?php } ?>
     </div>
     <div class="cart-content-info">
       <div class="cart-info">
-        <p>Produtos <span>2</span></p>
-        <p>Total <span>R$ 78,00</span></p>
+        <p>Produtos <span><?php echo htmlspecialchars( $quantity, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
+        <p>Total <span>R$ <?php echo formatMoney($total); ?></span></p>
       </div>
     </div>
     <div class="cart-content-info">
-      <a href="#" class="btn btn-circle btn-blue btn-medium">Confirmar orçamento</a>
+      <a class="btn btn-circle btn-blue btn-medium">Confirmar orçamento</a>
     </div>
     <?php }else{ ?>
       <div class="cart-content-items">

@@ -53,7 +53,7 @@
         <p>R$ <span><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span><span>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
         <?php } ?>
       </div>
-      <a href="#" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
+      <a onclick="addCart(<?php echo htmlspecialchars( $produto["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>)" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
     </div>
     <div class="product-page-description">
       <h3>Descrição</h3>
