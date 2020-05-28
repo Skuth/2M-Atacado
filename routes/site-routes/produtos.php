@@ -29,7 +29,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   // marca?=marca | categoria?=categoria
   
   $prod = new products();
-  $p = $prod->getAllFull();
+  $p = $prod->getAllFull("ORDER BY product_id DESC");
   $fText = "Todos produtos";
 
   if(isset($args["filtro"])) {

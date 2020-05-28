@@ -8,8 +8,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     .product-page-picture {
-      display: grid;
-      grid-template-columns: 150px 1fr;
+      display: flex;
       padding: 10px;
       @include select();
       .product-page-carrossel {
@@ -40,10 +39,10 @@
         background: white;
         border-radius: 4px;
         margin: 20px 0;
-        max-height: 350px;
+        margin-left: 20px;
         img {
           display: block;
-          width: 70%;
+          width: 40%;
           margin: 0 auto;
         }
       }

@@ -580,6 +580,7 @@ textarea {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  align-items: flex-start;
   column-gap: 30px;
   row-gap: 30px; }
   .product-box-container.no-bg {
@@ -643,7 +644,7 @@ textarea {
       margin: 0 auto;
       padding: 20px 10px;
       width: calc(100% - 10px * 2);
-      max-width: 250px;
+      max-width: 120px;
       display: block;
       text-align: center;
       user-select: none;
@@ -1487,8 +1488,7 @@ textarea {
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
     .product-container .product-page-container .product-page-picture {
-      display: grid;
-      grid-template-columns: 150px 1fr;
+      display: flex;
       padding: 10px;
       user-select: none;
       -webkit-user-select: none;
@@ -1518,10 +1518,10 @@ textarea {
         background: white;
         border-radius: 4px;
         margin: 20px 0;
-        max-height: 350px; }
+        margin-left: 20px; }
         .product-container .product-page-container .product-page-picture .product-page-center-image img {
           display: block;
-          width: 70%;
+          width: 40%;
           margin: 0 auto; }
     .product-container .product-page-container .product-page-info {
       padding: 40px; }
