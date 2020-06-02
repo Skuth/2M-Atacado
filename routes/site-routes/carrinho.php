@@ -163,11 +163,24 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
 
   var_dump("Checkout page");
 
-  if (isset($_COOKIE["cartId"])) {
-    $cartId = $_COOKIE["cartId"];
-    $cart = Cart::getCartItem($cartId);
-    var_dump($cart);
+  if (!isset($_SESSION["client"])) { // remover !
+    if (isset($_COOKIE["cartId"])) {
+      $cartId = $_COOKIE["cartId"];
+      $cart = Cart::getCartItem($cartId);
+      
+      if (count($cart) <= 0) {
+        unset($_SESSION["cart"]);
+        return $res->withHeader("Location", "/carrinho");
+      }
+      
+      var_dump($cart);
+    } else {
+      return $res->withHeader("Location", "/carrinho");
+    }
+  } else {
+    // Pagina de login
   }
+  
   return $res;
 
 });
