@@ -11,32 +11,7 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
 
   $page = new Page();
 
-  function getCardFromCookie() {
-    $cart = [];
-    if (isset($_COOKIE["cartId"])) {
-      $cartId = $_COOKIE["cartId"];
-      $cartItems = Cart::getCartItem($cartId);
-
-      if (count($cartItems) > 0) {
-        $cartProdIds = explode(",", $cartItems["products_id"]);
-        $cartProdQ = explode(",", $cartItems["products_quantity"]);
-        
-        foreach ($cartProdIds as $key => $value) {
-          $c = [
-            "id"=>$value,
-            "quantity"=>$cartProdQ[$key]
-          ];
-
-          array_push($cart, $c);
-        }
-
-        $_SESSION["cart"] = $cart;
-      }
-    }
-    return $cart;
-  }
-
-  $cart = (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) ? $_SESSION["cart"] : getCardFromCookie();
+  $cart = (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) ? $_SESSION["cart"] : [];
 
   $prod = new Products();
 
@@ -50,17 +25,17 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
   $t = 0;
   
   foreach ($cart as $key => $value) {
-    $q += $value["quantity"];
     $p = $prod->getById($value["id"]);
-
+    
     if ($p["product_stock"] < $value["quantity"]) {
       $value["quantity"] = $p["product_stock"];
     }
-
+    
     if ($p["product_stock_quantity_off"] != NULL && $p["product_stock_quantity_off"] < $value["quantity"]) {
       $value["quantity"] = $p["product_stock_quantity_off"];
     }
 
+    $q += $value["quantity"];
 
     $p["quantity"] = $value["quantity"];
     $price = floatval($p["product_price"]);
@@ -187,6 +162,12 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
   // Confirmar
 
   var_dump("Checkout page");
+
+  if (isset($_COOKIE["cartId"])) {
+    $cartId = $_COOKIE["cartId"];
+    $cart = Cart::getCartItem($cartId);
+    var_dump($cart);
+  }
   return $res;
 
 });

@@ -55,7 +55,13 @@ const addCart = (id) => {
       "data": add
     },
     success: function (res) {
-      location.reload()
+      Swal.fire({
+        icon: 'success',
+        text: 'Produto adicionado ao carrinho de compras!',
+        preConfirm: () => {
+          location.reload()
+        }
+      })
     }
   });
 }
@@ -68,7 +74,13 @@ const removeCart = (id) => {
       "id": id
     },
     success: function (res) {
-      location.reload()
+      Swal.fire({
+        icon: 'success',
+        text: 'Produto removido do carrinho de compras!',
+        preConfirm: () => {
+          location.reload()
+        }
+      })
     }
   });
 }

@@ -19,6 +19,7 @@
 
   $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
+  require_once("verify.php");
   require_once(__DIR__."/routes/site.php");
   require_once(__DIR__."/routes/admin.php");
 

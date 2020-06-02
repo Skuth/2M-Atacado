@@ -36,9 +36,13 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
   <script type="text/javascript" src="./assets/js/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="./assets/js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
+
   <script src="./assets/js/script.min.js?id=<?php echo rand(); ?>"></script>
 </body>
 </html>

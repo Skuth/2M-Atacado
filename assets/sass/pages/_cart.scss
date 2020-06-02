@@ -40,6 +40,7 @@
             margin-top: 5px;
             font-size: em(18);
             color: $darkblue;
+            display: inline-block;
             cursor: pointer;
             @include select();
             @include transition(all, 0.5s);

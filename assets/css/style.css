@@ -1708,6 +1708,7 @@ textarea {
             margin-top: 5px;
             font-size: 1.125em;
             color: #1A3795;
+            display: inline-block;
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
