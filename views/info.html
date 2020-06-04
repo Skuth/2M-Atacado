@@ -17,6 +17,12 @@
     <div class="header-content">
       {function="parseProductDesc($desc)"}
 
+      {if="isset($btn) && strlen($btn) > 0"}
+      <div class="btn-container btn-container-center">
+        <a href="/produtos/distribuidor/{$btn}" class="btn btn-circle btn-blue btn-medium">Ver produtos</a>
+      </div>
+      {/if}
+
       {if="count($pics) > 0"}
       <div class="content-image">
         <div id="reader-pictures">

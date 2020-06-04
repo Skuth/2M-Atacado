@@ -17,6 +17,12 @@
     <div class="header-content">
       <?php echo parseProductDesc($desc); ?>
 
+      <?php if( isset($btn) && strlen($btn) > 0 ){ ?>
+      <div class="btn-container btn-container-center">
+        <a href="/produtos/distribuidor/<?php echo htmlspecialchars( $btn, ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-circle btn-blue btn-medium">Ver produtos</a>
+      </div>
+      <?php } ?>
+
       <?php if( count($pics) > 0 ){ ?>
       <div class="content-image">
         <div id="reader-pictures">

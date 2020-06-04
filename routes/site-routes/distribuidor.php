@@ -15,7 +15,7 @@ $app->get("/distribuidor/{dist}", function(Request $req, Response $res, $args) {
 
   $page = new Page();
   
-  $page->setTpl("info", ["content"=>$d["distributor_name"], "desc"=>$d["distributor_description"], "pics"=>$d["distributor_pictures"], "banner"=>$d["distributor_banner"]]);
+  $page->setTpl("info", ["content"=>$d["distributor_name"], "desc"=>$d["distributor_description"], "pics"=>$d["distributor_pictures"], "banner"=>$d["distributor_banner"], "btn"=>$distribuidor]);
 
   return $res;
 
