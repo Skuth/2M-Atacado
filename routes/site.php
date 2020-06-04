@@ -13,6 +13,7 @@ require_once("admin-functions.php");
 
 require_once("site-routes/inicio.php");
 require_once("site-routes/info.php");
+require_once("site-routes/distribuidor.php");
 require_once("site-routes/produtos.php");
 require_once("site-routes/carrinho.php");
 

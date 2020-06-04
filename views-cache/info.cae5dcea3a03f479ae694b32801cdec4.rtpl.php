@@ -6,33 +6,26 @@
         <h2><?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
       </div>
       <div class="reader-image">
-        <img src="https://sensecoaching.com.br/storage/2017/04/artigo_100908.jpg" alt="Sobre nós">
+        <?php if( $banner !== NULL ){ ?>
+        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $banner, ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Banner da distribuidora <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <?php }else{ ?>
+        <img src="./assets/img/banner.jpg" alt="Banner <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <?php } ?>
       </div>
     </div>
 
     <div class="header-content">
-      <span>Title</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error?</p>
-      <span>Title</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ducimus consectetur nemo dolore? Architecto cum minus delectus aperiam quidem ratione odit fuga laborum. Voluptate quae itaque soluta numquam necessitatibus. Odit?</p>
-      <span>Title</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error?</p>
-      <span>Title</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, dicta? Expedita, facilis! Dolor et temporibus accusamus delectus quibusdam? Odit earum temporibus eaque sequi. Nobis pariatur praesentium veniam aperiam nihil error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ducimus consectetur nemo dolore? Architecto cum minus delectus aperiam quidem ratione odit fuga laborum. Voluptate quae itaque soluta numquam necessitatibus. Odit?</p>
-      
+      <?php echo parseProductDesc($desc); ?>
+
+      <?php if( count($pics) > 0 ){ ?>
       <div class="content-image">
         <div id="reader-pictures">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
-          <img src="https://www.mapadaobra.com.br/wp-content/uploads/2017/04/novo-layout-VC-5.jpg" alt="">
+          <?php $counter1=-1;  if( isset($pics) && ( is_array($pics) || $pics instanceof Traversable ) && sizeof($pics) ) foreach( $pics as $key1 => $value1 ){ $counter1++; ?>
+          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Imagem <?php echo htmlspecialchars( $key1 + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?> da distribuidora <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <?php } ?>
         </div>
       </div>
+      <?php } ?>
     </div>
   </div>
 </div>

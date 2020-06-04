@@ -1095,7 +1095,7 @@ textarea {
   .navigation {
     position: relative; } }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .navigation-links .links-container {
     flex-direction: column;
     padding: 20px;

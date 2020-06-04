@@ -146,6 +146,7 @@ $app->post("/admin/distribuidor/editar", function(Request $req, Response $res, $
     $oldLogo = $d["distributor_logo"];
     $oldBanner = $d["distributor_banner"];
     $oldPictures = $d["distributor_pictures"];
+    $oldPictures = implode(",", $oldPictures);
 
     $logo = ($_FILES["logo"]["error"] != 0) ? $oldLogo : uploadImage($_FILES["logo"], "distribuidores");
     $banner = ($_FILES["banner"]["error"] != 0) ? $oldBanner : uploadImage($_FILES["banner"], "distribuidores");
@@ -176,6 +177,10 @@ $app->post("/admin/distribuidor/editar", function(Request $req, Response $res, $
     }
 
     $distribuitor = new Distributors();
+
+    if (strlen($pics) == 0) {
+      $pics = NULL;
+    }
 
     if ($distribuitor->editDist($id, $name, $address, $href, $desc, $logo, $banner, $pics) == true) {
       if ($oldPics == false) {

@@ -4,6 +4,26 @@ namespace Skuth\Model;
 use Skuth\DB\Sql;
 
 class Distributors {
+  private function parseImage($list): array {
+    foreach ($list as $key => $value) {
+      if (isset($list[$key]["distributor_pictures"]) && $list[$key]["distributor_pictures"] !== NULL) {
+        $pics = [];
+
+        $picList = explode(",", $list[$key]["distributor_pictures"]);
+
+        foreach ($picList as $k => $v) {
+          array_push($pics, $v);
+        }
+
+        $list[$key]["distributor_pictures"] = $pics;
+      } else {
+        $list[$key]["distributor_pictures"] = [];
+      }
+    }
+
+    return $list;
+  }
+
   public function getAll() {
     $sql = new Sql();
     $query = "SELECT * FROM distributors";
@@ -16,6 +36,21 @@ class Distributors {
     $query = "SELECT * FROM distributors WHERE distributor_id=:id LIMIT 1";
     $param = ["id"=>$id];
     $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
+
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
+      return $res;
+    }
+  }
+
+  public function getByUrl($href) {
+    $sql = new Sql();
+    $query = "SELECT * FROM distributors WHERE distributor_href=:href LIMIT 1";
+    $param = ["href"=>$href];
+    $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
 
     if (count($res) > 0) {
       return $res[0];
