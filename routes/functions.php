@@ -2,6 +2,15 @@
 
 use Skuth\Model\Departments;
 use Skuth\Model\Distributors;
+use Skuth\Model\SiteData;
+
+function setSiteData() {
+  $sd = new SiteData();
+  $data = $sd->getData();
+  $GLOBALS["siteData"] = $data;
+}
+
+setSiteData();
 
 function formatMoney($money) {
   $money = str_replace(",", ".", $money);

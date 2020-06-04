@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?>  
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $siteData = $GLOBALS["siteData"]; ?>  
   <div class="distributor">
     <div class="distributor-slider">
       <?php $distributors = getDistributors(); ?>
@@ -17,21 +17,21 @@
   <footer class="footer">
     <div class="footer-logo">
       <a href="./">
-        <img src="./assets/img/logo.png" alt="Logo da 2M Atacado">
+        <img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </a>
     </div>
     <div class="footer-info">
       <ul>
-        <li><i class="icofont-google-map"></i> Endereço: <span>R. Curitiba, 653 - Jardim Olinda - CEP: 28911-140</span></li>
-        <li><i class="icofont-id-card"></i> CNPJ: <span>99.999.999/0001-00</span></li>
-        <li><i class="icofont-files-stack"></i> Inscrição Estadual: <span>99.999.99-9</span></li>
+        <li><i class="icofont-google-map"></i> Endereço: <span><?php echo htmlspecialchars( $siteData["site_data_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
+        <li><i class="icofont-id-card"></i> CNPJ: <span><?php echo htmlspecialchars( $siteData["site_data_cnpj"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
+        <li><i class="icofont-files-stack"></i> Inscrição Estadual: <span><?php echo htmlspecialchars( $siteData["site_data_ie"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
       </ul>
     </div>
     <div class="footer-contact">
       <ul>
-        <li><i class="icofont-phone"></i> Tel: <span>(22) 9 9999-9999</span></li>
-        <li><i class="icofont-ui-email"></i> E-mail: <span>contato@2matacado.com</span></li>
-        <li><i class="icofont-clock-time"></i> Horário de funcionamento: <span>Seg. à Sex. das 8h às 17:45h</span></li>
+        <li><i class="icofont-phone"></i> Tel: <span><?php echo htmlspecialchars( $siteData["site_data_tel"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
+        <li><i class="icofont-ui-email"></i> E-mail: <span><?php echo htmlspecialchars( $siteData["site_data_email"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
+        <li><i class="icofont-clock-time"></i> Horário de funcionamento: <span><?php echo htmlspecialchars( $siteData["site_data_oh"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
       </ul>
     </div>
   </footer>

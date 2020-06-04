@@ -1,7 +1,8 @@
+{$siteData = $GLOBALS["siteData"]}
 <nav class="navigation {if="isset($navStyle)"}{$navStyle}{/if}">
   <div class="navigation-header">
     <div class="header-container">
-      <a href="./"><img src="./assets/img/logo.png" alt="Logo 2M Atacado"></a>
+      <a href="./"><img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo {$siteData['site_data_name']}"></a>
     </div>
   </div>
   <div class="navigation-links">
