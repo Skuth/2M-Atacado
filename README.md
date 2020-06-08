@@ -10,6 +10,11 @@
 - [ ] Campo de pesquisa
 - [ ] Pagina de cliente
 
+### SEO
+
+- [ ] Adicionar tags SEO
+- [ ] Desc do produto SEO Parse
+
 ### Back end
 
 - [ ] Pagina de edição de dados do site

@@ -77,8 +77,35 @@ function getDistributors() {
 }
 
 function getSiteUrl() {
-  return $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/";
+  return $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"];
 }
 
+function createSeoTags($title = "Inicio", $desc = "Teste", $tags = "teste1, teste2", $thumbnail = "assets/img/banner.png", $product = FALSE, $productInfo = []) {
+  $seoTags = [
+    "title"=>$title,
+    "desc"=>$desc,
+    "tags"=>$tags,
+    "thumbnail"=>$thumbnail,
+    "product"=>$product,
+  ];
+
+  if ($product == TRUE) {
+    $prodInfo = [
+      "productInfo"=>[
+        "brand"=>$productInfo["distributor_name"],
+        "ref"=>$productInfo["product_ref"],
+        "price"=>$productInfo["product_price"],
+        "priceOff"=>$productInfo["product_price_off"],
+        "offDate"=>$productInfo["product_price_off_days"]
+      ]
+    ];
+
+    $seoTags = array_merge($seoTags, $prodInfo);
+  }
+  
+  $GLOBALS["seoTags"] = $seoTags;
+}
+
+createSeoTags();
 
 ?>

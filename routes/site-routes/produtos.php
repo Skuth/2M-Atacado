@@ -15,6 +15,8 @@ $app->get("/produto/{id}/{ref}/{nome}", function(Request $req, Response $res, $a
   $prod = new Products();
   $p = $prod->getByIdFull($id);
   $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
+  
+  createSeoTags($p["product_name"], "Teste", "teste, teste", "assets/produtos/".$p["product_pictures"][0], TRUE, $p);
 
   $page = new Page();
 

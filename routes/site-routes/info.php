@@ -1,22 +1,19 @@
 <?php
 
 use Skuth\Page;
+use Skuth\Model\SiteData;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->get("/sobre[/{distribuidora}]", function(Request $req, Response $res, $args) {
+$app->get("/sobre", function(Request $req, Response $res, $args) {
 
-  if(isset($args["distribuidora"])) {
-    $dist = $args["distribuidora"];
-    $r = $dist;
-  } else {
-    $r = "Sobre nós";
-  }
+  $data = new SiteData();
+  $sdata = $data->getData();
 
   $page = new Page();
 
-  $page->setTpl("info", ["content"=>$r]);
+  $page->setTpl("info", ["content"=>"Sobre nós", "desc"=>$sdata["site_data_description"], "pics"=>$sdata["site_data_pictures"], "banner"=>$sdata["site_data_banner"], "type"=>1]);
 
   return $res;
 

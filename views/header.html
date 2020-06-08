@@ -1,13 +1,81 @@
+{$siteUrl = getSiteUrl()}
+{$reqUrl = $_SERVER[REQUEST_URI]}
 {$siteData = $GLOBALS["siteData"]}
+{$seoTags = $GLOBALS["seoTags"]}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <base href="{function="getSiteUrl()"}">
+  <base href="{$siteUrl}/">
 
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{$siteData["site_data_name"]}</title>
+  
+  <!-- SEO -->
+  <title>{$siteData["site_data_name"]} - {$seoTags["title"]}</title>
+
+  <link rel="canonical" href="{$siteUrl}{$reqUrl}">
+
+  <meta name="description" content="{$seoTags["desc"]}">
+  <meta name="keywords" content="{$seoTags["tags"]}">
+  <meta name="robots" content="index, follow">
+  <meta name="revisit-after" content="1 day">
+  <meta name="language" content="Portuguese">
+  <meta name="generator" content="N/A">
+
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="{$siteUrl}{$reqUrl}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{$siteData["site_data_name"]} - {$seoTags["title"]}">
+  <meta property="og:description" content="{$seoTags["desc"]}">
+  <meta property="og:image" content="{$siteUrl}/{$seoTags["thumbnail"]}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{$siteData["site_data_name"]} - {$seoTags["title"]}">
+  <meta name="twitter:description" content="{$seoTags["desc"]}">
+  <meta name="twitter:image" content="{$siteUrl}/{$seoTags["thumbnail"]}">
+
+  {if="$seoTags['product'] == true"}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/", 
+      "@type": "Product", 
+      "name": "{$seoTags["title"]}",
+      "image": "{$siteUrl}/{$seoTags["thumbnail"]}",
+      "description": "{$seoTags["desc"]}",
+      "brand": "{$seoTags["productInfo"]["brand"]}",
+      "sku": "{$seoTags["productInfo"]["ref"]}",
+      {if="strlen($seoTags['productInfo']['priceOff']) > 0"}
+
+      "offers": {
+        "@type": "Offer",
+        "url": "{$siteUrl}{$reqUrl}",
+        "priceCurrency": "BRL",
+        "price": "{$seoTags["productInfo"]["priceOff"]}",
+        {if="strlen($seoTags['productInfo']['offDate']) > 0"}"priceValidUntil": "{$seoTags["productInfo"]["offDate"]}",{/if}
+
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+      {/if}
+
+    }
+  </script>    
+  {else}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "{$siteData["site_data_name"]}",
+      "url": "{$siteUrl}/",
+      "logo": "{$siteUrl}/assets/img/logo.png"
+      "address": "Rio de Janeiro"
+    }
+  </script>
+  {/if}
+
+  <!-- SEO -->
 
   <link rel="stylesheet" href="./assets/css/style.min.css?id={function="rand()"}">
   <link rel="stylesheet" href="./assets/css/icofont.min.css">

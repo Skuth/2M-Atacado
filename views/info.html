@@ -6,10 +6,10 @@
         <h2>{$content}</h2>
       </div>
       <div class="reader-image">
-        {if="$banner !== NULL"}
-        <img src="./assets/distribuidores/{$banner}" alt="Banner da distribuidora {$content}">
+        {if="isset($banner) && strlen($banner) > 0"}
+        <img src="./assets/distribuidores/{$banner}" {if="isset($type) && $type == 1"} alt="Banner Sobre nós" {else} alt="Banner da distribuidora {$content}" {/if}>
         {else}
-        <img src="./assets/img/banner.jpg" alt="Banner {$content}">
+        <img src="./assets/img/banner.jpg" {if="isset($type) && $type == 1"} alt="Banner {$content}" {else} alt="Banner da distribuidora {$content}" {/if}">
         {/if}
       </div>
     </div>
@@ -23,7 +23,7 @@
       </div>
       {/if}
 
-      {if="count($pics) > 0"}
+      {if="isset($pics) && count($pics) > 0"}
       <div class="content-image">
         <div id="reader-pictures">
           {loop="$pics"}
