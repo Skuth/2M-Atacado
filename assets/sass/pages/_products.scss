@@ -1,5 +1,6 @@
 .container {
   .products-container {
+    min-height: calc(100vh - 780px);
     display: flex;
     &-sidebar {
       background: white;
@@ -69,6 +70,7 @@
     }
     &-content {
       width: calc(100% - 40px * 2);
+      max-width: $maxWidth;
       padding: 40px;
       margin: 0 auto;
       .products-header-container {

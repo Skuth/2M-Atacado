@@ -1,6 +1,7 @@
 .reader-container {
   width: 100%;
   margin: 0 auto;
+  min-height: calc(100vh - 730px);
   .reader-header {
     width: 100%;
     max-height: 550px;

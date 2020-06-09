@@ -713,7 +713,8 @@ textarea {
 
 .reader-container {
   width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  min-height: calc(100vh - 730px); }
   .reader-container .reader-header {
     width: 100%;
     max-height: 550px;
@@ -1324,6 +1325,7 @@ textarea {
       font-weight: 600; } }
 
 .container .products-container {
+  min-height: calc(100vh - 780px);
   display: flex; }
   .container .products-container-sidebar {
     background: white;
@@ -1397,6 +1399,7 @@ textarea {
               background: #1A3795; }
   .container .products-container-content {
     width: calc(100% - 40px * 2);
+    max-width: 1420px;
     padding: 40px;
     margin: 0 auto; }
     .container .products-container-content .products-header-container {
