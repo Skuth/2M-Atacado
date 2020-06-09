@@ -3,13 +3,12 @@
 ### Front end
 
 - [X] Listar produtos
-- [ ] Paginação de produtos
+- [X] Paginação de produtos
 - [X] Carrinho de produtos
 - [X] Adicionar ao carrinho
 - [X] Remover do carrinho
 - [ ] Campo de pesquisa
 - [ ] Pagina de cliente
-- [ ] Paginação de produtos
 
 ### SEO
 

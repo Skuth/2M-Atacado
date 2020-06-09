@@ -1396,6 +1396,7 @@ textarea {
               color: white;
               background: #1A3795; }
   .container .products-container-content {
+    width: calc(100% - 40px * 2);
     padding: 40px;
     margin: 0 auto; }
     .container .products-container-content .products-header-container {
@@ -1410,14 +1411,16 @@ textarea {
     .container .products-container-content .product-box-container {
       grid-template-columns: repeat(3, 1fr); }
     .container .products-container-content .product-warning {
-      margin-top: 80px;
-      width: 100%; }
+      margin: 0 auto;
+      padding: 80px 0;
+      width: 80%; }
       .container .products-container-content .product-warning span {
         font-size: 2.25em;
         display: block;
         text-align: center;
         padding: 20px 0; }
       .container .products-container-content .product-warning p {
+        text-align: center;
         font-size: 1.5em;
         margin-bottom: 10px; }
         .container .products-container-content .product-warning p a {
@@ -1438,6 +1441,12 @@ textarea {
     text-align: center; }
     .container .products-container .pagination a {
       text-decoration: none; }
+    .container .products-container .pagination .disabled {
+      color: currentColor;
+      cursor: not-allowed;
+      opacity: 0.5;
+      text-decoration: none;
+      pointer-events: none; }
     .container .products-container .pagination .arrow, .container .products-container .pagination .item {
       display: flex;
       align-items: center;

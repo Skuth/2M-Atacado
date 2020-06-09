@@ -73,11 +73,18 @@
       </div>
 
       <div class="pagination">
-        <a class="arrow" href="{$reqUrl}?pagina=1"><i class="icofont-rounded-left"></i></a>
-        <a class="item" href="{$reqUrl}?pagina=1">1</a>
-        <a class="item active" href="{$reqUrl}?pagina=2">2</a>
-        <a class="item" href="{$reqUrl}?pagina=3">3</a>
-        <a class="arrow" href="{$reqUrl}?pagina=2"><i class="icofont-rounded-right"></i></a>
+        <a class="arrow {if="$pagina <= 1"}disabled{/if}" href="{$reqUrl}?pagina={$pagina - 1}"><i class="icofont-rounded-left"></i></a>
+        
+        {loop="array(0,0,0)"}
+        {$key = $key + 1 * $pagina}
+        {if="$pagina > 1"} {$key -= 1} {/if}
+        {if="$pagina == $paginas"} {$key -= 1} {/if}
+        {if="$key > 0 && $key <= $paginas"}
+        <a class="item {if="$pagina == $key"}active{/if}" href="{$reqUrl}?pagina={$key}">{$key}</a>
+        {/if}
+        {/loop}
+
+        <a class="arrow {if="$pagina >= $paginas"}disabled{/if}" href="{$reqUrl}?pagina={$pagina + 1}"><i class="icofont-rounded-right"></i></a>
       </div>
 
       {else}

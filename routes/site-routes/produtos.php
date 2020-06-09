@@ -37,7 +37,15 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   $fText = "Todos produtos";
   $reqUrl = "/produtos";
 
-  $p = $prod->getFullWithCount("ORDER BY product_id DESC");
+  $limite = 6;
+  
+  if (isset($_GET["pagina"]) && $_GET["pagina"] > 0) {
+    $pagina = intval($_GET["pagina"]);
+  } else {
+    $pagina = 1;
+  }
+
+  $p = $prod->getFullWithCount("ORDER BY product_id DESC", $limite, $pagina);
 
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
@@ -51,7 +59,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           
           $dist = $args["param"];
           $distId = $distributor->getDisId($dist);
-          $p = $prod->getByDistFull($distId);
+          $p = $prod->getByDistFull($distId, $limite, $pagina);
 
           $fText = "Produtos do distribuidor - ".ucfirst($dist);
 
@@ -66,7 +74,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           $dep = $args["param"];
           $depId = $department->getDepId($dep);
           
-          $p = $prod->getByDeptFull($depId);
+          $p = $prod->getByDeptFull($depId, $limite, $pagina);
 
           $fText = "Produtos do departamento - ".ucfirst($dep);
 
@@ -75,7 +83,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           break;
 
         case 'ofertas':
-          $p = $prod->getByOffers();
+          $p = $prod->getByOffers($limite, $pagina);
 
           $fText = "Ofertas";
 
@@ -125,11 +133,13 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
   $tags = implode(", ", $tags);
 
+  $total = ceil($p[1]["count(1)"] / $limite);
+
   createSeoTags($fText, "", $tags);
 
   $page = new Page();
   
-  $page->setTpl("products", ["produtos"=>$p[0], "prodCount"=>$p[1]["count(1)"], "departamentos"=>$d, "distribuidores"=>$dis, "filterText"=>$fText, "reqUrl"=>$reqUrl]);
+  $page->setTpl("products", ["produtos"=>$p[0], "prodCount"=>$p[1]["count(1)"], "pagina"=>$pagina, "paginas"=>$total, "departamentos"=>$d, "distribuidores"=>$dis, "filterText"=>$fText, "reqUrl"=>$reqUrl]);
 
   return $res;
 

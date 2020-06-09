@@ -109,12 +109,19 @@ class Products {
     }
   }
 
-  public function getFullWithCount($params = "") {
+  public function getFullWithCount($params = "", $limite = 6, $pagina = 1) {
     $sql = new Sql();
+
+    if (!is_int($pagina)) {
+      $pagina = 1;
+    }
+
+    $offset = (($pagina - 1) * $limite);
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
-    INNER JOIN departments c ON c.department_id=products.department_id ".$params;
+    INNER JOIN departments c ON c.department_id=products.department_id ".$params."
+    LIMIT ".$limite." OFFSET ".$offset;
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);
@@ -124,13 +131,19 @@ class Products {
     return [$res, $count[0]];
   }
 
-  public function getByDistFull($dist) {
+  public function getByDistFull($dist, $limite = 6, $pagina = 1) {
     $sql = new Sql();
+
+    if (!is_int($pagina)) {
+      $pagina = 1;
+    }
+
+    $offset = (($pagina - 1) * $limite);
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE brand_id=:dist";
+    WHERE brand_id=:dist LIMIT ".$limite." OFFSET ".$offset;
 
     $param = ["dist"=>$dist];
 
@@ -143,13 +156,19 @@ class Products {
     return [$res, $count[0]];
   }
 
-  public function getByDeptFull($dep) {
+  public function getByDeptFull($dep, $limite = 6, $pagina = 1) {
     $sql = new Sql();
+
+    if (!is_int($pagina)) {
+      $pagina = 1;
+    }
+
+    $offset = (($pagina - 1) * $limite);
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE products.department_id=:dep";
+    WHERE products.department_id=:dep LIMIT ".$limite." OFFSET ".$offset;
 
     $param = ["dep"=>$dep];
     
@@ -163,13 +182,19 @@ class Products {
     return $res;
   }
 
-  public function getByOffers() {
+  public function getByOffers($limite = 6, $pagina = 1) {
     $sql = new Sql();
+
+    if (!is_int($pagina)) {
+      $pagina = 1;
+    }
+
+    $offset = (($pagina - 1) * $limite);
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE product_price_off IS NOT NULL";
+    WHERE product_price_off IS NOT NULL LIMIT ".$limite." OFFSET ".$offset;
     
     $res = $sql->select($query);
     $res = $this->parseImage($res);
