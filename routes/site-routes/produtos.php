@@ -37,7 +37,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   $fText = "Todos produtos";
   $reqUrl = "/produtos";
 
-  $limite = 6;
+  $limite = (3 * 3);
   
   if (isset($_GET["pagina"]) && $_GET["pagina"] > 0) {
     $pagina = intval($_GET["pagina"]);
