@@ -24,6 +24,19 @@ class Departments {
     }
   }
 
+  public function getDepId($href) {
+    $sql = new Sql();
+    $query = "SELECT * FROM departments WHERE department_href=:href LIMIT 1";
+    $param = ["href"=>$href];
+    $res = $sql->select($query, $param);
+
+    if (count($res) > 0) {
+      return $res[0]["department_id"];
+    } else {
+      return $res;
+    }
+  }
+
   public function cadDep($icon, $dep, $href) {
     $sql = new Sql();
     $query = "INSERT INTO departments (department_icon, department_text, department_href) VALUES (:icon, :dep, :href)";

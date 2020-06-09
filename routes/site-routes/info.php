@@ -11,6 +11,10 @@ $app->get("/sobre", function(Request $req, Response $res, $args) {
   $data = new SiteData();
   $sdata = $data->getData();
 
+  $desc = seoDescFilter($sdata["site_data_description"]);
+
+  createSeoTags("Sobre nós", $desc);
+
   $page = new Page();
 
   $page->setTpl("info", ["content"=>"Sobre nós", "desc"=>$sdata["site_data_description"], "pics"=>$sdata["site_data_pictures"], "banner"=>$sdata["site_data_banner"], "type"=>1]);

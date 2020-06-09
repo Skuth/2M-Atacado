@@ -22,10 +22,11 @@
 
     <div class="products-container-content">
 
+      <?php if( count($produtos) > 0 ){ ?>
       <div class="products-header-container">
         <div class="text-info">
           <h2><?php echo htmlspecialchars( $filterText, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
-          <span><?php echo count($produtos); ?> Produtos</span>
+          <span><?php echo htmlspecialchars( $prodCount, ENT_COMPAT, 'UTF-8', FALSE ); ?> Produtos</span>
         </div>
       </div>
 
@@ -42,7 +43,7 @@
           <?php $priceOff = formatMoney($value1["product_price_off"]); ?>
           <?php $priceOff = explode(",", $priceOff); ?>
         <?php } ?>
-        <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <a class="product-box" href="/produto/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           <?php if( $value1["product_price_off"] != NULL ){ ?>
           <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
           <?php } ?>
@@ -72,12 +73,20 @@
       </div>
 
       <div class="pagination">
-        <span class="arrow"><i class="icofont-rounded-left"></i></span>
-        <div class="item">1</div>
-        <div class="item active">2</div>
-        <div class="item">3</div>
-        <span class="arrow"><i class="icofont-rounded-right"></i></span>
+        <a class="arrow" href="<?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=1"><i class="icofont-rounded-left"></i></a>
+        <a class="item" href="<?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=1">1</a>
+        <a class="item active" href="<?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=2">2</a>
+        <a class="item" href="<?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=3">3</a>
+        <a class="arrow" href="<?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=2"><i class="icofont-rounded-right"></i></a>
       </div>
+
+      <?php }else{ ?>
+      <div class="product-warning">
+        <span>Opss!</span>
+        <p>Não encontramos nada, que tal voltar para a lista</p>
+        <p>Só clicar <a href="/produtos">aqui</a></p>
+      </div>
+      <?php } ?>
 
     </div>
 

@@ -9,11 +9,12 @@
 - [X] Remover do carrinho
 - [ ] Campo de pesquisa
 - [ ] Pagina de cliente
+- [ ] Paginação de produtos
 
 ### SEO
 
-- [ ] Adicionar tags SEO
-- [ ] Desc do produto SEO Parse
+- [X] Adicionar tags SEO
+- [X] Desc do produto SEO Parse
 
 ### Back end
 

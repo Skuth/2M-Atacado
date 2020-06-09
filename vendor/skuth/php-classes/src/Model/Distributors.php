@@ -59,6 +59,19 @@ class Distributors {
     }
   }
 
+  public function getDisId($href) {
+    $sql = new Sql();
+    $query = "SELECT distributor_id FROM distributors WHERE distributor_href=:href LIMIT 1";
+    $param = ["href"=>$href];
+    $res = $sql->select($query, $param);
+
+    if (count($res) > 0) {
+      return $res[0]["distributor_id"];
+    } else {
+      return $res;
+    }
+  }
+
   public function cadDist($name, $address, $href, $desc, $logo, $banner, $pics) {
     $sql = new Sql();
     $query = "INSERT INTO distributors (distributor_name, distributor_address, distributor_description, distributor_banner, distributor_logo, distributor_pictures, distributor_href) VALUES(:name, :address, :desc, :banner, :logo, :pictures, :href)";

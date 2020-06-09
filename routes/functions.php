@@ -80,7 +80,21 @@ function getSiteUrl() {
   return $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"];
 }
 
-function createSeoTags($title = "Inicio", $desc = "Teste", $tags = "teste1, teste2", $thumbnail = "assets/img/banner.png", $product = FALSE, $productInfo = []) {
+function seoDescFilter($desc) {
+  $desc = str_replace("}", "", $desc);
+  $desc = explode("#", $desc);
+  $text = [];
+  foreach ($desc as $key => $value) {
+    $value = explode("{", $value);
+    unset($value[0]);
+    $text = array_merge($text, $value);
+  }
+  $text = implode("", $text);
+  $text = str_replace("\n", ", ", $text);
+  return $text;
+}
+
+function createSeoTags($title = "Inicio", $desc = "", $tags = "", $thumbnail = "assets/img/banner.png", $product = FALSE, $productInfo = []) {
   $seoTags = [
     "title"=>$title,
     "desc"=>$desc,

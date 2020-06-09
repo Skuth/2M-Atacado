@@ -22,10 +22,11 @@
 
     <div class="products-container-content">
 
+      {if="count($produtos) > 0"}
       <div class="products-header-container">
         <div class="text-info">
           <h2>{$filterText}</h2>
-          <span>{function="count($produtos)"} Produtos</span>
+          <span>{$prodCount} Produtos</span>
         </div>
       </div>
 
@@ -42,7 +43,7 @@
           {$priceOff = formatMoney($value.product_price_off)}
           {$priceOff = explode(",", $priceOff)}
         {/if}
-        <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
+        <a class="product-box" href="/produto/{$value.product_ref}/{$name}">
           {if="$value.product_price_off != NULL"}
           <span class="product-percentage">{$percentage} %</span>
           {/if}
@@ -72,12 +73,20 @@
       </div>
 
       <div class="pagination">
-        <span class="arrow"><i class="icofont-rounded-left"></i></span>
-        <div class="item">1</div>
-        <div class="item active">2</div>
-        <div class="item">3</div>
-        <span class="arrow"><i class="icofont-rounded-right"></i></span>
+        <a class="arrow" href="{$reqUrl}?pagina=1"><i class="icofont-rounded-left"></i></a>
+        <a class="item" href="{$reqUrl}?pagina=1">1</a>
+        <a class="item active" href="{$reqUrl}?pagina=2">2</a>
+        <a class="item" href="{$reqUrl}?pagina=3">3</a>
+        <a class="arrow" href="{$reqUrl}?pagina=2"><i class="icofont-rounded-right"></i></a>
       </div>
+
+      {else}
+      <div class="product-warning">
+        <span>Opss!</span>
+        <p>Não encontramos nada, que tal voltar para a lista</p>
+        <p>Só clicar <a href="/produtos">aqui</a></p>
+      </div>
+      {/if}
 
     </div>
 

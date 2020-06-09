@@ -84,7 +84,7 @@
       {$priceOff = formatMoney($value.product_price_off)}
       {$priceOff = explode(",", $priceOff)}
       {/if}
-      <a class="product-box" href="/produto/{$value.product_id}/{$value.product_ref}/{$name}">
+      <a class="product-box" href="/produto/{$value.product_ref}/{$name}">
         {if="$value.product_price_off != NULL"}
         <span class="product-percentage">{$percentage} %</span>
         {/if}

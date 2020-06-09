@@ -87,6 +87,28 @@
       .product-box-container {
         grid-template-columns: repeat(3, 1fr);
       }
+      .product-warning {
+        margin-top: 80px;
+        width: 100%;
+        span {
+          font-size: em(36);
+          display: block;
+          text-align: center;
+          padding: 20px 0;
+        }
+        p {
+          font-size: em(24);
+          margin-bottom: 10px;
+          a {
+            text-decoration: none;
+            color: $mediumblue;
+            @include transition(all, 0.5s);
+            &:hover {
+              color: $darkblue;
+            }
+          }
+        }
+      }
     }
     .pagination {
       margin-top: 80px;
@@ -95,6 +117,9 @@
       justify-content: center;
       flex-direction: row;
       text-align: center;
+      a {
+        text-decoration: none;
+      }
       .arrow, .item {
         $size: 25px;
         display: flex;

@@ -88,6 +88,98 @@ class Products {
       return $res;
     }
   }
+
+  public function getByRefFull($ref) {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id
+    WHERE product_ref=:ref LIMIT 1";
+
+    $param = ["ref"=>$ref];
+    
+    $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
+    
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
+      return $res;
+    }
+  }
+
+  public function getFullWithCount($params = "") {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id ".$params;
+
+    $res = $sql->select($query);
+    $res = $this->parseImage($res);
+
+    $count = $sql->select("SELECT count(1) FROM products");
+
+    return [$res, $count[0]];
+  }
+
+  public function getByDistFull($dist) {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id
+    WHERE brand_id=:dist";
+
+    $param = ["dist"=>$dist];
+
+    
+    $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
+
+    $count = $sql->select("SELECT count(1) FROM products WHERE brand_id=:dist", $param);
+
+    return [$res, $count[0]];
+  }
+
+  public function getByDeptFull($dep) {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id
+    WHERE products.department_id=:dep";
+
+    $param = ["dep"=>$dep];
+    
+    $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
+
+    $count = $sql->select("SELECT count(1) FROM products WHERE department_id=:dep", $param);
+
+    return [$res, $count[0]];
+    
+    return $res;
+  }
+
+  public function getByOffers() {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id
+    WHERE product_price_off IS NOT NULL";
+    
+    $res = $sql->select($query);
+    $res = $this->parseImage($res);
+
+    $count = $sql->select("SELECT count(1) FROM products WHERE product_price_off IS NOT NULL");
+
+    return [$res, $count[0]];
+    
+    return $res;
+  }
   
   public function cadProd($nome, $ref, $price, $stock, $dist, $dep, $desc, $pics) {
     $sql = new Sql();

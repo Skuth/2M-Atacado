@@ -9,6 +9,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->get("/carrinho", function(Request $req, Response $res, $args) {
 
+  createSeoTags("Carrinho de compras");
+
   $page = new Page();
 
   $cart = (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) ? $_SESSION["cart"] : [];

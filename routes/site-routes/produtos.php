@@ -8,15 +8,17 @@ use Skuth\Model\Products;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->get("/produto/{id}/{ref}/{nome}", function(Request $req, Response $res, $args) {
+$app->get("/produto/{ref}/{nome}", function(Request $req, Response $res, $args) {
   
-  $id = $args["id"];
+  $ref = $args["ref"];
 
   $prod = new Products();
-  $p = $prod->getByIdFull($id);
+  $p = $prod->getByRefFull($ref);
   $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
+
+  $desc = seoDescFilter($p["product_description"]);
   
-  createSeoTags($p["product_name"], "Teste", "teste, teste", "assets/produtos/".$p["product_pictures"][0], TRUE, $p);
+  createSeoTags($p["product_name"], $desc, "teste, teste", "assets/produtos/".$p["product_pictures"][0], TRUE, $p);
 
   $page = new Page();
 
@@ -27,12 +29,15 @@ $app->get("/produto/{id}/{ref}/{nome}", function(Request $req, Response $res, $a
 });
 
 $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res, $args) {
-
-  // marca?=marca | categoria?=categoria
   
   $prod = new products();
-  $p = $prod->getAllFull("ORDER BY product_id DESC");
+
+  $department = new Departments();
+  $distributor = new Distributors();
   $fText = "Todos produtos";
+  $reqUrl = "/produtos";
+
+  $p = $prod->getFullWithCount("ORDER BY product_id DESC");
 
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
@@ -45,13 +50,12 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           if ($distribuidor == NULL) return $res->withHeader("Location", "/produtos");
           
           $dist = $args["param"];
-          foreach ($p as $key => $value) {
-            if ($value["distributor_href"] != $dist) {
-              unset($p[$key]);
-            }
-          }
+          $distId = $distributor->getDisId($dist);
+          $p = $prod->getByDistFull($distId);
 
           $fText = "Produtos do distribuidor - ".ucfirst($dist);
+
+          $reqUrl = $reqUrl."/distribuidor/".$dist;
           
           break;
 
@@ -60,40 +64,31 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           if ($departamento == NULL) return $res->withHeader("Location", "/produtos");
 
           $dep = $args["param"];
-          foreach ($p as $key => $value) {
-            if ($value["department_href"] != $dep) {
-              unset($p[$key]);
-            }
-          }
+          $depId = $department->getDepId($dep);
+          
+          $p = $prod->getByDeptFull($depId);
 
           $fText = "Produtos do departamento - ".ucfirst($dep);
+
+          $reqUrl = $reqUrl."/departamento/".$dep;
 
           break;
 
         case 'ofertas':
-          // listar ofertas
-          foreach ($p as $key => $value) {
-            if ($value["product_price_off"] == NULL) {
-              unset($p[$key]);
-            }
-          }
+          $p = $prod->getByOffers();
 
           $fText = "Ofertas";
-          break;
 
+          $reqUrl = $reqUrl."/ofertas";
+          break;
       }
     } else {
       return $res->withHeader("Location", "/produtos");
     }
   }
 
-  if (count($p) <= 0 && isset($args["filtro"])) return $res->withHeader("Location", "/produtos");
-
-  $dep = new Departments();
-  $d = $dep->getAll();
-
-  $dist = new Distributors();
-  $dis = $dist->getAll();
+  $d = $department->getAll();
+  $dis = $distributor->getAll();
 
   foreach ($d as $k => $v) {
     $d[$k]["products_count"] = 0;
@@ -112,9 +107,29 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
     }
   }
 
+  $tags = [];
+
+  if (count($p[0]) > 0) {
+    foreach ($p[0] as $key => $value) {
+        array_push($tags, $value["product_name"]);
+    }
+  }
+
+  foreach ($d as $key => $value) {
+    array_push($tags, $value["department_text"]);
+  }
+
+  foreach ($dis as $key => $value) {
+    array_push($tags, $value["distributor_name"]);
+  }
+
+  $tags = implode(", ", $tags);
+
+  createSeoTags($fText, "", $tags);
+
   $page = new Page();
   
-  $page->setTpl("products", ["produtos"=>$p, "departamentos"=>$d, "distribuidores"=>$dis, "filterText"=>$fText]);
+  $page->setTpl("products", ["produtos"=>$p[0], "prodCount"=>$p[1]["count(1)"], "departamentos"=>$d, "distribuidores"=>$dis, "filterText"=>$fText, "reqUrl"=>$reqUrl]);
 
   return $res;
 
