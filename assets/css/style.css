@@ -1425,8 +1425,10 @@ textarea {
       .container .products-container-content .product-warning p {
         text-align: center;
         font-size: 1.5em;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        font-weight: 300; }
         .container .products-container-content .product-warning p a {
+          font-weight: 400;
           text-decoration: none;
           color: #337DEC;
           transition: all 0.5s;

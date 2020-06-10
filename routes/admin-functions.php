@@ -57,6 +57,13 @@ function getNav() {
       "icon"=>"ni ni-album-2",
       "color"=>"text-info",
       "nivel"=>2
+    ],
+    [
+      "name"=>"administração",
+      "href"=>"administracao",
+      "icon"=>"fas fa-tools",
+      "color"=>"text-success",
+      "nivel"=>2
     ]
   ];
 
