@@ -14,7 +14,7 @@
     </div>
     <div class="product-page-info">
       <h2><?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
-      <a href="/distribuidor/<?php echo htmlspecialchars( $produto["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo filterName($produto["distributor_name"]); ?>">
+      <a href="/distribuidor/<?php echo htmlspecialchars( $produto["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         <img src="./assets/distribuidores/<?php echo htmlspecialchars( $produto["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
       </a>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>

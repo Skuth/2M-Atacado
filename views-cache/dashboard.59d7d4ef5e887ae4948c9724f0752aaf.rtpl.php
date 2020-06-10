@@ -54,7 +54,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Visitas mensais</h5>
-                  <span class="h2 font-weight-bold mb-0">34501</span>
+                  <span class="h2 font-weight-bold mb-0"><?php echo htmlspecialchars( $sum["SUM(product_views)"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -63,7 +63,15 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                <?php $percentage = getPercentage($sum["SUM(product_views_old)"], $sum["SUM(product_views)"]); ?>
+                <?php if( substr($percentage, 0, 1) == '-' ){ ?>
+                <?php $percentage = str_replace("-", "", $percentage); ?>
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span>
+                <?php }elseif( $percentage == 0 ){ ?>
+                <span class="text-primary mr-2"><i class="fas fa-minus"></i> <?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span>
+                <?php }else{ ?>
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> <?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span>
+                <?php } ?>
                 <span class="text-nowrap">Desde o último mês</span>
               </p>
             </div>
@@ -115,6 +123,8 @@
                   <?php if( substr($prodPer, 0, 1) == '-' ){ ?>
                   <?php $prodPer = str_replace("-", "", $prodPer); ?>
                   <i class="fas fa-arrow-down text-danger mr-3"></i> <span class="text-danger"><?php echo htmlspecialchars( $prodPer, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span> <span class="text-muted">Desde o último mês</span>
+                  <?php }elseif( $prodPer == 0 ){ ?>
+                  <i class="fas fa-minus text-primary mr-3"></i> <span class="text-primary"><?php echo htmlspecialchars( $prodPer, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span> <span class="text-muted">Desde o último mês</span>
                   <?php }else{ ?>
                   <i class="fas fa-arrow-up text-success mr-3"></i> <span class="text-success"><?php echo htmlspecialchars( $prodPer, ENT_COMPAT, 'UTF-8', FALSE ); ?>%</span> <span class="text-muted">Desde o último mês</span>
                   <?php } ?>

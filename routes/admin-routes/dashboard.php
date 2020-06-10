@@ -13,11 +13,13 @@ $app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
 
   $prods = new Products();
 
+  $sum = $prods->getSum();
+
   $produtos = $prods->getAll("ORDER BY product_views DESC LIMIT 5");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("dashboard", "dashboard")]]);
 
-  $page->setTpl("dashboard", ["produtos"=>$produtos]);
+  $page->setTpl("dashboard", ["produtos"=>$produtos, "sum"=>$sum]);
 
   return $res;
 

@@ -14,7 +14,7 @@
     </div>
     <div class="product-page-info">
       <h2>{$produto.product_name}</h2>
-      <a href="/distribuidor/{$produto.distributor_id}/{function="filterName($produto.distributor_name)"}">
+      <a href="/distribuidor/{$produto.distributor_href}">
         <img src="./assets/distribuidores/{$produto.distributor_logo}" alt="Logo da distribuidora {$produto.distributor_name}" width="50" class="product-page-brand">
       </a>
       <span class="ref">REF: {$produto.product_ref}</span>

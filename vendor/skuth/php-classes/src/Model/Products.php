@@ -22,6 +22,28 @@ class Products {
     return $list;
   }
 
+  public function getSum() {
+    $sql = new Sql();
+
+    $query = "SELECT SUM(product_views), SUM(product_views_old) FROM products";
+    $res = $sql->select($query);
+
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
+      return $res;
+    }
+  }
+
+  public static function updateViews($ref) {
+    $sql = new Sql();
+
+    $query = "UPDATE products SET product_views = product_views + 1 WHERE product_ref=:ref";
+    $param = ["ref"=>$ref];
+
+    $sql->query($query, $param);
+  }
+
   public function getTotal() {
     $sql = new Sql();
 

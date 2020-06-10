@@ -24,6 +24,8 @@ $app->get("/produto/{ref}/{nome}", function(Request $req, Response $res, $args) 
 
   $page->setTpl("product", ["produto"=>$p, "produtosRandom"=>$pr]);
 
+  Products::updateViews($ref);
+
   return $res;
 
 });
