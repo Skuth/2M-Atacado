@@ -2,7 +2,8 @@
 <nav class="navigation {if="isset($navStyle)"}{$navStyle}{/if}">
   <div class="navigation-header">
     <div class="header-container">
-      <a href="./"><img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo {$siteData['site_data_name']}"></a>
+      <a href="./" class="logo-image"><img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo {$siteData['site_data_name']}"></a>
+      <a href="{if="isset($_SESSION['client'])"} /cliente/perfil {else} /cliente/login {/if}" class="btn btn-circle">{if="isset($_SESSION['client'])"} <i class="icofont-ui-user"></i> {$_SESSION["client"]["client_name"]} {else} <i class="icofont-sign-in"></i> Entrar {/if}</a>
     </div>
   </div>
   <div class="navigation-links">

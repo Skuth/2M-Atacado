@@ -951,7 +951,7 @@ textarea {
       top: 488px;
       width: 90%;
       max-width: 1420px; }
-      .navigation.banner .navigation-header .header-container a {
+      .navigation.banner .navigation-header .header-container .logo-image {
         margin-top: -75px;
         width: 150px; }
       .navigation.banner .navigation-links .links-container {
@@ -964,20 +964,29 @@ textarea {
       margin: 0 auto;
       padding: 20px 0;
       width: 90%;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
       justify-content: center;
       max-width: 1420px;
       margin: 0 auto; }
-      .navigation-header .header-container a {
+      .navigation-header .header-container .logo-image {
+        grid-column: 2/2;
+        justify-self: center;
         width: 70px;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
         -o-transition: all 0.5s; }
-        .navigation-header .header-container a img {
+        .navigation-header .header-container .logo-image img {
           width: 100%;
           display: block; }
+      .navigation-header .header-container .btn {
+        justify-self: flex-end; }
+        .navigation-header .header-container .btn i {
+          margin-right: 5px; }
+        .navigation-header .header-container .btn:hover {
+          background: #337DEC; }
   .navigation-links {
     background: #337DEC;
     width: 100%;
@@ -1862,7 +1871,8 @@ textarea {
     .container .form-login-control input:-webkit-autofill:hover,
     .container .form-login-control input:-webkit-autofill:focus,
     .container .form-login-control input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #EEEEEE inset !important; }
+      -webkit-box-shadow: 0 0 0 30px #EEEEEE inset !important;
+      box-shadow: 0 0 0 30px #EEEEEE inset !important; }
     .container .form-login-control input {
       display: block;
       margin: 0 auto;
@@ -1908,3 +1918,87 @@ textarea {
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
         -o-transition: all 0.5s; }
+
+.checkout-container {
+  min-height: calc(100vh - 770px);
+  display: grid;
+  grid-template-columns: 65% auto; }
+  .checkout-container sup {
+    vertical-align: super;
+    font-size: smaller; }
+  .checkout-container-left, .checkout-container-right {
+    padding: 80px 40px; }
+  .checkout-container-left .checkout-box {
+    margin-top: 60px; }
+    .checkout-container-left .checkout-box:first-child {
+      margin-top: 0; }
+    .checkout-container-left .checkout-box .shipment-box, .checkout-container-left .checkout-box .product-content-box, .checkout-container-left .checkout-box .checkout-shipment-total {
+      background: white;
+      border-radius: 4px;
+      padding: 20px;
+      margin-top: 20px;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none; }
+    .checkout-container-left .checkout-box .shipment-title {
+      font-size: 1.625em; }
+    .checkout-container-left .checkout-box .product-title {
+      font-size: 1.25em; }
+    .checkout-container-left .checkout-box .shipment-box, .checkout-container-left .checkout-box .product-content-box {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; }
+      .checkout-container-left .checkout-box .shipment-box .shipment-icon, .checkout-container-left .checkout-box .product-content-box .shipment-icon {
+        background: #337DEC;
+        display: inline-block;
+        padding: 15px;
+        font-size: 1.75em;
+        border-radius: 50%;
+        color: white; }
+      .checkout-container-left .checkout-box .shipment-box .shipment-content, .checkout-container-left .checkout-box .shipment-box .product-content, .checkout-container-left .checkout-box .product-content-box .shipment-content, .checkout-container-left .checkout-box .product-content-box .product-content {
+        padding: 10px;
+        margin-left: 20px; }
+        .checkout-container-left .checkout-box .shipment-box .shipment-content p, .checkout-container-left .checkout-box .shipment-box .product-content p, .checkout-container-left .checkout-box .product-content-box .shipment-content p, .checkout-container-left .checkout-box .product-content-box .product-content p {
+          font-size: 1em;
+          margin-bottom: 5px;
+          color: #898989; }
+          .checkout-container-left .checkout-box .shipment-box .shipment-content p:last-child, .checkout-container-left .checkout-box .shipment-box .product-content p:last-child, .checkout-container-left .checkout-box .product-content-box .shipment-content p:last-child, .checkout-container-left .checkout-box .product-content-box .product-content p:last-child {
+            margin-bottom: 0; }
+      .checkout-container-left .checkout-box .shipment-box .shipment-options, .checkout-container-left .checkout-box .product-content-box .shipment-options {
+        padding: 10px;
+        margin-left: auto; }
+        .checkout-container-left .checkout-box .shipment-box .shipment-options a, .checkout-container-left .checkout-box .product-content-box .shipment-options a {
+          text-decoration: none;
+          color: #337DEC;
+          transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          -o-transition: all 0.5s; }
+          .checkout-container-left .checkout-box .shipment-box .shipment-options a:hover, .checkout-container-left .checkout-box .product-content-box .shipment-options a:hover {
+            color: #1A3795; }
+    .checkout-container-left .checkout-box .checkout-shipment-total {
+      text-align: right; }
+      .checkout-container-left .checkout-box .checkout-shipment-total span:first-child {
+        margin-right: 20px; }
+      .checkout-container-left .checkout-box .checkout-shipment-total span {
+        font-size: 1.375em; }
+  .checkout-container-right {
+    background: #f6f6f6; }
+    .checkout-container-right .checkout-info {
+      padding: 20px; }
+      .checkout-container-right .checkout-info.divider {
+        border-bottom: 1px solid #e1e1e1; }
+      .checkout-container-right .checkout-info h3 {
+        font-size: 1.125em; }
+      .checkout-container-right .checkout-info p {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: 1.125em; }
+        .checkout-container-right .checkout-info p:first-child {
+          margin-top: 0; }

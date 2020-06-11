@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="checkout-container">
+    <div class="checkout-container-left">
+
+      <div class="checkout-box">
+        <h2 class="shipment-title">Opções de envio para</h2>
+        <div class="shipment-box">
+
+          <div class="shipment-icon">
+            <i class="icofont-location-pin"></i>
+          </div>
+
+          <div class="shipment-content">
+            {if="count($address) > 0"}
+              {$fullAddress = $address.client_address_rua ." - ". $address.client_address_cidade .", ". $address.client_address_estado ." - CEP ". $address.client_address_cep}
+              {if="strlen($fullAddress) > 70"}
+                {$fullAddress = substr($fullAddress, 0, 70)."..."}
+              {/if}
+            <p class="address">{$fullAddress}</p>
+            <p class="person">Flávio Gomes - 22992917796</p>
+            {else}
+            <p class="address">Retirar na loja</p>
+            <p class="person">{$GLOBALS.siteData.site_data_address}</p>
+            {/if}
+          </div>
+
+          <div class="shipment-options">
+            <a href="#">Editar</a>
+          </div>
+
+        </div>
+      </div>
+
+      {loop="$products"}
+      <div class="checkout-box product-content">
+        <span class="product-title">
+          Encomenda {$key + 1}
+        </span>
+        <div class="product-content-box">
+
+          <div class="product-picture">
+            <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Imagem do produto {$value.product_name}" width="60">
+          </div>
+
+          <div class="product-content">
+            <p>{$value.product_name}</p>
+            <p>Quantidade: {$value.quantity}</p>
+            {if="$value.product_price_off != NULL"}
+              {$price = $value.product_price_off}
+            {else}
+              {$price = $value.product_price}
+            {/if}
+            {$price = formatMoney($price)}
+            {$price = explode(",", $price)}
+            <p>R$ {$price[0]} <sup>{$price[1]}</sup> unid.</p>
+          </div>
+
+        </div>
+      </div>
+      {/loop}
+
+      <div class="checkout-box">
+        <div class="checkout-shipment-total">
+          {$shipmentPrice = formatMoney($shipmentPrice)}
+          {$shipmentPrice = explode(",", $shipmentPrice)}
+          <span>Custo do envio</span>
+          <span>R$ {$shipmentPrice[0]} <sup>{$shipmentPrice[1]}</sup></span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="checkout-container-right">
+      <div class="checkout-info divider">
+        <h3 class="checkout-info-title">Resumo da compra</h3>
+      </div>
+
+      {$cartPrice = formatMoney($cart.cart_total)}
+      {$cartPrice = explode(",", $cartPrice)}
+
+      <div class="checkout-info divider">
+        <p>Produtos ({$cart.products_total}) <span>R$ {$cartPrice[0]} <sup>{$cartPrice[1]}</span></p>
+        <p>Envio <span>R$ {$shipmentPrice[0]} <sup>{$shipmentPrice[1]}</sup></span></p>
+      </div>
+
+      {$cartSubtotal = formatMoney($cart.cart_total_shipment)}
+      {$cartSubtotal = explode(",", $cartSubtotal)}
+
+      <div class="checkout-info">
+        <p>Total <span>{$cartSubtotal[0]} <sup>{$cartSubtotal[1]}</sup></span></p>
+      </div>
+
+      <div class="checkout-button">
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="{$cart.cart_id}" data-addressId="{$address.client_address_id}">Comprar</a>
+      </div>
+    </div>
+  </div>
+</div>

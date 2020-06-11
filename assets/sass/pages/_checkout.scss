@@ -1,0 +1,105 @@
+.checkout-container {
+  min-height: calc(100vh - 770px);
+  display: grid;
+  grid-template-columns: 65% auto;
+  sup {
+    vertical-align: super;
+    font-size: smaller;
+  }
+  &-left, &-right {
+    padding: 80px 40px;
+  }
+  &-left {
+    .checkout-box {
+      margin-top: 60px;
+      &:first-child {
+        margin-top: 0;
+      }
+      .shipment-box, .product-content-box, .checkout-shipment-total {
+        background: white;
+        border-radius: 4px;
+        padding: 20px;
+        margin-top: 20px;
+        @include select();
+      }
+      .shipment-title {
+        font-size: em(26);
+      }
+      .product-title {
+        font-size: em(20);
+      }
+      .shipment-box, .product-content-box {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .shipment-icon {
+          background: $mediumblue;
+          display: inline-block;
+          padding: 15px;
+          font-size: em(28);
+          border-radius: 50%;
+          color: white;
+        }
+        .shipment-content, .product-content {
+          padding: 10px;
+          margin-left: 20px;
+          p {
+            font-size: em(16);
+            margin-bottom: 5px;
+            color: lighten($black, 40);
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+        .shipment-options {
+          padding: 10px;
+          margin-left: auto;
+          a {
+            text-decoration: none;
+            color: $mediumblue;
+            @include transition(all, 0.5s);
+            &:hover {
+              color: $darkblue;
+            }
+          }
+        }
+      }
+      .checkout-shipment-total {
+        text-align: right;
+        span:first-child {
+          margin-right: 20px;
+        }
+        span {
+          font-size: em(22);
+        }
+      }
+    }
+  }
+  &-right {
+    background: lighten($grey, 3);
+    .checkout-info {
+      padding: 20px;
+      &.divider {
+        border-bottom: 1px solid darken($grey, 5);
+      }
+      h3 {
+        font-size: em(18);
+      }
+
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: em(18);
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

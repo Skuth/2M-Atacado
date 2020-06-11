@@ -3,6 +3,7 @@
 use Skuth\Page;
 use Skuth\Model\Products;
 use Skuth\Model\Cart;
+use Skuth\Model\Clients;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -170,7 +171,32 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
     $cart = Cart::getCartItem($cartId);
 
     if (count($cart) > 0) {
-      var_dump($cart);
+      $page = new Page();
+
+      $clients = new Clients();
+      $address = $clients->getAddress();
+      
+      $shipmentPrice = getShipmentPrice($address);
+      $cart["shipmentPrice"] = $shipmentPrice;
+      $cart["cart_total_shipment"] = floatval($cart["cart_total"]) + floatval($shipmentPrice);
+      $cart["products_total"] = count(explode(",", $cart["products_quantity"]));
+
+      $products = [];
+
+      $prods = explode(",", $cart["products_id"]);
+      $prodsQ = explode(",", $cart["products_quantity"]);
+
+      $p = new Products();
+
+      foreach ($prods as $key => $value) {
+        $r = $p->getByIdFull($value);
+        $r["quantity"] = $prodsQ[$key];
+        if (count($r) > 0) {
+          array_push($products, $r);
+        }
+      }
+      
+      $page->setTpl("checkout", ["products"=>$products, "cart"=>$cart, "shipmentPrice"=>$cart["shipmentPrice"], "address"=>$address]);
     } else {
       unset($_SESSION["cart"]);
       return $res->withHeader("Location", "/carrinho");

@@ -5,7 +5,7 @@
   <h2 class="text-center">Entrar</h2>
   {/if}
 
-  <form action="/cliente/login" method="POST" class="form-login">
+  <form onsubmit="return clienteLogin(event)" class="form-login">
     <div class="form-login-control">
       <input type="text" id="login" name="login" placeholder="CPF ou CNPJ" maxlength="14" required>
       <label for="login">CPF ou CNPJ</label>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-login-control">
-      <button type="submit" name="submit" class="btn btn-circle btn-blue btn-medium">
+      <button type="submit" class="btn btn-circle btn-blue btn-medium">
         <span>Entrar</span><i class="icofont-login"></i>
       </button>
     </div>

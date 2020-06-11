@@ -122,4 +122,18 @@ function createSeoTags($title = "Inicio", $desc = "", $tags = "", $thumbnail = "
 
 createSeoTags();
 
+function getShipmentPrice($address) {
+  $city = $address["client_address_cidade"];
+  
+  switch ($city) {
+    case 'Cabo Frio':
+      return 5;
+      break;
+    
+    default:
+      return 0;
+      break;
+  }
+}
+
 ?>

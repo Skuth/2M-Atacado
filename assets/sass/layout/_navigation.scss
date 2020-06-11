@@ -9,7 +9,7 @@
       max-width: $maxWidth;
       .navigation-header {
         .header-container {
-          a {
+          .logo-image {
             $w: 150px;
             margin-top: - $w / 2;
             width: $w;
@@ -42,17 +42,29 @@
       margin: 0 auto;
       padding: 20px 0;
       width: 90%;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
       justify-content: center;
       max-width: $maxWidth;
       margin: 0 auto;
-      a {
+      .logo-image {
+        grid-column: 2/2;
+        justify-self: center;
         width: 70px;
         @include transition(all, 0.5s);
         img {
           width: 100%;
           display: block;
+        }
+      }
+      .btn {
+        justify-self: flex-end;
+        i {
+          margin-right: 5px;
+        }
+        &:hover {
+          background: $mediumblue;
         }
       }
     }

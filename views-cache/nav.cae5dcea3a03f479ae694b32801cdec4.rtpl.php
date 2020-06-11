@@ -2,7 +2,8 @@
 <nav class="navigation <?php if( isset($navStyle) ){ ?><?php echo htmlspecialchars( $navStyle, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>">
   <div class="navigation-header">
     <div class="header-container">
-      <a href="./"><img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></a>
+      <a href="./" class="logo-image"><img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></a>
+      <a href="<?php if( isset($_SESSION['client']) ){ ?> /cliente/perfil <?php }else{ ?> /cliente/login <?php } ?>" class="btn btn-circle"><?php if( isset($_SESSION['client']) ){ ?> <i class="icofont-ui-user"></i> <?php echo htmlspecialchars( $_SESSION["client"]["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php }else{ ?> <i class="icofont-sign-in"></i> Entrar <?php } ?></a>
     </div>
   </div>
   <div class="navigation-links">

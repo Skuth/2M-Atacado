@@ -40,6 +40,49 @@ const handleQuantity = (o) => {
 let getUrl = window.location
 let baseUrl = getUrl.protocol + "//" + getUrl.host + "/"
 
+const clienteLogin = (e) => {
+  e.preventDefault()
+
+  const login = document.getElementById("login").value
+  const password = document.getElementById("password").value
+  
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"cliente/login",
+    data: {
+      "login": login,
+      "password": password
+    },
+    success: function (r) {
+      console.log(r)
+      res = JSON.parse(r)
+      Swal.fire({
+        icon: res.status,
+        text: res.message,
+        preConfirm: () => {
+          if (res.status == "success") {
+            location.reload()
+          }
+        }
+      })
+    }
+  });
+}
+
+const checkout = (btn) => {
+  const addressId = btn.getAttribute("data-addressId")
+  const cartId = btn.getAttribute("data-cartId")
+  let price = 0
+
+  if (addressId > 0) {
+    // ajax to get new price
+  }
+
+  // ajax to send order and clear cart
+  console.log(addressId)
+  console.log(cartId)
+}
+
 const addCart = (id) => {
   let itemBox = document.querySelector("#product-quantity")
   let quantity = Number(itemBox.innerHTML)
