@@ -9,6 +9,7 @@
 - [X] Remover do carrinho
 - [ ] Campo de pesquisa
 - [ ] Pagina de cliente
+- [ ] Arrumar erro no menu
 
 ### SEO
 

@@ -1,0 +1,92 @@
+.container {
+  .text-center {
+    margin-top: 40px;
+    display: block;
+    text-align: center;
+    padding: 40px 0;
+    font-size: em(42);
+  }
+  .form-login {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 40px;
+    max-width: 450px;
+    &-control {
+      position: relative;
+      margin-top: 60px;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-top: 20px;
+      }
+      label {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: em(20);
+        font-weight: 600;
+        opacity: 0;
+        @include transition(all, 0.3s);
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover, 
+      input:-webkit-autofill:focus, 
+      input:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 30px $grey inset !important;
+      }
+      input {
+        display: block;
+        margin: 0 auto;
+        font-size: em(20);
+        border: 0;
+        padding: 10px 20px;
+        width: calc(100% - 20px * 2);
+        background: transparent;
+        border-bottom: 2px solid $mediumblue;
+        color: $black;
+        @include transition(all, 0.5s);
+        &:focus {
+          border-color: $darkblue;
+          + label {
+            opacity: 1;
+            top: -25px;
+            left: 5px;
+            font-size: em(16);
+            color: $darkblue;
+          }
+        }
+        &:valid {
+          border-color: $darkblue;
+          + label {
+            opacity: 1;
+            top: -25px;
+            left: 5px;
+            font-size: em(16);
+            color: $darkblue;
+          }
+        }
+      }
+      button {
+        border: 0;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        &:hover {
+          i {
+            opacity: 1;
+            margin-left: 10px;
+          }
+        }
+        i {
+          margin-left: -18px;
+          opacity: 0;
+          @include transition(all, 0.5s);
+        }
+      }
+    }
+  }
+}

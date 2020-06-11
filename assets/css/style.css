@@ -1824,3 +1824,87 @@ textarea {
           -o-transition: all 0.5s; }
           .cart-container .cart-content .empty p a:hover {
             color: #1A3795; }
+
+.container .text-center {
+  margin-top: 40px;
+  display: block;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 2.625em; }
+
+.container .form-login {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding: 40px;
+  max-width: 450px; }
+  .container .form-login-control {
+    position: relative;
+    margin-top: 60px; }
+    .container .form-login-control:first-child {
+      margin-top: 0; }
+    .container .form-login-control:last-child {
+      margin-top: 20px; }
+    .container .form-login-control label {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 1.25em;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s; }
+    .container .form-login-control input:-webkit-autofill,
+    .container .form-login-control input:-webkit-autofill:hover,
+    .container .form-login-control input:-webkit-autofill:focus,
+    .container .form-login-control input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #EEEEEE inset !important; }
+    .container .form-login-control input {
+      display: block;
+      margin: 0 auto;
+      font-size: 1.25em;
+      border: 0;
+      padding: 10px 20px;
+      width: calc(100% - 20px * 2);
+      background: transparent;
+      border-bottom: 2px solid #337DEC;
+      color: #232323;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s; }
+      .container .form-login-control input:focus {
+        border-color: #1A3795; }
+        .container .form-login-control input:focus + label {
+          opacity: 1;
+          top: -25px;
+          left: 5px;
+          font-size: 1em;
+          color: #1A3795; }
+      .container .form-login-control input:valid {
+        border-color: #1A3795; }
+        .container .form-login-control input:valid + label {
+          opacity: 1;
+          top: -25px;
+          left: 5px;
+          font-size: 1em;
+          color: #1A3795; }
+    .container .form-login-control button {
+      border: 0;
+      color: white;
+      padding-top: 15px;
+      padding-bottom: 15px; }
+      .container .form-login-control button:hover i {
+        opacity: 1;
+        margin-left: 10px; }
+      .container .form-login-control button i {
+        margin-left: -18px;
+        opacity: 0;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s; }

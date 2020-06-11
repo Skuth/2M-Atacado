@@ -163,24 +163,36 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
   //
   // Confirmar
 
-  var_dump("Checkout page");
 
-  if (!isset($_SESSION["client"])) { // remover !
+  if (isset($_SESSION["client"])) { // remover !
+
+    $cartId = $_COOKIE["cartId"];
+    $cart = Cart::getCartItem($cartId);
+
+    if (count($cart) > 0) {
+      var_dump($cart);
+    } else {
+      unset($_SESSION["cart"]);
+      return $res->withHeader("Location", "/carrinho");
+    }
+
+  } else { // Pagina de login
+
+    $cart = [];
+
     if (isset($_COOKIE["cartId"])) {
       $cartId = $_COOKIE["cartId"];
       $cart = Cart::getCartItem($cartId);
-      
-      if (count($cart) <= 0) {
-        unset($_SESSION["cart"]);
-        return $res->withHeader("Location", "/carrinho");
-      }
-      
-      var_dump($cart);
+    }
+
+    if (count($cart) > 0) {
+      $page = new Page();
+      $page->setTpl("login", ["cart"=>true]);
     } else {
+      unset($_SESSION["cart"]);
       return $res->withHeader("Location", "/carrinho");
     }
-  } else {
-    // Pagina de login
+
   }
   
   return $res;

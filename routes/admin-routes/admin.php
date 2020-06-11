@@ -50,32 +50,22 @@ $app->post("/admin/administracao/editar", function(Request $req, Response $res, 
   if (isset($_POST["save"])) {
     
     $sd = new SiteData();
-   
-    function parseString($string) {
-      $string = preg_replace("/\s+/", "", $string);
-      $string = str_replace("(", "", $string);
-      $string = str_replace(")", "", $string);
-      $string = str_replace("-", "", $string);
-      $string = str_replace("/", "", $string);
-      $string = str_replace(".", "", $string);
-      return $string;
-    }
 
     $address = $_POST["address"];
     $email = $_POST["email"];
     $hf = $_POST["hf"];
 
-    $cnpj = parseString($_POST["cnpj"]);
+    $cnpj = parseCpfCnpj($_POST["cnpj"]);
     $cnpj = preg_replace("/(\d{3})(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj);
     
-    $ie = parseString($_POST["ie"]);
+    $ie = parseCpfCnpj($_POST["ie"]);
     $ie = preg_replace("/(\d{2})(\d{3})(\d{2})(\d{1})/", "\$1.\$2.\$3-\$4", $ie);
     
     $tel = $_POST["tel"];
     if (strpos($tel, ",") == TRUE) {
       $tel = explode(",", $tel);
       foreach ($tel as $key => $value) {
-        $value = parseString($value);
+        $value = parseCpfCnpj($value);
         $tel[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
       }
       $tel = implode(" | ", $tel);

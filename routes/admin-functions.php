@@ -123,6 +123,16 @@ function getPercentage($old, $new) {
   }
 }
 
+function parseCpfCnpj($string) {
+  $string = preg_replace("/\s+/", "", $string);
+  $string = str_replace("(", "", $string);
+  $string = str_replace(")", "", $string);
+  $string = str_replace("-", "", $string);
+  $string = str_replace("/", "", $string);
+  $string = str_replace(".", "", $string);
+  return $string;
+}
+
 function uploadImage($image, $path) {
   $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
   
