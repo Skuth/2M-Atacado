@@ -91,7 +91,12 @@
       </div>
 
       <div class="checkout-button">
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="<?php echo htmlspecialchars( $cart["cart_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-addressId="<?php echo htmlspecialchars( $address["client_address_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
+        <?php if( isset($address["client_address_id"]) ){ ?>
+          <?php $addressId = $address["client_address_id"]; ?>
+        <?php }else{ ?>
+          <?php $addressId = 0; ?>
+        <?php } ?>
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="<?php echo htmlspecialchars( $cart["cart_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
       </div>
     </div>
   </div>

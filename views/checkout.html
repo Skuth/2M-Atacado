@@ -91,7 +91,12 @@
       </div>
 
       <div class="checkout-button">
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="{$cart.cart_id}" data-addressId="{$address.client_address_id}">Comprar</a>
+        {if="isset($address.client_address_id)"}
+          {$addressId = $address.client_address_id}
+        {else}
+          {$addressId = 0}
+        {/if}
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="{$cart.cart_id}" data-addressId="{$addressId}">Comprar</a>
       </div>
     </div>
   </div>

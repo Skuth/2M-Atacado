@@ -150,6 +150,37 @@ class Products {
 
     $count = $sql->select("SELECT count(1) FROM products");
 
+    if (count($count) <= 0) {
+      $count[0] = 0;
+    }
+
+    return [$res, $count[0]];
+  }
+
+  public function getBySearch($search, $limite = 6, $pagina = 1) {
+    $sql = new Sql();
+
+    if (!is_int($pagina)) {
+      $pagina = 1;
+    }
+
+    $offset = (($pagina - 1) * $limite);
+
+    $query = "SELECT * FROM products
+    INNER JOIN distributors a ON a.distributor_id=products.brand_id
+    INNER JOIN departments c ON c.department_id=products.department_id
+    WHERE product_name LIKE '%$search%' ESCAPE '$' LIMIT ".$limite." OFFSET ".$offset;
+
+    
+    $res = $sql->select($query);
+    $res = $this->parseImage($res);
+
+    $count = $sql->select("SELECT count(1) FROM products WHERE product_name LIKE '%$search%' ESCAPE '$'");
+    
+    if (count($count) <= 0) {
+      $count[0] = 0;
+    }
+
     return [$res, $count[0]];
   }
 
@@ -175,6 +206,10 @@ class Products {
 
     $count = $sql->select("SELECT count(1) FROM products WHERE brand_id=:dist", $param);
 
+    if (count($count) <= 0) {
+      $count[0] = 0;
+    }
+
     return [$res, $count[0]];
   }
 
@@ -199,6 +234,10 @@ class Products {
 
     $count = $sql->select("SELECT count(1) FROM products WHERE department_id=:dep", $param);
 
+    if (count($count) <= 0) {
+      $count[0] = 0;
+    }
+
     return [$res, $count[0]];
     
     return $res;
@@ -222,6 +261,10 @@ class Products {
     $res = $this->parseImage($res);
 
     $count = $sql->select("SELECT count(1) FROM products WHERE product_price_off IS NOT NULL");
+
+    if (count($count) <= 0) {
+      $count[0] = 0;
+    }
 
     return [$res, $count[0]];
     

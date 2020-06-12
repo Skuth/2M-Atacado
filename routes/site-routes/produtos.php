@@ -52,7 +52,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
     
-    if($filtro === "distribuidor" || $filtro === "ofertas" || $filtro === "departamento") {
+    if($filtro === "distribuidor" || $filtro === "ofertas" || $filtro === "departamento" || $filtro === "pesquisa") {
       switch ($filtro) {
 
         case 'distribuidor':
@@ -91,6 +91,18 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
           $reqUrl = $reqUrl."/ofertas";
           break;
+
+          case 'pesquisa':
+            $search = $args["param"];
+
+            $search = trim(strip_tags($search));
+
+            $p = $prod->getBySearch($search, $limite, $pagina);
+
+            $fText = "Pesquisa por - ".$search;
+
+            $reqUrl = $reqUrl."/pesquisa/".$search;
+            break;
       }
     } else {
       return $res->withHeader("Location", "/produtos");

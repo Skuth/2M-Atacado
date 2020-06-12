@@ -13,6 +13,7 @@
 - [ ] Editar endereço
 - [ ] Finalizar compra
 - [ ] Pagina de cadastro de cliente
+- [ ] Mudar menu para position relative
 
 ### SEO
 
