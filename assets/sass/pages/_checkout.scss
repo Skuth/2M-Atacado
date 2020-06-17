@@ -103,3 +103,28 @@
     }
   }
 }
+
+@media(max-width: 960px) {
+  .container .checkout-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 500px) {
+  .container .checkout-container {
+    .checkout-container-left {
+      .checkout-box {
+        .shipment-box, .product-content-box {
+          margin-top: 20px;
+          flex-direction: column;
+          .shipment-content, .product-content {
+            padding: 20px 0;
+          }
+          .shipment-options {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

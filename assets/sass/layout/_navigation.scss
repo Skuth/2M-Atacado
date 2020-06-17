@@ -76,11 +76,25 @@
       margin: 0 auto;
       padding: 15px;
       width: calc(90% + 10px * 2);
-      display: flex;
-      align-content: center;
-      justify-content: space-between;
       max-width: $maxWidth + 10px * 2;
       @include transition(all, 0.5s);
+      #mobileNav {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+      }
+      ol {
+        display: none;
+        #mobile {
+          cursor: pointer;
+          padding: 20px;
+          display: inline-block;
+          margin: 0 auto;
+          background: white;
+          border-radius: 4px;
+          font-weight: 600;
+        }
+      }
       ul {
         display: flex;
         align-items: center;
@@ -203,11 +217,19 @@
     &-links .links-container {
       flex-direction: column;
       padding: 20px;
-      padding-bottom: 30px;
       width: calc(100% - 20px * 2);
+      ol {
+        display: block;
+      }
+      #mobileNav {
+        display: none;
+      }
       ul {
         flex-direction: column;
         align-items: stretch;
+        &:first-child {
+          margin-top: 10px;
+        }
         &.left .submenu {
           &.active {
             > ul {
