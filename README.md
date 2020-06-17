@@ -14,12 +14,13 @@
 - [ ] Finalizar compra
 - [ ] Pagina de cadastro de cliente
 - [ ] Mudar menu para position relative
+- [ ] Menu mobile
 
 ### SEO
 
 - [X] Adicionar tags SEO
 - [X] Desc do produto SEO Parse
-- [ ] Para checkout e login
+- [X] Para checkout e login
 
 ### Back end
 

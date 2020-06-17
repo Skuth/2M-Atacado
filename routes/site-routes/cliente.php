@@ -12,6 +12,8 @@ $app->get("/cliente/login", function(Request $req, Response $res, $args) {
     return $res->withHeader("Location", "/");
   }
 
+  createSeoTags("Entrar");
+
   $page = new Page();
   $page->setTpl("login");
 

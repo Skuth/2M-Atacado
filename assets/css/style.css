@@ -924,8 +924,7 @@ textarea {
 
 .navigation {
   z-index: 10;
-  position: -webkit-sticky;
-  position: sticky;
+  position: relative;
   top: 0;
   width: 100%;
   margin: 0 auto;
@@ -945,7 +944,7 @@ textarea {
   -o-box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2); }
   @media (min-width: 1200px) {
     .navigation.banner {
-      position: absolute;
+      position: relative;
       left: 0;
       right: 0;
       top: 488px;
@@ -1141,6 +1140,23 @@ textarea {
             float: right !important;
             top: 0 !important;
             right: 0 !important; } }
+
+@media (max-width: 768px) {
+  .navigation .navigation-header .header-container {
+    grid-template-columns: 1fr 1fr; }
+    .navigation .navigation-header .header-container .logo-image {
+      justify-self: flex-start;
+      grid-column: unset; } }
+
+@media (max-width: 475px) {
+  .navigation .navigation-header .header-container {
+    grid-template-columns: 1fr 1fr; }
+    .navigation .navigation-header .header-container .btn {
+      padding: 10px;
+      font-size: 0em; }
+      .navigation .navigation-header .header-container .btn i {
+        font-size: 18px;
+        margin: 0 auto; } }
 
 .distributor {
   background: #337DEC;
@@ -1505,16 +1521,18 @@ textarea {
   .product-box-container {
     grid-template-columns: repeat(2, 1fr) !important; } }
 
+@media (max-width: 900px) {
+  .container .products-container .products-container-sidebar {
+    display: none; } }
+
 @media (max-width: 768px) {
   .container .products-container .products-container-content {
     padding: 20px;
     width: calc(90% - 20px * 2); }
-  .container .products-container .products-container-sidebar {
-    display: none; }
   .pagination .item {
     font-size: 0.875em !important; } }
 
-@media (max-width: 425px) {
+@media (max-width: 605px) {
   .product-box-container {
     grid-template-columns: repeat(1, 1fr) !important; } }
 
@@ -1702,12 +1720,16 @@ textarea {
     .product-container .product-page-container .product-page-picture {
       display: flex;
       flex-direction: column-reverse; }
+      .product-container .product-page-container .product-page-picture .product-page-center-image {
+        margin: 0 auto; }
       .product-container .product-page-container .product-page-picture .product-page-carrossel {
         display: block;
         text-align: center; }
         .product-container .product-page-container .product-page-picture .product-page-carrossel-box {
           display: inline-block;
-          margin: 10px !important; } }
+          margin: 10px !important; }
+    .product-container .product-page-container .product-page-description .product-page-description-box {
+      font-size: 0.875em; } }
 
 .cart-container {
   padding: 80px 0;
@@ -1834,6 +1856,51 @@ textarea {
           .cart-container .cart-content .empty p a:hover {
             color: #1A3795; }
 
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto; }
+  .cart-container .cart-content {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto; }
+    .cart-container .cart-content .cart-content-items .box {
+      grid-template-columns: 150px 1fr;
+      grid-template-rows: 1fr 1fr;
+      padding: 40px 0;
+      column-gap: 10px; }
+      .cart-container .cart-content .cart-content-items .box .picture {
+        justify-self: center; }
+      .cart-container .cart-content .cart-content-items .box .quantity {
+        padding: 20px 30px;
+        margin: 0 auto;
+        justify-self: center; }
+      .cart-container .cart-content .cart-content-items .box .price {
+        margin-right: 40px; } }
+
+@media (max-width: 425px) {
+  .cart-container .cart-content .box {
+    row-gap: 20px; }
+    .cart-container .cart-content .box .picture {
+      width: 80px; }
+    .cart-container .cart-content .box .picture, .cart-container .cart-content .box .info {
+      grid-column: 1/3;
+      justify-self: center;
+      text-align: center; }
+    .cart-container .cart-content .box .info .title {
+      padding: 0 10px;
+      font-size: 1.125em; }
+    .cart-container .cart-content .box .action {
+      padding: 20px; }
+  .cart-content .cart-content-info {
+    text-align: center; }
+    .cart-content .cart-content-info .cart-info {
+      float: none;
+      margin: 0 auto; }
+    .cart-content .cart-content-info .btn {
+      float: none; } }
+
 .container .text-center {
   margin-top: 40px;
   display: block;
@@ -1843,7 +1910,7 @@ textarea {
 
 .container .form-login {
   text-align: center;
-  width: 80%;
+  width: calc(80% - 40px * 2);
   margin: 0 auto;
   margin-bottom: 40px;
   padding: 40px;
@@ -1861,8 +1928,9 @@ textarea {
       top: 10px;
       left: 20px;
       font-size: 1.25em;
-      font-weight: 600;
-      opacity: 0;
+      color: #999;
+      font-weight: 400;
+      z-index: 1;
       transition: all 0.3s;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
@@ -1874,6 +1942,8 @@ textarea {
       -webkit-box-shadow: 0 0 0 30px #EEEEEE inset !important;
       box-shadow: 0 0 0 30px #EEEEEE inset !important; }
     .container .form-login-control input {
+      position: relative;
+      z-index: 2;
       display: block;
       margin: 0 auto;
       font-size: 1.25em;
@@ -1890,7 +1960,7 @@ textarea {
       .container .form-login-control input:focus {
         border-color: #1A3795; }
         .container .form-login-control input:focus + label {
-          opacity: 1;
+          font-weight: 600;
           top: -25px;
           left: 5px;
           font-size: 1em;
@@ -1898,7 +1968,7 @@ textarea {
       .container .form-login-control input:valid {
         border-color: #1A3795; }
         .container .form-login-control input:valid + label {
-          opacity: 1;
+          font-weight: 600;
           top: -25px;
           left: 5px;
           font-size: 1em;
@@ -1918,6 +1988,10 @@ textarea {
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
         -o-transition: all 0.5s; }
+
+@media (max-width: 425px) {
+  .container .text-center {
+    font-size: 1.5em; } }
 
 .checkout-container {
   min-height: calc(100vh - 770px);

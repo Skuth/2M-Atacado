@@ -206,6 +206,9 @@
       .product-page-picture {
         display: flex;
         flex-direction: column-reverse;
+        .product-page-center-image {
+          margin: 0 auto;
+        }
         .product-page-carrossel {
           display: block;
           text-align: center;
@@ -213,6 +216,11 @@
             display: inline-block;
             margin: 10px!important;
           }
+        }
+      }
+      .product-page-description {
+        .product-page-description-box {
+          font-size: em(14);
         }
       }
     }

@@ -171,6 +171,8 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
     $cart = Cart::getCartItem($cartId);
 
     if (count($cart) > 0) {
+      createSeoTags("Finalizar compra");
+
       $page = new Page();
 
       $clients = new Clients();
@@ -212,6 +214,8 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
     }
 
     if (count($cart) > 0) {
+      createSeoTags("Faça login para continuar");
+
       $page = new Page();
       $page->setTpl("login", ["cart"=>true]);
     } else {

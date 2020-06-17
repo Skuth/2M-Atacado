@@ -1,7 +1,7 @@
 .navigation {
   @media(min-width: 1200px) {
     &.banner {
-      position: absolute;
+      position: relative;
       left: 0;
       right: 0;
       top: 488px;
@@ -24,8 +24,7 @@
     }
   }
   z-index: 10;
-  position: -webkit-sticky;
-  position: sticky;
+  position: relative;
   top: 0;
   width: 100%;
   margin: 0 auto;
@@ -247,6 +246,38 @@
               top: 0!important;
               right: 0!important;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: $tablet) {
+  .navigation {
+    .navigation-header {
+      .header-container {
+        grid-template-columns: 1fr 1fr;
+        .logo-image {
+          justify-self: flex-start;
+          grid-column: unset;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 475px) {
+  .navigation {
+    .navigation-header {
+      .header-container {
+        grid-template-columns: 1fr 1fr;
+        .btn {
+          padding: 10px;
+          font-size: em(0);
+          i {
+            font-size: 18px;
+            margin: 0 auto;
           }
         }
       }

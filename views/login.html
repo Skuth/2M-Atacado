@@ -7,11 +7,11 @@
 
   <form onsubmit="return clienteLogin(event)" class="form-login">
     <div class="form-login-control">
-      <input type="text" id="login" name="login" placeholder="CPF ou CNPJ" maxlength="14" required>
+      <input type="text" id="login" name="login" maxlength="14" required>
       <label for="login">CPF ou CNPJ</label>
     </div>
     <div class="form-login-control">
-      <input type="password" id="password" name="password" placeholder="Senha" required>
+      <input type="password" id="password" name="password" required>
       <label for="password">Senha</label>
     </div>
 
