@@ -1786,7 +1786,8 @@ textarea {
           display: block; }
           .cart-container .cart-content-items .box .info .title {
             font-weight: 600;
-            font-size: 1.5em; }
+            font-size: 1.5em;
+            cursor: pointer; }
           .cart-container .cart-content-items .box .info .action {
             margin-top: 5px;
             font-size: 1.125em;
@@ -2076,6 +2077,8 @@ textarea {
         font-size: 1.375em; }
   .checkout-container-right {
     background: #f6f6f6; }
+    .checkout-container-right .btn {
+      cursor: pointer; }
     .checkout-container-right .checkout-info {
       padding: 20px; }
       .checkout-container-right .checkout-info.divider {

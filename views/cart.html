@@ -8,7 +8,7 @@
           <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Imagem do produto {$value.product_name} | Ref {$value.product_ref}">
         </div>
         <div class="info">
-          <p class="title">{$value.product_name}</p>
+          <p class="title" onclick="location.href='produto/{$value.product_ref}/{function="filterName($value.product_name)"}'">{$value.product_name}</p>
           <div class="action">
             <p class="remove" onclick="removeCart({$value.product_id})">Excluir</p>
           </div>

@@ -24,9 +24,9 @@
             {/if}
           </div>
 
-          <div class="shipment-options">
+          <!-- <div class="shipment-options">
             <a href="#">Editar</a>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -34,7 +34,7 @@
       {loop="$products"}
       <div class="checkout-box product-content">
         <span class="product-title">
-          Encomenda {$key + 1}
+          Produto {$key + 1}
         </span>
         <div class="product-content-box">
 
@@ -87,7 +87,7 @@
       {$cartSubtotal = explode(",", $cartSubtotal)}
 
       <div class="checkout-info">
-        <p>Total <span>{$cartSubtotal[0]} <sup>{$cartSubtotal[1]}</sup></span></p>
+        <p>Total <span>R$ {$cartSubtotal[0]} <sup>{$cartSubtotal[1]}</sup></span></p>
       </div>
 
       <div class="checkout-button">
@@ -96,7 +96,7 @@
         {else}
           {$addressId = 0}
         {/if}
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="{$cart.cart_id}" data-addressId="{$addressId}">Comprar</a>
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="{$addressId}">Comprar</a>
       </div>
     </div>
   </div>

@@ -79,6 +79,9 @@
   }
   &-right {
     background: lighten($grey, 3);
+    .btn {
+      cursor: pointer;
+    }
     .checkout-info {
       padding: 20px;
       &.divider {

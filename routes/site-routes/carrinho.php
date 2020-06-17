@@ -151,7 +151,7 @@ $app->POST("/addcart/{action}", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/checkout", function(Request $req, Response $res, $args) {
+$app->get("/checkout[/{address}]", function(Request $req, Response $res, $args) {
 
   // Check out
   //
@@ -170,13 +170,21 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
     $cartId = $_COOKIE["cartId"];
     $cart = Cart::getCartItem($cartId);
 
+    var_dump($cart);
+
     if (count($cart) > 0) {
       createSeoTags("Finalizar compra");
 
       $page = new Page();
 
       $clients = new Clients();
-      $address = $clients->getAddress();
+
+      if (isset($args["address"]) && 0 == true) {
+        $address = $clients->getAddress();
+      } else {
+        $address = [];
+      }
+
       
       $shipmentPrice = getShipmentPrice($address);
       $cart["shipmentPrice"] = $shipmentPrice;
@@ -225,6 +233,42 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
 
   }
   
+  return $res;
+
+});
+
+$app->post("/checkout/order", function(Request $req, Response $res, $args) {
+
+  function parseResponse($status, $message) {
+    $r = [
+      "status"=>$status,
+      "message"=>$message
+    ];
+
+    return json_encode($r);
+  }
+
+  $addressId = (isset($_POST["addressId"])) ? $_POST["addressId"] : 0;
+  $cartId = (isset($_COOKIE["cartId"])) ? $_COOKIE["cartId"] : 0;
+
+  if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
+    if ($cartId !== 0) {
+
+      $cart = Cart::getCartItem($cartId);
+  
+      if (count($cart) > 0) {
+        echo parseResponse("success", "Compra efetuada com sucesso!");
+      } else {
+        echo parseResponse("error", "Você não tem nada no carrinho!");
+      }
+      
+    } else {
+      echo parseResponse("error", "Você não tem nada no carrinho!");
+    }
+  } else {
+    echo parseResponse("error", "Você precisa estar logado para efetuar uma compra!");
+  }
+
   return $res;
 
 });

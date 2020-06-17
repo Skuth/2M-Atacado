@@ -24,9 +24,9 @@
             <?php } ?>
           </div>
 
-          <div class="shipment-options">
+          <!-- <div class="shipment-options">
             <a href="#">Editar</a>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -34,7 +34,7 @@
       <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
       <div class="checkout-box product-content">
         <span class="product-title">
-          Encomenda <?php echo htmlspecialchars( $key1 + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+          Produto <?php echo htmlspecialchars( $key1 + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
         </span>
         <div class="product-content-box">
 
@@ -87,7 +87,7 @@
       <?php $cartSubtotal = explode(",", $cartSubtotal); ?>
 
       <div class="checkout-info">
-        <p>Total <span><?php echo htmlspecialchars( $cartSubtotal["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <sup><?php echo htmlspecialchars( $cartSubtotal["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></sup></span></p>
+        <p>Total <span>R$ <?php echo htmlspecialchars( $cartSubtotal["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <sup><?php echo htmlspecialchars( $cartSubtotal["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></sup></span></p>
       </div>
 
       <div class="checkout-button">
@@ -96,7 +96,7 @@
         <?php }else{ ?>
           <?php $addressId = 0; ?>
         <?php } ?>
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-cartId="<?php echo htmlspecialchars( $cart["cart_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
       </div>
     </div>
   </div>

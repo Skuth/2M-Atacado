@@ -71,7 +71,6 @@ const clienteLogin = (e) => {
 
 const checkout = (btn) => {
   const addressId = btn.getAttribute("data-addressId")
-  const cartId = btn.getAttribute("data-cartId")
   let price = 0
 
   if (addressId > 0) {
@@ -79,8 +78,21 @@ const checkout = (btn) => {
   }
 
   // ajax to send order and clear cart
-  console.log(addressId)
-  console.log(cartId)
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"checkout/order",
+    data: {
+      "addressId": addressId
+    },
+    success: function (res) {
+      let parse = JSON.parse(res)
+      console.log(parse)
+      Swal.fire({
+        icon: parse.status,
+        text: parse.message,
+      })
+    }
+  });
 }
 
 const addCart = (id) => {
