@@ -4,6 +4,7 @@ use Skuth\Page;
 use Skuth\Model\Products;
 use Skuth\Model\Cart;
 use Skuth\Model\Clients;
+use Skuth\Model\Order;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -170,8 +171,6 @@ $app->get("/checkout[/{address}]", function(Request $req, Response $res, $args) 
     $cartId = $_COOKIE["cartId"];
     $cart = Cart::getCartItem($cartId);
 
-    var_dump($cart);
-
     if (count($cart) > 0) {
       createSeoTags("Finalizar compra");
 
@@ -250,14 +249,25 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
 
   $addressId = (isset($_POST["addressId"])) ? $_POST["addressId"] : 0;
   $cartId = (isset($_COOKIE["cartId"])) ? $_COOKIE["cartId"] : 0;
+  $client = (isset($_SESSION["client"])) ? $_SESSION["client"] : NULL;
 
-  if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
+  if ($client !== NULL) {
     if ($cartId !== 0) {
 
       $cart = Cart::getCartItem($cartId);
   
       if (count($cart) > 0) {
-        echo parseResponse("success", "Compra efetuada com sucesso!");
+        $clientId = $client["client_id"];
+
+        $order = Order::createOrder($clientId, $cart, $addressId);
+        
+        if ($order === TRUE) {
+          echo parseResponse("success", "Compra efetuada com sucesso!");
+          Cart::removeCartItem($cartId);
+          unset($_SESSION["cart"]);
+        } else {
+          echo parseResponse("error", "Falha ao comprar, tente mais tarde ou contate o suporte!");
+        }
       } else {
         echo parseResponse("error", "Você não tem nada no carrinho!");
       }

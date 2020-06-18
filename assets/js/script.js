@@ -84,12 +84,16 @@ const checkout = (btn) => {
     data: {
       "addressId": addressId
     },
-    success: function (res) {
-      let parse = JSON.parse(res)
-      console.log(parse)
+    success: function (r) {
+      let res = JSON.parse(r)
       Swal.fire({
-        icon: parse.status,
-        text: parse.message,
+        icon: res.status,
+        text: res.message,
+        preConfirm: () => {
+          if (res.status == "success") {
+            location.href = baseUrl+"cliente/perfil"
+          }
+        }
       })
     }
   });

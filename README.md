@@ -11,10 +11,12 @@
 - [ ] Campo de pesquisa
 - [ ] Pagina de cliente
 - [ ] Editar endereço
-- [ ] Finalizar compra
+- [X] Finalizar compra
 - [ ] Pagina de cadastro de cliente
-- [ ] Mudar menu para position relative
-- [ ] Menu mobile
+- [X] Mudar menu para position relative
+- [X] Menu mobile
+- [ ] Verificar se quantidade de produto é maior que 0
+- [ ] Remover promoção se o stock em promo for 0
 
 ### SEO
 

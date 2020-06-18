@@ -2,6 +2,7 @@
 
 use Skuth\Page;
 use Skuth\Model\Clients;
+use Skuth\Model\Order;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -40,6 +41,20 @@ $app->get("/cliente/logout", function(Request $req, Response $res, $args) {
 
   unset($_SESSION["client"]);
   return $res->withHeader("Location", "/");
+
+});
+
+$app->get("/cliente/perfil", function(Request $req, Response $res, $args) {
+
+  if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
+    $clientId = $_SESSION["client"]["client_id"];
+
+    $orders = Order::getByClientId($clientId);
+
+    echo json_encode($orders);
+  }
+
+  return $res;
 
 });
 
