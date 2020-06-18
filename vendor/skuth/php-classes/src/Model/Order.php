@@ -26,6 +26,16 @@ class Order {
       foreach ($id as $key => $value) {
         $p = ["id"=>$value];
         $sql->query($q, $p);
+
+        $prod = $sql->select("SELECT * FROM products WHERE product_id=:id", ["id"=>$value]);
+
+        if (isset($prod[0])) {
+          if ($prod[0]["product_stock_quantity_off"] == 0) {
+            $qP = "UPDATE products SET product_price_off = NULL, product_price_off_days = NULL, product_stock_quantity_off = NULL WHERE product_id=:id";
+            $pP = ["id"=>$value];
+            $sql->query($qP, $pP);
+          }
+        }
       }
     }
 

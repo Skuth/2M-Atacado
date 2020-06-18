@@ -20,7 +20,11 @@ const handleQuantity = (o) => {
   if (o == "+" || o == "-") {
     if (o == "+") {
       if (itemCount >= maxItems) {
-        itemBox.innerHTML = maxItems
+        if (maxItems == 0) {
+          itemBox.innerHTML = 0
+        } else {
+          itemBox.innerHTML = maxItems
+        }
       } else {
         itemBox.innerHTML = itemCount + 1
       }
@@ -28,7 +32,11 @@ const handleQuantity = (o) => {
 
     if (o == "-") {
       if (itemCount <= 1) {
-        itemBox.innerHTML = 1
+        if (maxItems == 0) {
+          itemBox.innerHTML = 0
+        } else {
+          itemBox.innerHTML = 1
+        }
       } else {
         itemBox.innerHTML = itemCount - 1
       }

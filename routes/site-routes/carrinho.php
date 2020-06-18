@@ -59,10 +59,12 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
     $price = $p["product_price"];
     $priceOff = $p["product_price_off"];
 
-    array_push($c, $p);
+    if ($value["quantity"] > 0) {
+      array_push($c, $p);
     array_push($cartSet["products_id"], $p["product_id"]);
     array_push($cartSet["products_quantity"], $p["quantity"]);
     array_push($cartSet["products_price"], (isset($priceOff)) ? $priceOff : $price);
+    }
   }
 
   foreach ($cartSet as $key => $value) {

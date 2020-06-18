@@ -2107,4 +2107,6 @@ textarea {
     .container .checkout-container .checkout-container-left .checkout-box .shipment-box .shipment-content, .container .checkout-container .checkout-container-left .checkout-box .shipment-box .product-content, .container .checkout-container .checkout-container-left .checkout-box .product-content-box .shipment-content, .container .checkout-container .checkout-container-left .checkout-box .product-content-box .product-content {
       padding: 20px 0; }
     .container .checkout-container .checkout-container-left .checkout-box .shipment-box .shipment-options, .container .checkout-container .checkout-container-left .checkout-box .product-content-box .shipment-options {
-      margin: 0 auto; } }
+      margin: 0 auto; }
+  .container .checkout-container .checkout-container-right .checkout-button {
+    text-align: center; } }

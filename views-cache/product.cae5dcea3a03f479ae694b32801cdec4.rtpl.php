@@ -36,7 +36,7 @@
       <?php } ?>
       <div class="product-quantity-box">
         <p class="product-action" onclick="handleQuantity('-')">-</p>
-        <p class="product-quantity" id="product-quantity" data-stock="<?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">1</p>
+        <p class="product-quantity" id="product-quantity" data-stock="<?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php if( $produto["product_stock"] == 0 ){ ?>0<?php }else{ ?>1<?php } ?></p>
         <p class="product-action" onclick="handleQuantity('+')">+</p>
       </div>
       <span class="product-span text-muted"><?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?> disponíveis no estoque</span>
@@ -53,7 +53,9 @@
         <p>R$ <span><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span><span>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
         <?php } ?>
       </div>
+      <?php if( $produto["product_stock"] >= 1 ){ ?>
       <a onclick="addCart(<?php echo htmlspecialchars( $produto["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>)" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
+      <?php } ?>
     </div>
     <div class="product-page-description">
       <h3>Descrição</h3>

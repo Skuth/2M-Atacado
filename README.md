@@ -8,15 +8,16 @@
 - [X] Adicionar ao carrinho
 - [X] Remover do carrinho
 - [X] Arrumar erro no menu
-- [ ] Campo de pesquisa
-- [ ] Pagina de cliente
-- [ ] Editar endereço
 - [X] Finalizar compra
-- [ ] Pagina de cadastro de cliente
 - [X] Mudar menu para position relative
 - [X] Menu mobile
-- [ ] Verificar se quantidade de produto é maior que 0
-- [ ] Remover promoção se o stock em promo for 0
+- [X] Verificar se quantidade de produto é maior que 0
+- [X] Remover promoção se o stock em promo for 0
+- [ ] Pagina de cadastro de cliente
+- [ ] Pagina de cliente
+- [ ] Campo de pesquisa
+
+- [ ] Editar endereço
 
 ### SEO
 
