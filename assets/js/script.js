@@ -67,7 +67,7 @@ const clienteLogin = (e) => {
       Swal.fire({
         icon: res.status,
         text: res.message,
-        preConfirm: () => {
+        onClose: () => {
           if (res.status == "success") {
             location.reload()
           }
@@ -79,13 +79,7 @@ const clienteLogin = (e) => {
 
 const checkout = (btn) => {
   const addressId = btn.getAttribute("data-addressId")
-  let price = 0
 
-  if (addressId > 0) {
-    // ajax to get new price
-  }
-
-  // ajax to send order and clear cart
   $.ajax({
     type: "POST",
     url: baseUrl+"checkout/order",
@@ -97,7 +91,7 @@ const checkout = (btn) => {
       Swal.fire({
         icon: res.status,
         text: res.message,
-        preConfirm: () => {
+        onClose: () => {
           if (res.status == "success") {
             location.href = baseUrl+"cliente/perfil"
           }
@@ -125,8 +119,9 @@ const addCart = (id) => {
       Swal.fire({
         icon: 'success',
         text: 'Produto adicionado ao carrinho de compras!',
-        preConfirm: () => {
-          location.reload()
+        allowOutsideClick: false,
+        onClose: () => {
+          location.href = baseUrl+"carrinho"
         }
       })
     }
@@ -144,7 +139,7 @@ const removeCart = (id) => {
       Swal.fire({
         icon: 'success',
         text: 'Produto removido do carrinho de compras!',
-        preConfirm: () => {
+        onClose: () => {
           location.reload()
         }
       })
