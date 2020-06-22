@@ -29,8 +29,7 @@
 
 - [X] Grafico visualizações
 - [X] Pagina de edição de dados do site
-- [ ] Grafico pedidos em aberto
-- [ ] Grafico pedidos hoje
-- [ ] Adicionar clientes no banco de dados
-- [ ] Listar pedidos
-- [ ] Listar pedidos em aberto
+- [X] Adicionar clientes no banco de dados
+- [X] Listar pedidos
+- [X] Listar pedidos em aberto
+- [ ] Visualizar & atualizar pedido

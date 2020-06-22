@@ -83,6 +83,7 @@
   </div>
 </div>
 
+<?php if( count($prodOffers) > 0 ){ ?>
 <div class="products-box">
   <div class="products-box-header">
     <div class="title">
@@ -135,6 +136,7 @@
     <a href="/produtos/ofertas" class="btn btn-center btn-circle btn-blue btn-big btn-cap">Ver todas</a>
   </div>
 </div>
+<?php } ?>
 
 <div class="products-box">
   <div class="products-box-header">

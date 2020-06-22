@@ -79,6 +79,23 @@ class Clients {
       return $this->parseReturn("error", "Você precisa estar logado!");
     }
   }
+
+  public function getAddressById($id) {
+    $sql = new Sql();
+    
+    $query = "SELECT * FROM client_address WHERE client_id=:id LIMIT 1";
+    $param = ["id"=>$id];
+    
+    $res = $sql->select($query, $param);
+    
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
+      return [
+        "client_address_id"=>0
+      ];
+    }
+  }
 }
 
 // $opts = [

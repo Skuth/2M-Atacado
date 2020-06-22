@@ -1,71 +1,98 @@
 <?php
 
 function getNav() {
+  $colors = [
+    "text-primary",
+    "text-danger",
+    "text-info",
+    "text-success",
+    "text-warning"
+  ];
+
   $navItems = [
     [
       "name"=>"dashboard",
       "href"=>"dashboard",
       "icon"=>"ni ni-tv-2",
-      "color"=>"text-primary",
+      "color"=>"",
+      "nivel"=>1
+    ],
+    [
+      "name"=>"pedidos",
+      "href"=>"pedidos",
+      "icon"=>"ni ni-cart",
+      "color"=>"",
       "nivel"=>1
     ],
     [
       "name"=>"usuarios",
       "href"=>"usuarios",
       "icon"=> "fas fa-users",
-      "color"=>"text-danger",
+      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"produtos",
       "href"=>"produtos",
       "icon"=>"ni ni-archive-2",
-      "color"=>"text-info",
+      "color"=>"",
       "nivel"=>1
     ],
     [
       "name"=>"promoções",
       "href"=>"promocoes",
       "icon"=>"fas fa-percentage",
-      "color"=>"text-success",
+      "color"=>"",
       "nivel"=>1
-    ],
-    [
-      "name"=>"cupons",
-      "href"=>"cupons",
-      "icon"=>"fas fa-tag",
-      "color"=>"text-warning",
-      "nivel"=>10
     ],
     [
       "name"=>"distribuidores",
       "href"=>"distribuidores",
       "icon"=>"ni ni-books",
-      "color"=>"text-primary",
+      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"departamentos",
       "href"=>"departamentos",
       "icon"=>"ni ni-scissors",
-      "color"=>"text-danger",
+      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"banners",
       "href"=>"banners",
       "icon"=>"ni ni-album-2",
-      "color"=>"text-info",
+      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"administração",
       "href"=>"administracao",
       "icon"=>"fas fa-tools",
-      "color"=>"text-success",
+      "color"=>"",
       "nivel"=>2
+    ],
+    [
+      "name"=>"cupons",
+      "href"=>"cupons",
+      "icon"=>"fas fa-tag",
+      "color"=>"",
+      "nivel"=>10
     ]
   ];
+
+  $i = 0;
+
+  foreach ($navItems as $key => $value) {
+    $navItems[$key]["color"] = $colors[$i];
+
+    if ($i >= (count($colors) - 1)) {
+      $i = 0;
+    } else {
+      $i ++;
+    }
+  }
 
   return $navItems;
 }

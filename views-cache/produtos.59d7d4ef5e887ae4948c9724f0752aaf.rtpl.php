@@ -47,7 +47,7 @@
                 </td>
                 <td><b><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>
-                  <a class="btn btn-icon btn-default btn-sm" href="/admin/produto/visualizar/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-eye"></i></a>
+                  <a class="btn btn-icon btn-default btn-sm" href="/produto/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo filterName($value1["product_name"]); ?>" target="_blank"><i class="fas fa-eye"></i></a>
                   <?php if( $userOn['type'] > 1 ){ ?>
                   <a class="btn btn-icon btn-success btn-sm" href="/admin/produto/promocao/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-percentage"></i></a>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/produto/editar/<?php echo htmlspecialchars( $value1["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>

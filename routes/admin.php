@@ -20,5 +20,6 @@ require_once("admin-routes/distribuidores.php");
 require_once("admin-routes/departamentos.php");
 require_once("admin-routes/banners.php");
 require_once("admin-routes/admin.php");
+require_once("admin-routes/pedidos.php");
 
 ?>

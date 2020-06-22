@@ -47,7 +47,7 @@
                 </td>
                 <td><b>{$value.product_views}</b></td>
                 <td>
-                  <a class="btn btn-icon btn-default btn-sm" href="/admin/produto/visualizar/{$value.product_id}"><i class="fas fa-eye"></i></a>
+                  <a class="btn btn-icon btn-default btn-sm" href="/produto/{$value.product_ref}/{function="filterName($value.product_name)"}" target="_blank"><i class="fas fa-eye"></i></a>
                   {if="$userOn['type'] > 1"}
                   <a class="btn btn-icon btn-success btn-sm" href="/admin/produto/promocao/{$value.product_id}"><i class="fas fa-percentage"></i></a>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/produto/editar/{$value.product_id}"><i class="fas fa-edit"></i></a>
