@@ -31,7 +31,7 @@
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col">
-              <h5 class="h3 mb-0">Produtos</h5>
+              <h5 class="h3 mb-0">Informações</h5>
             </div>
             <div class="col text-right">
               <a href="/admin/pedido/atualizar/<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-sm btn-primary">Atualizar</a>

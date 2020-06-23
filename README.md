@@ -36,4 +36,6 @@
 - [X] Listar pedidos
 - [X] Listar pedidos em aberto
 - [X] Visualizar & atualizar pedido
+- [X] Adicionar sistema de notificação avisando sobre estoque
+- [ ] Criar pagina para listar todas as notificações
 - [ ] Criar link temporario para registro de cliente

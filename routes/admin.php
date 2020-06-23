@@ -1,5 +1,9 @@
 <?php
 
+use Skuth\Model\Products;
+
+$GLOBALS["lowStock"] = Products::getLowStock();
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 

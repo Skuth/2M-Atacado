@@ -20,7 +20,7 @@ $app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
 
   $orderCount = Order::countOrders();
 
-  $produtos = $prods->getAll("ORDER BY product_views DESC LIMIT 5");
+  $produtos = $prods->getAll("ORDER BY product_views DESC LIMIT 6");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("dashboard", "dashboard")]]);
 

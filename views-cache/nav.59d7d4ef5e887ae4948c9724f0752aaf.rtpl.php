@@ -101,12 +101,59 @@
     <div class="container-fluid">
       <!-- Brand -->
       <?php if( isset($page) ){ ?>
-      <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/admin/<?php echo htmlspecialchars( $page["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $page["page"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+      <a class="h4 mb-0 text-white text-uppercase d-none d-md-inline-block d-lg-inline-block" href="/admin/<?php echo htmlspecialchars( $page["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $page["page"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
       <?php }else{ ?>
-      <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/admin/dashboard">dashboard</a>
+      <a class="h4 mb-0 text-white text-uppercase d-none d-md-inline-block d-lg-inline-block" href="/admin/dashboard">dashboard</a>
       <?php } ?>
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <?php $lowStock = $GLOBALS["lowStock"]; ?>
+        <ul class="navbar-nav align-items-center  ml-md-auto ">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ni ni-bell-55"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+            <!-- Dropdown header -->
+            <div class="px-3 py-3">
+              <h6 class="text-sm text-muted m-0">Você tem <strong class="text-primary"><?php echo count($lowStock); ?></strong> notificações.</h6>
+            </div>
+            <!-- List group -->
+            <div class="list-group list-group-flush">
+
+              <?php $counter1=-1;  if( isset($lowStock) && ( is_array($lowStock) || $lowStock instanceof Traversable ) && sizeof($lowStock) ) foreach( $lowStock as $key1 => $value1 ){ $counter1++; ?>
+              <?php if( $key1 < 4 ){ ?>
+              <div class="list-group-item list-group-item-action">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <!-- Avatar -->
+                    <img alt="Image placeholder" src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="avatar rounded-circle">
+                  </div>
+                  <div class="col ml--2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h4 class="mb-0 text-sm"><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h4>
+                      </div>
+                    </div>
+                    <?php if( $value1["product_stock"] > 0 ){ ?>
+                    <p class="text-sm mb-0">Você está ficando sem estoque, no momento você tem <?php echo htmlspecialchars( $value1["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?> em estoque!</p>
+                    <?php }else{ ?>
+                    <p class="text-sm mb-0">Você está sem estoque, <?php echo htmlspecialchars( $value1["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?> em estoque!</p>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+              <?php } ?>
+
+            </div>
+            <!-- View all -->
+            <?php if( count($lowStock) > 4 ){ ?>
+            <a href="/admin/notificacoes" class="dropdown-item text-center text-primary font-weight-bold py-3">Ver todas</a>
+            <?php } ?>
+          </div>
+        </li>
+      </ul>
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">

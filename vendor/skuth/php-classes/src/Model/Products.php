@@ -356,6 +356,19 @@ class Products {
       "pics"=>$pics
     ];
   }
+
+  public static function getLowStock() {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products WHERE product_stock <= 5";
+
+    $prod = new products();
+
+    $res = $sql->select($query);
+    $res = $prod->parseImage($res);
+
+    return $res;
+  }
 }
 
 ?>
