@@ -29,12 +29,26 @@
     <div class="col-xl-<?php echo htmlspecialchars( $card, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="card">
         <div class="card-header">
-          
-          <h5 class="h3 mb-0">Informações</h5>
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Produtos</h5>
+            </div>
+            <div class="col text-right">
+              <a href="/admin/pedido/atualizar/<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-sm btn-primary">Atualizar</a>
+            </div>
+          </div>
         </div>
 
         <div class="card-body">
           <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>#<?php echo htmlspecialchars( $order["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
+          <span class="card-text mr-2">Tipe de entrega</span>
+          <?php $x = $order["order_address_id"]; ?>
+          <?php if( $x == 0 ){ ?>
+          <span class="badge badge-pill badge-default text-white">Retirar</span>
+          <?php }else{ ?>
+          <span class="badge badge-pill badge-primary">Entregar</span>
+          <?php } ?>
+          <br><br>
           <span class="card-text mr-2">Status do pagamento</span>
           <?php $z = $order["order_payment_status"]; ?>
           <?php if( $z == 1 ){ ?>
@@ -45,14 +59,6 @@
           <span class="badge badge-pill badge-success">Aprovado</span>
           <?php }elseif( $z == 4 ){ ?>
           <span class="badge badge-pill badge-danger">Recusado</span>
-          <?php } ?>
-          <br><br>
-          <span class="card-text mr-2">Tipe de entrega</span>
-          <?php $x = $order["order_address_id"]; ?>
-          <?php if( $x == 0 ){ ?>
-          <span class="badge badge-pill badge-default text-white">Retirar</span>
-          <?php }else{ ?>
-          <span class="badge badge-pill badge-primary">Entregar</span>
           <?php } ?>
           <br><br>
           <span class="card-text mr-2">Status da compra</span>
@@ -82,7 +88,7 @@
         <div class="card-body">
           <p class="card-text mb-4"><strong>Local de entrega</strong></p>
           <?php if( isset($order["client_address"]) ){ ?>
-          <span><?php echo htmlspecialchars( $order["client_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+          <span><?php echo htmlspecialchars( $order["client_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | <?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
           <?php }else{ ?>
           <span>Retirar na loja</span>
           <?php } ?>

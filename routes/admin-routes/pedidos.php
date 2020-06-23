@@ -70,7 +70,7 @@ $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) 
 
 });
 
-$app->get("/admin/pedido/editar/{id}", function(Request $req, Response $res, $args) {
+$app->get("/admin/pedido/atualizar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -78,7 +78,7 @@ $app->get("/admin/pedido/editar/{id}", function(Request $req, Response $res, $ar
 
   $order = Order::getOrderById($id);
   
-  $page = new PageAdmin(["data"=>["page"=>createPage("atualizar pedido", "pedido/editar/".$id)]]);
+  $page = new PageAdmin(["data"=>["page"=>createPage("atualizando pedido #".$id, "pedido/atualizar/".$id)]]);
   $page->setTpl("pedido-att", ["order"=>$order]);
 
   return $res;
@@ -112,7 +112,7 @@ $app->get("/admin/pedido/visualizar/{id}", function(Request $req, Response $res,
   $order = Order::getOrderByIdFull($id);
 
   
-  $page = new PageAdmin(["data"=>["page"=>createPage("visualizar pedido", "pedido/visualizar/".$id)]]);
+  $page = new PageAdmin(["data"=>["page"=>createPage("visualizando pedido #".$id, "pedido/visualizar/".$id)]]);
   $page->setTpl("pedidos-view", ["order"=>$order]);
 
   return $res;

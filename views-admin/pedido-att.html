@@ -19,6 +19,20 @@
               <input type="hidden" name="id" value="{$order.order_id}">
 
                 <div class="row">
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Status de pagamento</label>
+                      <select class="form-control" name="payment-status">
+                        <option value="" disabled>Selecione um status</option>
+                        <option value="1" {if="$order.order_payment_status == 1"}selected{/if}>Pagamento na retirada</option>
+                        <option value="2" {if="$order.order_payment_status == 2"}selected{/if}>Em análise</option>
+                        <option value="3" {if="$order.order_payment_status == 3"}selected{/if}>Aprovado</option>
+                        <option value="4" {if="$order.order_payment_status == 4"}selected{/if}>Recusado</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-control-label">Status</label>
@@ -32,19 +46,7 @@
                       </select>
                     </div>
                   </div>
-  
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label">Status de pagamento</label>
-                      <select class="form-control" name="payment-status">
-                        <option value="" disabled>Selecione um status</option>
-                        <option value="1" {if="$order.order_payment_status == 1"}selected{/if}>Pagamento na retirada</option>
-                        <option value="2" {if="$order.order_payment_status == 2"}selected{/if}>Em análise</option>
-                        <option value="3" {if="$order.order_payment_status == 3"}selected{/if}>Aprovado</option>
-                        <option value="4" {if="$order.order_payment_status == 4"}selected{/if}>Recusado</option>
-                      </select>
-                    </div>
-                  </div>
+                  
                 </div>
 
               </div>

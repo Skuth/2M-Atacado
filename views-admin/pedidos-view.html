@@ -29,12 +29,26 @@
     <div class="col-xl-{$card}">
       <div class="card">
         <div class="card-header">
-          
-          <h5 class="h3 mb-0">Informações</h5>
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Produtos</h5>
+            </div>
+            <div class="col text-right">
+              <a href="/admin/pedido/atualizar/{$order.order_id}" class="btn btn-sm btn-primary">Atualizar</a>
+            </div>
+          </div>
         </div>
 
         <div class="card-body">
           <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info">{$order.client_name}#{$order.client_id}</span></p>
+          <span class="card-text mr-2">Tipe de entrega</span>
+          {$x = $order.order_address_id}
+          {if="$x == 0"}
+          <span class="badge badge-pill badge-default text-white">Retirar</span>
+          {else}
+          <span class="badge badge-pill badge-primary">Entregar</span>
+          {/if}
+          <br><br>
           <span class="card-text mr-2">Status do pagamento</span>
           {$z = $order.order_payment_status}
           {if="$z == 1"}
@@ -45,14 +59,6 @@
           <span class="badge badge-pill badge-success">Aprovado</span>
           {elseif="$z == 4"}
           <span class="badge badge-pill badge-danger">Recusado</span>
-          {/if}
-          <br><br>
-          <span class="card-text mr-2">Tipe de entrega</span>
-          {$x = $order.order_address_id}
-          {if="$x == 0"}
-          <span class="badge badge-pill badge-default text-white">Retirar</span>
-          {else}
-          <span class="badge badge-pill badge-primary">Entregar</span>
           {/if}
           <br><br>
           <span class="card-text mr-2">Status da compra</span>
@@ -82,7 +88,7 @@
         <div class="card-body">
           <p class="card-text mb-4"><strong>Local de entrega</strong></p>
           {if="isset($order.client_address)"}
-          <span>{$order.client_address}</span>
+          <span>{$order.client_address} | {$order.client_name}</span>
           {else}
           <span>Retirar na loja</span>
           {/if}
