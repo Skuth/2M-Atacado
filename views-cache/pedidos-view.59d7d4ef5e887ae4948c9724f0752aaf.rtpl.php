@@ -34,7 +34,7 @@
         </div>
 
         <div class="card-body">
-          <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
+          <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>#<?php echo htmlspecialchars( $order["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
           <span class="card-text mr-2">Status do pagamento</span>
           <?php $z = $order["order_payment_status"]; ?>
           <?php if( $z == 1 ){ ?>

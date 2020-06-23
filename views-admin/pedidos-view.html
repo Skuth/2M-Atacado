@@ -34,7 +34,7 @@
         </div>
 
         <div class="card-body">
-          <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info">{$order.client_name}</span></p>
+          <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info">{$order.client_name}#{$order.client_id}</span></p>
           <span class="card-text mr-2">Status do pagamento</span>
           {$z = $order.order_payment_status}
           {if="$z == 1"}
