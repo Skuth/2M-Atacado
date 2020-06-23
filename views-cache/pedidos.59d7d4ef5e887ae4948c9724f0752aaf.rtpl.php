@@ -57,7 +57,7 @@
                   <span class="badge badge-pill badge-primary">Entregar</span>
                   <?php } ?>
                 </td>
-                <td><b>R$ 35,00</b></td>
+                <td><b>R$ <?php echo formatMoney($value1["order_subtotal"]); ?></b></td>
                 <td>
                   <?php $i = $value1["order_status"]; ?>
                   <?php if( $i == 1 ){ ?>

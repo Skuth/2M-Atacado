@@ -120,43 +120,49 @@ class Order {
     $sql = new Sql();
     $products = new Products();
 
-    $query = "SELECT * FROM `order` WHERE order_id=:id";
+    $query = "SELECT * FROM `order` WHERE order_id=:id LIMIT 1";
     $r = $sql->select($query, ["id"=>$id]);
 
-    foreach ($r as $key => $value) {
-      $r[$key]["products_name"] = [];
-      $ids = explode(",", $value["products_id"]);
-
-      $clientName = $sql->select("SELECT client_name FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
-
-      if (count($clientName) > 0) {
-        $r[$key]["client_name"] = $clientName[0]["client_name"];
-      } else {
-        $r[$key]["client_name"] = "Cliente Id ".$r["client_id"];
-      }
-
-      foreach ($ids as $k => $v) {
-        $p = $products->getById($v);
-        array_push($r[$key]["products_name"], $p["product_name"]);
-      }
-
-      $r[$key]["products_name"] = implode(", ", $r[$key]["products_name"]);
-
-      if ($value["order_address_id"] >= 0) { 
-        $address = $sql->select("SELECT * FROM client_address WHERE client_address_id=:id LIMIT 1", ["id"=>$value["order_address_id"]]);
-        if (count($address) > 0) {
-          $address = $address[0];
-          $clientAddress = $address["client_address_rua"].", Número ".$address["client_address_numero"].", ".$address["client_address_estado"].", ".$address["client_address_cidade"]." - ".$address["client_address_bairro"];
-          if ($address["client_address_complemento"] != "") {
-            $clientAddress = $clientAddress." Complemento ".$address["client_address_complemento"];
+    if (isset($r[0])) {
+      foreach ($r as $key => $value) {
+        $r[$key]["produtos"] = [];
+        $ids = explode(",", $value["products_id"]);
+        $qts = explode(",", $value["products_quantity"]);
+        $pp = explode(",", $value["products_price"]);
+  
+        $clientName = $sql->select("SELECT client_name FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
+  
+        if (count($clientName) > 0) {
+          $r[$key]["client_name"] = $clientName[0]["client_name"];
+        } else {
+          $r[$key]["client_name"] = "Cliente Id ".$r["client_id"];
+        }
+  
+        foreach ($ids as $k => $v) {
+          $p = $products->getById($v);
+          $p["quantity"] = $qts[$k];
+          $p["payed_price"] = $pp[$k];
+          array_push($r[$key]["produtos"], $p);
+        }
+  
+        if ($value["order_address_id"] >= 0) { 
+          $address = $sql->select("SELECT * FROM client_address WHERE client_address_id=:id LIMIT 1", ["id"=>$value["order_address_id"]]);
+          if (count($address) > 0) {
+            $address = $address[0];
+            $clientAddress = $address["client_address_rua"].", Número ".$address["client_address_numero"].", ".$address["client_address_estado"].", ".$address["client_address_cidade"]." - ".$address["client_address_bairro"]." CEP ".$address["client_address_cep"]." | Contato ".$address["client_address_contact"];
+            if ($address["client_address_complemento"] != "") {
+              $clientAddress = $clientAddress." Complemento ".$address["client_address_complemento"];
+            }
+  
+            $r[$key]["client_address"] = $clientAddress;
           }
-
-          $r[$key]["client_address"] = $clientAddress;
         }
       }
-    }
 
-    return $r;
+      return $r[0];
+    } else {
+      return $r;
+    }
   }
 
   public static function countOpen() {

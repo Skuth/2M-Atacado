@@ -108,9 +108,12 @@ $app->post("/admin/pedido/atualizar", function(Request $req, Response $res, $arg
 $app->get("/admin/pedido/visualizar/{id}", function(Request $req, Response $res, $args) {
 
   $id = $args["id"];
+  
+  $order = Order::getOrderByIdFull($id);
 
+  
   $page = new PageAdmin(["data"=>["page"=>createPage("visualizar pedido", "pedido/visualizar/".$id)]]);
-  var_dump($id);
+  $page->setTpl("pedidos-view", ["order"=>$order]);
 
   return $res;
 

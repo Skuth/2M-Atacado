@@ -1,0 +1,96 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+
+{$card = 4}
+
+<div class="container-fluid mt--6">
+  <div class="row card-wrapper">
+
+    <div class="col-xl-{$card}">
+      <div class="card">
+        <div class="card-header">
+          
+          <h5 class="h3 mb-0">Compra #{$order.order_id} | Dia {function="date('d/m/Y', strtotime($order.order_date))"}</h5>
+        </div>
+
+        <br>
+        {loop="$order.produtos"}
+        <div class="card-body">
+          <img src="../assets/produtos/{$value.product_pictures[0]}" width="80" class="mb-4">
+          <p class="card-text mb-4"><strong>{$value.product_name} | Quantidade: <span class="badge badge-pill badge-info">{$value.quantity}</span></strong></p>
+          <p class="btn btn-primary">R$ {function="formatMoney($value.payed_price)"}</p>
+        </div>
+        {if="$key < (count($order.produtos) - 1)"}
+        <hr>
+        {/if}
+        {/loop}
+      </div>
+    </div>
+
+    <div class="col-xl-{$card}">
+      <div class="card">
+        <div class="card-header">
+          
+          <h5 class="h3 mb-0">Informações</h5>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info">{$order.client_name}</span></p>
+          <span class="card-text mr-2">Status do pagamento</span>
+          {$z = $order.order_payment_status}
+          {if="$z == 1"}
+          <span class="badge badge-pill badge-warning">Pagamento na retirada</span>
+          {elseif="$z == 2"}
+          <span class="badge badge-pill badge-primary">Em análise</span>
+          {elseif="$z == 3"}
+          <span class="badge badge-pill badge-success">Aprovado</span>
+          {elseif="$z == 4"}
+          <span class="badge badge-pill badge-danger">Recusado</span>
+          {/if}
+          <br><br>
+          <span class="card-text mr-2">Tipe de entrega</span>
+          {$x = $order.order_address_id}
+          {if="$x == 0"}
+          <span class="badge badge-pill badge-default text-white">Retirar</span>
+          {else}
+          <span class="badge badge-pill badge-primary">Entregar</span>
+          {/if}
+          <br><br>
+          <span class="card-text mr-2">Status da compra</span>
+          {$i = $order.order_status}
+          {if="$i == 1"}
+          <span class="badge badge-pill badge-warning">Aguardando atualização</span>
+          {elseif="$i == 2"}
+          <span class="badge badge-pill badge-primary">Em separação</span>
+          {elseif="$i == 3"}
+          <span class="badge badge-pill badge-info">Pronto para retirada</span>
+          {elseif="$i == 4"}
+          <span class="badge badge-pill badge-info">Saiu para entregar</span>
+          {elseif="$i == 5"}
+          <span class="badge badge-pill badge-success">Entregue</span>
+          {/if}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-{$card}">
+      <div class="card">
+        <div class="card-header">
+          
+          <h5 class="h3 mb-0">Entrega</h5>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text mb-4"><strong>Local de entrega</strong></p>
+          {if="isset($order.client_address)"}
+          <span>{$order.client_address}</span>
+          {else}
+          <span>Retirar na loja</span>
+          {/if}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br>

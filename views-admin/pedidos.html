@@ -57,7 +57,7 @@
                   <span class="badge badge-pill badge-primary">Entregar</span>
                   {/if}
                 </td>
-                <td><b>R$ 35,00</b></td>
+                <td><b>R$ {function="formatMoney($value.order_subtotal)"}</b></td>
                 <td>
                   {$i = $value.order_status}
                   {if="$i == 1"}
