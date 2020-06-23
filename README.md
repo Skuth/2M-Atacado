@@ -35,5 +35,5 @@
 - [X] Adicionar clientes no banco de dados
 - [X] Listar pedidos
 - [X] Listar pedidos em aberto
-- [ ] Visualizar & atualizar pedido
+- [X] Visualizar & atualizar pedido
 - [ ] Criar link temporario para registro de cliente
