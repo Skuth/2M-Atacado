@@ -17,17 +17,21 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
   
-  if (!isset($_GET["pagina"])) {
-    $pagina = 1;
+  if (isset($_GET["pagina"])) {
+    $pagina = trim(strip_tags(intval($_GET["pagina"])));
   } else {
-    $pagina = $_GET["pagina"];
+    $pagina = 1;
+  }
+
+  if ($pagina == 0) {
+    $pagina = 1;
   }
 
   $prod = new Products();
   
   $total = $prod->getTotal();
 
-  $totalPage = 5;
+  $totalPage = 6;
 
   $totalPages = ceil($total / $totalPage);
 

@@ -6,7 +6,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="/admin">
-      <img src="./assets/admin/img/brand/blue.png" class="navbar-brand-img" alt="...">
+      <img src="../assets/img/logo.png" class="navbar-brand-img" alt="Logo">
     </a>
     <!-- User -->
     {$user = getUserSession()}
@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="/admin">
-              <img src="./assets/admin/img/brand/blue.png">
+              <img src="../assets/img/logo.png">
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -54,16 +54,42 @@
       </div>
       <!-- Navigation -->
       <ul class="navbar-nav">
+        
         {$navItems = getNav()}
         {loop="$navItems"}
         {if="$value.nivel <= $user.type"}
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/{$value.href}">
+        <li class="nav-item">          
+          {if="isset($value.submenu)"}
+          <a class="nav-link collapsed" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
             <i class="{$value.icon} {$value.color}"></i> {function="ucfirst($value.name)"}
           </a>
+          <div class="collapse" id="navbar-dashboards">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="/admin/{$value.href}" class="nav-link">
+                  <span class="sidenav-normal"> {function="ucfirst($value.name)"} </span>
+                </a>
+              </li>
+              {loop="$value.submenu"}
+              <li class="nav-item">
+                <a href="/admin/{$value.href}" class="nav-link">
+                  <span class="sidenav-normal"> {function="ucfirst($value.name)"} </span>
+                </a>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+          {else}
+          <li class="nav-item"></li>
+            <a class="nav-link" href="/admin/{$value.href}">
+              <i class="{$value.icon} {$value.color}"></i> {function="ucfirst($value.name)"}
+            </a>
+          </li>
+          {/if}
         </li>
         {/if}
         {/loop}
+        
       </ul>
     </div>
   </div>

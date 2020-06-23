@@ -18,11 +18,13 @@ $app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
 
   $orderOpen = Order::countOpen();
 
+  $orderCount = Order::countOrders();
+
   $produtos = $prods->getAll("ORDER BY product_views DESC LIMIT 5");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("dashboard", "dashboard")]]);
 
-  $page->setTpl("dashboard", ["produtos"=>$produtos, "sum"=>$sum, "oOpen"=>$orderOpen]);
+  $page->setTpl("dashboard", ["produtos"=>$produtos, "sum"=>$sum, "oOpen"=>$orderOpen, "oCount"=>$orderCount]);
 
   return $res;
 

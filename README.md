@@ -20,7 +20,7 @@
 - [ ] Pagina de cliente
 - [ ] Campo de pesquisa
 
-- [ ] Editar endereço
+- [ ] Editar endereço -> Apenas solicitando
 
 ### SEO
 
@@ -36,3 +36,4 @@
 - [X] Listar pedidos
 - [X] Listar pedidos em aberto
 - [ ] Visualizar & atualizar pedido
+- [ ] Criar link temporario para registro de cliente

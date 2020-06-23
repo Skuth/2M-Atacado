@@ -7,9 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <title>Argon Admin</title>
+  <title>2M Atacado - Admin</title>
   <!-- Favicon -->
-  <link rel="icon" href="./assets/admin/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="../assets/img/logo.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->

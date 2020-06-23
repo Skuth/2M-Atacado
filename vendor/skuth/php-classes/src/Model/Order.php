@@ -94,7 +94,13 @@ class Order {
       }
     }
 
-    return ["orders"=>$r,"count"=>$count[0]["count(order_id)"]];
+    if (count($count) > 0) {
+      $count = $count[0]["count(order_id)"];
+    } else {
+      $count = 0;
+    }
+
+    return ["orders"=>$r,"count"=>$count];
   }
 
   public static function getOrderById($id) {
@@ -157,6 +163,18 @@ class Order {
     $sql = new Sql();
 
     $count = $sql->select("SELECT count(order_id) FROM `order` WHERE order_status=1");
+    
+    if (count($count) > 0) {
+      return $count[0]["count(order_id)"];
+    } else {
+      return 0;
+    }
+  }
+
+  public static function countOrders() {
+    $sql = new Sql();
+
+    $count = $sql->select("SELECT count(order_id) FROM `order`");
     
     if (count($count) > 0) {
       return $count[0]["count(order_id)"];

@@ -22,7 +22,13 @@ function getNav() {
       "href"=>"pedidos",
       "icon"=>"ni ni-cart",
       "color"=>"",
-      "nivel"=>1
+      "nivel"=>1,
+      "submenu"=>[
+        [
+          "name"=>"abertos",
+          "href"=>"pedidos/aberto"
+        ]
+      ]
     ],
     [
       "name"=>"usuarios",

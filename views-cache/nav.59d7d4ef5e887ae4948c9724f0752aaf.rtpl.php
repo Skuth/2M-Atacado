@@ -6,7 +6,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="/admin">
-      <img src="./assets/admin/img/brand/blue.png" class="navbar-brand-img" alt="...">
+      <img src="../assets/img/logo.png" class="navbar-brand-img" alt="Logo">
     </a>
     <!-- User -->
     <?php $user = getUserSession(); ?>
@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="/admin">
-              <img src="./assets/admin/img/brand/blue.png">
+              <img src="../assets/img/logo.png">
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -54,16 +54,42 @@
       </div>
       <!-- Navigation -->
       <ul class="navbar-nav">
+        
         <?php $navItems = getNav(); ?>
         <?php $counter1=-1;  if( isset($navItems) && ( is_array($navItems) || $navItems instanceof Traversable ) && sizeof($navItems) ) foreach( $navItems as $key1 => $value1 ){ $counter1++; ?>
         <?php if( $value1["nivel"] <= $user["type"] ){ ?>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <li class="nav-item">          
+          <?php if( isset($value1["submenu"]) ){ ?>
+          <a class="nav-link collapsed" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
             <i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $value1["color"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo ucfirst($value1["name"]); ?>
           </a>
+          <div class="collapse" id="navbar-dashboards">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="/admin/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="nav-link">
+                  <span class="sidenav-normal"> <?php echo ucfirst($value1["name"]); ?> </span>
+                </a>
+              </li>
+              <?php $counter2=-1;  if( isset($value1["submenu"]) && ( is_array($value1["submenu"]) || $value1["submenu"] instanceof Traversable ) && sizeof($value1["submenu"]) ) foreach( $value1["submenu"] as $key2 => $value2 ){ $counter2++; ?>
+              <li class="nav-item">
+                <a href="/admin/<?php echo htmlspecialchars( $value2["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="nav-link">
+                  <span class="sidenav-normal"> <?php echo ucfirst($value2["name"]); ?> </span>
+                </a>
+              </li>
+              <?php } ?>
+            </ul>
+          </div>
+          <?php }else{ ?>
+          <li class="nav-item"></li>
+            <a class="nav-link" href="/admin/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              <i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $value1["color"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo ucfirst($value1["name"]); ?>
+            </a>
+          </li>
+          <?php } ?>
         </li>
         <?php } ?>
         <?php } ?>
+        
       </ul>
     </div>
   </div>
