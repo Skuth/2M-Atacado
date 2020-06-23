@@ -85,8 +85,8 @@
                   <?php } ?>
                 </td>
                 <td>
-                  <a class="btn btn-icon btn-default btn-sm" href="/admin/pedidos/visualizar/<?php echo htmlspecialchars( $value1["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-eye"></i></a>
-                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/pedidos/editar/<?php echo htmlspecialchars( $value1["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-icon btn-default btn-sm" href="/admin/pedido/visualizar/<?php echo htmlspecialchars( $value1["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-eye"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/pedido/editar/<?php echo htmlspecialchars( $value1["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
                 </td>
               </tr>
               <?php } ?>

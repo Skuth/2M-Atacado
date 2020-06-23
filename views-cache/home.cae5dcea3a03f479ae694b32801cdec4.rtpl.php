@@ -35,7 +35,7 @@
 <div class="products-card">
   <div class="card-container">
 
-    <a class="card" href="/departamentos/ferramentas">
+    <a class="card" href="produtos/departamento/ferramentas">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
@@ -50,7 +50,7 @@
       </div>
     </a>
 
-    <a class="card" href="/departamentos/ferramentas">
+    <a class="card" href="produtos/departamento/ferramentas">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header red" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
@@ -65,7 +65,7 @@
       </div>
     </a>
 
-    <a class="card" href="/departamentos/ferramentas">
+    <a class="card" href="produtos/departamento/ferramentas">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header orange" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>

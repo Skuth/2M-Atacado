@@ -53,5 +53,40 @@ $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) 
 
 });
 
+$app->get("/admin/pedido/editar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  $id = $args["id"];
+
+  $order = Order::getOrderById($id);
+  
+  $page = new PageAdmin(["data"=>["page"=>createPage("atualizar pedido", "pedido/editar/".$id)]]);
+  $page->setTpl("pedido-att", ["order"=>$order]);
+
+  return $res;
+
+});
+
+$app->post("/admin/pedido/atualizar", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if (isset($_POST["save"])) {
+    $id = $_POST["id"];
+    $status = $_POST["status"];
+    $paymentStatus = $_POST["payment-status"];
+
+    if (Order::updateOrder($id, $status, $paymentStatus) === TRUE) {
+      return $res->withHeader("Location", "/admin/pedidos?update=true");
+    } else {
+      return $res->withHeader("Location", "/admin/pedidos?update=false");
+    }
+  }
+
+  return $res;
+
+});
+
 
 ?>
