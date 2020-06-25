@@ -30,4 +30,17 @@ $app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
 
 });
 
+$app->get("/admin/notificacoes", function(Request $req, Response $res, $args) {
+
+  if (isset($GLOBALS["lowStock"])) {
+    $lowStock = $GLOBALS["lowStock"];
+
+    $page = new PageAdmin(["data"=>["page"=>createPage("notificações", "notificacoes")]]);
+    $page->setTpl("notificacoes", ["lowStock"=>$lowStock]);
+  }
+
+  return $res;
+
+});
+
 ?>

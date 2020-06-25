@@ -16,9 +16,14 @@
 - [X] Menu mobile
 - [X] Verificar se quantidade de produto é maior que 0
 - [X] Remover promoção se o stock em promo for 0
-- [ ] Pagina de cadastro de cliente
-- [ ] Pagina de cliente
+- [X] Pagina de cliente
+- [X] Listagem de compras
+- [X] Visualizar compra
+- [ ] Paginação na listagem de compras
+- [ ] Menu cliente
+- [ ] Arrumar height home
 - [ ] Campo de pesquisa
+- [ ] Pagina de cadastro de cliente
 
 - [ ] Editar endereço -> Apenas solicitando
 
@@ -37,5 +42,5 @@
 - [X] Listar pedidos em aberto
 - [X] Visualizar & atualizar pedido
 - [X] Adicionar sistema de notificação avisando sobre estoque
-- [ ] Criar pagina para listar todas as notificações
+- [X] Criar pagina para listar todas as notificações
 - [ ] Criar link temporario para registro de cliente

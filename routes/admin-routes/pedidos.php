@@ -57,7 +57,7 @@ $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) 
   $offset = ($pagina - 1) * $limit;
 
   
-  $orders = Order::getOrders("WHERE order_status=1 LIMIT ".$limit." OFFSET ".$offset);
+  $orders = Order::getOrders("WHERE order_status!=5 LIMIT ".$limit." OFFSET ".$offset);
 
   if (count($orders["orders"]) <= 0) {
     return $res->withHeader("Location", "/admin/pedidos/aberto?pagina=1");

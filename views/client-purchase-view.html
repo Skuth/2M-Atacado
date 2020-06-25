@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="purchases-container">
+    <div class="purchases-content">
+
+      <div class="purchases-title">
+        <h2>Compra #{$order.order_id} | {function="date('d/m/Y', strtotime($order.order_date))"} | R$ {function="formatMoney($order.order_subtotal)"}</h2>
+      </div>
+
+      <div class="purchase-box view-order">
+
+        <div class="purchase-view-status">
+          <div class="box">
+            <span class="title">Tipe de entrega</span>
+            {$x = $order.order_address_id}
+            {if="$x == 0"}
+            <span class="badge badge-circle badge-default text-white">Retirar</span>
+            <br>
+            <span class="map">Clique <a href="https://www.google.com/maps/place/R.+Curitiba,+653+-+Jardim+Olinda,+Cabo+Frio+-+RJ,+28911-140/@-22.8818045,-42.04757,21z/data=!4m5!3m4!1s0x971ad1c08e20f5:0x2b2541763f60b7e5!8m2!3d-22.881811!4d-42.047442" target="_blank">aqui</a> para abrir o mapa</span>
+            {else}
+            <span class="badge badge-circle badge-primary">Entregar</span>
+            {/if}
+          </div>
+          <div class="box">
+            <span class="title">Status do pagamento</span>
+            {$z = $order.order_payment_status}
+            {if="$z == 1"}
+            <span class="badge badge-circle badge-warning">Pagamento na retirada</span>
+            {elseif="$z == 2"}
+            <span class="badge badge-circle badge-primary">Em análise</span>
+            {elseif="$z == 3"}
+            <span class="badge badge-circle badge-success">Aprovado</span>
+            {elseif="$z == 4"}
+            <span class="badge badge-circle badge-danger">Recusado</span>
+            {/if}
+          </div>
+          <div class="box">
+            <span class="title">Status da compra</span>
+            {$i = $order.order_status}
+            {if="$i == 1"}
+            <span class="badge badge-circle badge-warning">Aguardando atualização</span>
+            {elseif="$i == 2"}
+            <span class="badge badge-circle badge-primary">Em separação</span>
+            {elseif="$i == 3"}
+            <span class="badge badge-circle badge-info">Pronto para retirada</span>
+            {elseif="$i == 4"}
+            <span class="badge badge-circle badge-info">Saiu para entregar</span>
+            {elseif="$i == 5"}
+            <span class="badge badge-circle badge-success">Entregue</span>
+            {/if}
+          </div>
+        </div>
+
+        <div class="purchase-view-product-box">
+
+          {loop="$order.produtos"}
+          <div class="purchase-product-box">
+            <div class="product-picture">
+              <img src="../assets/produtos/{$value.product_pictures[0]}" alt="">
+            </div>
+            <div class="product-title">
+              <span>{$value.product_name}</span>
+            </div>
+            <div class="product-price">
+              <span>Quantidade: {$value.quantity}</span>
+              <br>
+              <br>
+              <span> R$ {function="formatMoney($value.payed_price)"}</span>
+            </div>
+          </div>
+          {/loop}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

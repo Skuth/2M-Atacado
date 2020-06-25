@@ -44,15 +44,29 @@ $app->get("/cliente/logout", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/cliente/perfil", function(Request $req, Response $res, $args) {
+$app->get("/cliente/dashboard", function(Request $req, Response $res, $args) {
 
   if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
     $clientId = $_SESSION["client"]["client_id"];
 
-    $orders = Order::getByClientId($clientId);
+    $orders = Order::getByClientIdFull($clientId);
 
-    echo json_encode($orders);
+    $page = new Page();
+    $page->setTpl("client-dash", ["orders"=>$orders]);
   }
+
+  return $res;
+
+});
+
+$app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
+
+  $id = $args["id"];
+
+  $order = Order::getOrderByIdFull($id);
+
+  $page = new Page();
+  $page->setTpl("client-purchase-view", ["order"=>$order]);
 
   return $res;
 

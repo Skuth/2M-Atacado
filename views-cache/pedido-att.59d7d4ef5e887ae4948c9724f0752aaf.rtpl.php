@@ -40,7 +40,7 @@
                         <option value="" disabled>Selecione um status</option>
                         <option value="1" <?php if( $order["order_status"] == 1 ){ ?>selected<?php } ?>>Aguardando atualização</option>
                         <option value="2" <?php if( $order["order_status"] == 2 ){ ?>selected<?php } ?>>Em separação</option>
-                        <option value="3" <?php if( $order["order_status"] == 3 ){ ?>selected<?php } ?>>Pronto para retiradao</option>
+                        <option value="3" <?php if( $order["order_status"] == 3 ){ ?>selected<?php } ?>>Pronto para retirada</option>
                         <option value="4" <?php if( $order["order_status"] == 4 ){ ?>selected<?php } ?>>Saiu para entregar</option>
                         <option value="5" <?php if( $order["order_status"] == 5 ){ ?>selected<?php } ?>>Entregue</option>
                       </select>

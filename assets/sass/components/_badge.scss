@@ -1,0 +1,43 @@
+.badge {
+  display: inline-block;
+  background: lighten($default, 30);
+  color: white;
+  padding: 5px 15px;
+  font-weight: 600;
+  font-size: em(14);
+  border-radius: 4px;
+  margin: 5px 10px;
+  @include select();
+  @include textShadow(0 0 10px rgba(0,0,0,0.1));
+  &.badge-circle {
+    border-radius: 30px;
+  }
+  &.badge-default {
+    background: lighten($default, 30);
+    color: white;
+  }
+  &.badge-primary {
+    background: darken($secondary, 2);
+    color: $primary;
+  }
+  &.badge-secondary {
+    background: white;
+    color: $black;
+  }
+  &.badge-info {
+    background: lighten($info, 35);
+    color: $info;
+  }
+  &.badge-success {
+    background: lighten($success, 35);
+    color: $success;
+  }
+  &.badge-danger {
+    background: lighten($danger, 30);
+    color: $danger;
+  }
+  &.badge-warning {
+    background: lighten($warning, 30);
+    color: $warning;
+  }
+}

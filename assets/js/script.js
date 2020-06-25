@@ -93,7 +93,7 @@ const checkout = (btn) => {
         text: res.message,
         onClose: () => {
           if (res.status == "success") {
-            location.href = baseUrl+"cliente/perfil"
+            location.href = baseUrl+"cliente/dashboard"
           }
         }
       })

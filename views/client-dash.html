@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="purchases-container">
+    <div class="purchases-content">
+
+      <div class="purchases-title">
+        <h2>Compras</h2>
+      </div>
+
+      {if="count($orders) == 0"}
+
+      <div class="purchase-empty">
+        <span class="bold">Opss!</span>
+        <span>Você ainda não comprou nada, clique <a href="/produtos">Aqui</a> para conferir nossos produtos.</span>
+      </div>
+
+      {else}
+
+      {loop="$orders"}
+      <div class="purchase-box">
+        <div class="purchase-info">
+          {$prods = ""}
+          {$max = 3}
+          {$count = count($value.produtos)}
+          {if="$count > $max"}{$count = $max}{/if}
+        <div class="purchase-picture" style="--main-items-count: {$count}">
+            {loop="$value.produtos"}
+
+            {if="$prods == ''"}
+              {$prods = $value.product_name}
+            {else}
+              {$prods = $prods.", ".$value.product_name}
+            {/if}
+            
+            {if="($key + 1) <= $max"}
+            <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto {$value.product_name}">
+            {/if}
+            {/loop}
+          </div>
+          {if="count($value.produtos) > 1"}
+          <div class="purchase-products-info">
+            <p class="product-title">{function="substr($prods, 0, 40)"}...</p>
+            <p>Quantidade de produtos: {function="count($value.produtos)"}</p>
+            <p>Tota: R$ {function="formatMoney($value.order_subtotal)"}</p>
+          </div>
+          {else}
+          <div class="purchase-products-info">
+            <p class="product-title">{$value.produtos[0].product_name}</p>
+            <p>Quantidade: 1</p>
+            <p>Tota: R$ {function="formatMoney($value.products_price)"} x unidade</p>
+          </div>
+          {/if}
+        </div>
+        <div class="status">
+          {$z = $value.order_payment_status}
+          {if="$z == 1"}
+          <span class="badge badge-pill badge-warning">Pagamento na retirada</span>
+          {elseif="$z == 2"}
+          <span class="badge badge-pill badge-primary">Em análise</span>
+          {elseif="$z == 3"}
+          <span class="badge badge-pill badge-success">Aprovado</span>
+          {elseif="$z == 4"}
+          <span class="badge badge-pill badge-danger">Recusado</span>
+          {/if}
+          <br>
+          {$i = $value.order_status}
+          {if="$i == 1"}
+          <span class="badge badge-pill badge-warning">Aguardando atualização</span>
+          {elseif="$i == 2"}
+          <span class="badge badge-pill badge-primary">Em separação</span>
+          {elseif="$i == 3"}
+          <span class="badge badge-pill badge-info">Pronto para retirada</span>
+          {elseif="$i == 4"}
+          <span class="badge badge-pill badge-info">Saiu para entregar</span>
+          {elseif="$i == 5"}
+          <span class="badge badge-pill badge-success">Entregue</span>
+          {/if}
+        </div>
+        <div class="purchase-details">
+          <a href="/cliente/compra/{$value.order_id}">Ver detalhes</a>
+        </div>
+      </div>
+      {/loop}
+
+      {/if}
+
+    </div>
+  </div>
+</div>

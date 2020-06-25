@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-header">
           
-          <h5 class="h3 mb-0">Compra #<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Dia <?php echo date('d/m/Y', strtotime($order["order_date"])); ?></h5>
+          <h5 class="h3 mb-0">Compra #<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Dia <?php echo date('d/m/Y', strtotime($order["order_date"])); ?> | Total <span class="badge badge-pill badge-info">R$ <?php echo formatMoney($order["order_subtotal"]); ?></span></h5>
         </div>
 
         <br>
@@ -17,7 +17,7 @@
         <div class="card-body">
           <img src="../assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="80" class="mb-4">
           <p class="card-text mb-4"><strong><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Quantidade: <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $value1["quantity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></strong></p>
-          <p class="btn btn-primary">R$ <?php echo formatMoney($value1["payed_price"]); ?></p>
+          <p class="badge badge-pill badge-info badge-lg">R$ <?php echo formatMoney($value1["payed_price"]); ?></p>
         </div>
         <?php if( $key1 < (count($order["produtos"]) - 1) ){ ?>
         <hr>
