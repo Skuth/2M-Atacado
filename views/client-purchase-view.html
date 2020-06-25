@@ -3,7 +3,7 @@
     <div class="purchases-content">
 
       <div class="purchases-title">
-        <h2>Compra #{$order.order_id} | {function="date('d/m/Y', strtotime($order.order_date))"} | R$ {function="formatMoney($order.order_subtotal)"}</h2>
+        <h2>Compra #{$order.order_id} | Dia {function="date('d/m/Y', strtotime($order.order_date))"} | R$ {function="formatMoney($order.order_subtotal)"}</h2>
       </div>
 
       <div class="purchase-box view-order">
