@@ -19,8 +19,8 @@
 - [X] Pagina de cliente
 - [X] Listagem de compras
 - [X] Visualizar compra
+- [X] Menu cliente
 - [ ] Paginação na listagem de compras
-- [ ] Menu cliente
 - [ ] Arrumar height home
 - [ ] Campo de pesquisa
 - [ ] Pagina de cadastro de cliente

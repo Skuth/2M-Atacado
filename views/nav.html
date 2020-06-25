@@ -4,7 +4,14 @@
     <div class="header-container">
       <a href="./" class="logo-image"><img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo {$siteData['site_data_name']}"></a>
       {if="isset($_SESSION['client'])"}
-      <a href="/cliente/dashboard" class="btn btn-circle"><i class="icofont-ui-user"></i> {$_SESSION["client"]["client_name"]}</a>
+      <ul class="client-submenu">
+        <li onclick="openSub(this)"><a class="btn btn-circle"><i class="icofont-ui-user"></i> {$_SESSION["client"]["client_name"]}</a>
+          <ul>
+            <li><a href="/cliente/dashboard"><i class="icofont-bag"></i>Compras</a></li>
+            <li><a href="/cliente/logout"><i class="icofont-logout"></i>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
       {else}
       <a href="/cliente/login" class="btn btn-circle"><i class="icofont-sign-in"></i> Entrar</a>
       {/if}

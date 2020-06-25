@@ -1021,6 +1021,42 @@ textarea {
         .navigation-header .header-container .logo-image img {
           width: 100%;
           display: block; }
+      .navigation-header .header-container .client-submenu {
+        text-align: right; }
+        .navigation-header .header-container .client-submenu li {
+          position: relative;
+          display: inline-block; }
+        .navigation-header .header-container .client-submenu li > ul {
+          position: absolute;
+          width: 100%;
+          right: 0;
+          text-align: center;
+          background: white;
+          z-index: 10;
+          border-radius: 10px;
+          overflow: hidden;
+          display: none;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+          .navigation-header .header-container .client-submenu li > ul li {
+            display: block; }
+            .navigation-header .header-container .client-submenu li > ul li a {
+              display: block;
+              padding: 20px;
+              text-decoration: none;
+              font-size: 1.125em;
+              color: #1A3795;
+              transition: all 0.5s;
+              -webkit-transition: all 0.5s;
+              -moz-transition: all 0.5s;
+              -o-transition: all 0.5s; }
+              .navigation-header .header-container .client-submenu li > ul li a:hover {
+                background: #1A3795;
+                color: white; }
+              .navigation-header .header-container .client-submenu li > ul li a i {
+                margin-right: 5px; }
       .navigation-header .header-container .btn {
         justify-self: flex-end; }
         .navigation-header .header-container .btn i {
@@ -1208,6 +1244,10 @@ textarea {
 @media (max-width: 475px) {
   .navigation .navigation-header .header-container {
     grid-template-columns: 1fr 1fr; }
+    .navigation .navigation-header .header-container .client-submenu li {
+      position: relative; }
+    .navigation .navigation-header .header-container .client-submenu li > ul {
+      width: 200px; }
     .navigation .navigation-header .header-container .btn {
       padding: 10px;
       font-size: 0em; }

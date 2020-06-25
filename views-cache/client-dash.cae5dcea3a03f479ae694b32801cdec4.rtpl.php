@@ -53,26 +53,26 @@
         <div class="status">
           <?php $z = $value1["order_payment_status"]; ?>
           <?php if( $z == 1 ){ ?>
-          <span class="badge badge-pill badge-warning">Pagamento na retirada</span>
+          <span class="badge badge-circle badge-warning">Pagamento na retirada</span>
           <?php }elseif( $z == 2 ){ ?>
-          <span class="badge badge-pill badge-primary">Em análise</span>
+          <span class="badge badge-circle badge-primary">Em análise</span>
           <?php }elseif( $z == 3 ){ ?>
-          <span class="badge badge-pill badge-success">Aprovado</span>
+          <span class="badge badge-circle badge-success">Aprovado</span>
           <?php }elseif( $z == 4 ){ ?>
-          <span class="badge badge-pill badge-danger">Recusado</span>
+          <span class="badge badge-circle badge-danger">Recusado</span>
           <?php } ?>
           <br>
           <?php $i = $value1["order_status"]; ?>
           <?php if( $i == 1 ){ ?>
-          <span class="badge badge-pill badge-warning">Aguardando atualização</span>
+          <span class="badge badge-circle badge-warning">Aguardando atualização</span>
           <?php }elseif( $i == 2 ){ ?>
-          <span class="badge badge-pill badge-primary">Em separação</span>
+          <span class="badge badge-circle badge-primary">Em separação</span>
           <?php }elseif( $i == 3 ){ ?>
-          <span class="badge badge-pill badge-info">Pronto para retirada</span>
+          <span class="badge badge-circle badge-info">Pronto para retirada</span>
           <?php }elseif( $i == 4 ){ ?>
-          <span class="badge badge-pill badge-info">Saiu para entregar</span>
+          <span class="badge badge-circle badge-info">Saiu para entregar</span>
           <?php }elseif( $i == 5 ){ ?>
-          <span class="badge badge-pill badge-success">Entregue</span>
+          <span class="badge badge-circle badge-success">Entregue</span>
           <?php } ?>
         </div>
         <div class="purchase-details">

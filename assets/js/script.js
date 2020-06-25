@@ -147,8 +147,12 @@ const removeCart = (id) => {
   });
 }
 
+const openSub = (box) => {
+  $(box).children("ul").fadeToggle()
+}
+
 $(document).ready(() => {
-  
+
   if($(window).width() >= 1200) {
     let nav = $(".navigation")
     let navTop = $(nav).offset().top

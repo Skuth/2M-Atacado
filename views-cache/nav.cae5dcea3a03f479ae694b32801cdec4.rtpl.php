@@ -4,7 +4,14 @@
     <div class="header-container">
       <a href="./" class="logo-image"><img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></a>
       <?php if( isset($_SESSION['client']) ){ ?>
-      <a href="/cliente/dashboard" class="btn btn-circle"><i class="icofont-ui-user"></i> <?php echo htmlspecialchars( $_SESSION["client"]["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+      <ul class="client-submenu">
+        <li onclick="openSub(this)"><a class="btn btn-circle"><i class="icofont-ui-user"></i> <?php echo htmlspecialchars( $_SESSION["client"]["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+          <ul>
+            <li><a href="/cliente/dashboard"><i class="icofont-bag"></i>Compras</a></li>
+            <li><a href="/cliente/logout"><i class="icofont-logout"></i>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
       <?php }else{ ?>
       <a href="/cliente/login" class="btn btn-circle"><i class="icofont-sign-in"></i> Entrar</a>
       <?php } ?>

@@ -57,6 +57,43 @@
           display: block;
         }
       }
+      .client-submenu {
+        text-align: right;
+        li {
+          position: relative;
+          display: inline-block;
+        }
+        li > ul {
+          position: absolute;
+          width: 100%;
+          right: 0;
+          text-align: center;
+          background: white;
+          z-index: 10;
+          border-radius: 10px;
+          overflow: hidden;
+          display: none;
+          @include boxShadow(0 0 10px rgba(0,0,0,0.4));
+          li {
+            display: block;
+            a {
+              display: block;
+              padding: 20px;
+              text-decoration: none;
+              font-size: em(18);
+              color: $darkblue;
+              @include transition(all, 0.5s);
+              &:hover {
+                background: $darkblue;
+                color: white;
+              }
+              i {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
       .btn {
         justify-self: flex-end;
         i {
@@ -294,6 +331,14 @@
     .navigation-header {
       .header-container {
         grid-template-columns: 1fr 1fr;
+        .client-submenu {
+          li {
+            position: relative;
+          }
+          li > ul {
+            width: 200px;
+          }
+        }
         .btn {
           padding: 10px;
           font-size: em(0);

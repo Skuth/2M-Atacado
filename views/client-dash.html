@@ -53,26 +53,26 @@
         <div class="status">
           {$z = $value.order_payment_status}
           {if="$z == 1"}
-          <span class="badge badge-pill badge-warning">Pagamento na retirada</span>
+          <span class="badge badge-circle badge-warning">Pagamento na retirada</span>
           {elseif="$z == 2"}
-          <span class="badge badge-pill badge-primary">Em análise</span>
+          <span class="badge badge-circle badge-primary">Em análise</span>
           {elseif="$z == 3"}
-          <span class="badge badge-pill badge-success">Aprovado</span>
+          <span class="badge badge-circle badge-success">Aprovado</span>
           {elseif="$z == 4"}
-          <span class="badge badge-pill badge-danger">Recusado</span>
+          <span class="badge badge-circle badge-danger">Recusado</span>
           {/if}
           <br>
           {$i = $value.order_status}
           {if="$i == 1"}
-          <span class="badge badge-pill badge-warning">Aguardando atualização</span>
+          <span class="badge badge-circle badge-warning">Aguardando atualização</span>
           {elseif="$i == 2"}
-          <span class="badge badge-pill badge-primary">Em separação</span>
+          <span class="badge badge-circle badge-primary">Em separação</span>
           {elseif="$i == 3"}
-          <span class="badge badge-pill badge-info">Pronto para retirada</span>
+          <span class="badge badge-circle badge-info">Pronto para retirada</span>
           {elseif="$i == 4"}
-          <span class="badge badge-pill badge-info">Saiu para entregar</span>
+          <span class="badge badge-circle badge-info">Saiu para entregar</span>
           {elseif="$i == 5"}
-          <span class="badge badge-pill badge-success">Entregue</span>
+          <span class="badge badge-circle badge-success">Entregue</span>
           {/if}
         </div>
         <div class="purchase-details">
