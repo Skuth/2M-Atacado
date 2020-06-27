@@ -989,8 +989,7 @@ textarea {
       left: 0;
       right: 0;
       top: 488px;
-      width: 90%;
-      max-width: 1420px; }
+      width: 90%; }
       .navigation.banner .navigation-header .header-container .logo-image {
         margin-top: -75px;
         width: 150px; }
@@ -1172,6 +1171,34 @@ textarea {
           margin: 0 10px; }
           .navigation-links .links-container ul.left li a:hover {
             background: #1A3795; }
+        .navigation-links .links-container ul.right .search-sub {
+          position: relative; }
+          .navigation-links .links-container ul.right .search-sub ul {
+            display: none;
+            right: 0;
+            padding: 5px;
+            position: absolute; }
+            .navigation-links .links-container ul.right .search-sub ul li {
+              display: block; }
+              .navigation-links .links-container ul.right .search-sub ul li input {
+                display: block;
+                width: calc(200px * 20px * 2);
+                padding: 10px 20px;
+                border: 0;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -o-transition: all 0.5s; }
+                .navigation-links .links-container ul.right .search-sub ul li input:focus {
+                  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+                  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+                  -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+                  -o-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4); }
         .navigation-links .links-container ul.right li a {
           font-size: 22px;
           position: relative; }
@@ -1218,6 +1245,40 @@ textarea {
           background: transparent; }
           .navigation-links .links-container ul.left .submenu > ul li a:hover {
             background: #1A3795; }
+      .navigation-links .links-container ul.right .search-sub {
+        position: relative;
+        pointer-events: none; }
+        .navigation-links .links-container ul.right .search-sub ul {
+          top: 50%;
+          bottom: 50%;
+          right: 0;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          width: calc(100% - 20px * 2 - 20px);
+          transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -o-transform: translateY(-50%); }
+          .navigation-links .links-container ul.right .search-sub ul li {
+            margin-top: 0;
+            margin-right: 5px;
+            width: calc(100% - 5px * 2 - 20px); }
+            .navigation-links .links-container ul.right .search-sub ul li input {
+              pointer-events: initial;
+              width: 100%;
+              padding: 20px 0;
+              background: transparent;
+              color: white;
+              box-shadow: 0 0 0;
+              -webkit-box-shadow: 0 0 0;
+              -moz-box-shadow: 0 0 0;
+              -o-box-shadow: 0 0 0; }
+              .navigation-links .links-container ul.right .search-sub ul li input:focus {
+                box-shadow: 0 0 0;
+                -webkit-box-shadow: 0 0 0;
+                -moz-box-shadow: 0 0 0;
+                -o-box-shadow: 0 0 0; }
       .navigation-links .links-container ul li {
         margin-top: 10px; }
         .navigation-links .links-container ul li a {

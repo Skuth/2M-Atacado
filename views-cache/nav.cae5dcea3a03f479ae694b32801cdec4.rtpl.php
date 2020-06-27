@@ -5,7 +5,7 @@
       <a href="./" class="logo-image"><img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></a>
       <?php if( isset($_SESSION['client']) ){ ?>
       <ul class="client-submenu">
-        <li onclick="openSub(this)"><a class="btn btn-circle"><i class="icofont-ui-user"></i> <?php echo htmlspecialchars( $_SESSION["client"]["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+        <li onclick="openSub(this, event)"><a class="btn btn-circle"><i class="icofont-ui-user"></i> <?php echo htmlspecialchars( $_SESSION["client"]["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
           <ul>
             <li><a href="/cliente/dashboard"><i class="icofont-bag"></i>Compras</a></li>
             <li><a href="/cliente/logout"><i class="icofont-logout"></i>Logout</a></li>
@@ -60,7 +60,11 @@
               <?php } ?>
             <?php } ?>
           </a></li>
-          <li><a><i class="icofont-search"></i></a></li>
+          <li class="search-sub" onclick="openSub(this, event)"><a><i class="icofont-search"></i></a>
+          <ul>
+            <li><input autofocus type="text" name="search" placeholder="Pesquisar" onkeydown="productSearch(this.value, event)"></li>
+          </ul>
+          </li>
         </ul>
       </div>
     </div>

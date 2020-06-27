@@ -147,8 +147,16 @@ const removeCart = (id) => {
   });
 }
 
-const openSub = (box) => {
-  $(box).children("ul").fadeToggle()
+const productSearch = (value, e) => {
+  if (e.keyCode === 13) {
+    location.href = baseUrl+"produtos/pesquisa/"+value
+  }
+}
+
+const openSub = (box, e) => {
+  if (e.path[0] != $(box).children("ul").children("li").children("input")[0]) {
+    $(box).children("ul").fadeToggle()
+  }
 }
 
 $(document).ready(() => {

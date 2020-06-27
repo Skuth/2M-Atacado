@@ -20,9 +20,8 @@
 - [X] Listagem de compras
 - [X] Visualizar compra
 - [X] Menu cliente
+- [X] Campo de pesquisa
 - [ ] Paginação na listagem de compras
-- [ ] Arrumar height home
-- [ ] Campo de pesquisa
 - [ ] Pagina de cadastro de cliente
 
 - [ ] Editar endereço -> Apenas solicitando
