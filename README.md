@@ -21,7 +21,7 @@
 - [X] Visualizar compra
 - [X] Menu cliente
 - [X] Campo de pesquisa
-- [ ] Pagina de cadastro de cliente
+- [X] Pagina de cadastro de cliente
 - [ ] Adicionar pagina de recuperação de senha
 
 - [ ] Editar endereço -> Apenas solicitando
@@ -30,7 +30,7 @@
 
 - [X] Adicionar tags SEO
 - [X] Desc do produto SEO Parse
-- [X] Para checkout e login
+- [X] SEO para checkout e login
 
 ### Back end
 
@@ -43,6 +43,7 @@
 - [X] Adicionar sistema de notificação avisando sobre estoque
 - [X] Criar pagina para listar todas as notificações
 - [X] Criar link temporario para registro de cliente
-- [ ] Pagina de edição de cliente
 - [X] Pagina para vizualizar cliente
-- [ ] Adicionar status cancelado no pedido
+- [X] Pagina de edição de cliente
+- [X] Adicionar status cancelado no pedido
+- [ ] Editar box home
