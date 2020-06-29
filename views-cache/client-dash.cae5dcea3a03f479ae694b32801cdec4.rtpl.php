@@ -73,6 +73,8 @@
           <span class="badge badge-circle badge-info">Saiu para entregar</span>
           <?php }elseif( $i == 5 ){ ?>
           <span class="badge badge-circle badge-success">Entregue</span>
+          <?php }elseif( $i == 6 ){ ?>
+          <span class="badge badge-circle badge-danger">Cancelada</span>
           <?php } ?>
         </div>
         <div class="purchase-details">

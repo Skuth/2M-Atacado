@@ -79,6 +79,51 @@ $app->post("/admin/clientes/chave", function(Request $req, Response $res, $args)
 
 });
 
+$app->get("/admin/cliente/ativar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $clients = new Clients();
+
+  $r = $clients->activateClient($id);
+
+  if ($r["status"] == "success") {
+    return $res->withHeader("Location", "/admin/clientes?activate=true");
+  } else {
+    return $res->withHeader("Location", "/admin/clientes?activate=false");
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/cliente/desativar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $clients = new Clients();
+
+  $r = $clients->deactivateClient($id);
+
+  if ($r["status"] == "success") {
+    return $res->withHeader("Location", "/admin/clientes?deactivate=true");
+  } else {
+    return $res->withHeader("Location", "/admin/clientes?deactivate=false");
+  }
+
+  return $res;
+
+});
+
+
 $app->get("/admin/cliente/remover/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
@@ -113,7 +158,40 @@ $app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $a
 
   $r = $clients->getClientById($id);
 
-  var_dump($r);
+  $page = new PageAdmin(["data"=>["page"=>createPage("Editando cliente ".$r["client_name"]."#".$id, "cliente/editar/".$id)]]);
+  $page->setTpl("client-edit", ["client"=>$r]);
+
+  return $res;
+
+});
+
+$app->post("/admin/cliente/editar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+  $data = [];
+
+  if (isset($_POST["update"])) {
+    $data = [];
+
+    foreach ($_POST as $key => $value) {
+      if ($key != "update") {
+        $data[$key] = $value;
+      }
+    }
+
+    $clients = new Clients();
+    $r = $clients->editClient($id, $data);
+
+    if ($r == true) {
+      return $res->withHeader("Location", "/admin/clientes?edit=true");
+    } else {
+      return $res->withHeader("Location", "/admin/clientes?edit=false");
+    }
+  }
 
   return $res;
 
@@ -131,7 +209,8 @@ $app->get("/admin/cliente/visualizar/{id}", function(Request $req, Response $res
 
   $r = $clients->getClientById($id);
 
-  var_dump($r);
+  $page = new PageAdmin(["data"=>["page"=>createPage("Visuzalizando cliente ".$r["client_name"]."#".$id, "cliente/visualizar/".$id)]]);
+  $page->setTpl("client-view", ["client"=>$r]);
 
   return $res;
 

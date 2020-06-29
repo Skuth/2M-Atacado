@@ -22,6 +22,7 @@
 - [X] Menu cliente
 - [X] Campo de pesquisa
 - [ ] Pagina de cadastro de cliente
+- [ ] Adicionar pagina de recuperação de senha
 
 - [ ] Editar endereço -> Apenas solicitando
 
@@ -43,5 +44,5 @@
 - [X] Criar pagina para listar todas as notificações
 - [X] Criar link temporario para registro de cliente
 - [ ] Pagina de edição de cliente
-- [ ] Pagina para vizualizar cliente
+- [X] Pagina para vizualizar cliente
 - [ ] Adicionar status cancelado no pedido

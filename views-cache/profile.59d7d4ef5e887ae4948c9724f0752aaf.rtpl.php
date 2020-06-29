@@ -16,7 +16,7 @@
         <div class="card-body pt-0 mt-8">
           <div class="text-center">
             <h5 class="h3"><?php echo htmlspecialchars( $user["fname"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $user["lname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
-            <div class="h5 font-weight-300"><?php if( $user["type"] == 1 ){ ?>Funcionário<?php }elseif( $user["type"] == 2 ){ ?>Administrador<?php }else{ ?>Super Administrador<?php } ?></div>
+            <div class="h5 font-weight-300"><span class="badge badge-pill badge-info"><?php if( $user["type"] == 1 ){ ?>Funcionário<?php }elseif( $user["type"] == 2 ){ ?>Administrador<?php }else{ ?>Super Administrador<?php } ?></span></div>
           </div>
         </div>
       </div>

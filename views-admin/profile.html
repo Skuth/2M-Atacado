@@ -16,7 +16,7 @@
         <div class="card-body pt-0 mt-8">
           <div class="text-center">
             <h5 class="h3">{$user.fname} {$user.lname}</h5>
-            <div class="h5 font-weight-300">{if="$user.type == 1"}Funcionário{elseif="$user.type == 2"}Administrador{else}Super Administrador{/if}</div>
+            <div class="h5 font-weight-300"><span class="badge badge-pill badge-info">{if="$user.type == 1"}Funcionário{elseif="$user.type == 2"}Administrador{else}Super Administrador{/if}</span></div>
           </div>
         </div>
       </div>

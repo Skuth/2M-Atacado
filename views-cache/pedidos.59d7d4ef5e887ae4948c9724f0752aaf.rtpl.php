@@ -70,6 +70,8 @@
                   <span class="badge badge-pill badge-info">Saiu para entregar</span>
                   <?php }elseif( $i == 5 ){ ?>
                   <span class="badge badge-pill badge-success">Entregue</span>
+                  <?php }elseif( $i == 6 ){ ?>
+                  <span class="badge badge-pill badge-danger">Cancelada</span>
                   <?php } ?>
                 </td>
                 <td>

@@ -102,7 +102,7 @@ class Clients {
   public static function getClients($param) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients ".$param;
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients ".$param;
 
     $count = $sql->select("SELECT count(client_id) FROM clients ".$param);
 
@@ -118,7 +118,7 @@ class Clients {
   public static function getClientById($id) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_id=:id LIMIT 1";
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_id=:id LIMIT 1";
     $param = ["id"=>$id];
     
     $res = $sql->select($query, $param);
@@ -278,46 +278,53 @@ class Clients {
     }
   }
 
-  public function editClient($id, $type, $name, $cnpj, $ie, $cpf, $email, $phone, $password) {
+  public function editClient($id, $data) {
     $sql = new Sql();
 
-    $query = "UPDATE clients SET client_name=:name, client_cnpj=:cnpj, client_ie=:ie, client_cpf=:cpf, client_email=:email, client_phone:phone WHERE client_id=:id";
+    $name = $data["nome"];
+    $cnpj = (isset($data["cnpj"])) ? formatString($data["cnpj"]) : NULL;
+    $ie = (isset($data["ie"])) ? formatString($data["ie"]) : NULL;
+    $cpf = (isset($data["cpf"])) ? formatString($data["cpf"]) : NULL;
+    $email = $data["email"];
+    $phone = formatString($data["phone"]);
+    $password = $data["pass"];
 
-    if ($type == 1) {
-      $params = [
-        "id"=>$id,
-        "name"=>$name,
-        "cnpj"=>$cnpj,
-        "ie"=>$ie,
-        "cpf"=>NULL,
-        "email"=>$email,
-        "phone"=>$phone,
-        "type"=>$type
-      ];
+    $query = "UPDATE clients SET client_name=:nome, client_cnpj=:cnpj, client_ie=:ie, client_cpf=:cpf, client_email=:email, client_phone=:phone WHERE client_id=:id";
+
+    $params = [
+      ":nome"=>$name,
+      ":cnpj"=>$cnpj,
+      ":ie"=>$ie,
+      ":cpf"=>$cpf,
+      ":email"=>$email,
+      ":phone"=>$phone,
+      ":id"=>$id
+    ];
+
+    $pe = $this->editPassword($id, $password);
+
+    if ($pe["status"] != "error") {
+
+      var_dump($pe);
+
+      var_dump($query);
+      var_dump($params);
+
+      if ($sql->query($query, $params) == TRUE) {  
+        return true;
+      } else {
+        return false;
+      }
+
     } else {
-      $params = [
-        "id"=>$id,
-        "name"=>$name,
-        "cnpj"=>NULL,
-        "ie"=>NULL,
-        "cpf"=>$cpf,
-        "email"=>$email,
-        "phone"=>$phone,
-        "type"=>$type
-      ];
-    }
-
-    if ($sql->query($query, $params) == TRUE) {
-      $this->editPassword($id, $password);
-
-      return true;
-    } else {
-      return false;
+      return $pe;
     }
   }
 
   public function editPassword($id, $pass) {
     $sql = new Sql();
+
+    if ($pass == "password") return $this->parseReturn("info", "Nada alterado!");
 
     $opts = [
       "cost"=>12
@@ -350,6 +357,24 @@ class Clients {
     } else {
       return $this->parseReturn("error", "Falha ao remover usuário!");
     }
+  }
+
+  public function activateClient($id) {
+    $sql = new Sql();
+
+    $query = "UPDATE clients SET client_status=:status WHERE client_id=:id";
+    $params = ["status"=>1, "id"=>$id];
+
+    return $sql->query($query, $params);
+  }
+
+  public function deactivateClient($id) {
+    $sql = new Sql();
+
+    $query = "UPDATE clients SET client_status=:status WHERE client_id=:id";
+    $params = ["status"=>0, "id"=>$id];
+
+    return $sql->query($query, $params);
   }
 }
 

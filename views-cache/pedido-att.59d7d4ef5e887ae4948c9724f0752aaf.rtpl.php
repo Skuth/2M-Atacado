@@ -43,6 +43,7 @@
                         <option value="3" <?php if( $order["order_status"] == 3 ){ ?>selected<?php } ?>>Pronto para retirada</option>
                         <option value="4" <?php if( $order["order_status"] == 4 ){ ?>selected<?php } ?>>Saiu para entregar</option>
                         <option value="5" <?php if( $order["order_status"] == 5 ){ ?>selected<?php } ?>>Entregue</option>
+                        <option value="6" <?php if( $order["order_status"] == 6 ){ ?>selected<?php } ?>>Cancelada</option>
                       </select>
                     </div>
                   </div>

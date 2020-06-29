@@ -54,7 +54,8 @@
                   <?php $doc = formatCnpjCpf($doc); ?>
                   <?php echo htmlspecialchars( $doc, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                 </b></td>
-                <td><b><?php echo formatCnpjCpf($value1["client_ie"]); ?></b></td>
+                <?php $ie = formatCnpjCpf($value1["client_ie"]); ?>
+                <td><b><?php if( $ie != '' ){ ?> <?php echo htmlspecialchars( $ie, ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php }else{ ?> -------- <?php } ?></b></td>
                 <td><b>
                   <?php if( $value1["client_type"] == 1 ){ ?>
                     Empresa
@@ -75,6 +76,11 @@
                   <a class="btn btn-icon btn-default btn-sm" href="/admin/cliente/visualizar/<?php echo htmlspecialchars( $value1["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-eye"></i></a>
                   <a class="btn btn-icon btn-primary btn-sm" href="/admin/cliente/editar/<?php echo htmlspecialchars( $value1["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
                   <?php if( $userOn["type"] >= 2 ){ ?>
+                  <?php if( $value1["client_status"] == 0 ){ ?>
+                  <a class="btn btn-icon btn-info btn-sm" onclick="return confirm('Deseja mesmo ativar esse cliente?')" href="/admin/cliente/ativar/<?php echo htmlspecialchars( $value1["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="far fa-check-circle"></i></a>
+                  <?php }else{ ?>
+                  <a class="btn btn-icon btn-info btn-sm" onclick="return confirm('Deseja mesmo desativar esse cliente?')" href="/admin/cliente/desativar/<?php echo htmlspecialchars( $value1["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="far fa-times-circle"></i></a>
+                  <?php } ?>
                   <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse cliente?')" href="/admin/cliente/remover/<?php echo htmlspecialchars( $value1["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                   <?php } ?>
                 </td>
