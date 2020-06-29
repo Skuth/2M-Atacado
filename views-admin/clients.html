@@ -1,0 +1,114 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            {$nUrl = explode("/", $url)}
+            <div class="col">
+              {if="count($nUrl) == 1"}
+              <h3 class="mb-0">Clientes</h3>
+              {else}
+              <h3 class="mb-0">Clientes desativados</h3>
+              {/if}
+            </div>
+            {$userOn=$_SESSION["user"]}
+            <div class="col text-right">
+              <span onclick="generateKey()" class="btn btn-sm btn-primary">Criar chave</span>
+            {if="count($nUrl) == 1"}
+              <a href="/admin/clientes/desativados" class="btn btn-sm btn-primary">Desativados</a>
+            {else}
+              <a href="/admin/clientes" class="btn btn-sm btn-primary">Todos</a>
+            {/if}
+          </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light text-center">
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Cpf / Cnpj</th>
+                <th scope="col">Inscrição Estadual</th>
+                <th scope="col">Tipo de conta</th>
+                <th scope="col">Status da conta</th>
+                <th scope="col">ÚLTIMA CONEXÃO</th>
+                <th scope="col">ÚLTIMO IP CONECTADO</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              {loop="$clients"}
+              <tr>
+                <td><b>{$value.client_name}</b></td>
+                <td><b>
+                  {if="$value.client_cnpj != ''"}
+                    {$doc = $value.client_cnpj}
+                  {else}
+                    {$doc = $value.client_cpf}
+                  {/if}
+
+                  {$doc = formatCnpjCpf($doc)}
+                  {$doc}
+                </b></td>
+                <td><b>{function="formatCnpjCpf($value.client_ie)"}</b></td>
+                <td><b>
+                  {if="$value.client_type == 1"}
+                    Empresa
+                  {else}
+                    Pessoal
+                  {/if}
+                </b></td>
+                <td><b>
+                  {if="$value.client_status == 1"}
+                    <span class="badge badge-pill badge-success">Ativada</span>
+                    {else}
+                    <span class="badge badge-pill badge-danger">Desativada</span>
+                  {/if}
+                </b></td>
+                <td><b>{function="date('d/m/Y H:i:s', strtotime($value.client_last_connect))"}</b></td>
+                <td><b>{$value.client_last_ip_connect}</b></td>
+                <td>
+                  <a class="btn btn-icon btn-default btn-sm" href="/admin/cliente/visualizar/{$value.client_id}"><i class="fas fa-eye"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/cliente/atualizar/{$value.client_id}"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse cliente?')" href="/admin/cliente/remover/{$value.client_id}"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+              {/loop}
+            </tbody>
+          </table>
+
+          <nav class="p-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item {if="$pagina == 1"}disabled{/if}">
+                <a class="page-link" href="/admin/{$url}?pagina={$pagina - 1}" tabindex="-1">
+                  <i class="fa fa-angle-left"></i>
+                </a>
+              </li>
+              {$c = ceil($count/$limit)}
+              {if="$c > 0"}
+                {loop="range(1, $c)"}
+                {$key = $key + 1}
+                <li class="page-item {if="$key == $pagina"}active{/if}"><a class="page-link" href="/admin/{$url}?pagina={$key}">{$key}</a></li>
+                {/loop}
+              {else}
+              <li class="page-item {if="1 == $pagina"}active{/if}"><a class="page-link" href="/admin/{$url}?pagina=1">1</a></li>
+              {/if}
+              <li class="page-item {if="$c == $pagina"}disabled{/if}">
+                <a class="page-link" href="/admin/{$url}?pagina={$pagina + 1}">
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>

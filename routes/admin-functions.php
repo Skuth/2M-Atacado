@@ -31,9 +31,16 @@ function getNav() {
       ]
     ],
     [
+      "name"=>"clientes",
+      "href"=>"clientes",
+      "icon"=> "fas fa-users",
+      "color"=>"",
+      "nivel"=>2
+    ],
+    [
       "name"=>"usuarios",
       "href"=>"usuarios",
-      "icon"=> "fas fa-users",
+      "icon"=> "fas fa-address-card",
       "color"=>"",
       "nivel"=>2
     ],

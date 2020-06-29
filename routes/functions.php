@@ -136,4 +136,18 @@ function getShipmentPrice($address) {
   }
 }
 
+function formatCnpjCpf($doc) {
+  $doc = preg_replace("/\D/", '', $doc);
+
+  if (strlen($doc) == 11) {
+    $doc = preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $doc);
+  } elseif (strlen($doc) == 8) {
+    $doc = preg_replace("/(\d{2})(\d{3})(\d{2})(\d{1})/", "\$1.\$2.\$3-\$4", $doc);
+  } else {
+    $doc = preg_replace("/(\d{3})(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $doc);
+  }
+  
+  return $doc;
+}
+
 ?>

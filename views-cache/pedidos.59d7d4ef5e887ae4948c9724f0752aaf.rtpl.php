@@ -101,9 +101,13 @@
                 </a>
               </li>
               <?php $c = ceil($count/$limit); ?>
-              <?php $counter1=-1; $newvar1=range(1, $c); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
-              <?php $key1 = $key1 + 1; ?>
-              <li class="page-item <?php if( $key1 == $pagina ){ ?>active<?php } ?>"><a class="page-link" href="/admin/<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+              <?php if( $c > 0 ){ ?>
+                <?php $counter1=-1; $newvar1=range(1, $c); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+                <?php $key1 = $key1 + 1; ?>
+                <li class="page-item <?php if( $key1 == $pagina ){ ?>active<?php } ?>"><a class="page-link" href="/admin/<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+                <?php } ?>
+              <?php }else{ ?>
+              <li class="page-item <?php if( 1 == $pagina ){ ?>active<?php } ?>"><a class="page-link" href="/admin/<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=1">1</a></li>
               <?php } ?>
               <li class="page-item <?php if( $c == $pagina ){ ?>disabled<?php } ?>">
                 <a class="page-link" href="/admin/<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>?pagina=<?php echo htmlspecialchars( $pagina + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">

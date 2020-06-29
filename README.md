@@ -21,7 +21,6 @@
 - [X] Visualizar compra
 - [X] Menu cliente
 - [X] Campo de pesquisa
-- [ ] Paginação na listagem de compras
 - [ ] Pagina de cadastro de cliente
 
 - [ ] Editar endereço -> Apenas solicitando
@@ -42,4 +41,4 @@
 - [X] Visualizar & atualizar pedido
 - [X] Adicionar sistema de notificação avisando sobre estoque
 - [X] Criar pagina para listar todas as notificações
-- [ ] Criar link temporario para registro de cliente
+- [X] Criar link temporario para registro de cliente

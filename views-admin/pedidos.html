@@ -101,10 +101,14 @@
                 </a>
               </li>
               {$c = ceil($count/$limit)}
-              {loop="range(1, $c)"}
-              {$key = $key + 1}
-              <li class="page-item {if="$key == $pagina"}active{/if}"><a class="page-link" href="/admin/{$url}?pagina={$key}">{$key}</a></li>
-              {/loop}
+              {if="$c > 0"}
+                {loop="range(1, $c)"}
+                {$key = $key + 1}
+                <li class="page-item {if="$key == $pagina"}active{/if}"><a class="page-link" href="/admin/{$url}?pagina={$key}">{$key}</a></li>
+                {/loop}
+              {else}
+              <li class="page-item {if="1 == $pagina"}active{/if}"><a class="page-link" href="/admin/{$url}?pagina=1">1</a></li>
+              {/if}
               <li class="page-item {if="$c == $pagina"}disabled{/if}">
                 <a class="page-link" href="/admin/{$url}?pagina={$pagina + 1}">
                   <i class="fa fa-angle-right"></i>
