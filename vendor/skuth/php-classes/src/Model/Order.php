@@ -69,12 +69,14 @@ class Order {
       $qts = explode(",", $value["products_quantity"]);
       $pp = explode(",", $value["products_price"]);
 
-      $clientName = $sql->select("SELECT client_name FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
+      $clientInfo = $sql->select("SELECT client_name, client_phone FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
 
-      if (count($clientName) > 0) {
-        $r[$key]["client_name"] = $clientName[0]["client_name"];
+      if (count($clientInfo) > 0) {
+        $r[$key]["client_name"] = $clientInfo[0]["client_name"];
+        $r[$key]["client_phone"] = $clientInfo[0]["client_phone"];
       } else {
         $r[$key]["client_name"] = "Cliente Id ".$r["client_id"];
+        $r[$key]["client_phone"] = NULL;
       }
 
       foreach ($ids as $k => $v) {
@@ -114,12 +116,14 @@ class Order {
       $r[$key]["products_name"] = [];
       $ids = explode(",", $value["products_id"]);
 
-      $clientName = $sql->select("SELECT client_name FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
+      $clientInfo = $sql->select("SELECT client_name, client_phone FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
 
-      if (count($clientName) > 0) {
-        $r[$key]["client_name"] = $clientName[0]["client_name"];
+      if (count($clientInfo) > 0) {
+        $r[$key]["client_name"] = $clientInfo[0]["client_name"];
+        $r[$key]["client_phone"] = $clientInfo[0]["client_phone"];
       } else {
         $r[$key]["client_name"] = "Cliente Id ".$r["client_id"];
+        $r[$key]["client_phone"] = NULL;
       }
 
       foreach ($ids as $k => $v) {
@@ -179,12 +183,14 @@ class Order {
         $qts = explode(",", $value["products_quantity"]);
         $pp = explode(",", $value["products_price"]);
   
-        $clientName = $sql->select("SELECT client_name FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
-  
-        if (count($clientName) > 0) {
-          $r[$key]["client_name"] = $clientName[0]["client_name"];
+        $clientInfo = $sql->select("SELECT client_name, client_phone FROM clients WHERE client_id=:id", ["id"=>$value["client_id"]]);
+
+        if (count($clientInfo) > 0) {
+          $r[$key]["client_name"] = $clientInfo[0]["client_name"];
+          $r[$key]["client_phone"] = $clientInfo[0]["client_phone"];
         } else {
           $r[$key]["client_name"] = "Cliente Id ".$r["client_id"];
+          $r[$key]["client_phone"] = NULL;
         }
   
         foreach ($ids as $k => $v) {

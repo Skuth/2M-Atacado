@@ -39,15 +39,8 @@ $app->post("/cliente/login", function(Request $req, Response $res, $args) {
 
 $app->get("/cliente/cadastrar", function(Request $req, Response $res, $args) {
 
-  if (isset($_GET["chave"])) {
-    $chave = $_GET["chave"];
-  } else {
-    $chave = "";
-  }
-
-  $clients = new Clients();
-  $r = $clients->registerKeyVerify($chave);
-  echo json_encode($r);
+  $page = new Page();
+  $page->setTpl("client-cad");
 
   return $res;
 

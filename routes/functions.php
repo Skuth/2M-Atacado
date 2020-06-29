@@ -136,8 +136,20 @@ function getShipmentPrice($address) {
   }
 }
 
+function formatString($string) {
+  $string = preg_replace("/\s+/", "", $string);
+  $string = str_replace("(", "", $string);
+  $string = str_replace(")", "", $string);
+  $string = str_replace("-", "", $string);
+  $string = str_replace("/", "", $string);
+  $string = str_replace(".", "", $string);
+  return $string;
+}
+
 function formatCnpjCpf($doc) {
   $doc = preg_replace("/\D/", '', $doc);
+
+  $doc = formatString($doc);
 
   if (strlen($doc) == 11) {
     $doc = preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $doc);
@@ -148,6 +160,22 @@ function formatCnpjCpf($doc) {
   }
   
   return $doc;
+}
+
+function formatPhone($phone) {
+    $phone = formatString($phone);
+    if (strpos($phone, ",") == TRUE) {
+      $phone = explode(",", $phone);
+      foreach ($phone as $key => $value) {
+        $value = preg_replace("/\D/", '', $value);
+        $phone[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
+      }
+      $phone = implode(" | ", $phone);
+    } else {
+      $phone = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $phone);
+    }
+
+    return $phone;
 }
 
 ?>

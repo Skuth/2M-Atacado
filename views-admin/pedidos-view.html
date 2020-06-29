@@ -41,6 +41,9 @@
 
         <div class="card-body">
           <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info">{$order.client_name}#{$order.client_id}</span></p>
+          {if="isset($order.client_phone) && $order.client_phone != NULL"}
+          <p class="card-text mb-4"><strong class="mr-2">Telefone</strong> <span class="badge badge-pill badge-info">{function="formatPhone($order.client_phone)"}</span></p>
+          {/if}
           <span class="card-text mr-2">Tipe de entrega</span>
           {$x = $order.order_address_id}
           {if="$x == 0"}
@@ -90,7 +93,7 @@
           {if="isset($order.client_address)"}
           <span>{$order.client_address} | {$order.client_name}</span>
           {else}
-          <span>Retirar na loja</span>
+          <span><strong>Retirar na loja</strong></span>
           {/if}
         </div>
       </div>

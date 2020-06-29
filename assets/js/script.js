@@ -159,6 +159,47 @@ const openSub = (box, e) => {
   }
 }
 
+const switchForm = (box, e) => {
+  const target = e.target
+  const targetAttr = e.target.getAttribute("id")
+  const form1 = $("#form-0")
+  const form2 = $("#form-1")
+
+  const btns = box.children
+
+  if (targetAttr == 0) {
+    $(form1).addClass("form-active")
+    $(form2).removeClass("form-active")
+  } else {
+    $(form1).removeClass("form-active")
+    $(form2).addClass("form-active")
+  }
+
+  for (let i = 0; i < btns.length; i++) {
+    const e = btns[i];
+    const attr = e.getAttribute("id")
+    $(e).removeClass("btn-blue")
+
+    if (attr == targetAttr) {
+      $(e).addClass("btn-blue")
+    }
+  }
+
+  
+}
+
+const clientRegister = (e, form) => {
+  e.preventDefault()
+
+  let values = {}
+
+  $(form).serializeArray().map((v) => {
+    values[v["name"]] = v["value"]
+  })
+
+  console.log(values)
+}
+
 $(document).ready(() => {
 
   if($(window).width() >= 1200) {

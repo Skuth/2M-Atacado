@@ -2074,6 +2074,10 @@ textarea {
   margin-bottom: 40px;
   padding: 40px;
   max-width: 450px; }
+  .container .form-login.form-register {
+    display: none; }
+    .container .form-login.form-register.form-active {
+      display: block; }
   .container .form-login-control {
     position: relative;
     margin-top: 60px; }

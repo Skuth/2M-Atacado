@@ -41,6 +41,9 @@
 
         <div class="card-body">
           <p class="card-text mb-4"><strong class="mr-2">Cliente</strong> <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>#<?php echo htmlspecialchars( $order["client_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
+          <?php if( isset($order["client_phone"]) && $order["client_phone"] != NULL ){ ?>
+          <p class="card-text mb-4"><strong class="mr-2">Telefone</strong> <span class="badge badge-pill badge-info"><?php echo formatPhone($order["client_phone"]); ?></span></p>
+          <?php } ?>
           <span class="card-text mr-2">Tipe de entrega</span>
           <?php $x = $order["order_address_id"]; ?>
           <?php if( $x == 0 ){ ?>
@@ -90,7 +93,7 @@
           <?php if( isset($order["client_address"]) ){ ?>
           <span><?php echo htmlspecialchars( $order["client_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | <?php echo htmlspecialchars( $order["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
           <?php }else{ ?>
-          <span>Retirar na loja</span>
+          <span><strong>Retirar na loja</strong></span>
           <?php } ?>
         </div>
       </div>

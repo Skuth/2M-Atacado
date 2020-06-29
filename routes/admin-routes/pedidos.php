@@ -106,7 +106,6 @@ $app->get("/admin/pedido/visualizar/{id}", function(Request $req, Response $res,
   $id = $args["id"];
   
   $order = Order::getOrderByIdFull($id);
-
   
   $page = new PageAdmin(["data"=>["page"=>createPage("visualizando pedido #".$id, "pedido/visualizar/".$id)]]);
   $page->setTpl("pedidos-view", ["order"=>$order]);
