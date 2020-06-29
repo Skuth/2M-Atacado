@@ -42,3 +42,5 @@
 - [X] Adicionar sistema de notificação avisando sobre estoque
 - [X] Criar pagina para listar todas as notificações
 - [X] Criar link temporario para registro de cliente
+- [ ] Pagina de edição de cliente
+- [ ] Pagina para vizualizar cliente

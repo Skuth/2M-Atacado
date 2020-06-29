@@ -3,7 +3,7 @@
     <div class="purchases-content">
 
       <div class="purchases-title">
-        <h2>Compra #<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | <?php echo date('d/m/Y', strtotime($order["order_date"])); ?> | R$ <?php echo formatMoney($order["order_subtotal"]); ?></h2>
+        <h2>Compra #<?php echo htmlspecialchars( $order["order_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Dia <?php echo date('d/m/Y', strtotime($order["order_date"])); ?> | R$ <?php echo formatMoney($order["order_subtotal"]); ?></h2>
       </div>
 
       <div class="purchase-box view-order">

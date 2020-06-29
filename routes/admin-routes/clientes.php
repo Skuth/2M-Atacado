@@ -79,5 +79,63 @@ $app->post("/admin/clientes/chave", function(Request $req, Response $res, $args)
 
 });
 
+$app->get("/admin/cliente/remover/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $clients = new Clients();
+
+  $r = $clients->removeClient($id);
+
+  if ($r["status"] == "success") {
+    return $res->withHeader("Location", "/admin/clientes?remove=true");
+  } else {
+    return $res->withHeader("Location", "/admin/clientes?remove=false");
+  }
+
+  return $res;
+
+});
+
+$app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $clients = new Clients();
+
+  $r = $clients->getClientById($id);
+
+  var_dump($r);
+
+  return $res;
+
+});
+
+$app->get("/admin/cliente/visualizar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $id = $args["id"];
+
+  $clients = new Clients();
+
+  $r = $clients->getClientById($id);
+
+  var_dump($r);
+
+  return $res;
+
+});
+
 
 ?>

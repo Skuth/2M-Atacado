@@ -35,7 +35,7 @@ function getNav() {
       "href"=>"clientes",
       "icon"=> "fas fa-users",
       "color"=>"",
-      "nivel"=>2
+      "nivel"=>1
     ],
     [
       "name"=>"usuarios",

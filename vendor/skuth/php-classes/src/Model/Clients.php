@@ -115,6 +115,21 @@ class Clients {
     return ["clients"=>$sql->select($query), "count"=>$count];
   }
 
+  public static function getClientById($id) {
+    $sql = new Sql();
+
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_id=:id LIMIT 1";
+    $param = ["id"=>$id];
+    
+    $res = $sql->select($query, $param);
+    
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
+      return $res;
+    }
+  }
+
   public static function generateRegisterKey() {
     $sql = new Sql();
   
@@ -174,12 +189,130 @@ class Clients {
       return $this->parseReturn("error", "Chave não encontrada!");
     }
   }
+
+  public function cadClient($key, $type, $name, $cnpj, $ie, $cpf, $password) {
+    $k = $this->registerKeyVerify($key);
+
+    if ($k["status"] == "error") return $k;
+
+    $sql = new Sql();
+
+    $opts = [
+      "cost"=>12
+    ];
+
+    $password = password_hash($password, PASSWORD_BCRYPT, $opts);
+
+    
+    if ($type == 1) {
+      $cnpjVerify = $sql->select("SELECT client_cnpj FROM clients WHERE client_cnpj=:cnpj LIMIT 1", ["cnpj"=>$cnpj]);
+      
+      if (count($cnpjVerify) > 0 && $cnpjVerify[0]["client_cnpj"] == $cnpj) return $this->parseReturn("error", "Cnpj já registrado!");
+   
+      $query = "INSERT INTO clients (client_name, client_cnpj, client_ie, client_password, client_type) VALUES (:name, :cnpj, :ie, :pass, :type)";
+      
+      $params = [
+        "name"=>$name,
+        "cnpj"=>$cnpj,
+        "ie"=>$ie,
+        "pass"=>$password,
+        "type"=>$type
+      ];
+    } else {
+      $cpfVerify = $sql->select("SELECT client_cpf FROM clients WHERE client_cpf=:cpf LIMIT 1", ["cpf"=>$cpf]);
+
+      if (count($cpfVerify) > 0 && $cpfVerify[0]["client_cpf"] == $cpf) return $this->parseReturn("error", "Cpf já registrado!");
+
+      $query = "INSERT INTO clients (client_name, client_cpf, client_password, client_type) VALUES (:name, :cpf, :pass, :type)";
+
+      $params = [
+        "name"=>$name,
+        "cpf"=>$cpf,
+        "pass"=>$password,
+        "type"=>$type
+      ];
+    }
+
+    if ($sql->query($query, $params) == true) {
+      $q = "DELETE FROM client_register_key WHERE register_key=:key";
+      $p = ["key"=>$key];
+      $sql->query($q, $p);
+
+      return $this->parseReturn("success", "Cliente cadastrado com sucesso!");
+    } else {
+      return $this->parseReturn("error", "Falha ao cadastrar cliente!");
+    }
+  }
+
+  public function editClient($id, $type, $name, $cnpj, $ie, $cpf, $password) {
+    $sql = new Sql();
+
+    $query = "UPDATE clients SET client_name=:name, client_cnpj=:cnpj, client_ie=:ie, client_cpf=:cpf WHERE client_id=:id";
+
+    if ($type == 1) {
+      $params = [
+        "id"=>$id,
+        "name"=>$name,
+        "cnpj"=>$cnpj,
+        "ie"=>$ie,
+        "cpf"=>NULL,
+        "type"=>$type
+      ];
+    } else {
+      $params = [
+        "id"=>$id,
+        "name"=>$name,
+        "cnpj"=>NULL,
+        "ie"=>NULL,
+        "cpf"=>$cpf,
+        "type"=>$type
+      ];
+    }
+
+    if ($sql->query($query, $params) == TRUE) {
+      $this->editPassword($id, $password);
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function editPassword($id, $pass) {
+    $sql = new Sql();
+
+    $opts = [
+      "cost"=>12
+    ];
+
+    $pass = password_hash($pass, PASSWORD_BCRYPT, $opts);
+
+    $query = "UPDATE clients SET client_password=:pass WHERE client_id=:id";
+
+    $params = [
+      "id"=>$id,
+      "pass"=>$pass
+    ];
+
+    if ($sql->query($query, $params) == TRUE) {
+      return $this->parseReturn("success", "Senha alterada com sucesso!");
+    } else {
+      return $this->parseReturn("error", "Falha ao alterar a senha!");
+    }
+  }
+
+  public function removeClient($id) {
+    $sql = new Sql();
+
+    $query = "DELETE FROM clients WHERE client_id=:id";
+    $param = ["id"=>$id];
+
+    if ($sql->query($query, $param) == TRUE) {
+      return $this->parseReturn("success", "Usuário removido com sucesso!");
+    } else {
+      return $this->parseReturn("error", "Falha ao remover usuário!");
+    }
+  }
 }
-
-// $opts = [
-//   "cost"=>12
-// ];
-
-// $pass = password_hash($res[0]["client_password"], PASSWORD_BCRYPT, $opts);
 
 ?>
