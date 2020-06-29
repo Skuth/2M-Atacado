@@ -62,7 +62,6 @@ const clienteLogin = (e) => {
       "password": password
     },
     success: function (r) {
-      console.log(r)
       res = JSON.parse(r)
       Swal.fire({
         icon: res.status,
@@ -161,7 +160,7 @@ const openSub = (box, e) => {
 
 const switchForm = (box, e) => {
   const target = e.target
-  const targetAttr = e.target.getAttribute("id")
+  const targetAttr = target.getAttribute("id")
   const form1 = $("#form-0")
   const form2 = $("#form-1")
 
@@ -197,7 +196,27 @@ const clientRegister = (e, form) => {
     values[v["name"]] = v["value"]
   })
 
-  console.log(values)
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"cliente/cadastrar",
+    data: {
+      "data": values
+    },
+    success: function (res) {
+      $(".container").append(res)
+      let r = JSON.parse(res)
+      Swal.fire({
+        title: 'Cadastro',
+        icon: r.status,
+        text: r.message,
+        onClose: () => {
+          if (r.status == "success") {
+            location.href = baseUrl+"cliente/login"
+          }
+        }
+      })
+    }
+  });
 }
 
 $(document).ready(() => {

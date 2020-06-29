@@ -190,32 +190,63 @@ class Clients {
     }
   }
 
-  public function cadClient($key, $type, $name, $cnpj, $ie, $cpf, $password) {
+  public function cadClient($key, $data) {
     $k = $this->registerKeyVerify($key);
 
     if ($k["status"] == "error") return $k;
 
+    $type = $data["type"];
+    $name = $data["nome"];
+    $cnpj = (isset($data["cnpj"])) ? parseCpfCnpj($data["cnpj"]) : "";
+    $ie = (isset($data["ie"])) ? parseCpfCnpj($data["ie"]) : "";
+    $cpf = (isset($data["cpf"])) ? parseCpfCnpj($data["cpf"]) : "";
+    $email = $data["email"];
+    $phone = $data["phone"];
+    $password = $data["password"];
+
+    if ($type == 0) {
+      if (strlen($cpf) !== 11) {
+        return $this->parseReturn("error", "Cpf inválido!");
+      }
+    }
+
+    if ($type == 1) {
+      if (strlen($cnpj) !== 14) {
+        return $this->parseReturn("error", "Cnpj inválido!");
+      }
+
+      if (strlen($ie) !== 8) {
+        return $this->parseReturn("error", "Inscrição Estadual inválida!");
+      }
+    }
+
     $sql = new Sql();
+
+    $emailVerify = $sql->select("SELECT client_email FROM clients WHERE client_email=:email LIMIT 1", ["email"=>$email]);
+
+    if (count($emailVerify) > 0 && $emailVerify[0]["client_email"] == $email) return $this->parseReturn("error", "E-mail já registrado!");
 
     $opts = [
       "cost"=>12
     ];
 
     $password = password_hash($password, PASSWORD_BCRYPT, $opts);
-
     
     if ($type == 1) {
       $cnpjVerify = $sql->select("SELECT client_cnpj FROM clients WHERE client_cnpj=:cnpj LIMIT 1", ["cnpj"=>$cnpj]);
       
       if (count($cnpjVerify) > 0 && $cnpjVerify[0]["client_cnpj"] == $cnpj) return $this->parseReturn("error", "Cnpj já registrado!");
    
-      $query = "INSERT INTO clients (client_name, client_cnpj, client_ie, client_password, client_type) VALUES (:name, :cnpj, :ie, :pass, :type)";
+      $query = "INSERT INTO clients (client_name, client_cnpj, client_ie, client_password, client_email, client_phone, client_type)
+      VALUES (:name, :cnpj, :ie, :pass, :email, :phone, :type)";
       
       $params = [
         "name"=>$name,
         "cnpj"=>$cnpj,
         "ie"=>$ie,
         "pass"=>$password,
+        "email"=>$email,
+        "phone"=>$phone,
         "type"=>$type
       ];
     } else {
@@ -223,12 +254,15 @@ class Clients {
 
       if (count($cpfVerify) > 0 && $cpfVerify[0]["client_cpf"] == $cpf) return $this->parseReturn("error", "Cpf já registrado!");
 
-      $query = "INSERT INTO clients (client_name, client_cpf, client_password, client_type) VALUES (:name, :cpf, :pass, :type)";
+      $query = "INSERT INTO clients (client_name, client_cpf, client_password, client_email, client_phone, client_type)
+      VALUES (:name, :cpf, :pass, :email, :phone, :type)";
 
       $params = [
         "name"=>$name,
         "cpf"=>$cpf,
         "pass"=>$password,
+        "email"=>$email,
+        "phone"=>$phone,
         "type"=>$type
       ];
     }
@@ -244,10 +278,10 @@ class Clients {
     }
   }
 
-  public function editClient($id, $type, $name, $cnpj, $ie, $cpf, $password) {
+  public function editClient($id, $type, $name, $cnpj, $ie, $cpf, $email, $phone, $password) {
     $sql = new Sql();
 
-    $query = "UPDATE clients SET client_name=:name, client_cnpj=:cnpj, client_ie=:ie, client_cpf=:cpf WHERE client_id=:id";
+    $query = "UPDATE clients SET client_name=:name, client_cnpj=:cnpj, client_ie=:ie, client_cpf=:cpf, client_email=:email, client_phone:phone WHERE client_id=:id";
 
     if ($type == 1) {
       $params = [
@@ -256,6 +290,8 @@ class Clients {
         "cnpj"=>$cnpj,
         "ie"=>$ie,
         "cpf"=>NULL,
+        "email"=>$email,
+        "phone"=>$phone,
         "type"=>$type
       ];
     } else {
@@ -265,6 +301,8 @@ class Clients {
         "cnpj"=>NULL,
         "ie"=>NULL,
         "cpf"=>$cpf,
+        "email"=>$email,
+        "phone"=>$phone,
         "type"=>$type
       ];
     }

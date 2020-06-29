@@ -6,7 +6,8 @@
     <span class="btn btn-circle" id="1">Empresa</span>
   </div>
 
-  <form onsubmit="return clientRegister(event, this)" id="form-0" class="form-login form-register form-active">
+  <form method="POST" onsubmit="return clientRegister(event, this)" id="form-0" class="form-login form-register form-active">
+    <input type="hidden" name="chave" value="<?php echo htmlspecialchars( $chave, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
     <input type="hidden" name="type" value="0">
     <div class="form-login-control">
       <input type="text" id="nome" name="nome" required>
@@ -40,7 +41,8 @@
     </div>
   </form>
 
-  <form onsubmit="return clientRegister(event, this)" id="form-1" class="form-login form-register">
+  <form method="POST" onsubmit="return clientRegister(event, this)" id="form-1" class="form-login form-register">
+    <input type="hidden" name="chave" value="<?php echo htmlspecialchars( $chave, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
     <input type="hidden" name="type" value="1">
     <div class="form-login-control">
       <input type="text" id="nome" name="nome" required>

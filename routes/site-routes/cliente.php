@@ -39,8 +39,10 @@ $app->post("/cliente/login", function(Request $req, Response $res, $args) {
 
 $app->get("/cliente/cadastrar", function(Request $req, Response $res, $args) {
 
+  $chave = (isset($_GET["chave"])) ? $_GET["chave"] : "";
+
   $page = new Page();
-  $page->setTpl("client-cad");
+  $page->setTpl("client-cad", ["chave"=>$chave]);
 
   return $res;
 
@@ -48,14 +50,13 @@ $app->get("/cliente/cadastrar", function(Request $req, Response $res, $args) {
 
 $app->post("/cliente/cadastrar", function(Request $req, Response $res, $args) {
 
-  if (isset($_GET["chave"])) {
-    $chave = $_GET["chave"];
-  } else {
-    $chave = "";
-  }
-
+  
+  $data = (isset($_POST["data"])) ? $_POST["data"] : "";
+  $chave = (isset($data["chave"])) ? $data["chave"] : "";
+  
   $clients = new Clients();
-  $r = $clients->registerKeyVerify($chave);
+  $r = $clients->cadClient($chave, $data);
+  
   echo json_encode($r);
 
   return $res;
