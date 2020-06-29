@@ -44,3 +44,4 @@
 - [X] Criar link temporario para registro de cliente
 - [ ] Pagina de edição de cliente
 - [ ] Pagina para vizualizar cliente
+- [ ] Adicionar status cancelado no pedido
