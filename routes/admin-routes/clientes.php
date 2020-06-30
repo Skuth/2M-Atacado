@@ -150,8 +150,6 @@ $app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $a
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
-  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
-
   $id = $args["id"];
 
   $clients = new Clients();
@@ -168,8 +166,6 @@ $app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $a
 $app->post("/admin/cliente/editar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
-
-  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
   $data = [];
@@ -200,8 +196,6 @@ $app->post("/admin/cliente/editar/{id}", function(Request $req, Response $res, $
 $app->get("/admin/cliente/visualizar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
-
-  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
 
