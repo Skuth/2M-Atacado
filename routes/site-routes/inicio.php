@@ -4,6 +4,7 @@ use Skuth\Page;
 use Skuth\Model\Departments;
 use Skuth\Model\Sliders;
 use Skuth\Model\Products;
+use Skuth\Model\Cards;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -23,7 +24,9 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
   $pv = $prod->getAllFull("ORDER BY product_views DESC LIMIT 4");
   $po = $prod->getAllFull("WHERE product_price_off IS NOT NULL LIMIT 4");
 
-  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s, "prodRandom"=>$pr, "prodViews"=>$pv, "prodOffers"=>$po]);
+  $cards = Cards::getCards();
+
+  $page->setTpl("home", ["departments"=>$d, "sliders"=>$s, "prodRandom"=>$pr, "prodViews"=>$pv, "prodOffers"=>$po, "cards"=>$cards]);
 
   return $res;
   

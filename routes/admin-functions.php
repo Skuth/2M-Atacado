@@ -14,14 +14,12 @@ function getNav() {
       "name"=>"dashboard",
       "href"=>"dashboard",
       "icon"=>"ni ni-tv-2",
-      "color"=>"",
       "nivel"=>1
     ],
     [
       "name"=>"pedidos",
       "href"=>"pedidos",
       "icon"=>"ni ni-cart",
-      "color"=>"",
       "nivel"=>1,
       "submenu"=>[
         [
@@ -34,7 +32,6 @@ function getNav() {
       "name"=>"clientes",
       "href"=>"clientes",
       "icon"=> "fas fa-users",
-      "color"=>"",
       "nivel"=>1,
       "submenu"=>[
         [
@@ -47,56 +44,54 @@ function getNav() {
       "name"=>"usuarios",
       "href"=>"usuarios",
       "icon"=> "fas fa-address-card",
-      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"produtos",
       "href"=>"produtos",
       "icon"=>"ni ni-archive-2",
-      "color"=>"",
       "nivel"=>1
     ],
     [
       "name"=>"promoções",
       "href"=>"promocoes",
       "icon"=>"fas fa-percentage",
-      "color"=>"",
       "nivel"=>1
     ],
     [
       "name"=>"distribuidores",
       "href"=>"distribuidores",
       "icon"=>"ni ni-books",
-      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"departamentos",
       "href"=>"departamentos",
       "icon"=>"ni ni-scissors",
-      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"banners",
       "href"=>"banners",
       "icon"=>"ni ni-album-2",
-      "color"=>"",
       "nivel"=>2
     ],
     [
       "name"=>"administração",
       "href"=>"administracao",
       "icon"=>"fas fa-tools",
-      "color"=>"",
+      "nivel"=>2
+    ],
+    [
+      "name"=>"Cartões",
+      "href"=>"cartoes",
+      "icon"=>"fas fa-columns",
       "nivel"=>2
     ],
     [
       "name"=>"cupons",
       "href"=>"cupons",
       "icon"=>"fas fa-tag",
-      "color"=>"",
       "nivel"=>10
     ]
   ];

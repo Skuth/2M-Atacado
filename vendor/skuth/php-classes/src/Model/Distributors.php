@@ -68,7 +68,7 @@ class Distributors {
     if (count($res) > 0) {
       return $res[0]["distributor_id"];
     } else {
-      return $res;
+      return 0;
     }
   }
 

@@ -2,6 +2,8 @@
 
 namespace Skuth\Model;
 use Skuth\DB\Sql;
+use Skuth\Model\Distributors;
+use Skuth\Model\Departments;
 
 class Products {
   private function parseImage($list): array {
@@ -187,6 +189,13 @@ class Products {
   public function getByDistFull($dist, $limite = 6, $pagina = 1) {
     $sql = new Sql();
 
+    $d = new Distributors();
+    $dc = $d->getById($dist);
+
+    if (count($dc) <= 0) {
+      return [[], 0];
+    }
+
     if (!is_int($pagina)) {
       $pagina = 1;
     }
@@ -215,6 +224,13 @@ class Products {
 
   public function getByDeptFull($dep, $limite = 6, $pagina = 1) {
     $sql = new Sql();
+
+    $d = new Departments();
+    $dc = $d->getById($dep);
+
+    if (count($dc) <= 0) {
+      return [[], 0];
+    }
 
     if (!is_int($pagina)) {
       $pagina = 1;

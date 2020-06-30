@@ -35,21 +35,30 @@
 <div class="products-card">
   <div class="card-container">
 
-    <a class="card" href="produtos/departamento/ferramentas">
+    {$color = array("", "red", "orange")}
+
+    {loop="$cards"}
+
+    <a class="card" href="produtos/departamento/{$value.url}">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
-          <path class="card-svg-header" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
+          <path class="card-svg-header {$color[$key]}" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
         
-          <text x="60" y="50">Ferramentas</text>
+          {$price = formatMoney(floatval($value.price))}
+          {$price = explode(",", $price)}
+
+          <text x="60" y="50">{$value.title}</text>
           <text x="60" y="90">a partir de</text>
-          <text x="60" y="135" class="textrice">R$ <tspan >89</tspan ><tspan >,99</tspan ></text>
+          <text x="60" y="135" class="textrice">R$ <tspan >{$price[0]}</tspan ><tspan >,{$price[1]}</tspan ></text>
         </svg>
       </div>
       <div class="card-image">
-        <img src="https://brasmetal.com/wp-content/uploads/2019/02/Imagens-recortadas_48.png" alt="">
+        <img src="./assets/cards/{$value.picture}" alt="">
       </div>
     </a>
 
+    {/loop}
+<!-- 
     <a class="card" href="produtos/departamento/ferramentas">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
@@ -78,7 +87,7 @@
       <div class="card-image">
         <img src="https://brasmetal.com/wp-content/uploads/2019/02/Imagens-recortadas_48.png" alt="">
       </div>
-    </a>
+    </a> -->
 
   </div>
 </div>

@@ -33,6 +33,20 @@ class Departments {
     if (count($res) > 0) {
       return $res[0]["department_id"];
     } else {
+      return 0;
+    }
+  }
+
+  public function getByUrl($href) {
+    $sql = new Sql();
+    $query = "SELECT * FROM departments WHERE department_href=:href LIMIT 1";
+    $param = ["href"=>$href];
+    $res = $sql->select($query, $param);
+    $res = $this->parseImage($res);
+
+    if (count($res) > 0) {
+      return $res[0];
+    } else {
       return $res;
     }
   }

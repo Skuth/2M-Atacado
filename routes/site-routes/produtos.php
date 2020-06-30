@@ -61,6 +61,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           
           $dist = $args["param"];
           $distId = $distributor->getDisId($dist);
+
           $p = $prod->getByDistFull($distId, $limite, $pagina);
 
           $fText = "Produtos do distribuidor - ".ucfirst($dist);
@@ -85,6 +86,10 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           break;
 
         case 'ofertas':
+          $offP = isset($args["param"]) ? $args["param"] : NULL;
+
+          if ($offP != NULL) return $res->withHeader("Location", "/produtos/ofertas");
+
           $p = $prod->getByOffers($limite, $pagina);
 
           $fText = "Ofertas";

@@ -26,5 +26,6 @@ require_once("admin-routes/banners.php");
 require_once("admin-routes/admin.php");
 require_once("admin-routes/pedidos.php");
 require_once("admin-routes/clientes.php");
+require_once("admin-routes/cartoes.php");
 
 ?>

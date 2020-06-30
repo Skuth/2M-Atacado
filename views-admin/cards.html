@@ -1,0 +1,45 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"></div>
+
+{$card = 4}
+
+<div class="container-fluid mt--6">
+  <div class="row card-wrapper">
+
+    {loop="$cards"}
+
+    <div class="col-xl-{$card} mb-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Cartão {$key + 1}</h5>
+            </div>
+            <div class="col text-right">
+              <a href="/admin/cartao/editar/{$value.id}" class="btn btn-sm btn-primary">Editar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <img src="./assets/cards/{$value.picture}" class="mt-4 mb-4" width="120">
+          <br>
+          <span class="mr-2"><strong>Título</strong></span>
+          <span class="badge badge-pill badge-info badge-lg">{$value.title}</span>
+          <br><br>
+          <span class="mr-2"><strong>Preço</strong></span>
+          <span class="badge badge-pill badge-warning badge-lg">R$ {function="formatMoney($value.price)"}</span>
+          <br><br>
+          <span class="mr-2"><strong>Url</strong></span>
+          <span class="badge badge-pill badge-primary badge-lg">{$value.url}</span>
+          <br><br>
+        </div>
+        
+      </div>
+    </div>
+
+    {/loop}
+
+  </div>
+</div>
+
+<br><br>

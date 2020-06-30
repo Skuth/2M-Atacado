@@ -22,6 +22,7 @@
 - [X] Menu cliente
 - [X] Campo de pesquisa
 - [X] Pagina de cadastro de cliente
+- [X] Adicionar ```step="0.01"``` Em forms
 - [ ] Adicionar pagina de recuperação de senha
 
 - [ ] Editar endereço -> Apenas solicitando
@@ -46,4 +47,4 @@
 - [X] Pagina para vizualizar cliente
 - [X] Pagina de edição de cliente
 - [X] Adicionar status cancelado no pedido
-- [ ] Editar box home
+- [X] Editar cards home
