@@ -3,6 +3,7 @@
 use Skuth\PageAdmin;
 use Skuth\Model\Panel;
 use Skuth\Model\Products;
+use Skuth\Model\Clients;
 use Skuth\Model\Order;
 
 use Psr\Http\Message\ResponseInterface as Response;
@@ -20,11 +21,13 @@ $app->get("/admin/dashboard", function(Request $req, Response $res, $args) {
 
   $orderCount = Order::countOrders();
 
+  $countClients = Clients::countClients();
+
   $produtos = $prods->getAll("ORDER BY product_views DESC LIMIT 6");
 
   $page = new PageAdmin(["data"=>["page"=>createPage("dashboard", "dashboard")]]);
 
-  $page->setTpl("dashboard", ["produtos"=>$produtos, "sum"=>$sum, "oOpen"=>$orderOpen, "oCount"=>$orderCount]);
+  $page->setTpl("dashboard", ["produtos"=>$produtos, "sum"=>$sum, "oOpen"=>$orderOpen, "oCount"=>$orderCount, "cCount"=>$countClients]);
 
   return $res;
 

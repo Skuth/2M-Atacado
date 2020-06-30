@@ -376,6 +376,18 @@ class Clients {
 
     return $sql->query($query, $params);
   }
+
+  public static function countClients() {
+    $sql = new Sql();
+
+    $count = $sql->select("SELECT count(*) FROM clients");
+
+    if (count($count) > 0) {
+      return $count[0]["count(*)"];
+    } else {
+      return 0;
+    }
+  }
 }
 
 ?>

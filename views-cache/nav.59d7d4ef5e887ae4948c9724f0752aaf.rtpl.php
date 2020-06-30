@@ -60,10 +60,10 @@
         <?php if( $value1["nivel"] <= $user["type"] ){ ?>
         <li class="nav-item">          
           <?php if( isset($value1["submenu"]) ){ ?>
-          <a class="nav-link collapsed" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
+          <a class="nav-link collapsed" href="#navbar-dashboards-<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
             <i class="<?php echo htmlspecialchars( $value1["icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $value1["color"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo ucfirst($value1["name"]); ?>
           </a>
-          <div class="collapse" id="navbar-dashboards">
+          <div class="collapse" id="navbar-dashboards-<?php echo htmlspecialchars( $key1, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
                 <a href="/admin/<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="nav-link">

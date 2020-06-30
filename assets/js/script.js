@@ -203,7 +203,6 @@ const clientRegister = (e, form) => {
       "data": values
     },
     success: function (res) {
-      $(".container").append(res)
       let r = JSON.parse(res)
       Swal.fire({
         title: 'Cadastro',

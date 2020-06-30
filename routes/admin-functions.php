@@ -35,7 +35,13 @@ function getNav() {
       "href"=>"clientes",
       "icon"=> "fas fa-users",
       "color"=>"",
-      "nivel"=>1
+      "nivel"=>1,
+      "submenu"=>[
+        [
+          "name"=>"Desativados",
+          "href"=>"clientes/desativados"
+        ]
+      ]
     ],
     [
       "name"=>"usuarios",
