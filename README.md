@@ -45,7 +45,7 @@
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando
 
-- [ ] Comprimir fotos em JPEG 2000 ou JPEG XR ou WebP
+- [ ] Comprimir fotos em JPEG 2000 ou JPEG XR ou -> ``WebP`` <-
 - [ ] Criar fotos em varios tamanhos
 
 - [ ] Ativar cache
