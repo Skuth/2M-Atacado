@@ -31,7 +31,7 @@ class Cards {
     $pic = $data["picture"];
     $title = $data["title"];
     $price = $data["price"];
-    $url = $data["url"];
+    $url = strtolower($data["url"]);
 
     $query = "UPDATE cards SET picture=:pic, title=:title, price=:price, url=:url WHERE id=:id";
 

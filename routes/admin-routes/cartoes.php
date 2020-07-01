@@ -49,8 +49,6 @@ $app->post("/admin/cartao/editar/{id}", function(Request $req, Response $res, $a
 
   $card = Cards::getCardById($id);
 
-  var_dump($card);
-
   if (isset($_POST["update"])) {
 
     $data = [];

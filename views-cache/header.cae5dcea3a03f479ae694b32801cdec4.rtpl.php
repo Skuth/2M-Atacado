@@ -37,12 +37,14 @@
 
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+  <meta property="og:image:width" content="130">
+  <meta property="og:image:height" content="130">
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?php echo htmlspecialchars( $siteData["site_data_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $seoTags["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
   <meta property="og:description" content="<?php echo htmlspecialchars( $description, ENT_COMPAT, 'UTF-8', FALSE ); ?>. <?php echo htmlspecialchars( $seoTags["desc"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
   <meta property="og:image" content="<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $seoTags["thumbnail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="<?php echo htmlspecialchars( $siteData["site_data_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $seoTags["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
   <meta name="twitter:description" content="<?php echo htmlspecialchars( $description, ENT_COMPAT, 'UTF-8', FALSE ); ?>. <?php echo htmlspecialchars( $seoTags["desc"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
   <meta name="twitter:image" content="<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $seoTags["thumbnail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">

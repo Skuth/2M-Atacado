@@ -40,9 +40,9 @@
 - [X] Add robots
 - [X] Add sitemap
 
-- [ ] Achar imagens sem ALT
+- [X] Achar imagens sem ALT
 - [ ] Minificar css e JS
-- [ ] Desc do produto sem desc padrão
+- [X] Desc do produto sem desc padrão
 - [ ] Add fb:app_id
 
 - [ ] Adicionar pagina de recuperação de senha
