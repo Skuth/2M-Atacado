@@ -321,11 +321,6 @@ class Clients {
 
     if ($pe["status"] != "error") {
 
-      var_dump($pe);
-
-      var_dump($query);
-      var_dump($params);
-
       if ($sql->query($query, $params) == TRUE) {  
         return true;
       } else {
