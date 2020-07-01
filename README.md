@@ -1,8 +1,7 @@
 # 2m
 
 ### Site
-- [X] Pagina para verificar datas carregada todos os dias as 00:00
-
+- [X] Pagina para verificar datas e atualizar
 ### Front end
 
 - [X] Listar produtos
