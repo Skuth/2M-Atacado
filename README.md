@@ -44,7 +44,6 @@
 - [X] Desc do produto sem desc padrão
 - [X] Minificar css e JS
 
-- [ ] Adicionar na administração a opção de atulizar fb:app_id e google id
 - [ ] Criar banner para facebook
 - [ ] Adicionar botões de compartilhamento
 - [ ] Atualizar logo pra ``webP``
