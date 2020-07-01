@@ -22,33 +22,38 @@
 - [X] Menu cliente
 - [X] Campo de pesquisa
 - [X] Pagina de cadastro de cliente
-- [X] Adicionar ```step="0.01"``` Em forms
 
 ### Erros
 
-- [ ] Arrumar fonte pagina de distribuidor em celular -> Alinhar texto e mudar de 80% para 90%
-- [ ] Arrumar fonte carrinho no celular
-- [ ] Arrumar width formularios no celular
+- [X] Arrumar fonte pagina de distribuidor em celular -> Alinhar texto e mudar de 80% para 90%
+- [X] Arrumar fonte carrinho no celular
+- [X] Arrumar width formularios no celular
 - [ ] Adicionar aviso de produto indisponivel
-- [ ] Arrumar listagem de compras
+- [X] Arrumar listagem de compras
 - [ ] Listagem de pedidos | Paginação
-- [ ] Setar min-width de 200px para o submenu do usuario
-- [ ] Add meta description
-- [ ] Add meta theme color
-- [ ] Add icon
+- [X] Setar min-width de 200px para o submenu do usuario
 
 ### ToDo
 
+- [X] Add meta description
+- [X] Add meta keywords
+- [ ] Add meta theme color
+- [ ] Add icon
 - [ ] Add robots
 - [ ] Add sitemap
+
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando
+
 - [ ] Comprimir fotos em JPEG 2000 ou JPEG XR ou WebP
 - [ ] Criar fotos em varios tamanhos
+
 - [ ] Ativar cache
-- [ ] Mudar cor do degrade dos cards
+- [X] Mudar cor do degrade dos cards
 - [ ] Adicionar direitos de uso e meios de pagamentos no footer
 - [ ] Verificar se a url do banner é a url do site, se não por a tag no refer
+
+- [ ] Remover ?v do script de do link
 
 ### Segurança
 

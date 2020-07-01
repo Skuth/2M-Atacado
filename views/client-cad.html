@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-login-control">
-      <input type="number" step="0.01" id="cpf" name="cpf" required>
+      <input type="text" id="cpf" name="cpf" required>
       <label for="cpf">Cpf *</label>
     </div>
 
@@ -50,12 +50,12 @@
     </div>
 
     <div class="form-login-control">
-      <input type="number" step="0.01" id="cnpj" name="cnpj" required>
+      <input type="text" id="cnpj" name="cnpj" required>
       <label for="cnpj">Cnpj *</label>
     </div>
 
     <div class="form-login-control">
-      <input type="number" step="0.01" id="ie" name="ie" required>
+      <input type="text" id="ie" name="ie" required>
       <label for="ie">Inscrição Estadual *</label>
     </div>
 

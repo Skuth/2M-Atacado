@@ -72,6 +72,7 @@
           border-radius: 10px;
           overflow: hidden;
           display: none;
+          min-width: 200px;
           @include boxShadow(0 0 10px rgba(0,0,0,0.4));
           li {
             display: block;

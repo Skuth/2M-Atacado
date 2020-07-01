@@ -15,10 +15,13 @@
   <!-- SEO -->
   <title>{$siteData["site_data_name"]} - {$seoTags["title"]}</title>
 
+  {$keywords = "2m atacado, 2m, atacado, material de construção, construção, casa, ferramentas"}
+  {$description = "2M Atacado, Empresa no mercado desde 2019 com os melhores preços no mercado, com uma grande variedade de produtos, como: ferramentas, produtos para casa, alicates, torneiras, e muito mais. Estamos localizados em Cabo Frio - RJ"}
+
   <link rel="canonical" href="{$siteUrl}{$reqUrl}">
 
-  <meta name="description" content="{$seoTags["desc"]}">
-  <meta name="keywords" content="{$seoTags["tags"]}">
+  <meta name="description" content="{$description}.{if="$seoTags['desc'] != ''"} {$seoTags["desc"]}{/if}">
+  <meta name="keywords" content="{$keywords}{if="$seoTags['tags'] != ''"}, {$seoTags["tags"]}{/if}">
   <meta name="robots" content="index, follow">
   <meta name="revisit-after" content="1 day">
   <meta name="language" content="Portuguese">
@@ -28,12 +31,12 @@
   <meta property="og:url" content="{$siteUrl}{$reqUrl}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{$siteData["site_data_name"]} - {$seoTags["title"]}">
-  <meta property="og:description" content="{$seoTags["desc"]}">
+  <meta property="og:description" content="{$description}. {$seoTags["desc"]}">
   <meta property="og:image" content="{$siteUrl}/{$seoTags["thumbnail"]}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{$siteData["site_data_name"]} - {$seoTags["title"]}">
-  <meta name="twitter:description" content="{$seoTags["desc"]}">
+  <meta name="twitter:description" content="{$description}. {$seoTags["desc"]}">
   <meta name="twitter:image" content="{$siteUrl}/{$seoTags["thumbnail"]}">
 
   {if="$seoTags['product'] == true"}

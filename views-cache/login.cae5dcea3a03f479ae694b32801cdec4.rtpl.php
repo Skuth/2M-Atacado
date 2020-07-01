@@ -7,7 +7,7 @@
 
   <form onsubmit="return clienteLogin(event)" class="form-login">
     <div class="form-login-control">
-      <input type="number" step="0.01" id="login" name="login" maxlength="14" required>
+      <input type="text" id="login" name="login" maxlength="14" required>
       <label for="login">CPF ou CNPJ</label>
     </div>
     <div class="form-login-control">
