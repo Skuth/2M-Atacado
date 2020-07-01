@@ -1,7 +1,7 @@
 # 2m
 
 ### Site
-- [ ] Pagina para verificar datas carregada todos os dias as 00:00
+- [X] Pagina para verificar datas carregada todos os dias as 00:00
 
 ### Front end
 

@@ -1,6 +1,7 @@
 <?php
 
 use Skuth\Model\Cart;
+use Skuth\Model\Products;
 
 function getCardFromCookie() {
   $cart = [];
@@ -31,19 +32,37 @@ function getCardFromCookie() {
 
 getCardFromCookie();
 
+function getJson() {
+  $json = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/verify.json");
+  $json = json_decode($json, true);
+  return $json;
+}
+
+function saveJson($json) {
+  file_put_contents($_SERVER["DOCUMENT_ROOT"]."/verify.json", json_encode($json));
+}
+
 function updateMonthVerify() {
-  // atualizar json
-  // last-month-verify: date
+  $month = date("m", strtotime("+1 month"));
+
+  $json = getJson();
+  $json["last-month-check"] = $month;
+
+  saveJson($json);
 }
 
 function updateDayVerify() {
-  // atualizar json
-  // last-day-verify: date
+  $day = date("d", strtotime("+1 day"));
+  $json = getJson();
+  $json["last-day-check"] = $day;
+
+  saveJson($json);
 }
 
 function verifyMonth() {
-  // verificar se está no mesmo mês -> return (true, false)
-  $r = true;
+  $month = date("m");
+  $json = getJson();
+  $r = ($json["last-month-check"] == $month);
 
   if ($r == TRUE) {
     updateMonthVerify();
@@ -54,8 +73,9 @@ function verifyMonth() {
 }
 
 function verifyDay() {
-  // verificar se está no mesmo dia -> return (true, false)
-  $r = true;
+  $day = date("d");
+  $json = getJson();
+  $r = ($json["last-day-check"] == $day);
 
   if ($r == TRUE) {
     updateDayVerify();
@@ -66,15 +86,14 @@ function verifyDay() {
 }
 
 function updateProductViews() {
-  // atualizar produtos
+  Products::updateProductViews();
 }
 
 function updateOffers() {
-  // verificar ofertas
+  Products::updateOffers();
 }
 
 function checkUpdates() {
-  // Verificar datas comparando com JSON, se for TRUE chamar funções de update
   if (verifyDay() == TRUE) {
     updateOffers();
   }
@@ -83,5 +102,7 @@ function checkUpdates() {
     updateProductViews();
   }
 }
+
+checkUpdates();
 
 ?>

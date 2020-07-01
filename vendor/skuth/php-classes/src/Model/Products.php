@@ -396,6 +396,38 @@ class Products {
 
     return $res;
   }
+
+  public static function getViews() {
+    $sql = new Sql();
+
+    $query = "SELECT product_id, product_views FROM products";
+    
+    return $sql->select($query);
+  }
+
+  public static function updateProductViews() {
+    $sql = new Sql();
+
+    $products = Products::getViews();
+
+    foreach ($products as $key => $value) {
+      $query = "UPDATE products SET product_views=0, product_views_old=:views WHERE product_id=:id";
+      $params = ["id"=>$value["product_id"], "views"=>$value["product_views"]];
+      $sql->query($query, $params);
+    }
+  }
+
+  public static function updateOffers() {
+    $sql = new Sql();
+
+    $off = $sql->select("SELECT product_id, product_price_off_days FROM products WHERE product_price_off_days = CURDATE()");
+    
+    $p = new Products();
+
+    foreach ($off as $key => $value) {
+      $p->removePromo($value["product_id"]);
+    }
+  }
 }
 
 ?>
