@@ -31,4 +31,57 @@ function getCardFromCookie() {
 
 getCardFromCookie();
 
+function updateMonthVerify() {
+  // atualizar json
+  // last-month-verify: date
+}
+
+function updateDayVerify() {
+  // atualizar json
+  // last-day-verify: date
+}
+
+function verifyMonth() {
+  // verificar se está no mesmo mês -> return (true, false)
+  $r = true;
+
+  if ($r == TRUE) {
+    updateMonthVerify();
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function verifyDay() {
+  // verificar se está no mesmo dia -> return (true, false)
+  $r = true;
+
+  if ($r == TRUE) {
+    updateDayVerify();
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function updateProductViews() {
+  // atualizar produtos
+}
+
+function updateOffers() {
+  // verificar ofertas
+}
+
+function checkUpdates() {
+  // Verificar datas comparando com JSON, se for TRUE chamar funções de update
+  if (verifyDay() == TRUE) {
+    updateOffers();
+  }
+
+  if (verifyMonth() == TRUE) {
+    updateProductViews();
+  }
+}
+
 ?>

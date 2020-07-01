@@ -41,9 +41,13 @@
 - [X] Add sitemap
 
 - [X] Achar imagens sem ALT
-- [ ] Minificar css e JS
 - [X] Desc do produto sem desc padrão
-- [ ] Add fb:app_id
+- [X] Minificar css e JS
+
+- [ ] Adicionar na administração a opção de atulizar fb:app_id e google id
+- [ ] Criar banner para facebook
+- [ ] Adicionar botões de compartilhamento
+- [ ] Atualizar logo pra ``webP``
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando

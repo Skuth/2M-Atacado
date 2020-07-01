@@ -174,7 +174,7 @@ function parseCpfCnpj($string) {
   return $string;
 }
 
-function uploadImage($image, $path) {
+function uploadImage($image, $path, $name = "") {
   $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
   
   $fileType = explode("/", $image["type"]);
@@ -187,7 +187,12 @@ function uploadImage($image, $path) {
   
   $fileTmpName = $image["tmp_name"];
   
-  $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName);
+  if ($name == "") {
+    $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName);
+  } else {
+    $fileNewName = $name;
+  }
+  
   $fileNewNameA = $fileNewName.".".$fileExtension;
   $fileNewNameB = $fileNewName.".webp";
 
