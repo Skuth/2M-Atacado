@@ -1,7 +1,9 @@
 # 2m
 
 ### Site
+
 - [X] Pagina para verificar datas e atualizar
+
 ### Front end
 
 - [X] Listar produtos
