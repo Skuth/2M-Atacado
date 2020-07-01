@@ -46,7 +46,7 @@ class Order {
   public static function getByClientId($clientId) {
     $sql = new Sql();
 
-    $query = "SELECT * FROM `order` WHERE client_id=:cId";
+    $query = "SELECT * FROM `order` WHERE client_id=:cId ORDER BY order_id DESC";
     $param = ["cId"=>$clientId];
 
     $r = $sql->select($query, $param);
@@ -58,7 +58,7 @@ class Order {
     $sql = new Sql();
     $products = new Products();
 
-    $query = "SELECT * FROM `order` WHERE client_id=:cId";
+    $query = "SELECT * FROM `order` WHERE client_id=:cId ORDER BY order_id DESC";
     $param = ["cId"=>$clientId];
 
     $r = $sql->select($query, $param);
@@ -107,8 +107,10 @@ class Order {
     $sql = new Sql();
     $products = new Products();
 
-    $query = "SELECT * FROM `order`".$param;
+    $query = "SELECT * FROM `order` ".$param;
+
     $r = $sql->select($query);
+    rsort($r);
 
     $count = $sql->select("SELECT count(order_id) FROM `order`".$param);
 

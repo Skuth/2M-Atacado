@@ -365,7 +365,13 @@ class Clients {
     $query = "UPDATE clients SET client_status=:status WHERE client_id=:id";
     $params = ["status"=>1, "id"=>$id];
 
-    return $sql->query($query, $params);
+    $res = $sql->query($query, $params);
+
+    if ($res == TRUE) {
+      return $this->parseReturn("success", "Usuário ativado com sucesso!");
+    } else {
+      return $this->parseReturn("error", "Falha ao ativar usuário!");
+    }
   }
 
   public function deactivateClient($id) {
@@ -374,7 +380,13 @@ class Clients {
     $query = "UPDATE clients SET client_status=:status WHERE client_id=:id";
     $params = ["status"=>0, "id"=>$id];
 
-    return $sql->query($query, $params);
+    $res = $sql->query($query, $params);
+
+    if ($res == TRUE) {
+      return $this->parseReturn("success", "Usuário desativado com sucesso!");
+    } else {
+      return $this->parseReturn("error", "Falha ao desativar usuário!");
+    }
   }
 
   public static function countClients() {

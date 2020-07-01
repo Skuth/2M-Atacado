@@ -58,36 +58,6 @@
     </a>
 
     <?php } ?>
-<!-- 
-    <a class="card" href="produtos/departamento/ferramentas">
-      <div class="card-header">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
-          <path class="card-svg-header red" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
-        
-          <text x="60" y="50">Ferramentas</text>
-          <text x="60" y="90">a partir de</text>
-          <text x="60" y="135" class="textrice">R$ <tspan >89</tspan ><tspan >,99</tspan ></text>
-        </svg>
-      </div>
-      <div class="card-image">
-        <img src="https://brasmetal.com/wp-content/uploads/2019/02/Imagens-recortadas_48.png" alt="">
-      </div>
-    </a>
-
-    <a class="card" href="produtos/departamento/ferramentas">
-      <div class="card-header">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
-          <path class="card-svg-header orange" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
-        
-          <text x="60" y="50">Ferramentas</text>
-          <text x="60" y="90">a partir de</text>
-          <text x="60" y="135" class="textrice">R$ <tspan >89</tspan ><tspan >,99</tspan ></text>
-        </svg>
-      </div>
-      <div class="card-image">
-        <img src="https://brasmetal.com/wp-content/uploads/2019/02/Imagens-recortadas_48.png" alt="">
-      </div>
-    </a> -->
 
   </div>
 </div>
@@ -122,7 +92,7 @@
       </div>
       <div class="product-brand">
         <span>
-          <img src="./assets/Distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </span>
       </div>
       <div class="product-info">
@@ -176,7 +146,7 @@
       </div>
       <div class="product-brand">
         <span>
-          <img src="./assets/Distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </span>
       </div>
       <div class="product-info">
@@ -229,7 +199,7 @@
     </div>
     <div class="product-brand">
       <span>
-        <img src="./assets/Distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </span>
     </div>
     <div class="product-info">

@@ -13,15 +13,15 @@
     $_SESSION["cart"] = [];
   }
 
-  require_once(__DIR__."./vendor/autoload.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");
 
   $app = AppFactory::create();
 
   $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
   require_once("verify.php");
-  require_once(__DIR__."/routes/site.php");
-  require_once(__DIR__."/routes/admin.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/routes/site.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/routes/admin.php");
 
   $app->run();
 

@@ -13,7 +13,11 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
 
   createSeoTags("Carrinho de compras");
 
-  $page = new Page();
+  function createCartCookie() {
+    $id = md5($_COOKIE["PHPSESSID"].getDate()[0]);
+    setcookie("cartId", $id, time()+2592000, "/");
+    return $id;
+  }
 
   $cart = (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) ? $_SESSION["cart"] : [];
 
@@ -73,12 +77,6 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
 
   $cartSet["total"] = $t;
 
-  function createCartCookie() {
-    $id = md5($_COOKIE["PHPSESSID"].getDate()[0]);
-    setcookie("cartId", $id, time()+2592000, "/");
-    return $id;
-  }
-
   $cartId = isset($_COOKIE["cartId"]) ? $_COOKIE["cartId"] : createCartCookie();
 
   $cartList = Cart::getCartItem($cartId);
@@ -95,6 +93,8 @@ $app->get("/carrinho", function(Request $req, Response $res, $args) {
     //remove
     Cart::removeCartItem($cartId);
   }
+
+  $page = new Page();
 
   $page->setTpl("cart", ["cart"=>$c, "quantity"=>$q, "total"=>$t]);
 

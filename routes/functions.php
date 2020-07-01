@@ -176,6 +176,6 @@ function formatPhone($phone) {
     }
 
     return $phone;
-}
+  }
 
 ?>
