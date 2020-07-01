@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 @keyframes submenuOpen {
   0% {
     display: none;
@@ -1405,6 +1404,37 @@ textarea {
       text-align: center; }
       .footer-info ul li, .footer-contact ul li {
         margin-bottom: 10px; }
+        .footer-info ul li.payments, .footer-contact ul li.payments {
+          font-size: 2.5em;
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -o-user-select: none; }
+          .footer-info ul li.payments > i, .footer-contact ul li.payments > i {
+            margin: 0 10px; }
+            .footer-info ul li.payments > i.icofont-elo, .footer-info ul li.payments > i.icofont-real, .footer-contact ul li.payments > i.icofont-elo, .footer-contact ul li.payments > i.icofont-real {
+              display: inline-block;
+              width: 40px;
+              height: 40px;
+              filter: invert(1) brightness(100);
+              -webkit-filter: invert(1) brightness(100);
+              -moz-filter: invert(1) brightness(100);
+              -o-filter: invert(1) brightness(100); }
+            .footer-info ul li.payments > i.icofont-elo, .footer-contact ul li.payments > i.icofont-elo {
+              background: url("../payments/elo.svg") no-repeat center center; }
+            .footer-info ul li.payments > i.icofont-real, .footer-contact ul li.payments > i.icofont-real {
+              background: url("../payments/real.svg") no-repeat center center;
+              background-size: 25px; }
+
+.footer-rights {
+  padding: 30px 20px;
+  background: #337DEC;
+  text-align: center; }
+  .footer-rights p {
+    color: white; }
 
 @media (max-width: 425px) {
   .footer-info ul li, .footer-contact ul li {

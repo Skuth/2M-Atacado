@@ -32,5 +32,13 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
   
 });
 
+$app->get("/offline", function(Request $req, Response $res, $args) {
+
+  var_dump("Offline");
+  
+  return $res;
+
+});
+
 
 ?>

@@ -1,0 +1,22 @@
+{
+    "name": "2M Atacado - O melhor lugar para sua obra!",
+    "short_name": "2M Atacado",
+    "icons": [
+        {
+            "src": "./android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/inicio",
+    "lang": "pt-BR",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#337dec",
+    "background_color": "#337dec"
+}

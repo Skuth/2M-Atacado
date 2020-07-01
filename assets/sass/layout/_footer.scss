@@ -74,8 +74,40 @@
       text-align: center;
       li {
         margin-bottom: 10px;
+        &.payments {
+          font-size: em(40);
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          @include select();
+          > i {
+            margin: 0 10px;
+            &.icofont-elo, &.icofont-real {
+              display: inline-block;
+              width: 40px;
+              height: 40px;
+              @include filter(invert(1) brightness(100));
+            }
+            &.icofont-elo {
+              background: url("../payments/elo.svg") no-repeat center center;
+            }
+            &.icofont-real {
+              background: url("../payments/real.svg") no-repeat center center;
+              background-size: 25px;
+            }
+          }
+        }
       }
     }
+  }
+}
+
+.footer-rights {
+  padding: 30px 20px;
+  background: $mediumblue;
+  text-align: center;
+  p {
+    color: white;
   }
 }
 

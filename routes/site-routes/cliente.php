@@ -41,6 +41,8 @@ $app->get("/cliente/cadastrar", function(Request $req, Response $res, $args) {
 
   $chave = (isset($_GET["chave"])) ? $_GET["chave"] : "";
 
+  createSeoTags("Cadastrar");
+
   $page = new Page();
   $page->setTpl("client-cad", ["chave"=>$chave]);
 
@@ -75,6 +77,8 @@ $app->get("/cliente/dashboard", function(Request $req, Response $res, $args) {
   if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
     $clientId = $_SESSION["client"]["client_id"];
 
+    createSeoTags("Compras");
+
     $orders = Order::getByClientIdFull($clientId);
 
     $page = new Page();
@@ -90,6 +94,8 @@ $app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
   $id = $args["id"];
 
   $order = Order::getOrderByIdFull($id);
+
+  createSeoTags("Detalhes da compra #".$id);
 
   $page = new Page();
   $page->setTpl("client-purchase-view", ["order"=>$order]);

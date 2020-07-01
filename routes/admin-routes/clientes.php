@@ -58,7 +58,7 @@ $app->get("/admin/clientes/desativados", function(Request $req, Response $res, $
   $offset = ($pagina - 1) * $limit;
   
   
-  $clients = Clients::getClients("WHERE client_status=0 LIMIT ".$limit." OFFSET ".$offset);
+  $clients = Clients::getClientsDisableds("LIMIT ".$limit." OFFSET ".$offset);
   
   $page = new PageAdmin(["data"=>["page"=>createPage("clientes desativados", "clientes/desativados")]]);
   $page->setTpl("clients", ["clients"=>$clients["clients"], "count"=>$clients["count"], "pagina"=>$pagina, "limit"=>$limit, "url"=>"clientes/desativados"]);

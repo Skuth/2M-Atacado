@@ -28,6 +28,7 @@ $app->get("/admin/pedidos", function(Request $req, Response $res, $args) {
   
   $orders = Order::getOrders("LIMIT ".$limit." OFFSET ".$offset);
 
+  
   if (count($orders["orders"]) <= 0 && $order["count"] > 0) {
     return $res->withHeader("Location", "/admin/pedidos?pagina=1");
   }
@@ -57,7 +58,7 @@ $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) 
   $offset = ($pagina - 1) * $limit;
 
   
-  $orders = Order::getOrders("WHERE order_status!=5 LIMIT ".$limit." OFFSET ".$offset);
+  $orders = Order::getOrdersOpen("LIMIT ".$limit." OFFSET ".$offset);
 
   $page = new PageAdmin(["data"=>["page"=>createPage("pedidos", "pedidos/aberto")]]);
   $page->setTpl("pedidos", ["pedidos"=>$orders["orders"], "count"=>$orders["count"], "pagina"=>$pagina, "limit"=>$limit, "url"=>"pedidos/aberto"]);

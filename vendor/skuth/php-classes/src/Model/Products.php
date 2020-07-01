@@ -52,10 +52,21 @@ class Products {
     return $sql->select("SELECT count(product_id) FROM products")[0]["count(product_id)"];
   }
 
+  public function getPopular($limit = 6) {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products ORDER BY product_views DESC LIMIT ".$limit;
+
+    $res = $sql->select($query);
+    $res = $this->parseImage($res);
+
+    return $res;
+  }
+
   public function getAll($param = "") {
     $sql = new Sql();
 
-    $query = "SELECT * FROM products ".$param;
+    $query = "SELECT * FROM products ORDER BY product_id ASC ".$param;
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);
@@ -376,7 +387,7 @@ class Products {
   public static function getLowStock() {
     $sql = new Sql();
 
-    $query = "SELECT * FROM products WHERE product_stock <= 5";
+    $query = "SELECT * FROM products WHERE product_stock <= 5 ORDER BY product_stock ASC";
 
     $prod = new products();
 

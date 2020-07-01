@@ -102,9 +102,25 @@ class Clients {
   public static function getClients($param) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients ".$param;
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients ORDER BY client_id DESC ".$param;
 
-    $count = $sql->select("SELECT count(client_id) FROM clients ".$param);
+    $count = $sql->select("SELECT count(client_id) FROM clients");
+
+    if (count($count) > 0) {
+      $count = $count[0]["count(client_id)"];
+    } else {
+      $count = 0;
+    }
+
+    return ["clients"=>$sql->select($query), "count"=>$count];
+  }
+
+  public static function getClientsDisableds($param) {
+    $sql = new Sql();
+
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_status=0 ORDER BY client_id DESC ".$param;
+
+    $count = $sql->select("SELECT count(client_id) FROM clients WHERE client_status=0");
 
     if (count($count) > 0) {
       $count = $count[0]["count(client_id)"];

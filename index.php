@@ -13,6 +13,8 @@
     $_SESSION["cart"] = [];
   }
 
+  $GLOBALS["version"] = "1.0-20-07-01";
+
   require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");
 
   $app = AppFactory::create();

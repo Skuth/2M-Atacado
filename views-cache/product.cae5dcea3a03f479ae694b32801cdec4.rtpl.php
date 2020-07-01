@@ -55,6 +55,8 @@
       </div>
       <?php if( $produto["product_stock"] >= 1 ){ ?>
       <a onclick="addCart(<?php echo htmlspecialchars( $produto["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>)" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
+      <?php }else{ ?>
+      <p class="btn btn-red btn-circle btn-medium">Produto indisponível</p>
       <?php } ?>
     </div>
     <div class="product-page-description">

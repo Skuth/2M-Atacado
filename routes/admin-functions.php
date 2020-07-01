@@ -187,13 +187,29 @@ function uploadImage($image, $path) {
   
   $fileTmpName = $image["tmp_name"];
   
-  $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName).".".$fileExtension;
+  $fileNewName = md5(date("dmYHis") . $fileName . $fileTmpName);
+  $fileNewNameA = $fileNewName.".".$fileExtension;
+  $fileNewNameB = $fileNewName.".webp";
 
   
   if ($fileError == 0 && $fileType[0] == "image") {
     if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
-      move_uploaded_file($fileTmpName, $fileFolder.$fileNewName);
-      return $fileNewName;
+      move_uploaded_file($fileTmpName, $fileFolder.$fileNewNameA);
+
+      if ($fileExtension == "png") {
+        $img = imagecreatefrompng($fileFolder.$fileNewNameA);
+      } else {
+        $img = imagecreatefromjpeg($fileFolder.$fileNewNameA);
+      }
+      imagepalettetotruecolor($img);
+      imagealphablending($img, true);
+      imagesavealpha($img, true);
+      imagewebp($img, $fileFolder.$fileNewNameB, 100);
+      imagedestroy($img);
+
+      deleteImage($fileNewNameA, $path);
+
+      return $fileNewNameB;
     }
   }
 }

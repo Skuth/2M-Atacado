@@ -55,6 +55,8 @@
       </div>
       {if="$produto.product_stock >= 1"}
       <a onclick="addCart({$produto.product_id})" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
+      {else}
+      <p class="btn btn-red btn-circle btn-medium">Produto indisponível</p>
       {/if}
     </div>
     <div class="product-page-description">

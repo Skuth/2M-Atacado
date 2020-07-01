@@ -34,14 +34,31 @@
         <li><i class="icofont-clock-time"></i> Horário de funcionamento: <span><?php echo htmlspecialchars( $siteData["site_data_oh"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></li>
       </ul>
     </div>
+    <div class="footer-info">
+      <ul>
+        <li><span><strong>Formas de pagamento</strong></span></li>
+        <li class="payments">
+          <i class="icofont-real"></i>
+          <i class="icofont-elo"></i>
+          <i class="icofont-american-express"></i>
+          <i class="icofont-visa"></i>
+          <i class="icofont-mastercard"></i>
+        </li>
+      </ul>
+    </div>
   </footer>
+  <div class="footer-rights">
+    <?php $year = 2020; ?>
+    <?php $cyear = date('Y'); ?>
+    <p>&copy; Todos os direitos reservados para <?php echo htmlspecialchars( $siteData["site_data_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $year, ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php if( $cyear != $year ){ ?> - <?php echo htmlspecialchars( $cyear, ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?></p>
+  </div>
 
   <script src="./assets/js/sweetalert2@9.js"></script>
 
   <script type="text/javascript" src="./assets/js/jquery-3.5.1.min.js"></script>
-  <script type="text/javascript" src="./assets/js/jquery-migrate-3.3.1.min.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
 
-  <script src="./assets/js/script.min.js?id=<?php echo rand(); ?>"></script>
+  <script src="./assets/js/script.min.js?v=<?php echo htmlspecialchars( $GLOBALS['version'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></script>
 </body>
 </html>
