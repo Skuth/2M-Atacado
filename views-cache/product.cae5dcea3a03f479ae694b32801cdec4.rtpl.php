@@ -4,11 +4,11 @@
       <div class="product-page-carrossel">
         <?php $counter1=-1;  if( isset($produto["product_pictures"]) && ( is_array($produto["product_pictures"]) || $produto["product_pictures"] instanceof Traversable ) && sizeof($produto["product_pictures"]) ) foreach( $produto["product_pictures"] as $key1 => $value1 ){ $counter1++; ?>
         <div class="product-page-carrossel-box">
-          <img src="./assets/produtos/<?php echo htmlspecialchars( $produto["product_pictures"]["$key1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Imagem <?php echo htmlspecialchars( $key1 + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?> do produto - <?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <img src="./assets/produtos/<?php echo htmlspecialchars( $produto["product_pictures"]["$key1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" onclick="setImage(this)" alt="Imagem <?php echo htmlspecialchars( $key1 + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?> do produto - <?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </div>
         <?php } ?>
       </div>
-      <div class="product-page-center-image">
+      <div class="product-page-center-image" id="product-image">
         <img src="./assets/produtos/<?php echo htmlspecialchars( $produto["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Imagem do produto - <?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </div>
     </div>

@@ -4,11 +4,11 @@
       <div class="product-page-carrossel">
         {loop="$produto.product_pictures"}
         <div class="product-page-carrossel-box">
-          <img src="./assets/produtos/{$produto.product_pictures[$key]}" alt="Imagem {$key + 1} do produto - {$produto.product_name}">
+          <img src="./assets/produtos/{$produto.product_pictures[$key]}" onclick="setImage(this)" alt="Imagem {$key + 1} do produto - {$produto.product_name}">
         </div>
         {/loop}
       </div>
-      <div class="product-page-center-image">
+      <div class="product-page-center-image" id="product-image">
         <img src="./assets/produtos/{$produto.product_pictures[0]}" alt="Imagem do produto - {$produto.product_name}">
       </div>
     </div>

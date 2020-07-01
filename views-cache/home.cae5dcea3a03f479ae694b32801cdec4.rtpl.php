@@ -56,7 +56,7 @@
         </svg>
       </div>
       <div class="card-image">
-        <img src="./assets/cards/<?php echo htmlspecialchars( $value1["picture"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+        <img src="./assets/cards/<?php echo htmlspecialchars( $value1["picture"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do card de <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </div>
     </a>
 

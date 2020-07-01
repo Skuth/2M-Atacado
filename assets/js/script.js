@@ -229,7 +229,17 @@ const clientRegister = (e, form) => {
         }
       })
     }
-  });
+  })
+}
+
+const setImage = (box) => {
+
+  let imageBox = document.getElementById("product-image")
+  let mainImgBox = imageBox.children[0]
+  let imgSrc = box.getAttribute("src")
+
+  mainImgBox.setAttribute("src", imgSrc)
+
 }
 
 $(document).ready(() => {
