@@ -1,5 +1,4 @@
 {$siteUrl = getSiteUrl()}
-{$siteUrl}
 
 <div class="container">
   <div class="slide">
@@ -9,11 +8,9 @@
     </div>
     <div class="container-header-slider">
       {loop="$sliders"}
-        {$value.slider_href}
         {$verify = strpos($value.slider_href, $siteUrl)}
-        {function="var_dump($verify)"}
         {if="$value.slider_status == 1"}
-        <a class="banner" {if="$value.slider_href != NULL"}href="{$value.slider_href}"{/if}>
+        <a class="banner" {if="$value.slider_href != NULL"}href="{$value.slider_href}"{/if} {if="$verify === false"}rel="noreferrer"{/if}>
           <img src="./assets/banner/{$value.slider_img}" alt="{$value.slider_description}">
         </a>
         {/if}

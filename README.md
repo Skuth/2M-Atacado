@@ -48,7 +48,7 @@
 - [X] Ativar cache
 - [X] Mudar cor do degrade dos cards
 - [X] Adicionar direitos de uso e meios de pagamentos no footer
-- [ ] Verificar se a url do banner é a url do site, se não por a tag no refer
+- [X] Verificar se a url do banner é a url do site, se não por a tag no refer
 
 - [X] Remover ?id random do script de do link
 
