@@ -94,7 +94,7 @@ function seoDescFilter($desc) {
   return $text;
 }
 
-function createSeoTags($title = "Inicio", $desc = "", $tags = "", $thumbnail = "assets/img/banner.png", $product = FALSE, $productInfo = []) {
+function createSeoTags($title = "Inicio", $desc = "", $tags = "", $thumbnail = "assets/img/banner.webp", $product = FALSE, $productInfo = []) {
   $seoTags = [
     "title"=>$title,
     "desc"=>$desc,
