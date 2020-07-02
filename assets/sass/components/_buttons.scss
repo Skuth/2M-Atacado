@@ -90,19 +90,27 @@
   }
 
   &-facebook {
-    background: #3b5998;
+    background: $facebook;
     color: white;
     &:hover {
       background: white;
-      color: #3b5998;
+      color: $facebook;
     }
   }
   &-twitter {
-    background: #1DA1F2;
+    background: $twitter;
     color: white;
     &:hover {
       background: white;
-      color: #1DA1F2;
+      color: $twitter;
+    }
+  }
+  &-whatsapp {
+    background: $whatsapp;
+    color: white;
+    &:hover {
+      background: white;
+      color: $whatsapp;
     }
   }
 }

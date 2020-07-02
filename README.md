@@ -59,7 +59,9 @@
 
 - [X] Remover ?id random do script de do link
 
-- [ ] Adicionar botões de compartilhamento
+- [X] Adicionar botões de compartilhamento
+
+- [ ] Pesquisa de produtos
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando

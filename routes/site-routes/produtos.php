@@ -11,6 +11,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get("/produto/{ref}/{nome}", function(Request $req, Response $res, $args) {
   
   $ref = $args["ref"];
+  $nome = $args["nome"];
+
+  $url = getSiteUrl()."/produto/".$ref."/".$nome;
 
   $prod = new Products();
   $p = $prod->getByRefFull($ref);
@@ -22,7 +25,7 @@ $app->get("/produto/{ref}/{nome}", function(Request $req, Response $res, $args) 
 
   $page = new Page();
 
-  $page->setTpl("product", ["produto"=>$p, "produtosRandom"=>$pr]);
+  $page->setTpl("product", ["produto"=>$p, "produtosRandom"=>$pr, "url"=>$url]);
 
   Products::updateViews($ref);
 

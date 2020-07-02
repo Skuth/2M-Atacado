@@ -423,6 +423,12 @@ textarea {
     .btn-twitter:hover {
       background: white;
       color: #1DA1F2; }
+  .btn-whatsapp {
+    background: #25D366;
+    color: white; }
+    .btn-whatsapp:hover {
+      background: white;
+      color: #25D366; }
 
 .card-container {
   width: 100%;

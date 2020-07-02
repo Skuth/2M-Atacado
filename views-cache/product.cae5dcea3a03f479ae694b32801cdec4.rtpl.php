@@ -62,8 +62,10 @@
       <div class="product-shared">
         <p>Compartilhe esse produto</p>
         <div class="product-shared-buttons">
-          <a href="#" class="btn btn-facebook" target="_blank"><i class="icofont-facebook"></i></a>
-          <a href="#" class="btn btn-twitter" target="_blank"><i class="icofont-twitter"></i></a>
+          <?php $text = "Confira ".$produto["product_name"]; ?>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>&amp;src=share_button" class="btn btn-facebook" target="_blank"><i class="icofont-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet?&original_referer=<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>&related=twitterapi%2Ctwitter&text=<?php echo htmlspecialchars( $text, ENT_COMPAT, 'UTF-8', FALSE ); ?>&tw_p=tweetbutton&url=<?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-twitter" target="_blank"><i class="icofont-twitter"></i></a>
+          <a href="https://api.whatsapp.com/send?text=<?php echo htmlspecialchars( $text, ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $url, ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-whatsapp" target="_blank"><i class="icofont-whatsapp"></i></a>
         </div>
       </div>
     </div>

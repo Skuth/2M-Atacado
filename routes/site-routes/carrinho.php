@@ -176,7 +176,7 @@ $app->get("/checkout", function(Request $req, Response $res, $args) {
       
       if (isset($_GET["payment"])) {
         $payment = $_GET["payment"];
-        if ($payment > 2) {
+        if ($payment > 1) {
           $payment = 0;
         }
       } else {
@@ -250,7 +250,7 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
   $client = (isset($_SESSION["client"])) ? $_SESSION["client"] : NULL;
   $pType = (isset($_POST["pType"])) ? $_POST["pType"] : 0;
 
-  if ($pType > 2) { $pType = 0; }
+  if ($pType > 1) { $pType = 0; }
 
   if ($client !== NULL) {
     if ($cartId !== 0) {
