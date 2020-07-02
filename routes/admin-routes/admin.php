@@ -84,5 +84,37 @@ $app->post("/admin/administracao/editar", function(Request $req, Response $res, 
 
 });
 
+$app->get("/admin/administracao/{param}/editar", function(Request $req, Response $res, $args) {
+
+  $param = $args["param"];
+
+  if ($param != "banner" && $param != "logo") return $res->withHeader("Location", "/admin/administracao");
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("editando ".$param, "administracao/".$param."/editar")]]);
+
+  $page->setTpl("image-edit", ["action"=>"administracao/".$param."/editar", "text"=>"Editando ".$param]);
+
+  return $res;
+
+});
+
+$app->post("/admin/administracao/{param}/editar", function(Request $req, Response $res, $args) {
+
+  $param = $args["param"];
+
+  if ($param != "banner" && $param != "logo") return $res->withHeader("Location", "/admin/administracao");
+
+  if (isset($_POST["update"])) {
+    $foto = $_FILES["foto"];
+
+    uploadImage($foto, "img", $param);
+  }
+
+  return $res->withHeader("Location", "/admin/administracao");
+
+  return $res;
+
+});
+
 
 ?>

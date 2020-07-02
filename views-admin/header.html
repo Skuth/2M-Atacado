@@ -9,7 +9,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>2M Atacado - Admin</title>
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/logo.png" type="image/png">
+  <link rel="icon" href="../assets/img/logo.webp" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->

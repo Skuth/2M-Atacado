@@ -13,8 +13,6 @@
             <div class="col-4 text-right">
               <a href="/admin/administracao/logo/editar" class="btn btn-sm btn-primary">Logo</a>
               <a href="/admin/administracao/banner/editar" class="btn btn-sm btn-primary">Banner</a>
-              <a href="/admin/administracao/google/editar" class="btn btn-sm btn-primary">Google Id</a>
-              <a href="/admin/administracao/facebook/editar" class="btn btn-sm btn-primary">Facebook Id</a>
               <a href="/admin/administracao/editar" class="btn btn-sm btn-primary">Editar</a>
             </div>
           </div>

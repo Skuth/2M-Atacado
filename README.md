@@ -45,9 +45,11 @@
 - [X] Desc do produto sem desc padrão
 - [X] Minificar css e JS
 
-- [ ] Criar banner para facebook
+- [X] Atualizar logo pra ``webP``
+- [X] Criar banner para facebook
 - [ ] Adicionar botões de compartilhamento
-- [ ] Atualizar logo pra ``webP``
+
+- [ ] Pagina de edição de logo e de banner
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando
