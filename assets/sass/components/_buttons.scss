@@ -88,4 +88,21 @@
       color: $darkblue;
     }
   }
+
+  &-facebook {
+    background: #3b5998;
+    color: white;
+    &:hover {
+      background: white;
+      color: #3b5998;
+    }
+  }
+  &-twitter {
+    background: #1DA1F2;
+    color: white;
+    &:hover {
+      background: white;
+      color: #1DA1F2;
+    }
+  }
 }

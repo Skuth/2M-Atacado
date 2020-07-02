@@ -46,7 +46,7 @@
     <input type="hidden" name="type" value="1">
     <div class="form-login-control">
       <input type="text" id="nome" name="nome" required>
-      <label for="nome">Nome *</label>
+      <label for="nome">Razão social *</label>
     </div>
 
     <div class="form-login-control">

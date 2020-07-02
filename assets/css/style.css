@@ -411,6 +411,18 @@ textarea {
     .btn-blue-o:hover {
       background: white;
       color: #1A3795; }
+  .btn-facebook {
+    background: #3b5998;
+    color: white; }
+    .btn-facebook:hover {
+      background: white;
+      color: #3b5998; }
+  .btn-twitter {
+    background: #1DA1F2;
+    color: white; }
+    .btn-twitter:hover {
+      background: white;
+      color: #1DA1F2; }
 
 .card-container {
   width: 100%;
@@ -1860,6 +1872,19 @@ textarea {
       .product-container .product-page-container .product-page-info a {
         margin: 0;
         margin-top: 20px; }
+      .product-container .product-page-container .product-page-info .product-shared {
+        margin-top: 20px;
+        padding: 20px 0; }
+        .product-container .product-page-container .product-page-info .product-shared p {
+          font-size: 1.5em; }
+        .product-container .product-page-container .product-page-info .product-shared-buttons {
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -o-user-select: none;
+          margin-top: 20px; }
+          .product-container .product-page-container .product-page-info .product-shared-buttons a {
+            margin-right: 10px; }
     .product-container .product-page-container .product-page-description {
       margin-top: 40px;
       grid-column: 1/3;
@@ -1869,9 +1894,13 @@ textarea {
         display: block;
         background: #1A3795;
         padding: 25px 40px;
-        font-size: 1.75em;
+        font-size: 1.5em;
         color: white;
-        border-radius: 4px 4px 0 0; }
+        border-radius: 4px 4px 0 0;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none; }
       .product-container .product-page-container .product-page-description-box {
         display: block;
         padding: 40px 20px;
@@ -1887,7 +1916,7 @@ textarea {
     padding: 40px 20px !important;
     width: calc(100% - 20px * 2) !important; }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .product-container .product-page-container .product-page-picture .product-page-center-image img {
     max-width: 500px; }
   .product-quantity-box {

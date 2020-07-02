@@ -30,7 +30,7 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light text-center">
               <tr>
-                <th scope="col">Nome</th>
+                <th scope="col">Nome / Razão social</th>
                 <th scope="col">Cpf / Cnpj</th>
                 <th scope="col">Inscrição Estadual</th>
                 <th scope="col">Tipo de conta</th>

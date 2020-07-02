@@ -40,7 +40,11 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
+                    <?php if( $client["client_cpf"] != NULL ){ ?>
                     <label class="form-control-label">Nome</label>
+                    <?php }else{ ?>
+                    <label class="form-control-label">Razão social</label>
+                    <?php } ?>
                     <input type="text" id="input-username" class="form-control" disabled value="<?php echo htmlspecialchars( $client["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                   </div>
                 </div>

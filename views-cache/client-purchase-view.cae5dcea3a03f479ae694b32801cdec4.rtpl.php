@@ -57,7 +57,7 @@
           <?php $counter1=-1;  if( isset($order["produtos"]) && ( is_array($order["produtos"]) || $order["produtos"] instanceof Traversable ) && sizeof($order["produtos"]) ) foreach( $order["produtos"] as $key1 => $value1 ){ $counter1++; ?>
           <div class="purchase-product-box">
             <div class="product-picture">
-              <img src="../assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+              <img src="../assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="product-title">
               <span><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
