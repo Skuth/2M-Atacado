@@ -46,7 +46,7 @@ function updateMonthVerify() {
   $month = date("m", strtotime("+1 month"));
 
   $json = getJson();
-  $json["last-month-check"] = $month;
+  $json["next-month-check"] = $month;
 
   saveJson($json);
 }
@@ -54,7 +54,7 @@ function updateMonthVerify() {
 function updateDayVerify() {
   $day = date("d", strtotime("+1 day"));
   $json = getJson();
-  $json["last-day-check"] = $day;
+  $json["next-day-check"] = $day;
 
   saveJson($json);
 }
@@ -62,7 +62,7 @@ function updateDayVerify() {
 function verifyMonth() {
   $month = date("m");
   $json = getJson();
-  $r = ($json["last-month-check"] == $month);
+  $r = ($json["next-month-check"] == $month);
 
   if ($r == TRUE) {
     updateMonthVerify();
@@ -75,7 +75,7 @@ function verifyMonth() {
 function verifyDay() {
   $day = date("d");
   $json = getJson();
-  $r = ($json["last-day-check"] == $day);
+  $r = ($json["next-day-check"] == $day);
 
   if ($r == TRUE) {
     updateDayVerify();
