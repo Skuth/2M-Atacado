@@ -47,12 +47,8 @@
 
 - [X] Atualizar logo pra ``webP``
 - [X] Criar banner para facebook
-- [ ] Adicionar botões de compartilhamento
 
 - [X] Pagina de edição de logo e de banner
-
-- [ ] Adicionar pagina de recuperação de senha
-- [ ] Editar endereço -> Apenas solicitando
 
 - [X] Comprimir fotos em JPEG 2000 ou JPEG XR ou -> ``WebP`` <-
 
@@ -62,6 +58,11 @@
 - [X] Verificar se a url do banner é a url do site, se não por a tag no refer
 
 - [X] Remover ?id random do script de do link
+
+- [ ] Adicionar botões de compartilhamento
+
+- [ ] Adicionar pagina de recuperação de senha
+- [ ] Editar endereço -> Apenas solicitando
 
 ### Segurança
 
