@@ -49,7 +49,7 @@
 - [X] Criar banner para facebook
 - [ ] Adicionar botões de compartilhamento
 
-- [ ] Pagina de edição de logo e de banner
+- [X] Pagina de edição de logo e de banner
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando
