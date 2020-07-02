@@ -31,6 +31,34 @@
         </div>
       </div>
 
+      <div class="checkout-box">
+        <h2 class="shipment-title">Formas de pagamento</h2>
+        <div class="shipment-box">
+
+          <div class="shipment-icon">
+            <i class="icofont-coins"></i>
+          </div>
+
+          <div class="shipment-content">
+            {if="$payment == 0"}
+            <p class="address">Pagar na retirada</p>
+            <p class="person">Dinheiro | Cartão</p>
+            {elseif="$payment == 1"}
+            <p class="address">Pagamento online</p>
+            <p class="person">Boleto</p>
+            {elseif="$payment == 2"}
+            <p class="address">Pagamento online</p>
+            <p class="person">Cartão</p>
+            {/if}
+          </div>
+
+          <!-- <div class="shipment-options">
+            <a href="#">Editar</a>
+          </div> -->
+
+        </div>
+      </div>
+
       {loop="$products"}
       <div class="checkout-box product-content">
         <span class="product-title">
@@ -96,7 +124,7 @@
         {else}
           {$addressId = 0}
         {/if}
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="{$addressId}">Comprar</a>
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="{$addressId}" data-paymentType="{$payment}">Comprar</a>
       </div>
     </div>
   </div>

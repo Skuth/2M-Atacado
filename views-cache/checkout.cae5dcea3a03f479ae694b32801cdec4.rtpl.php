@@ -31,6 +31,34 @@
         </div>
       </div>
 
+      <div class="checkout-box">
+        <h2 class="shipment-title">Formas de pagamento</h2>
+        <div class="shipment-box">
+
+          <div class="shipment-icon">
+            <i class="icofont-coins"></i>
+          </div>
+
+          <div class="shipment-content">
+            <?php if( $payment == 0 ){ ?>
+            <p class="address">Pagar na retirada</p>
+            <p class="person">Dinheiro | Cartão</p>
+            <?php }elseif( $payment == 1 ){ ?>
+            <p class="address">Pagamento online</p>
+            <p class="person">Boleto</p>
+            <?php }elseif( $payment == 2 ){ ?>
+            <p class="address">Pagamento online</p>
+            <p class="person">Cartão</p>
+            <?php } ?>
+          </div>
+
+          <!-- <div class="shipment-options">
+            <a href="#">Editar</a>
+          </div> -->
+
+        </div>
+      </div>
+
       <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
       <div class="checkout-box product-content">
         <span class="product-title">
@@ -96,7 +124,7 @@
         <?php }else{ ?>
           <?php $addressId = 0; ?>
         <?php } ?>
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
+        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-paymentType="<?php echo htmlspecialchars( $payment, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
       </div>
     </div>
   </div>

@@ -5,10 +5,10 @@ use Skuth\DB\Sql;
 use Skuth\Model\Products;
 
 class Order {
-  public static function createOrder($cId, $cart, $oAddr) {
+  public static function createOrder($cId, $cart, $oAddr, $pType) {
     $sql = new Sql();
 
-    $query = "INSERT INTO `order` (client_id, products_id, products_quantity, products_price, order_subtotal, order_address_id) VALUES (:cId, :pIds, :pQts, :pPrcs, :oSub, :oAddr)";
+    $query = "INSERT INTO `order` (client_id, products_id, products_quantity, products_price, order_subtotal, order_address_id, payment_type) VALUES (:cId, :pIds, :pQts, :pPrcs, :oSub, :oAddr, :pType)";
     $params = [
       "cId"=>intval($cId),
       "pIds"=>$cart["products_id"],
@@ -16,6 +16,7 @@ class Order {
       "pPrcs"=>$cart["products_price"],
       "oSub"=>floatval($cart["cart_total"]),
       "oAddr"=>$oAddr,
+      "pType"=>$pType
     ];
 
     $r = $sql->query($query, $params);

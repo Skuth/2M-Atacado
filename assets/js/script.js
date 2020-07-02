@@ -92,12 +92,14 @@ const clienteLogin = (e) => {
 
 const checkout = (btn) => {
   const addressId = btn.getAttribute("data-addressId")
+  const pType = btn.getAttribute("data-paymenttype")
 
   $.ajax({
     type: "POST",
     url: baseUrl+"checkout/order",
     data: {
-      "addressId": addressId
+      "addressId": addressId,
+      "pType": pType
     },
     success: function (r) {
       let res = JSON.parse(r)

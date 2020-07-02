@@ -154,19 +154,7 @@ $app->POST("/addcart/{action}", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/checkout[/{address}]", function(Request $req, Response $res, $args) {
-
-  // Check out
-  //
-  // Verificar login
-  // Cadastrar user
-  //
-  // Puxar endereço do banco se existir
-  // Pagina de cadastro de endereço
-  // Opção pra mudar endereço
-  //
-  // Confirmar
-
+$app->get("/checkout", function(Request $req, Response $res, $args) {
 
   if (isset($_SESSION["client"])) { // remover !
 
@@ -180,12 +168,20 @@ $app->get("/checkout[/{address}]", function(Request $req, Response $res, $args) 
 
       $clients = new Clients();
 
-      if (isset($args["address"]) && 0 == true) {
+      if (isset($_GET["address"])) {
         $address = $clients->getAddress();
       } else {
         $address = [];
       }
-
+      
+      if (isset($_GET["payment"])) {
+        $payment = $_GET["payment"];
+        if ($payment > 2) {
+          $payment = 0;
+        }
+      } else {
+        $payment = 0;
+      }
       
       $shipmentPrice = getShipmentPrice($address);
       $cart["shipmentPrice"] = $shipmentPrice;
@@ -207,13 +203,13 @@ $app->get("/checkout[/{address}]", function(Request $req, Response $res, $args) 
         }
       }
       
-      $page->setTpl("checkout", ["products"=>$products, "cart"=>$cart, "shipmentPrice"=>$cart["shipmentPrice"], "address"=>$address]);
+      $page->setTpl("checkout", ["products"=>$products, "cart"=>$cart, "shipmentPrice"=>$cart["shipmentPrice"], "address"=>$address, "payment"=>$payment]);
     } else {
       unset($_SESSION["cart"]);
       return $res->withHeader("Location", "/carrinho");
     }
 
-  } else { // Pagina de login
+  } else {
 
     $cart = [];
 
@@ -252,6 +248,9 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
   $addressId = (isset($_POST["addressId"])) ? $_POST["addressId"] : 0;
   $cartId = (isset($_COOKIE["cartId"])) ? $_COOKIE["cartId"] : 0;
   $client = (isset($_SESSION["client"])) ? $_SESSION["client"] : NULL;
+  $pType = (isset($_POST["pType"])) ? $_POST["pType"] : 0;
+
+  if ($pType > 2) { $pType = 0; }
 
   if ($client !== NULL) {
     if ($cartId !== 0) {
@@ -261,7 +260,7 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
       if (count($cart) > 0) {
         $clientId = $client["client_id"];
 
-        $order = Order::createOrder($clientId, $cart, $addressId);
+        $order = Order::createOrder($clientId, $cart, $addressId, $pType);
         
         if ($order === TRUE) {
           echo parseResponse("success", "Compra efetuada com sucesso!");
