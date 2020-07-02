@@ -19,6 +19,9 @@
             <?php }else{ ?>
             <span class="badge badge-circle badge-primary">Entregar</span>
             <?php } ?>
+            <br>
+            <?php $date = $order["order_date"]; ?>
+            <span>Entrega prevista entre <span class="badge badge-circle badge-info"><?php echo date('d/m/Y', strtotime($date.' +3 days')); ?> e <?php echo date('d/m/Y', strtotime($date.' +8 days')); ?></span></span>
           </div>
           <div class="box">
             <span class="title">Status do pagamento</span>

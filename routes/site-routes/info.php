@@ -12,6 +12,8 @@ $app->get("/sobre", function(Request $req, Response $res, $args) {
   $sdata = $data->getData();
 
   $desc = seoDescFilter($sdata["site_data_description"]);
+  
+  $sdata["site_data_banner"] = "";
 
   createSeoTags("Sobre nós", $desc);
 

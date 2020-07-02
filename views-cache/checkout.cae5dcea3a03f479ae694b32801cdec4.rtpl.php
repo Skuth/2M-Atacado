@@ -22,6 +22,7 @@
             <p class="address">Retirar na loja</p>
             <p class="person"><?php echo htmlspecialchars( $GLOBALS["siteData"]["site_data_address"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
             <?php } ?>
+            <p class="person">Entrega prevista entre <?php echo date('d/m/Y', strtotime('+3 days')); ?> e <?php echo date('d/m/Y', strtotime('+8 days')); ?></p>
           </div>
 
           <!-- <div class="shipment-options">
@@ -45,10 +46,7 @@
             <p class="person">Dinheiro | Cartão</p>
             <?php }elseif( $payment == 1 ){ ?>
             <p class="address">Pagamento online</p>
-            <p class="person">Boleto</p>
-            <?php }elseif( $payment == 2 ){ ?>
-            <p class="address">Pagamento online</p>
-            <p class="person">Cartão</p>
+            <p class="person">MercadoPago</p>
             <?php } ?>
           </div>
 

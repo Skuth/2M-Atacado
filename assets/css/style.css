@@ -792,8 +792,7 @@ textarea {
       font-weight: 450;
       font-size: 1.25em;
       line-height: 1.3em;
-      letter-spacing: 1.3px;
-      padding-bottom: 60px; }
+      letter-spacing: 1.3px; }
       .reader-container .header-content p:last-child {
         padding-bottom: 0; }
     .reader-container .header-content .content-image {
@@ -1345,16 +1344,19 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: none; }
+    outline: none;
+    min-height: 80px; }
   .distributor-slider {
     text-align: center;
     padding: 10px 20px;
     width: calc(95% - 20px * 2);
     margin: 0 auto;
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    min-height: 60px; }
     .distributor-slider img {
       width: 120px;
+      height: 100%;
       filter: grayscale(1) invert(1);
       -webkit-filter: grayscale(1) invert(1);
       -moz-filter: grayscale(1) invert(1);
@@ -2369,7 +2371,8 @@ textarea {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 40px; }
+      margin-top: 40px;
+      cursor: default; }
       .purchases-container .purchases-content .purchase-box.view-order {
         padding: 40px;
         padding-top: 20px;

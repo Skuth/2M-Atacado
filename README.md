@@ -61,7 +61,7 @@
 
 - [X] Adicionar botões de compartilhamento
 
-- [ ] Pesquisa de produtos
+- [ ] Pesquisa de produtos painel admin
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando

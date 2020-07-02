@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     outline: none;
+    min-height: 80px;
   }
   &-slider {
     text-align: center;
@@ -17,8 +18,10 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    min-height: 60px;
     img {
       width: 120px;
+      height: 100%;
       @include filter(grayscale(1) invert(1));
       @include transition(all, 0.5s);
       &:hover {

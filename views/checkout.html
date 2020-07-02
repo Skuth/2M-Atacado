@@ -22,6 +22,7 @@
             <p class="address">Retirar na loja</p>
             <p class="person">{$GLOBALS.siteData.site_data_address}</p>
             {/if}
+            <p class="person">Entrega prevista entre {function="date('d/m/Y', strtotime('+3 days'))"} e {function="date('d/m/Y', strtotime('+8 days'))"}</p>
           </div>
 
           <!-- <div class="shipment-options">

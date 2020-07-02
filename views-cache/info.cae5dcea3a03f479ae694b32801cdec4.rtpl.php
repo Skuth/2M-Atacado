@@ -9,7 +9,7 @@
         <?php if( isset($banner) && strlen($banner) > 0 ){ ?>
         <img src="./assets/distribuidores/<?php echo htmlspecialchars( $banner, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($type) && $type == 1 ){ ?> alt="Banner Sobre nós" <?php }else{ ?> alt="Banner da distribuidora <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php } ?>>
         <?php }else{ ?>
-        <img src="./assets/img/banner.jpg" <?php if( isset($type) && $type == 1 ){ ?> alt="Banner <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php }else{ ?> alt="Banner da distribuidora <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php } ?>">
+        <img src="./assets/img/banner-info.webp" <?php if( isset($type) && $type == 1 ){ ?> alt="Banner <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php }else{ ?> alt="Banner da distribuidora <?php echo htmlspecialchars( $content, ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php } ?>">
         <?php } ?>
       </div>
     </div>
