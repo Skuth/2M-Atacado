@@ -13,6 +13,10 @@ $app->get("/distribuidor/{dist}", function(Request $req, Response $res, $args) {
   $dist = new Distributors();
   $d = $dist->getByUrl($distribuidor);
 
+  if (count($d) <= 0) return $res->withHeader("Location", "/inicio");
+
+  if ($d["distributor_id"] <= 0) return $res->withHeader("Location", "/inicio");
+
   $desc = seoDescFilter($d["distributor_description"]);
 
   createSeoTags($d["distributor_name"], $desc, "distribuidora, ".strtolower($d["distributor_name"]), "assets/distribuidores/".$d["distributor_logo"]);

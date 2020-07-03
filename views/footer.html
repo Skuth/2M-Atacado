@@ -3,9 +3,11 @@
     <div class="distributor-slider">
       {$distributors = getDistributors()}
       {loop="$distributors"}
-      <a href="/distribuidor/{$value.distributor_href}">
-        <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo da empresa {$value.distributor_name}">
-      </a>
+        {if="$value.distributor_id > 0"}
+        <a href="/distribuidor/{$value.distributor_href}">
+          <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo da empresa {$value.distributor_name}">
+        </a>
+        {/if}
       {/loop}
     </div>
     <div class="distributor-controls">

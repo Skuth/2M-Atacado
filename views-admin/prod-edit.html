@@ -52,6 +52,7 @@
                     <label class="form-control-label">Distribuidor</label>
                     <select class="form-control" name="dist">
                       <option value="" disabled>Selecione um distribuidor</option>
+                      <option value="0" {if="$produto.brand_id == 0"}selected{/if}>Sem marca</option>
                       {loop="$dist"}
                       <option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}selected{/if}>{$value.distributor_name}</option>
                       {/loop}

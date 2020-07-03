@@ -29,6 +29,7 @@
             </thead>
             <tbody class="text-center">
               {loop="$distribuidores"}
+              {if="$value.distributor_id > 0"}
               <tr>
                 <td><img src="./assets/distribuidores/{$value.distributor_logo}" width="30"></td>
                 <td><b>{$value.distributor_name}</b></td>
@@ -40,6 +41,7 @@
                   <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse distribuidor?')" href="/admin/distribuidor/remover/{$value.distributor_id}"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
+              {/if}
               {/loop}
             </tbody>
           </table>

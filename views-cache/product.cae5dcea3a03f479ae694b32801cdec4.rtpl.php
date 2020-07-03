@@ -14,9 +14,11 @@
     </div>
     <div class="product-page-info">
       <h2><?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
+      <?php if( $produto["distributor_id"] > 0 ){ ?>
       <a href="/distribuidor/<?php echo htmlspecialchars( $produto["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         <img src="./assets/distribuidores/<?php echo htmlspecialchars( $produto["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
       </a>
+      <?php } ?>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
       <?php $percentage = getPricePercentage($produto["product_price"], $produto["product_price_off"]); ?>
       <?php if( $produto["product_price_off"] != NULL ){ ?>
@@ -106,9 +108,11 @@
           <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </div>
         <div class="product-brand">
+          <?php if( $value1["distributor_id"] > 0 ){ ?>
           <span>
             <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           </span>
+          <?php } ?>
         </div>
         <div class="product-info">
           <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>

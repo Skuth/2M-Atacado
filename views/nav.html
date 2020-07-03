@@ -44,7 +44,7 @@
             <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
             <ul>
               {loop="$distributors"}
-              <li><a href="/distribuidor/{$value.distributor_href}">{$value.distributor_name}</a></li>
+              {if="$value.distributor_id > 0"}<li><a href="/distribuidor/{$value.distributor_href}">{$value.distributor_name}</a></li>{/if}
               {/loop}
             </ul>
           </li>

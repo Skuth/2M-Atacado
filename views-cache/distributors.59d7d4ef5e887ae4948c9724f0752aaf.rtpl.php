@@ -29,6 +29,7 @@
             </thead>
             <tbody class="text-center">
               <?php $counter1=-1;  if( isset($distribuidores) && ( is_array($distribuidores) || $distribuidores instanceof Traversable ) && sizeof($distribuidores) ) foreach( $distribuidores as $key1 => $value1 ){ $counter1++; ?>
+              <?php if( $value1["distributor_id"] > 0 ){ ?>
               <tr>
                 <td><img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="30"></td>
                 <td><b><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
@@ -40,6 +41,7 @@
                   <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse distribuidor?')" href="/admin/distribuidor/remover/<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
+              <?php } ?>
               <?php } ?>
             </tbody>
           </table>
