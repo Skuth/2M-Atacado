@@ -48,7 +48,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Distribuidor</label>
-                    <select class="form-control" name="dist">
+                    <select class="form-control" name="dist" required>
                       <option value="" disabled selected>Selecione um distribuidor</option>
                       <?php $counter1=-1;  if( isset($dist) && ( is_array($dist) || $dist instanceof Traversable ) && sizeof($dist) ) foreach( $dist as $key1 => $value1 ){ $counter1++; ?>
                       <option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
@@ -60,7 +60,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Departamento</label>
-                    <select class="form-control" name="dep">
+                    <select class="form-control" name="dep" required>
                       <option value="" disabled selected>Selecione um departamento</option>
                       <?php $counter1=-1;  if( isset($dep) && ( is_array($dep) || $dep instanceof Traversable ) && sizeof($dep) ) foreach( $dep as $key1 => $value1 ){ $counter1++; ?>
                       <option value="<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
