@@ -66,7 +66,7 @@ class Products {
   public function getAll($param = "") {
     $sql = new Sql();
 
-    $query = "SELECT * FROM products ORDER BY product_id ASC ".$param;
+    $query = "SELECT * FROM products ORDER BY product_id DESC ".$param;
 
     $res = $sql->select($query);
     $res = $this->parseImage($res);
