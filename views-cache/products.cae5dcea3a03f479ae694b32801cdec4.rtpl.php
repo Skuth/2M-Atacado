@@ -2,11 +2,11 @@
   <div class="products-container">
 
     <div class="products-container-sidebar">
-      <div class="sidebar-box open">
+      <div class="sidebar-box">
         <span>Distribuidores <i class="icofont-simple-down"></i></span>
-        <ul class="sidebar-items" style="max-height: 100vh;">
+        <ul class="sidebar-items" style="max-height: 0;">
           <?php $counter1=-1;  if( isset($distribuidores) && ( is_array($distribuidores) || $distribuidores instanceof Traversable ) && sizeof($distribuidores) ) foreach( $distribuidores as $key1 => $value1 ){ $counter1++; ?>
-          <li><a href="/produtos/distribuidor/<?php echo htmlspecialchars( $value1["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> ( <?php echo htmlspecialchars( $value1["products_count"], ENT_COMPAT, 'UTF-8', FALSE ); ?> )</a></li>
+          <?php if( $value1["distributor_id"] > 0 ){ ?><li><a href="/produtos/distribuidor/<?php echo htmlspecialchars( $value1["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> ( <?php echo htmlspecialchars( $value1["products_count"], ENT_COMPAT, 'UTF-8', FALSE ); ?> )</a></li><?php } ?>
           <?php } ?>
         </ul>
       </div>

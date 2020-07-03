@@ -2,11 +2,11 @@
   <div class="products-container">
 
     <div class="products-container-sidebar">
-      <div class="sidebar-box open">
+      <div class="sidebar-box">
         <span>Distribuidores <i class="icofont-simple-down"></i></span>
-        <ul class="sidebar-items" style="max-height: 100vh;">
+        <ul class="sidebar-items" style="max-height: 0;">
           {loop="$distribuidores"}
-          <li><a href="/produtos/distribuidor/{$value.distributor_href}">{$value.distributor_name} ( {$value.products_count} )</a></li>
+          {if="$value.distributor_id > 0"}<li><a href="/produtos/distribuidor/{$value.distributor_href}">{$value.distributor_name} ( {$value.products_count} )</a></li>{/if}
           {/loop}
         </ul>
       </div>

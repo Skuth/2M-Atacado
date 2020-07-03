@@ -41,7 +41,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Estoque</label>
-                    <input type="number" class="form-control" required name="estoque" value="0">
+                    <input type="number" class="form-control" required name="estoque" min="0" value="0">
                   </div>
                 </div>
 
@@ -52,7 +52,7 @@
                       <option value="" disabled selected>Selecione um distribuidor</option>
                       <option value="0">Sem marca</option>
                       <?php $counter1=-1;  if( isset($dist) && ( is_array($dist) || $dist instanceof Traversable ) && sizeof($dist) ) foreach( $dist as $key1 => $value1 ){ $counter1++; ?>
-                      <option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                      <?php if( $value1["distributor_id"] > 0 ){ ?><option value="<?php echo htmlspecialchars( $value1["distributor_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option><?php } ?>
                       <?php } ?>
                     </select>
                   </div>

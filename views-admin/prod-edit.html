@@ -43,7 +43,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Estoque</label>
-                    <input type="number" class="form-control" required name="estoque" value="{$produto.product_stock}">
+                    <input type="number" class="form-control" required name="estoque" min="0" value="{$produto.product_stock}">
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@
                       <option value="" disabled>Selecione um distribuidor</option>
                       <option value="0" {if="$produto.brand_id == 0"}selected{/if}>Sem marca</option>
                       {loop="$dist"}
-                      <option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}selected{/if}>{$value.distributor_name}</option>
+                      {if="$value.distributor_id > 0"}<option value="{$value.distributor_id}" {if="$produto.brand_id == $value.distributor_id"}selected{/if}>{$value.distributor_name}</option>{/if}
                       {/loop}
                     </select>
                   </div>

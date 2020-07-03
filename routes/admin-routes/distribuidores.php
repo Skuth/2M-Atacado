@@ -56,6 +56,7 @@ $app->post("/admin/distribuidor/novo", function(Request $req, Response $res, $ar
     $logo = uploadImage($_FILES["logo"], "distribuidores");
     $banner = uploadImage($_FILES["banner"], "distribuidores");
 
+    $href = strtolower($href);
     
     $fotos = $_FILES["fotos"];
     $pics = [];
@@ -142,6 +143,8 @@ $app->post("/admin/distribuidor/editar", function(Request $req, Response $res, $
     $address = $_POST["endereco"];
     $href = $_POST["href"];
     $desc = filterDesc($_POST["descricao"]);
+
+    $href = strtolower($href);
 
     $oldLogo = $d["distributor_logo"];
     $oldBanner = $d["distributor_banner"];

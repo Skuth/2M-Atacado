@@ -31,7 +31,7 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
   
   $total = $prod->getTotal();
 
-  $totalPage = 6;
+  $totalPage = 20;
 
   $totalPages = ceil($total / $totalPage);
 
