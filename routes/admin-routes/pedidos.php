@@ -29,7 +29,7 @@ $app->get("/admin/pedidos", function(Request $req, Response $res, $args) {
   $orders = Order::getOrders("LIMIT ".$limit." OFFSET ".$offset);
 
   
-  if (count($orders["orders"]) <= 0 && $order["count"] > 0) {
+  if (count($orders["orders"]) <= 0 && $orders["count"] > 0) {
     return $res->withHeader("Location", "/admin/pedidos?pagina=1");
   }
   
