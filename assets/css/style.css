@@ -1794,7 +1794,8 @@ textarea {
         margin-left: 20px; }
         .product-container .product-page-container .product-page-picture .product-page-center-image img {
           display: block;
-          width: 80%;
+          width: 100%;
+          max-width: 300px;
           margin: 0 auto; }
     .product-container .product-page-container .product-page-info {
       padding: 40px; }
