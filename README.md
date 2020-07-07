@@ -63,7 +63,7 @@
 
 - [ ] Editar valor e ref de http://127.2.2.2/produto/0000/adesivo-175grs-krona
 
-- [ ] Remover / da pesquisa
+- [X] Remover / da pesquisa
 - [ ] Pesquisa de produtos painel admin
 
 - [ ] Verificar id 51

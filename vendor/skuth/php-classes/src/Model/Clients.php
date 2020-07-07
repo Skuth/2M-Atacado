@@ -17,6 +17,22 @@ class Clients {
     return $r;
   }
 
+  public static function verifyLogin($on = 1) {
+    if ($on == 1) {
+      if (isset($_SESSION["client"])) {
+        return true;
+      } else {
+        return false;
+      }
+    } elseif ($on == 0) {
+      if (!isset($_SESSION["client"])) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   public function login($login, $password) {
     $sql = new Sql();
 

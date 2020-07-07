@@ -164,6 +164,7 @@ const removeCart = (id) => {
 
 const productSearch = (value, e) => {
   if (e.keyCode === 13) {
+    value = value.replace(/[^\w\s]/gi, '')
     location.href = baseUrl+"produtos/pesquisa/"+value
   }
 }
