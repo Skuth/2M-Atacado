@@ -1801,6 +1801,8 @@ textarea {
       padding: 40px; }
       .product-container .product-page-container .product-page-info h2 {
         font-size: 2.125em; }
+      .product-container .product-page-container .product-page-info > a {
+        display: inline-block; }
       .product-container .product-page-container .product-page-info .product-page-brand {
         display: block;
         margin: 20px 0;
