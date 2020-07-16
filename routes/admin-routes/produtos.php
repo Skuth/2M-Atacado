@@ -98,6 +98,7 @@ $app->post("/admin/produto/novo",function(Request $req, Response $res, $args) {
   if (isset($_POST["save"])) {
     $nome = $_POST["nome"];
     $ref = $_POST["ref"];
+    $ref = str_pad($ref, 6, 0, STR_PAD_LEFT);
     $preco = $_POST["preco"];
     $preco = str_replace(",", ".", $preco);
     $estoque = $_POST["estoque"];
@@ -175,6 +176,7 @@ $app->post("/admin/produto/editar", function(Request $req, Response $res, $args)
 
     $nome = $_POST["nome"];
     $ref = $_POST["ref"];
+    $ref = str_pad($ref, 6, 0, STR_PAD_LEFT);
     $preco = $_POST["preco"];
     $preco = str_replace(",", ".", $preco);
     $estoque = $_POST["estoque"];
@@ -208,6 +210,7 @@ $app->post("/admin/produto/editar", function(Request $req, Response $res, $args)
       $pics = $oldPictures;
       $pics = implode(",", $pics);
     }
+
 
     if ($prod->editProd($id, $nome, $dist, $ref, $dep, $desc, $pics, $preco, $estoque) == true) {
       if ($oldPics == false) {
