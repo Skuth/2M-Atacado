@@ -21,7 +21,7 @@
 
   $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
-  require_once("verify.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/verify.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/routes/site.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/routes/admin.php");
 
