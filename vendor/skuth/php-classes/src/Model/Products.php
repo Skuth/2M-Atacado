@@ -46,6 +46,15 @@ class Products {
     $sql->query($query, $param);
   }
 
+  public static function updatePrice($ref, $price) {
+    $sql = new Sql();
+
+    $query = "UPDATE products SET product_price=:price WHERE product_ref=:ref";
+    $param = ["price"=>$price, "ref"=>$ref];
+
+    $sql->query($query, $param);
+  }
+
   public function getTotal() {
     $sql = new Sql();
 
@@ -182,7 +191,7 @@ class Products {
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE product_name LIKE '%$search%' ESCAPE '$' LIMIT ".$limite." OFFSET ".$offset;
+    WHERE (product_name LIKE '%".$search."%') OR (product_ref LIKE '%".$search."%') LIMIT ".$limite." OFFSET ".$offset;
 
     
     $res = $sql->select($query);

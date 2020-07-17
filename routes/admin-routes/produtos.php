@@ -37,13 +37,26 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
   $paginas = [];
 
-  for ($i=0; $i < $totalPages; $i++) { 
-    array_push($paginas, $i);
-  }
-
   $offset = ($pagina - 1) * $totalPage;
 
-  $produtos = $prod->getAll("LIMIT ".$totalPage." OFFSET ".$offset);
+  if (isset($_GET["s"])) {
+    $s = $_GET["s"];
+    $produtos = $prod->getBySearch($s, 1000, $pagina);
+
+    if (count($produtos[0]) > 0) {
+      $totalPages = 1;
+      $produtos = $produtos[0];
+    } else {
+      return $res->withHeader("Location", "/admin/produtos");
+    }
+
+    for ($i=0; $i < $totalPages; $i++) { 
+      array_push($paginas, $i);
+    }
+
+  } else {
+    $produtos = $prod->getAll("LIMIT ".$totalPage." OFFSET ".$offset);
+  }
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Produtos", "produtos")]]);
   

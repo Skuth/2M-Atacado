@@ -17,6 +17,9 @@ $app->get("/produto/{ref}/{nome}", function(Request $req, Response $res, $args) 
 
   $prod = new Products();
   $p = $prod->getByRefFull($ref);
+
+  if (count($p) <= 0) return $res->withHeader("Location", "/produtos");
+
   $pr = $prod->getAllFull("ORDER BY RAND() LIMIT 4");
 
   $desc = seoDescFilter($p["product_description"]);
@@ -101,7 +104,9 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           break;
 
           case 'pesquisa':
-            $search = $args["param"];
+            $search = isset($args["param"]) ? $args["param"] : NULL;
+
+            if ($search == NULL) return $res->withHeader("Location", "/produtos");
 
             $search = trim(strip_tags($search));
 

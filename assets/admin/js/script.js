@@ -29,3 +29,9 @@ const generateKey = () => {
     }
   }])
 }
+
+const productSearch = (value, e) => {
+  if (e.keyCode === 13) {
+    location.href = baseUrl+"admin/produtos?s="+value
+  }
+}

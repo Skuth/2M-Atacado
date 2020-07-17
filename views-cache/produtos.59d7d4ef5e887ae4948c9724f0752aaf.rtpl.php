@@ -9,6 +9,9 @@
             <div class="col">
               <h3 class="mb-0">Produtos</h3>
             </div>
+            <div class="col-xl-6">
+              <input type="text" class="form-control mt-2 mb-2" placeholder="Pesquisar" onkeydown="productSearch(this.value, event)">
+            </div>
             <?php $userOn=$_SESSION["user"]; ?>
             <?php if( $userOn['type'] > 1 ){ ?>
             <div class="col text-right">

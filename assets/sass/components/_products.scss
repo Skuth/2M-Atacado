@@ -59,20 +59,10 @@
   align-items: flex-start;
   column-gap: 30px;
   row-gap: 30px;
-  &.no-bg {
-    column-gap: 0;
-    row-gap: 0;
-    .product-box {
-      border-radius: 0;
-      background: transparent;
-      &:hover {
-        background: white;
-      }
-    }
-  }
   &.bg {
     column-gap: 1px;
     row-gap: 1px;
+    align-items: stretch;
     .product-box {
       background: white;
       border-radius: 0;
