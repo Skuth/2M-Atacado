@@ -111,6 +111,7 @@
         <ul class="navbar-nav align-items-center  ml-md-auto ">
         <li class="nav-item dropdown">
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="badge badge-pill badge-primary"><?php echo count($lowStock); ?></span>
             <i class="ni ni-bell-55"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
