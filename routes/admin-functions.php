@@ -193,24 +193,50 @@ function uploadImage($image, $path, $name = "") {
     $fileNewName = $name;
   }
   
-  $fileNewNameA = $fileNewName.".".$fileExtension;
+  $fileNewNameA = $fileNewName.".jpg";
   $fileNewNameB = $fileNewName.".webp";
 
   
   if ($fileError == 0 && $fileType[0] == "image") {
     if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
-      move_uploaded_file($fileTmpName, $fileFolder.$fileNewNameA);
 
-      if ($fileExtension == "png") {
-        $img = imagecreatefrompng($fileFolder.$fileNewNameA);
-      } else {
-        $img = imagecreatefromjpeg($fileFolder.$fileNewNameA);
+      if ($fileExtension != "jpg" && $fileExtension != "jpeg") {
+        $i = imagecreatefrompng($fileTmpName);
+        list($w, $h) = getimagesize($fileTmpName);
+        $o = imagecreatetruecolor($w, $h);
+        $white = imagecolorallocate($o, 255, 255, 255);
+        imagefilledrectangle($o, 0, 0, $w, $h, $white);
+        imagecopy($o, $i, 0, 0, 0, 0, $w, $h);
+        imagejpeg($o, $fileFolder.$fileNewNameA , 100);
+        imagedestroy($i);
+        imagedestroy($o);
       }
-      imagepalettetotruecolor($img);
-      imagealphablending($img, true);
-      imagesavealpha($img, true);
-      imagewebp($img, $fileFolder.$fileNewNameB, 100);
-      imagedestroy($img);
+
+      if (function_exists("imagewebp")) {
+
+        if ($fileExtension == "png") {
+          $img = imagecreatefrompng($fileFolder.$fileNewNameA);
+          imagepalettetotruecolor($img);
+          imagealphablending($img, true);
+          imagesavealpha($img, true);
+        } else {
+          $img = imagecreatefromjpeg($fileFolder.$fileNewNameA);
+        }
+  
+        imagewebp($img, $fileFolder.$fileNewNameB, 100);
+        
+        imagedestroy($img);
+
+      } else {
+
+        $image = new Imagick($fileFolder.$fileNewNameA);
+
+        $image->setImageCompression(100);
+        $image->setOption("webp:lossless", "true");
+
+        $image->writeImage($fileFolder.$fileNewNameB);
+
+      }
 
       deleteImage($fileNewNameA, $path);
 

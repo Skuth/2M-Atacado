@@ -52,8 +52,6 @@ $app->post("/admin/banner/novo", function(Request $req, Response $res, $args) {
     $status = $_POST["status"];
     $pic = uploadImage($_FILES["banner"], "banner");
 
-    var_dump($pic);
-
     $sliders = new Sliders();
 
     if ($sliders->cadSlider($pic, $desc, $href, $status) == true) {
