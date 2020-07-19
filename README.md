@@ -50,7 +50,7 @@
 
 - [X] Pagina de edição de logo e de banner
 
-- [X] Comprimir fotos em JPEG 2000 ou JPEG XR ou -> ``WebP`` <-
+- [X] Comprimir fotos em JPEG 2000, JPEG XR ou -> ``WebP`` <-
 
 - [X] Ativar cache
 - [X] Mudar cor do degrade dos cards
@@ -64,7 +64,7 @@
 - [X] Editar valor e ref de http://127.2.2.2/produto/0000/adesivo-175grs-krona
 
 - [X] Remover / da pesquisa
-- [ ] Pesquisa de produtos painel admin
+- [X] Pesquisa de produtos painel admin
 
 ### Futuro
 
