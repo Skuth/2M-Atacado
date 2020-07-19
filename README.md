@@ -61,12 +61,12 @@
 
 - [X] Adicionar botões de compartilhamento
 
-- [ ] Editar valor e ref de http://127.2.2.2/produto/0000/adesivo-175grs-krona
+- [X] Editar valor e ref de http://127.2.2.2/produto/0000/adesivo-175grs-krona
 
 - [X] Remover / da pesquisa
 - [ ] Pesquisa de produtos painel admin
 
-- [ ] Verificar id 51
+### Futuro
 
 - [ ] Adicionar pagina de recuperação de senha
 - [ ] Editar endereço -> Apenas solicitando
