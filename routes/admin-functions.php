@@ -200,7 +200,7 @@ function uploadImage($image, $path, $name = "") {
   if ($fileError == 0 && $fileType[0] == "image") {
     if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
 
-      if ($fileExtension != "jpg" && $fileExtension != "jpeg") {
+      if ($fileExtension != "jpg" && $fileExtension != "jpeg" && $name == "") {
         $i = imagecreatefrompng($fileTmpName);
         list($w, $h) = getimagesize($fileTmpName);
         $o = imagecreatetruecolor($w, $h);
@@ -210,6 +210,8 @@ function uploadImage($image, $path, $name = "") {
         imagejpeg($o, $fileFolder.$fileNewNameA , 100);
         imagedestroy($i);
         imagedestroy($o);
+      } else {
+        move_uploaded_file($fileTmpName, $fileFolder.$fileNewNameA);
       }
 
       if (function_exists("imagewebp")) {
@@ -237,6 +239,8 @@ function uploadImage($image, $path, $name = "") {
         $image->writeImage($fileFolder.$fileNewNameB);
 
       }
+
+      deleteImage($fileNewNameA, $path);
 
       return $fileNewNameB;
     }

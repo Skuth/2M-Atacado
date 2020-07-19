@@ -14,6 +14,7 @@
   }
 
   $GLOBALS["version"] = "1-20-07-19";
+  $GLOBALS["sitemap"] = "teste";
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");
 
