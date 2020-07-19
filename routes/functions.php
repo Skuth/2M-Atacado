@@ -164,19 +164,29 @@ function formatCnpjCpf($doc) {
 }
 
 function formatPhone($phone) {
-    $phone = formatString($phone);
-    if (strpos($phone, ",") == TRUE) {
-      $phone = explode(",", $phone);
-      foreach ($phone as $key => $value) {
-        $value = preg_replace("/\D/", '', $value);
-        $phone[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
-      }
-      $phone = implode(" | ", $phone);
-    } else {
-      $phone = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $phone);
+  $phone = formatString($phone);
+  if (strpos($phone, ",") == TRUE) {
+    $phone = explode(",", $phone);
+    foreach ($phone as $key => $value) {
+      $value = preg_replace("/\D/", '', $value);
+      $phone[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
     }
-
-    return $phone;
+    $phone = implode(" | ", $phone);
+  } else {
+    $phone = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $phone);
   }
+  
+  return $phone;
+}
+
+function getImages($image) {
+  $imageWebp = $image;
+  $imageJpg = str_replace(".webp", ".jpg", $image);
+
+  return [
+    "webp"=>$imageWebp,
+    "jpg"=>$imageJpg
+  ];
+}
 
 ?>

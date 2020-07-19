@@ -2,7 +2,14 @@
 <nav class="navigation {if="isset($navStyle)"}{$navStyle}{/if}">
   <div class="navigation-header">
     <div class="header-container">
-      <a href="./" class="logo-image"><img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo {$siteData['site_data_name']}"></a>
+      <a href="./" class="logo-image">
+        <picture>
+          {$images = getImages($siteData['site_data_logo'])}
+          <source srcset="./assets/img/{$images['webp']}" type="image/webp">
+          <source srcset="./assets/img/{$images['jpg']}" type="image/jpeg"> 
+          <img src="./assets/img/{$images['jpg']}" alt="Logo {$siteData['site_data_name']}">
+        </picture>
+      </a>
       {if="isset($_SESSION['client'])"}
       <ul class="client-submenu">
         {$client = $_SESSION["client"]["client_name"]}

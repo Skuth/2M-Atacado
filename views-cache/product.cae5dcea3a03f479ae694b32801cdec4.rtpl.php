@@ -16,7 +16,12 @@
       <h2><?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
       <?php if( $produto["distributor_id"] > 0 ){ ?>
       <a href="/distribuidor/<?php echo htmlspecialchars( $produto["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $produto["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
+        <picture>
+          <?php $images = getImages($produto["distributor_logo"]); ?>
+          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
+          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
+          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
+        </picture>
       </a>
       <?php } ?>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
@@ -105,12 +110,22 @@
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
         <?php } ?>
         <div class="product-picture">
-          <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          <picture>
+            <?php $images = getImages($value1["product_pictures"]["0"]); ?>
+            <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
+            <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
+            <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+          </picture>
         </div>
         <div class="product-brand">
           <?php if( $value1["distributor_id"] > 0 ){ ?>
           <span>
-            <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+            <picture>
+              <?php $images = getImages($value1["distributor_logo"]); ?>
+              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
+              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
+              <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+            </picture>
           </span>
           <?php } ?>
         </div>

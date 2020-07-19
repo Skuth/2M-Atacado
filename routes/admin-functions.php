@@ -238,8 +238,6 @@ function uploadImage($image, $path, $name = "") {
 
       }
 
-      deleteImage($fileNewNameA, $path);
-
       return $fileNewNameB;
     }
   }

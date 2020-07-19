@@ -2,7 +2,14 @@
 <nav class="navigation <?php if( isset($navStyle) ){ ?><?php echo htmlspecialchars( $navStyle, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>">
   <div class="navigation-header">
     <div class="header-container">
-      <a href="./" class="logo-image"><img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></a>
+      <a href="./" class="logo-image">
+        <picture>
+          <?php $images = getImages($siteData['site_data_logo']); ?>
+          <source srcset="./assets/img/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
+          <source srcset="./assets/img/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
+          <img src="./assets/img/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+        </picture>
+      </a>
       <?php if( isset($_SESSION['client']) ){ ?>
       <ul class="client-submenu">
         <?php $client = $_SESSION["client"]["client_name"]; ?>
