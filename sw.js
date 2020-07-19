@@ -1,4 +1,4 @@
-let version = "1.0-20-07-01"
+let version = "1-20-07-19"
 let staticCacheName = "2m-atacado-cache-"+version
 
 self.addEventListener("install", e => {

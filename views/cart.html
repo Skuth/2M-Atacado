@@ -5,12 +5,7 @@
       {loop="$cart"}
       <div class="box">
         <div class="picture">
-          <picture>
-            {$images = getImages($value.product_pictures[0])}
-            <source srcset="./assets/produtos/{$images['webp']}" type="image/webp">
-            <source srcset="./assets/produtos/{$images['jpg']}" type="image/jpeg"> 
-            <img src="./assets/produtos/{$images['jpg']}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
-          </picture>
+          <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Imagem do produto {$value.product_name} | Ref {$value.product_ref}">
         </div>
         <div class="info">
           <p class="title" onclick="location.href='produto/{$value.product_ref}/{function="filterName($value.product_name)"}'">{$value.product_name}</p>

@@ -34,7 +34,8 @@ $app->get("/[inicio]", function(Request $req, Response $res, $args) {
 
 $app->get("/offline", function(Request $req, Response $res, $args) {
 
-  var_dump("Offline");
+  $page = new Page(["nav"=>false, "footer"=>false]);
+  $page->setTpl("offline");
   
   return $res;
 

@@ -13,7 +13,7 @@
     $_SESSION["cart"] = [];
   }
 
-  $GLOBALS["version"] = "1.0-20-07-01";
+  $GLOBALS["version"] = "1-20-07-19";
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");
 

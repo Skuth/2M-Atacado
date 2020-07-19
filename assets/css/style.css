@@ -2510,3 +2510,30 @@ textarea {
       .purchases-container .purchases-content .purchase-box {
         border-radius: 0;
         border: 0; } }
+
+.offline-container {
+  background: #337DEC;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .offline-container .offline-content {
+    max-width: 1420px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: calc(100% - 20px * 2);
+    min-height: calc(100vh - 20px * 2); }
+    .offline-container .offline-content h1 {
+      font-size: 2.375em;
+      text-align: center;
+      line-height: 1.4em;
+      color: white; }
+      @media (max-width: 500px) {
+        .offline-container .offline-content h1 {
+          font-size: 1.5em; } }
+    .offline-container .offline-content a {
+      margin-top: 60px; }

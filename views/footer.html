@@ -5,12 +5,7 @@
       {loop="$distributors"}
         {if="$value.distributor_id > 0"}
         <a href="/distribuidor/{$value.distributor_href}">
-          <picture>
-            {$images = getImages($value.distributor_logo)}
-            <source srcset="./assets/distribuidores/{$images['webp']}" type="image/webp">
-            <source srcset="./assets/distribuidores/{$images['jpg']}" type="image/jpeg"> 
-            <img src="./assets/distribuidores/{$images['jpg']}" alt="Logo da empresa {$value.distributor_name}">
-          </picture>
+          <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo da empresa {$value.distributor_name}">
         </a>
         {/if}
       {/loop}
@@ -24,12 +19,7 @@
   <footer class="footer">
     <div class="footer-logo">
       <a href="./">
-        <picture>
-          {$images = getImages($siteData['site_data_logo'])}
-          <source srcset="./assets/img/{$images['webp']}" type="image/webp">
-          <source srcset="./assets/img/{$images['jpg']}" type="image/jpeg"> 
-          <img src="./assets/img/{$images['jpg']}" alt="Logo da {$siteData['site_data_name']}">
-        </picture>
+        <img src="./assets/img/{$siteData['site_data_logo']}" alt="Logo da {$siteData['site_data_name']}">
       </a>
     </div>
     <div class="footer-info">

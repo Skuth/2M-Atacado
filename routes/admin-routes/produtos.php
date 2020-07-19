@@ -66,22 +66,6 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/admin/produto/visualizar/{id}", function(Request $req, Response $res, $args) {
-
-  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
-
-  $id = $args["id"];
-
-  $prod = new Products();
-
-  $produto = $prod->getByIdFull($id);
-
-  var_dump($produto);
-
-  return $res;
-
-});
-
 $app->get("/admin/produto/novo",function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");

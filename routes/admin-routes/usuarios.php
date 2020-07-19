@@ -169,8 +169,6 @@ $app->post("/admin/usuarios/editar", function(Request $req, Response $res, $args
 
   if (Panel::verifyUser() !== true) return $res->withHeader("Location", "/admin/login");
 
-  var_dump($_POST);
-
   if (isset($_POST["update"])) {
     $id = $_POST["id"];
     $fname = $_POST["nome"];

@@ -11,12 +11,7 @@
         {$verify = strpos($value.slider_href, $siteUrl)}
         {if="$value.slider_status == 1"}
         <a class="banner" {if="$value.slider_href != NULL"}href="{$value.slider_href}"{/if} {if="$verify === false"}rel="noreferrer"{/if}>
-          <picture>
-            {$images = getImages($value.slider_img)}
-            <source srcset="./assets/banner/{$images['webp']}" type="image/webp">
-            <source srcset="./assets/banner/{$images['jpg']}" type="image/jpeg"> 
-            <img src="./assets/banner/{$images['jpg']}" alt="{$value.slider_description}">
-          </picture>
+          <img src="./assets/banner/{$value.slider_img}" alt="{$value.slider_description}">
         </a>
         {/if}
       {/loop}
@@ -61,12 +56,7 @@
         </svg>
       </div>
       <div class="card-image">
-        <picture>
-          {$images = getImages($value.picture)}
-          <source srcset="./assets/cards/{$images['webp']}" type="image/webp">
-          <source srcset="./assets/cards/{$images['jpg']}" type="image/jpeg"> 
-          <img src="./assets/cards/{$images['jpg']}" alt="Foto do card de {$value.title}">
-        </picture>
+        <img src="./assets/cards/{$value.picture}" alt="Foto do card de {$value.title}">
       </div>
     </a>
 
@@ -101,22 +91,12 @@
       <span class="product-percentage">{$percentage} %</span>
       {/if}
       <div class="product-picture">
-        <picture>
-          {$images = getImages($value.product_pictures[0])}
-          <source srcset="./assets/produtos/{$images['webp']}" type="image/webp">
-          <source srcset="./assets/produtos/{$images['jpg']}" type="image/jpeg"> 
-          <img src="./assets/produtos/{$images['jpg']}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
-        </picture>
+        <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
       </div>
       <div class="product-brand">
         {if="$value.distributor_id > 0"}
           <span>
-            <picture>
-              {$images = getImages($value.distributor_logo)}
-              <source srcset="./assets/distribuidores/{$images['webp']}" type="image/webp">
-              <source srcset="./assets/distribuidores/{$images['jpg']}" type="image/jpeg"> 
-              <img src="./assets/distribuidores/{$images['jpg']}" alt="Logo do distribuidor - {$value.distributor_name}">
-            </picture>
+            <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
           </span>
         {/if}
       </div>
@@ -167,22 +147,12 @@
       <span class="product-percentage">{$percentage} %</span>
       {/if}
       <div class="product-picture">
-        <picture>
-          {$images = getImages($value.product_pictures[0])}
-          <source srcset="./assets/produtos/{$images['webp']}" type="image/webp">
-          <source srcset="./assets/produtos/{$images['jpg']}" type="image/jpeg"> 
-          <img src="./assets/produtos/{$images['jpg']}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
-        </picture>
+        <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
       </div>
       <div class="product-brand">
         {if="$value.distributor_id > 0"}
           <span>
-            <picture>
-              {$images = getImages($value.distributor_logo)}
-              <source srcset="./assets/distribuidores/{$images['webp']}" type="image/webp">
-              <source srcset="./assets/distribuidores/{$images['jpg']}" type="image/jpeg"> 
-              <img src="./assets/distribuidores/{$images['jpg']}" alt="Logo do distribuidor - {$value.distributor_name}">
-            </picture>
+            <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
           </span>
         {/if}
       </div>
@@ -232,22 +202,12 @@
     <span class="product-percentage">{$percentage} %</span>
     {/if}
     <div class="product-picture">
-      <picture>
-        {$images = getImages($value.product_pictures[0])}
-        <source srcset="./assets/produtos/{$images['webp']}" type="image/webp">
-        <source srcset="./assets/produtos/{$images['jpg']}" type="image/jpeg"> 
-        <img src="./assets/produtos/{$images['jpg']}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
-      </picture>
+      <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Foto do produto - {$value.product_name} | Ref: {$value.product_ref}">
     </div>
     <div class="product-brand">
       {if="$value.distributor_id > 0"}
       <span>
-        <picture>
-          {$images = getImages($value.distributor_logo)}
-          <source srcset="./assets/distribuidores/{$images['webp']}" type="image/webp">
-          <source srcset="./assets/distribuidores/{$images['jpg']}" type="image/jpeg"> 
-          <img src="./assets/distribuidores/{$images['jpg']}" alt="Logo do distribuidor - {$value.distributor_name}">
-        </picture>
+        <img src="./assets/distribuidores/{$value.distributor_logo}" alt="Logo do distribuidor - {$value.distributor_name}">
       </span>
       {/if}
     </div>

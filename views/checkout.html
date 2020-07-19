@@ -65,12 +65,7 @@
         <div class="product-content-box">
 
           <div class="product-picture">
-            <picture>
-              {$images = getImages($value.product_pictures[0])}
-              <source srcset="./assets/produtos/{$images['webp']}" type="image/webp">
-              <source srcset="./assets/produtos/{$images['jpg']}" type="image/jpeg"> 
-              <img src="./assets/produtos/{$images['jpg']}" alt="Imagem do produto {$value.product_name}" width="60">
-            </picture>
+            <img src="./assets/produtos/{$value.product_pictures[0]}" alt="Imagem do produto {$value.product_name}" width="60">
           </div>
 
           <div class="product-content">
