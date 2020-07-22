@@ -164,7 +164,15 @@ const removeCart = (id) => {
 
 const productSearch = (value, e) => {
   if (e.keyCode === 13) {
-    location.href = baseUrl+"produtos/pesquisa/"+value
+    value = value.replace(/\//g, "-")
+    value = encodeURI(value)
+    value = value.toLowerCase()
+
+    console.log(value)
+
+    if (value.length > 0) {
+      location.href = baseUrl+"produtos/pesquisa/"+value
+    }
   }
 }
 

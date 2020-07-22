@@ -1,4 +1,6 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="container">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $clientOn = isset($_SESSION['client']); ?>
+
+<div class="container">
   <div class="products-container">
 
     <div class="products-container-sidebar">
@@ -26,7 +28,11 @@
       <div class="products-header-container">
         <div class="text-info">
           <h2><?php echo htmlspecialchars( $filterText, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
+          <?php if( $filterText != 'Todos produtos' ){ ?>
           <span><?php echo htmlspecialchars( $prodCount, ENT_COMPAT, 'UTF-8', FALSE ); ?> Produtos</span>
+          <?php }else{ ?>
+          <br><br>
+          <?php } ?>
         </div>
       </div>
 
@@ -48,37 +54,29 @@
           <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
           <?php } ?>
           <div class="product-picture">
-            <picture>
-              <?php $images = getImages($value1["product_pictures"]["0"]); ?>
-              <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-              <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-              <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-            </picture>
+            <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           </div>
           <div class="product-brand">
             <?php if( $value1["distributor_id"] > 0 ){ ?>
             <span>
-              <picture>
-                <?php $images = getImages($value1["distributor_logo"]); ?>
-                <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-                <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-                <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-              </picture>
+              <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </span>
             <?php } ?>
           </div>
           <div class="product-info">
             <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>
+            <?php if( $clientOn ){ ?>
             <div class="product-price">
-
-            <?php if( $value1["product_price_off"] != NULL ){ ?>
+              
+              <?php if( $value1["product_price_off"] != NULL ){ ?>
               <s class="old-price">R$ <span><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span><span>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></s>
               <p>R$ <span><?php echo htmlspecialchars( $priceOff["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span><span>,<?php echo htmlspecialchars( $priceOff["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
-            <?php }else{ ?>
+              <?php }else{ ?>
               <p>R$ <span><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span><span>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></p>
-            <?php } ?>
+              <?php } ?>
               
             </div>
+            <?php } ?>
           </div>
         </a>
         <?php } ?>

@@ -16,7 +16,7 @@
         <?php $counter1=-1;  if( isset($order["produtos"]) && ( is_array($order["produtos"]) || $order["produtos"] instanceof Traversable ) && sizeof($order["produtos"]) ) foreach( $order["produtos"] as $key1 => $value1 ){ $counter1++; ?>
         <div class="card-body">
           <img src="../assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="80" class="mb-4">
-          <p class="card-text mb-4"><strong><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Quantidade: <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $value1["quantity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></strong></p>
+          <p class="card-text mb-4"><strong><?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span> | Quantidade: <span class="badge badge-pill badge-info"><?php echo htmlspecialchars( $value1["quantity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></strong></p>
           <p class="badge badge-pill badge-info badge-lg">R$ <?php echo formatMoney($value1["payed_price"]); ?></p>
         </div>
         <?php if( $key1 < (count($order["produtos"]) - 1) ){ ?>

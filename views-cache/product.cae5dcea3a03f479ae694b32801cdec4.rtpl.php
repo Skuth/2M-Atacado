@@ -1,4 +1,6 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="product-container">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $clientOn = isset($_SESSION['client']); ?>
+
+<div class="product-container">
   <div class="product-page-container">
     <div class="product-page-picture">
       <div class="product-page-carrossel">
@@ -16,12 +18,7 @@
       <h2><?php echo htmlspecialchars( $produto["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
       <?php if( $produto["distributor_id"] > 0 ){ ?>
       <a href="/distribuidor/<?php echo htmlspecialchars( $produto["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        <picture>
-          <?php $images = getImages($produto["distributor_logo"]); ?>
-          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
-        </picture>
+        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $produto["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da distribuidora <?php echo htmlspecialchars( $produto["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="50" class="product-page-brand">
       </a>
       <?php } ?>
       <span class="ref">REF: <?php echo htmlspecialchars( $produto["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
@@ -47,6 +44,7 @@
         <p class="product-action" onclick="handleQuantity('+')">+</p>
       </div>
       <span class="product-span text-muted"><?php echo htmlspecialchars( $produto["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?> disponíveis no estoque</span>
+      <?php if( $clientOn ){ ?>
       <div class="product-price">
         <?php $price = formatMoney($produto["product_price"]); ?>
         <?php $price = explode(",", $price); ?>
@@ -64,6 +62,7 @@
       <a onclick="addCart(<?php echo htmlspecialchars( $produto["product_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>)" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
       <?php }else{ ?>
       <p class="btn btn-red btn-circle btn-medium">Produto indisponível</p>
+      <?php } ?>
       <?php } ?>
 
       <div class="product-shared">
@@ -110,27 +109,18 @@
         <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
         <?php } ?>
         <div class="product-picture">
-          <picture>
-            <?php $images = getImages($value1["product_pictures"]["0"]); ?>
-            <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-            <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-            <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-          </picture>
+          <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </div>
         <div class="product-brand">
           <?php if( $value1["distributor_id"] > 0 ){ ?>
           <span>
-            <picture>
-              <?php $images = getImages($value1["distributor_logo"]); ?>
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-              <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-            </picture>
+            <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           </span>
           <?php } ?>
         </div>
         <div class="product-info">
           <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>
+          <?php if( $clientOn ){ ?>
           <div class="product-price">
             
             <?php if( $value1["product_price_off"] != NULL ){ ?>
@@ -141,6 +131,7 @@
             <?php } ?>
             
           </div>
+          <?php } ?>
         </div>
       </a>
       <?php } ?>

@@ -1,4 +1,5 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $siteUrl = getSiteUrl(); ?>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $clientOn = isset($_SESSION['client']); ?>
+<?php $siteUrl = getSiteUrl(); ?>
 
 <div class="container">
   <div class="slide">
@@ -11,12 +12,7 @@
         <?php $verify = strpos($value1["slider_href"], $siteUrl); ?>
         <?php if( $value1["slider_status"] == 1 ){ ?>
         <a class="banner" <?php if( $value1["slider_href"] != NULL ){ ?>href="<?php echo htmlspecialchars( $value1["slider_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"<?php } ?> <?php if( $verify === false ){ ?>rel="noreferrer"<?php } ?>>
-          <picture>
-            <?php $images = getImages($value1["slider_img"]); ?>
-            <source srcset="./assets/banner/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-            <source srcset="./assets/banner/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-            <img src="./assets/banner/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="<?php echo htmlspecialchars( $value1["slider_description"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-          </picture>
+          <img src="./assets/banner/<?php echo htmlspecialchars( $value1["slider_img"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="<?php echo htmlspecialchars( $value1["slider_description"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </a>
         <?php } ?>
       <?php } ?>
@@ -46,12 +42,12 @@
     <?php $color = array("", "red", "orange"); ?>
 
     <?php $counter1=-1;  if( isset($cards) && ( is_array($cards) || $cards instanceof Traversable ) && sizeof($cards) ) foreach( $cards as $key1 => $value1 ){ $counter1++; ?>
-
+    
     <a class="card" href="produtos/departamento/<?php echo htmlspecialchars( $value1["url"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header <?php echo htmlspecialchars( $color["$key1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
-        
+          
           <?php $price = formatMoney(floatval($value1["price"])); ?>
           <?php $price = explode(",", $price); ?>
 
@@ -61,12 +57,7 @@
         </svg>
       </div>
       <div class="card-image">
-        <picture>
-          <?php $images = getImages($value1["picture"]); ?>
-          <source srcset="./assets/cards/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/cards/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/cards/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do card de <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        </picture>
+        <img src="./assets/cards/<?php echo htmlspecialchars( $value1["picture"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do card de <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </div>
     </a>
 
@@ -101,27 +92,18 @@
       <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
       <?php } ?>
       <div class="product-picture">
-        <picture>
-          <?php $images = getImages($value1["product_pictures"]["0"]); ?>
-          <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        </picture>
+        <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </div>
       <div class="product-brand">
         <?php if( $value1["distributor_id"] > 0 ){ ?>
           <span>
-            <picture>
-              <?php $images = getImages($value1["distributor_logo"]); ?>
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-              <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-            </picture>
+            <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           </span>
         <?php } ?>
       </div>
       <div class="product-info">
         <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>
+        <?php if( $clientOn ){ ?>
         <div class="product-price">
           
           <?php if( $value1["product_price_off"] != NULL ){ ?>
@@ -132,6 +114,7 @@
           <?php } ?>
           
         </div>
+        <?php } ?>
       </div>
     </a>
     <?php } ?>
@@ -167,27 +150,18 @@
       <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
       <?php } ?>
       <div class="product-picture">
-        <picture>
-          <?php $images = getImages($value1["product_pictures"]["0"]); ?>
-          <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        </picture>
+        <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </div>
       <div class="product-brand">
         <?php if( $value1["distributor_id"] > 0 ){ ?>
           <span>
-            <picture>
-              <?php $images = getImages($value1["distributor_logo"]); ?>
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-              <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-              <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-            </picture>
+            <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           </span>
         <?php } ?>
       </div>
       <div class="product-info">
         <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>
+        <?php if( $clientOn ){ ?>
         <div class="product-price">
           
           <?php if( $value1["product_price_off"] != NULL ){ ?>
@@ -198,6 +172,7 @@
           <?php } ?>
           
         </div>
+        <?php } ?>
       </div>
     </a>
     <?php } ?>
@@ -232,27 +207,18 @@
     <span class="product-percentage"><?php echo htmlspecialchars( $percentage, ENT_COMPAT, 'UTF-8', FALSE ); ?> %</span>
     <?php } ?>
     <div class="product-picture">
-      <picture>
-        <?php $images = getImages($value1["product_pictures"]["0"]); ?>
-        <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-        <source srcset="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-        <img src="./assets/produtos/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-      </picture>
+      <img src="./assets/produtos/<?php echo htmlspecialchars( $value1["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto do produto - <?php echo htmlspecialchars( $value1["product_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> | Ref: <?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
     </div>
     <div class="product-brand">
       <?php if( $value1["distributor_id"] > 0 ){ ?>
       <span>
-        <picture>
-          <?php $images = getImages($value1["distributor_logo"]); ?>
-          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        </picture>
+        <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo do distribuidor - <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </span>
       <?php } ?>
     </div>
     <div class="product-info">
       <p class="title"><?php echo ucfirst($value1["product_name"]); ?></p>
+      <?php if( $clientOn ){ ?>
       <div class="product-price">
         
         <?php if( $value1["product_price_off"] != NULL ){ ?>
@@ -263,6 +229,7 @@
         <?php } ?>
         
       </div>
+      <?php } ?>
     </div>
   </a>
   <?php } ?>

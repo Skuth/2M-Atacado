@@ -32,6 +32,14 @@ const generateKey = () => {
 
 const productSearch = (value, e) => {
   if (e.keyCode === 13) {
-    location.href = baseUrl+"admin/produtos?s="+value
+    value = value.replace(/\//g, "-")
+    value = encodeURI(value)
+    value = value.toLowerCase()
+
+    console.log(value)
+
+    if (value.length > 0) {
+      location.href = baseUrl+"admin/produtos?s="+value
+    }
   }
 }

@@ -1,3 +1,4 @@
+{$clientOn = isset($_SESSION['client'])}
 {$siteUrl = getSiteUrl()}
 
 <div class="container">
@@ -41,12 +42,12 @@
     {$color = array("", "red", "orange")}
 
     {loop="$cards"}
-
+    
     <a class="card" href="produtos/departamento/{$value.url}">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header {$color[$key]}" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
-        
+          
           {$price = formatMoney(floatval($value.price))}
           {$price = explode(",", $price)}
 
@@ -102,6 +103,7 @@
       </div>
       <div class="product-info">
         <p class="title">{function="ucfirst($value.product_name)"}</p>
+        {if="$clientOn"}
         <div class="product-price">
           
           {if="$value.product_price_off != NULL"}
@@ -112,6 +114,7 @@
           {/if}
           
         </div>
+        {/if}
       </div>
     </a>
     {/loop}
@@ -158,6 +161,7 @@
       </div>
       <div class="product-info">
         <p class="title">{function="ucfirst($value.product_name)"}</p>
+        {if="$clientOn"}
         <div class="product-price">
           
           {if="$value.product_price_off != NULL"}
@@ -168,6 +172,7 @@
           {/if}
           
         </div>
+        {/if}
       </div>
     </a>
     {/loop}
@@ -213,6 +218,7 @@
     </div>
     <div class="product-info">
       <p class="title">{function="ucfirst($value.product_name)"}</p>
+      {if="$clientOn"}
       <div class="product-price">
         
         {if="$value.product_price_off != NULL"}
@@ -223,6 +229,7 @@
         {/if}
         
       </div>
+      {/if}
     </div>
   </a>
   {/loop}

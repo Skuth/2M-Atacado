@@ -25,6 +25,7 @@
   require_once($_SERVER["DOCUMENT_ROOT"]."/verify.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/routes/site.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/routes/admin.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/routes/api.php");
 
   $app->run();
 

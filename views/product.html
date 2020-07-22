@@ -1,3 +1,5 @@
+{$clientOn = isset($_SESSION['client'])}
+
 <div class="product-container">
   <div class="product-page-container">
     <div class="product-page-picture">
@@ -42,6 +44,7 @@
         <p class="product-action" onclick="handleQuantity('+')">+</p>
       </div>
       <span class="product-span text-muted">{$produto.product_stock} disponíveis no estoque</span>
+      {if="$clientOn"}
       <div class="product-price">
         {$price = formatMoney($produto.product_price)}
         {$price = explode(",", $price)}
@@ -59,6 +62,7 @@
       <a onclick="addCart({$produto.product_id})" class="btn btn-blue btn-circle btn-medium">Adicionar ao carrinho</a>
       {else}
       <p class="btn btn-red btn-circle btn-medium">Produto indisponível</p>
+      {/if}
       {/if}
 
       <div class="product-shared">
@@ -116,6 +120,7 @@
         </div>
         <div class="product-info">
           <p class="title">{function="ucfirst($value.product_name)"}</p>
+          {if="$clientOn"}
           <div class="product-price">
             
             {if="$value.product_price_off != NULL"}
@@ -126,6 +131,7 @@
             {/if}
             
           </div>
+          {/if}
         </div>
       </a>
       {/loop}

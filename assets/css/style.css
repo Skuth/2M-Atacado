@@ -1022,7 +1022,7 @@ textarea {
       .navigation-header .header-container .logo-image {
         grid-column: 2/2;
         justify-self: center;
-        width: 70px;
+        width: 100px;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
@@ -1311,7 +1311,8 @@ textarea {
     grid-template-columns: 1fr 1fr; }
     .navigation .navigation-header .header-container .logo-image {
       justify-self: flex-start;
-      grid-column: unset; } }
+      grid-column: unset;
+      width: 70px; } }
 
 @media (max-width: 475px) {
   .navigation .navigation-header .header-container {

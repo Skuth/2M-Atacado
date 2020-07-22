@@ -176,6 +176,7 @@ function parseCpfCnpj($string) {
 
 function uploadImage($image, $path, $name = "") {
   $fileFolder = $_SERVER["DOCUMENT_ROOT"]."/assets/".$path."/";
+  chmod($fileFolder, 0777);
   
   $fileType = explode("/", $image["type"]);
   $fileError = $image["error"];
@@ -216,33 +217,30 @@ function uploadImage($image, $path, $name = "") {
 
       if (function_exists("imagewebp")) {
 
-        if ($fileExtension == "png") {
-          $img = imagecreatefrompng($fileFolder.$fileNewNameA);
-          imagepalettetotruecolor($img);
-          imagealphablending($img, true);
-          imagesavealpha($img, true);
-        } else {
-          $img = imagecreatefromjpeg($fileFolder.$fileNewNameA);
-        }
+        $img = imagecreatefromjpeg($fileFolder.$fileNewNameA);
   
         imagewebp($img, $fileFolder.$fileNewNameB, 100);
         
         imagedestroy($img);
 
+        deleteImage($fileNewNameA, $path);
+        return $fileNewNameB;
+        
       } else {
-
+        
         $image = new Imagick($fileFolder.$fileNewNameA);
-
+        
         $image->setImageCompression(100);
         $image->setOption("webp:lossless", "true");
-
+        
         $image->writeImage($fileFolder.$fileNewNameB);
+        
+        deleteImage($fileNewNameA, $path);
+        return $fileNewNameB;
 
       }
 
-      deleteImage($fileNewNameA, $path);
 
-      return $fileNewNameB;
     }
   }
 }

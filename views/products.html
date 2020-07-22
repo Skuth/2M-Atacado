@@ -1,3 +1,5 @@
+{$clientOn = isset($_SESSION['client'])}
+
 <div class="container">
   <div class="products-container">
 
@@ -26,7 +28,11 @@
       <div class="products-header-container">
         <div class="text-info">
           <h2>{$filterText}</h2>
+          {if="$filterText != 'Todos produtos'"}
           <span>{$prodCount} Produtos</span>
+          {else}
+          <br><br>
+          {/if}
         </div>
       </div>
 
@@ -59,16 +65,18 @@
           </div>
           <div class="product-info">
             <p class="title">{function="ucfirst($value.product_name)"}</p>
+            {if="$clientOn"}
             <div class="product-price">
-
-            {if="$value.product_price_off != NULL"}
+              
+              {if="$value.product_price_off != NULL"}
               <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
               <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
-            {else}
+              {else}
               <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
-            {/if}
+              {/if}
               
             </div>
+            {/if}
           </div>
         </a>
         {/loop}

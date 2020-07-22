@@ -86,6 +86,16 @@
   </script>
   <?php } ?>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162091833-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-162091833-2');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.min.css?v=<?php echo htmlspecialchars( $GLOBALS['version'], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
   <link rel="stylesheet" href="./assets/css/icofont.min.css">

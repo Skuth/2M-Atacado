@@ -108,9 +108,14 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
 
             if ($search == NULL) return $res->withHeader("Location", "/produtos");
 
-            $search = trim(strip_tags($search));
+            $search = str_replace("-", "/", $search);
+            $search = urldecode($search);
 
+            $search = trim(strip_tags($search));
+            
             $p = $prod->getBySearch($search, $limite, $pagina);
+
+            $search = strtoupper($search);
 
             $fText = "Pesquisa por - ".$search;
 

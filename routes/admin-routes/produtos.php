@@ -41,6 +41,11 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
 
   if (isset($_GET["s"])) {
     $s = $_GET["s"];
+
+    $s = str_replace("-", "/", $s);
+    $s = urldecode($s);
+    $s = trim(strip_tags($s));
+
     $produtos = $prod->getBySearch($s, 1000, $pagina);
 
     if (count($produtos[0]) > 0) {

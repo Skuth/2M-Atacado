@@ -437,6 +437,13 @@ class Products {
       $p->removePromo($value["product_id"]);
     }
   }
+
+  public static function updateStock($ref, $stock) {
+    $sql = new Sql();
+    $q = "UPDATE products SET product_stock=:stock WHERE product_ref=:ref";
+    $p = ["stock"=>$stock, "ref"=>$ref];
+    return $sql->query($q, $p);
+  }
 }
 
 ?>
