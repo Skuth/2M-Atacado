@@ -47,13 +47,22 @@
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header <?php echo htmlspecialchars( $color["$key1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>
-          
+
+          <?php if( $clientOn ){ ?>
           <?php $price = formatMoney(floatval($value1["price"])); ?>
           <?php $price = explode(",", $price); ?>
 
           <text x="60" y="50"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></text>
           <text x="60" y="90">a partir de</text>
-          <text x="60" y="135" class="textrice">R$ <tspan ><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan ><tspan >,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan ></text>
+          <text x="60" y="135" class="textrice">R$ <tspan ><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan><tspan>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan></text>
+          <?php }else{ ?>
+          <?php $price = formatMoneyHide(floatval($value1["price"])); ?>
+          <?php $price = explode(",", $price); ?>
+
+          <text x="60" y="50"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></text>
+          <text x="60" y="90">a partir de</text>
+          <text x="60" y="135" class="textrice">R$ <tspan ><?php echo htmlspecialchars( $price["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan><tspan>,<?php echo htmlspecialchars( $price["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?></tspan></text>
+          <?php } ?>
         </svg>
       </div>
       <div class="card-image">

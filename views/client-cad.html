@@ -2,11 +2,11 @@
   <h2 class="text-center">Criar conta</h2>
 
   <div class="btn-container btn-container-center" onclick="switchForm(this, event)">
-    <span class="btn btn-circle btn-blue" id="0">Pessoal</span>
-    <span class="btn btn-circle" id="1">Empresa</span>
+    <!-- <span class="btn btn-circle btn-blue" id="0">Pessoal</span> -->
+    <span class="btn btn-circle btn-blue" id="0">Empresa</span>
   </div>
 
-  <form method="POST" onsubmit="return clientRegister(event, this)" id="form-0" class="form-login form-register form-active">
+  <!-- <form method="POST" onsubmit="return clientRegister(event, this)" id="form-0" class="form-login form-register form-active">
     <input type="hidden" name="chave" value="{$chave}">
     <input type="hidden" name="type" value="0">
     <div class="form-login-control">
@@ -39,9 +39,9 @@
         <span>Cadastrar</span><i class="icofont-save"></i>
       </button>
     </div>
-  </form>
+  </form> -->
 
-  <form method="POST" onsubmit="return clientRegister(event, this)" id="form-1" class="form-login form-register">
+  <form method="POST" onsubmit="return clientRegister(event, this)" id="form-0" class="form-login form-register form-active">
     <input type="hidden" name="chave" value="{$chave}">
     <input type="hidden" name="type" value="1">
     <div class="form-login-control">
@@ -50,13 +50,13 @@
     </div>
 
     <div class="form-login-control">
-      <input type="text" id="cnpj" name="cnpj" required>
+      <input type="tel" id="cnpj" name="cnpj" required>
       <label for="cnpj">Cnpj *</label>
     </div>
 
     <div class="form-login-control">
-      <input type="text" id="ie" name="ie" required>
-      <label for="ie">Inscrição Estadual *</label>
+      <input type="tel" id="ie" name="ie">
+      <label for="ie">Inscrição Estadual</label>
     </div>
 
     <div class="form-login-control">
@@ -65,7 +65,7 @@
     </div>
 
     <div class="form-login-control">
-      <input type="text" id="phone" name="phone" required>
+      <input type="tel" id="phone" name="phone" required>
       <label for="phone">Telefone *</label>
     </div>
 

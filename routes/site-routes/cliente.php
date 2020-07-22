@@ -84,12 +84,24 @@ $app->get("/cliente/dashboard", function(Request $req, Response $res, $args) {
   if (isset($_SESSION["client"]) && $_SESSION["client"] !== "") {
     $clientId = $_SESSION["client"]["client_id"];
 
-    createSeoTags("Compras");
-
-    $orders = Order::getByClientIdFull($clientId);
+    $client = new Clients();
+    $address = $client->getAddress();
 
     $page = new Page();
-    $page->setTpl("client-dash", ["orders"=>$orders]);
+
+    if (count($address) <= 1) {
+
+      $page->setTpl("client-cad-address");
+
+    } else {
+
+      createSeoTags("Compras");
+
+      $orders = Order::getByClientIdFull($clientId);
+
+      $page->setTpl("client-dash", ["orders"=>$orders]);
+    
+    }
   }
 
   return $res;
@@ -106,6 +118,29 @@ $app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
 
   $page = new Page();
   $page->setTpl("client-purchase-view", ["order"=>$order]);
+
+  return $res;
+
+});
+
+$app->post("/cliente/address/novo", function(Request $req, Response $res, $args) {
+
+  $values = (isset($_POST["values"])) ? $_POST["values"] : [];
+
+  if (count($values) > 0) {
+    $client = new Clients();
+    if (count($client->getAddress()) > 1) {
+      returnMessage(2, "Já existe um endereço cadastro nessa conta!");
+    } else {
+      if (Clients::cadAddress($values)) {
+        returnMessage(1, "Endereço cadastrado com sucesso!");
+      } else {
+        returnMessage(2, "Falha ao cadastrar endereço!");
+      }
+    }
+  } else {
+    returnMessage(2, "Preencha os campos.");
+  }
 
   return $res;
 

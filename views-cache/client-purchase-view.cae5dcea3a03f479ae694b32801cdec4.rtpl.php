@@ -1,4 +1,5 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="container">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $siteData = $GLOBALS["siteData"]; ?>
+<div class="container">
   <div class="purchases-container">
     <div class="purchases-content">
 
@@ -15,7 +16,7 @@
             <?php if( $x == 0 ){ ?>
             <span class="badge badge-circle badge-default text-white">Retirar</span>
             <br>
-            <span class="map">Clique <a href="https://www.google.com/maps/place/R.+Curitiba,+653+-+Jardim+Olinda,+Cabo+Frio+-+RJ,+28911-140/@-22.8818045,-42.04757,21z/data=!4m5!3m4!1s0x971ad1c08e20f5:0x2b2541763f60b7e5!8m2!3d-22.881811!4d-42.047442" target="_blank">aqui</a> para abrir o mapa</span>
+            <span class="map">Clique <a href="https://www.google.com/maps/place/<?php echo urlencode($siteData['site_data_address']); ?>/@-22.8818045,-42.04757,21z/data=!4m5!3m4!1s0x971ad1c08e20f5:0x2b2541763f60b7e5!8m2!3d-22.881811!4d-42.047442" target="_blank">aqui</a> para abrir o mapa</span>
             <?php }else{ ?>
             <span class="badge badge-circle badge-primary">Entregar</span>
             <?php } ?>

@@ -87,19 +87,26 @@ const clienteLogin = (e) => {
         }
       })
     }
-  });
+  })
+}
+
+const pickUpDate = (date) => {
+  const btn = document.querySelector("#checkout-btn")
+  btn.setAttribute("data-pickupdate", date)
 }
 
 const checkout = (btn) => {
   const addressId = btn.getAttribute("data-addressId")
   const pType = btn.getAttribute("data-paymenttype")
+  const pickUpDate = btn.getAttribute("data-pickupdate")
 
   $.ajax({
     type: "POST",
     url: baseUrl+"checkout/order",
     data: {
       "addressId": addressId,
-      "pType": pType
+      "pType": pType,
+      "pickUpDate": pickUpDate
     },
     success: function (r) {
       let res = JSON.parse(r)
@@ -113,7 +120,7 @@ const checkout = (btn) => {
         }
       })
     }
-  });
+  })
 }
 
 const addCart = (id) => {
@@ -140,7 +147,7 @@ const addCart = (id) => {
         }
       })
     }
-  });
+  })
 }
 
 const removeCart = (id) => {
@@ -159,7 +166,7 @@ const removeCart = (id) => {
         }
       })
     }
-  });
+  })
 }
 
 const productSearch = (value, e) => {
@@ -199,7 +206,7 @@ const switchForm = (box, e) => {
   }
 
   for (let i = 0; i < btns.length; i++) {
-    const e = btns[i];
+    const e = btns[i]
     const attr = e.getAttribute("id")
     $(e).removeClass("btn-blue")
 
@@ -250,6 +257,79 @@ const setImage = (box) => {
 
   mainImgBox.setAttribute("src", imgSrc)
 
+}
+
+const verifyCep = (cep) => {
+  if(cep.length == 8) {
+    const cepBox = document.querySelector("#cep")
+
+    const cidade = document.querySelector("#cidade")
+    const bairro = document.querySelector("#bairro")
+    const rua = document.querySelector("#rua")
+
+    let apiUrl = (cep) => `https://viacep.com.br/ws/${cep}/json/`
+
+    $.ajax({
+      type: "GET",
+      url: apiUrl(cep),
+      beforeSend: () => {
+        cepBox.disabled = true
+      },
+      complete: () => {
+        cepBox.disabled = false
+      },
+      success: (res) => {
+        if (!res.erro) {
+          if(res.uf == "RJ") {
+            cidade.value = res.localidade
+            bairro.value = res.bairro
+            rua.value = res.logradouro
+          } else {
+            cepBox.value = ""
+            cidade.value = ""
+            bairro.value = ""
+            rua.value = ""
+            Swal.fire({
+              icon: "error",
+              title: "Endereço",
+              text: "O endereço cadastrado precisa ser do Rio de Janeiro."
+            })
+          }
+        }
+      }
+    })
+  }
+}
+
+const clientAddressRegister = (e, form) => {
+  e.preventDefault()
+
+  let values = {}
+  
+  $(form).serializeArray().map((v) => {
+    values[v["name"]] = v["value"]
+  })
+
+  $.ajax({
+    type: "POST",
+    url: baseUrl+"cliente/address/novo",
+    data: {
+      "values": values
+    },
+    success: (res) => {
+      let r = JSON.parse(res)
+      Swal.fire({
+        title: 'Endereço',
+        icon: r.status,
+        text: r.message,
+        onClose: () => {
+          if (r.status == "success") {
+            location.href = baseUrl+"cliente/dashboard"
+          }
+        }
+      })
+    }
+  })
 }
 
 $(document).ready(() => {

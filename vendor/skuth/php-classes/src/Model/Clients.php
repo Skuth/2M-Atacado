@@ -115,6 +115,27 @@ class Clients {
     }
   }
 
+  public static function cadAddress($values) {
+    $sql = new Sql();
+
+    if (isset($_SESSION[self::CLIENT])) {
+
+      $id = $_SESSION[self::CLIENT]["client_id"];
+
+      $query = "INSERT INTO client_address
+      (client_id, client_address_name, client_address_contact, client_address_cep, client_address_cidade, client_address_bairro, client_address_rua, client_address_numero, client_address_complemento)
+      VALUES(:id, :nome, :contato, :cep, :cidade, :bairro, :rua, :numero, :compemento)";
+
+      $params = ["id"=>$id];
+
+      foreach ($values as $key => $value) {
+        $params[$key] = $value;
+      }
+
+      return $sql->query($query, $params);
+    }
+  }
+
   public static function getClients($param) {
     $sql = new Sql();
 
@@ -426,6 +447,16 @@ class Clients {
     } else {
       return 0;
     }
+  }
+
+  public static function addPoints($id, $points) {
+    $sql = new Sql();
+
+    $points = intval($points);
+
+    $q = "UPDATE clients SET client_points=client_points+:points WHERE client_id=:id";
+    $p = ["points"=>$points, "id"=>$id];
+    $sql->query($q, $p);
   }
 }
 

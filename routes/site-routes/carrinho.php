@@ -249,6 +249,7 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
   $cartId = (isset($_COOKIE["cartId"])) ? $_COOKIE["cartId"] : 0;
   $client = (isset($_SESSION["client"])) ? $_SESSION["client"] : NULL;
   $pType = (isset($_POST["pType"])) ? $_POST["pType"] : 0;
+  $pickUpDate = (isset($_POST["pickUpDate"])) ? $_POST["pickUpDate"] : "";
 
   if ($pType > 1) { $pType = 0; }
 
@@ -260,10 +261,14 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
       if (count($cart) > 0) {
         $clientId = $client["client_id"];
 
-        $order = Order::createOrder($clientId, $cart, $addressId, $pType);
+        $order = Order::createOrder($clientId, $cart, $addressId, $pType, $pickUpDate);
+        
+        $buyValue = $cart["cart_total"];
+        $points = ($buyValue >= 100) ? (floor(intval($buyValue) / 99)) : 0;
         
         if ($order === TRUE) {
           echo parseResponse("success", "Compra efetuada com sucesso!");
+          Clients::addPoints($clientId, $points);
           Cart::removeCartItem($cartId);
           unset($_SESSION["cart"]);
         } else {

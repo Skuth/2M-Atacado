@@ -33,6 +33,28 @@
       </div>
 
       <div class="checkout-box">
+        <h2 class="shipment-title">Escolher retirada</h2>
+        <div class="shipment-box">
+
+          <div class="shipment-icon">
+            <i class="icofont-calendar"></i>
+          </div>
+
+          <div class="shipment-content">
+            <p class="address">Escolher dia para retirada | <?php echo htmlspecialchars( $GLOBALS["siteData"]["site_data_oh"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </p>
+            <?php $minDate = date('Y-m-d+H:i', strtotime('+1 hour')); ?>
+            <?php $minDate = str_replace("+", "T", $minDate); ?>
+            <input type="datetime-local" name="retirar" id="retirar" min="<?php echo htmlspecialchars( $minDate, ENT_COMPAT, 'UTF-8', FALSE ); ?>" onchange="return pickUpDate(value)">
+          </div>
+
+          <!-- <div class="shipment-options">
+            <a href="#">Editar</a>
+          </div> -->
+
+        </div>
+      </div>
+
+      <div class="checkout-box">
         <h2 class="shipment-title">Formas de pagamento</h2>
         <div class="shipment-box">
 
@@ -122,7 +144,7 @@
         <?php }else{ ?>
           <?php $addressId = 0; ?>
         <?php } ?>
-        <a onclick="return checkout(this)" class="btn btn-circle btn-blue btn-medium" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-paymentType="<?php echo htmlspecialchars( $payment, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
+        <a onclick="return checkout(this)" id="checkout-btn" class="btn btn-circle btn-blue btn-medium" data-addressId="<?php echo htmlspecialchars( $addressId, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-paymentType="<?php echo htmlspecialchars( $payment, ENT_COMPAT, 'UTF-8', FALSE ); ?>">Comprar</a>
       </div>
     </div>
   </div>

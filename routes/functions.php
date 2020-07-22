@@ -20,6 +20,23 @@ function formatMoney($money) {
   return $formated;
 }
 
+function formatMoneyHide($money) {
+  $money = explode(".", $money);
+  $formated = substr($money[0], 0, 1);
+
+  for ($i=0; $i < strlen($money[0]) - 1; $i++) { 
+    $formated = $formated."X";
+  }
+
+  $formated = $formated.",";
+
+  for ($i=0; $i < strlen($money[1]); $i++) { 
+    $formated = $formated."X";
+  }
+
+  return $formated;
+}
+
 function filterName($name) {
   $name = strtr(utf8_decode($name), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝº'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY-');
   $name = str_replace(" ", "-", $name);

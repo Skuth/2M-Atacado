@@ -24,7 +24,7 @@
 * [X] Campo de pesquisa
 * [X] Pagina de cadastro de cliente
 
-### ToDo
+### Para fazer
 
 * [X] Arrumar fonte pagina de distribuidor em celular -> Alinhar texto e mudar de 80% para 90%
 * [X] Arrumar fonte carrinho no celular
@@ -65,6 +65,16 @@
 
 * [X] Remover / da pesquisa
 * [X] Pesquisa de produtos painel admin
+
+* [X] Alterar tamanho da logo
+* [X] Liberar valores apenas logado
+* [X] Adicionar código na visualização
+* [X] Adicionar o sistema de pontos
+* [X] Verificar mei
+* [X] Adicionar cadastro de endereço
+* [X] Editar preço do card para x quando não logado
+* [X] Escolher dia para retirar compra
+* [ ] Adicionar pagina com info do cliente -> Pontos | Info | Endereço
 
 ### Futuro
 

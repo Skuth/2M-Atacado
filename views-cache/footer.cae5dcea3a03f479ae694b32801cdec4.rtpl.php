@@ -1,16 +1,11 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $siteData = $GLOBALS["siteData"]; ?>  
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php $siteData = $GLOBALS["siteData"]; ?>
   <div class="distributor">
     <div class="distributor-slider">
       <?php $distributors = getDistributors(); ?>
       <?php $counter1=-1;  if( isset($distributors) && ( is_array($distributors) || $distributors instanceof Traversable ) && sizeof($distributors) ) foreach( $distributors as $key1 => $value1 ){ $counter1++; ?>
         <?php if( $value1["distributor_id"] > 0 ){ ?>
         <a href="/distribuidor/<?php echo htmlspecialchars( $value1["distributor_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-          <picture>
-            <?php $images = getImages($value1["distributor_logo"]); ?>
-            <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-            <source srcset="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-            <img src="./assets/distribuidores/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da empresa <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-          </picture>
+          <img src="./assets/distribuidores/<?php echo htmlspecialchars( $value1["distributor_logo"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da empresa <?php echo htmlspecialchars( $value1["distributor_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         </a>
         <?php } ?>
       <?php } ?>
@@ -24,12 +19,7 @@
   <footer class="footer">
     <div class="footer-logo">
       <a href="./">
-        <picture>
-          <?php $images = getImages($siteData['site_data_logo']); ?>
-          <source srcset="./assets/img/<?php echo htmlspecialchars( $images['webp'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/webp">
-          <source srcset="./assets/img/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="image/jpeg"> 
-          <img src="./assets/img/<?php echo htmlspecialchars( $images['jpg'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-        </picture>
+        <img src="./assets/img/<?php echo htmlspecialchars( $siteData['site_data_logo'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Logo da <?php echo htmlspecialchars( $siteData['site_data_name'], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       </a>
     </div>
     <div class="footer-info">

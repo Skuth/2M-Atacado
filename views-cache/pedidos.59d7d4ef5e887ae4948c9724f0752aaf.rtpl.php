@@ -36,6 +36,7 @@
                 <th scope="col">Produtos</th>
                 <th scope="col">Entrega</th>
                 <th scope="col">Total</th>
+                <th scope="col">Data para retirada</th>
                 <th scope="col">Status</th>
                 <th scope="col">Status de pagamento</th>
                 <th scope="col">Ação</th>
@@ -58,6 +59,13 @@
                   <?php } ?>
                 </td>
                 <td><b>R$ <?php echo formatMoney($value1["order_subtotal"]); ?></b></td>
+                <?php if( $value1["order_pickupdate"] ){ ?>
+                  <td class="text-danger"><b>
+                    <?php echo date('d/m/Y H:i:s', strtotime($value1["order_pickupdate"])); ?>
+                  </b></td>
+                <?php }else{ ?>
+                  <td><b>-------------</b></td>
+                <?php } ?>
                 <td>
                   <?php $i = $value1["order_status"]; ?>
                   <?php if( $i == 1 ){ ?>

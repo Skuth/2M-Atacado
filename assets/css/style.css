@@ -2187,17 +2187,9 @@ textarea {
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
       -o-transition: all 0.5s; }
-      .container .form-login-control input:focus {
+      .container .form-login-control input:focus, .container .form-login-control input:valid {
         border-color: #1A3795; }
-        .container .form-login-control input:focus + label {
-          font-weight: 600;
-          top: -25px;
-          left: 5px;
-          font-size: 1em;
-          color: #1A3795; }
-      .container .form-login-control input:valid {
-        border-color: #1A3795; }
-        .container .form-login-control input:valid + label {
+        .container .form-login-control input:focus + label, .container .form-login-control input:valid + label {
           font-weight: 600;
           top: -25px;
           left: 5px;
@@ -2270,6 +2262,12 @@ textarea {
           color: #898989; }
           .checkout-container-left .checkout-box .shipment-box .shipment-content p:last-child, .checkout-container-left .checkout-box .shipment-box .product-content p:last-child, .checkout-container-left .checkout-box .product-content-box .shipment-content p:last-child, .checkout-container-left .checkout-box .product-content-box .product-content p:last-child {
             margin-bottom: 0; }
+        .checkout-container-left .checkout-box .shipment-box .shipment-content input, .checkout-container-left .checkout-box .shipment-box .product-content input, .checkout-container-left .checkout-box .product-content-box .shipment-content input, .checkout-container-left .checkout-box .product-content-box .product-content input {
+          border: 0;
+          background: #EEEEEE;
+          padding: 10px;
+          margin-top: 10px;
+          font-size: 1.125em; }
       .checkout-container-left .checkout-box .shipment-box .shipment-options, .checkout-container-left .checkout-box .product-content-box .shipment-options {
         padding: 10px;
         margin-left: auto; }
