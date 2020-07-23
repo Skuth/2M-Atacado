@@ -139,7 +139,7 @@ class Clients {
   public static function getClients($param) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients ORDER BY client_id DESC ".$param;
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect, client_points FROM clients ORDER BY client_id DESC ".$param;
 
     $count = $sql->select("SELECT count(client_id) FROM clients");
 
@@ -155,7 +155,7 @@ class Clients {
   public static function getClientsDisableds($param) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_status=0 ORDER BY client_id DESC ".$param;
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect, client_points FROM clients WHERE client_status=0 ORDER BY client_id DESC ".$param;
 
     $count = $sql->select("SELECT count(client_id) FROM clients WHERE client_status=0");
 
@@ -168,10 +168,30 @@ class Clients {
     return ["clients"=>$sql->select($query), "count"=>$count];
   }
 
+  public static function getClientOn() {
+    $sql = new Sql();
+
+    if (isset($_SESSION[self::CLIENT])) {
+
+      $id = $_SESSION[self::CLIENT]["client_id"];
+
+      $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect, client_points FROM clients WHERE client_id=:id LIMIT 1";
+      $param = ["id"=>$id];
+      
+      $res = $sql->select($query, $param);
+      
+      if (count($res) > 0) {
+        return $res[0];
+      } else {
+        return $res;
+      }
+    }
+  }
+
   public static function getClientById($id) {
     $sql = new Sql();
 
-    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect FROM clients WHERE client_id=:id LIMIT 1";
+    $query = "SELECT client_id, client_name, client_cnpj, client_ie, client_cpf, client_address, client_email, client_phone, client_type, client_status, client_last_connect, client_last_ip_connect, client_points FROM clients WHERE client_id=:id LIMIT 1";
     $param = ["id"=>$id];
     
     $res = $sql->select($query, $param);

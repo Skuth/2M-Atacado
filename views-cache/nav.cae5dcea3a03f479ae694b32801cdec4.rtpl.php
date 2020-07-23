@@ -8,6 +8,7 @@
         <?php $client = $_SESSION["client"]["client_name"]; ?>
         <li onclick="openSub(this, event)"><a class="btn btn-circle"><i class="icofont-ui-user"></i> <?php if( strlen($client) >= 15 ){ ?> <?php echo substr($client, 0, 15); ?>... <?php }else{ ?> <?php echo htmlspecialchars( $client, ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?></a>
           <ul>
+            <li><a href="/cliente/conta"><i class="icofont-id-card"></i>Minha conta</a></li>
             <li><a href="/cliente/dashboard"><i class="icofont-bag"></i>Compras</a></li>
             <li><a href="/cliente/logout"><i class="icofont-logout"></i>Logout</a></li>
           </ul>

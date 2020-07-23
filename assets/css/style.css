@@ -2374,10 +2374,19 @@ textarea {
         display: block; }
         .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status {
           border-bottom: 1px solid #ddd; }
+          .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status.no-border {
+            border: 0 !important; }
+          .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status .divider {
+            width: 100%;
+            margin: 0 auto;
+            height: 1px;
+            background: #EEEEEE; }
           .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status .box {
             padding: 20px; }
             .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status .box span.title {
               font-weight: 600; }
+              .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status .box span.title.h3 {
+                font-size: 1.5em; }
             .purchases-container .purchases-content .purchase-box.view-order .purchase-view-status .box span.map {
               display: block;
               margin-top: 10px; }

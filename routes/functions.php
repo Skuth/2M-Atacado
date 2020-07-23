@@ -186,14 +186,32 @@ function formatPhone($phone) {
     $phone = explode(",", $phone);
     foreach ($phone as $key => $value) {
       $value = preg_replace("/\D/", '', $value);
-      $phone[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
+      if (strlen($value) == 11) {
+        $phone[$key] = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $value);
+      } elseif (strlen($phone) == 10) {
+        $phone[$key] = preg_replace("/(\d{2})(\d{4})(\d{4})/", "(\$1) \$2-\$3", $value);
+      } else {
+        $phone[$key] = preg_replace("/(\d{4})(\d{4})/", "\$1-\$1", $value);
+      }
     }
     $phone = implode(" | ", $phone);
   } else {
     $phone = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $phone);
+    if (strlen($phone) == 11) {
+      $phone = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $phone);
+    } elseif (strlen($phone) == 10) {
+      $phone = preg_replace("/(\d{2})(\d{4})(\d{4})/", "(\$1) \$2-\$3", $phone);
+    } else {
+      $phone = preg_replace("/(\d{4})(\d{4})/", "\$1-\$1", $phone);
+    }
   }
   
   return $phone;
+}
+
+function formatCep($cep) {
+  $cep = preg_replace("/(\d{5})(\d{3})/", "\$1-\$2", $cep);
+  return $cep;
 }
 
 function getImages($image) {

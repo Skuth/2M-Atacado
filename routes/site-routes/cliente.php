@@ -87,6 +87,8 @@ $app->get("/cliente/dashboard", function(Request $req, Response $res, $args) {
     $client = new Clients();
     $address = $client->getAddress();
 
+    createSeoTags("Dashboard");
+
     $page = new Page();
 
     if (count($address) <= 1) {
@@ -110,6 +112,8 @@ $app->get("/cliente/dashboard", function(Request $req, Response $res, $args) {
 
 $app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
 
+  if (Clients::verifyLogin(0)) return $res->withHeader("Location", "/cliente/login");
+
   $id = $args["id"];
 
   $order = Order::getOrderByIdFull($id);
@@ -123,7 +127,23 @@ $app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
 
 });
 
+$app->get("/cliente/conta", function(Request $req, Response $res, $args) {
+
+  if (Clients::verifyLogin(0)) return $res->withHeader("Location", "/cliente/login");
+
+  $user = Clients::getClientOn();
+  $address = Clients::getAddress();
+  
+  $page = new Page();
+  $page->setTpl("client-info", ["user"=>$user, "address"=>$address]);
+
+  return $res;
+
+});
+
 $app->post("/cliente/address/novo", function(Request $req, Response $res, $args) {
+
+  if (Clients::verifyLogin(0)) return $res->withHeader("Location", "/cliente/login");
 
   $values = (isset($_POST["values"])) ? $_POST["values"] : [];
 

@@ -17,12 +17,17 @@
             <span class="badge badge-circle badge-default text-white">Retirar</span>
             <br>
             <span class="map">Clique <a href="https://www.google.com/maps/place/{function="urlencode($siteData['site_data_address'])"}/@-22.8818045,-42.04757,21z/data=!4m5!3m4!1s0x971ad1c08e20f5:0x2b2541763f60b7e5!8m2!3d-22.881811!4d-42.047442" target="_blank">aqui</a> para abrir o mapa</span>
+            <br>
             {else}
             <span class="badge badge-circle badge-primary">Entregar</span>
             {/if}
             <br>
+            {if="$order.order_pickupdate != NULL"}
+            <span>Entrega para <span class="badge badge-circle badge-warning">{function="date('d/m/Y', strtotime($order.order_pickupdate))"}</span></span>
+            {else}
             {$date = $order.order_date}
             <span>Entrega prevista entre <span class="badge badge-circle badge-info">{function="date('d/m/Y', strtotime($date.' +3 days'))"} e {function="date('d/m/Y', strtotime($date.' +8 days'))"}</span></span>
+            {/if}
           </div>
           <div class="box">
             <span class="title">Status do pagamento</span>

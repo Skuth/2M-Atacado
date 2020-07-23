@@ -20,7 +20,9 @@
 
   $app = AppFactory::create();
 
-  $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+  $debug = true;
+
+  $errorMiddleware = $app->addErrorMiddleware($debug, $debug, $debug);
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/verify.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/routes/site.php");

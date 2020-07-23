@@ -74,7 +74,8 @@
 * [X] Adicionar cadastro de endereço
 * [X] Editar preço do card para x quando não logado
 * [X] Escolher dia para retirar compra
-* [ ] Adicionar pagina com info do cliente -> Pontos | Info | Endereço
+* [X] Adicionar pagina com info do cliente -> Pontos | Info | Endereço
+* [X] Mudar entrega prevista quando tiver entrega programada
 
 ### Futuro
 

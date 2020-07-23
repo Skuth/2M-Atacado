@@ -53,10 +53,22 @@
         display: block;
         .purchase-view-status {
           border-bottom: 1px solid #ddd;
+          &.no-border {
+            border: 0!important;
+          }
+          .divider {
+            width: 100%;
+            margin: 0 auto;
+            height: 1px;
+            background: $grey;
+          }
           .box {
             padding: 20px;
             span.title {
               font-weight: 600;
+              &.h3 {
+                font-size: em(24);
+              }
             }
             span.map {
               display: block;
