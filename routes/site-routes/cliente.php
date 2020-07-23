@@ -114,9 +114,15 @@ $app->get("/cliente/compra/{id}", function(Request $req, Response $res, $args) {
 
   if (Clients::verifyLogin(0)) return $res->withHeader("Location", "/cliente/login");
 
+  $cId = $_SESSION["client"]["client_id"];
+
   $id = $args["id"];
 
   $order = Order::getOrderByIdFull($id);
+
+  if (count(Clients::getAddress()) <= 1) return $res->withHeader("Location", "/cliente/dashboard");
+
+  if ($order["client_id"] != $cId) return $res->withHeader("Location", "/cliente/dashboard");
 
   createSeoTags("Detalhes da compra #".$id);
 
@@ -133,6 +139,8 @@ $app->get("/cliente/conta", function(Request $req, Response $res, $args) {
 
   $user = Clients::getClientOn();
   $address = Clients::getAddress();
+
+  if (count($address) <= 1) return $res->withHeader("Location", "/cliente/dashboard");
   
   $page = new Page();
   $page->setTpl("client-info", ["user"=>$user, "address"=>$address]);

@@ -19,16 +19,19 @@
             <span class="title">Meus pontos:</span>
             <span class="badge badge-circle badge-primary"><?php echo htmlspecialchars( $user["client_points"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
             <br><br>
+            <?php if( $user["client_type"] == 1 ){ ?>
             <span class="title">Razão social:</span>
             <span class="badge badge-circle badge-primary"><?php echo htmlspecialchars( $user["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
             <br><br>
-            <?php if( $user["client_type"] == 1 ){ ?>
             <span class="title">CNPJ:</span>
             <span class="badge badge-circle badge-primary"><?php echo formatCnpjCpf($user["client_cnpj"]); ?></span>
             <br><br>
             <span class="title">Inscrição Estadual:</span>
             <span class="badge badge-circle badge-primary"><?php if( $user["client_ie"] != '' ){ ?><?php echo formatCnpjCpf($user["client_ie"]); ?><?php }else{ ?>----------<?php } ?></span>
             <?php }else{ ?>
+            <span class="title">Nome:</span>
+            <span class="badge badge-circle badge-primary"><?php echo htmlspecialchars( $user["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+            <br><br>
             <span class="title">CPF:</span>
             <span class="badge badge-circle badge-primary"><?php echo formatCnpjCpf($user["client_cpf"]); ?></span>
             <?php } ?>

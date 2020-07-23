@@ -23,7 +23,7 @@
             {/if}
             <br>
             {if="$order.order_pickupdate != NULL"}
-            <span>Entrega para <span class="badge badge-circle badge-warning">{function="date('d/m/Y', strtotime($order.order_pickupdate))"}</span></span>
+            <span>Entrega para <span class="badge badge-circle badge-warning">{function="date('d/m/Y H:i', strtotime($order.order_pickupdate))"}</span></span>
             {else}
             {$date = $order.order_date}
             <span>Entrega prevista entre <span class="badge badge-circle badge-info">{function="date('d/m/Y', strtotime($date.' +3 days'))"} e {function="date('d/m/Y', strtotime($date.' +8 days'))"}</span></span>

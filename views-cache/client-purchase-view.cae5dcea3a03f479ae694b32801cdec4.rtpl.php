@@ -23,7 +23,7 @@
             <?php } ?>
             <br>
             <?php if( $order["order_pickupdate"] != NULL ){ ?>
-            <span>Entrega para <span class="badge badge-circle badge-warning"><?php echo date('d/m/Y', strtotime($order["order_pickupdate"])); ?></span></span>
+            <span>Entrega para <span class="badge badge-circle badge-warning"><?php echo date('d/m/Y H:i', strtotime($order["order_pickupdate"])); ?></span></span>
             <?php }else{ ?>
             <?php $date = $order["order_date"]; ?>
             <span>Entrega prevista entre <span class="badge badge-circle badge-info"><?php echo date('d/m/Y', strtotime($date.' +3 days')); ?> e <?php echo date('d/m/Y', strtotime($date.' +8 days')); ?></span></span>
