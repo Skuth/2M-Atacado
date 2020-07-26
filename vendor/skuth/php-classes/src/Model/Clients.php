@@ -287,10 +287,6 @@ class Clients {
       if (strlen($cnpj) !== 14) {
         return $this->parseReturn("error", "Cnpj inválido!");
       }
-
-      if (strlen($ie) !== 8) {
-        return $this->parseReturn("error", "Inscrição Estadual inválida!");
-      }
     }
 
     $sql = new Sql();

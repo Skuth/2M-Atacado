@@ -23,14 +23,14 @@
   
   <title>{$siteData["site_data_name"]} - {$seoTags["title"]}</title>
 
-  {$keywords = "2m atacado, 2m, atacado, material de construção, construção, casa, ferramentas"}
+  {$keywords = "2m atacado, 2m, atacado, material de construção, construção, casa, ferramentas, cabo frio, atacado cabo frio, melhores preços, preço baixo, material de construção com preço bom, melhores preços cabo frio, atacado preço bom cabo frio"}
   {$description = "2M Atacado, Empresa no mercado desde 2019 com os melhores preços no mercado, com uma grande variedade de produtos, como: ferramentas, produtos para casa, alicates, torneiras, e muito mais. Estamos localizados em Cabo Frio - RJ."}
 
   <link rel="canonical" href="{$siteUrl}{$reqUrl}">
 
   <meta name="description" content="{if="$seoTags['desc'] != ''"}{$seoTags["desc"]}{else}{$description}{/if}">
   <meta name="keywords" content="{$keywords}{if="$seoTags['tags'] != ''"}, {$seoTags["tags"]}{/if}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="revisit-after" content="1 day">
   <meta name="language" content="Portuguese">
   <meta name="generator" content="N/A">
@@ -80,7 +80,7 @@
       "@type": "Organization",
       "name": "{$siteData["site_data_name"]}",
       "url": "{$siteUrl}/",
-      "logo": "{$siteUrl}/assets/img/logo.png"
+      "logo": "{$siteUrl}/assets/img/logo.webp"
       "address": "Rio de Janeiro"
     }
   </script>

@@ -59,7 +59,7 @@
                   {/if}
                 </td>
                 <td><b>R$ {function="formatMoney($value.order_subtotal)"}</b></td>
-                {if="$value.order_pickupdate"}
+                {if="$value.order_pickupdate != '0000-00-00 00:00:00'"}
                   <td class="text-danger"><b>
                     {function="date('d/m/Y H:i:s', strtotime($value.order_pickupdate))"}
                   </b></td>
