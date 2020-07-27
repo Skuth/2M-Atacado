@@ -6,7 +6,7 @@ use Skuth\DB\Sql;
 class Sliders {
   public function getAll() {
     $sql = new Sql();
-    $query = "SELECT * FROM sliders";
+    $query = "SELECT * FROM sliders ORDER BY slider_id ASC";
     return $sql->select($query);
   }
 

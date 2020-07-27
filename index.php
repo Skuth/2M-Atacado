@@ -13,7 +13,8 @@
     $_SESSION["cart"] = [];
   }
 
-  $GLOBALS["version"] = "1-20-07-19";
+  //$GLOBALS["version"] = "1-20-07-19";
+  $GLOBALS["version"] = rand(1, date("today"));
   $GLOBALS["sitemap"] = "teste";
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");

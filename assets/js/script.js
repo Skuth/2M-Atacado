@@ -332,20 +332,29 @@ const clientAddressRegister = (e, form) => {
   })
 }
 
+const updateNav = () => {
+  var nav = $(".navigation")
+  var navTop = $(".slide").height()
+
+  if($(nav).hasClass("banner")) {
+    $(nav).css("position", "absolute")
+    $(nav).css("top", navTop + "px")
+    navCheck(nav, navTop, "banner")
+    $(document).scroll(() => {
+      navCheck(nav, navTop, "banner")
+    })
+  }
+}
+
 $(document).ready(() => {
 
   if($(window).width() >= 1200) {
-    let nav = $(".navigation")
-    let navTop = $(nav).offset().top
+    
+    $(window).on("load", () => {
+      updateNav()
+      $(window).resize(updateNav)
+    })
 
-    if($(nav).hasClass("banner")) {
-      $(nav).css("position", "absolute")
-      $(nav).css("top", navTop + "px")
-      navCheck(nav, navTop, "banner")
-      $(document).scroll(() => {
-        navCheck(nav, navTop, "banner")
-      })
-    }
   }
 
   if($(window).width() <= 960) {
