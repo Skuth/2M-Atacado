@@ -249,7 +249,7 @@ $app->post("/checkout/order", function(Request $req, Response $res, $args) {
   $cartId = (isset($_COOKIE["cartId"])) ? $_COOKIE["cartId"] : 0;
   $client = (isset($_SESSION["client"])) ? $_SESSION["client"] : NULL;
   $pType = (isset($_POST["pType"])) ? $_POST["pType"] : 0;
-  $pickUpDate = (isset($_POST["pickUpDate"])) ? $_POST["pickUpDate"] : "";
+  $pickUpDate = (isset($_POST["pickUpDate"]) && $_POST["pickUpDate"] != NULL) ? $_POST["pickUpDate"] : NULL;
 
   if ($pType > 1) { $pType = 0; }
 

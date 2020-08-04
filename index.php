@@ -14,8 +14,7 @@
   }
 
   //$GLOBALS["version"] = "1-20-07-19";
-  $GLOBALS["version"] = rand(1, date("today"));
-  $GLOBALS["sitemap"] = "teste";
+  $GLOBALS["version"] = rand(1, 100000000000000000);
 
   require_once($_SERVER["DOCUMENT_ROOT"]."/vendor/autoload.php");
 

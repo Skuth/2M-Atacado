@@ -52,6 +52,11 @@
           <span class="badge badge-pill badge-primary">Entregar</span>
           <?php } ?>
           <br><br>
+          <?php if( $order["order_pickupdate"] != '0000-00-00 00:00:00' ){ ?>
+          <span class="card-text mr-2">Data de retirada</span>
+          <span class="badge badge-pill badge-warning"><?php echo date('d/m/Y H:i:s', strtotime($order["order_pickupdate"])); ?></span>
+          <br><br>
+          <?php } ?>
           <span class="card-text mr-2">Status do pagamento</span>
           <?php $z = $order["order_payment_status"]; ?>
           <?php if( $z == 1 ){ ?>

@@ -307,4 +307,53 @@ $app->get("/admin/produto/remover/{id}", function(Request $req, Response $res, $
 
 });
 
+$app->get("/admin/produtos/atualizar", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("Enviar arquivo de atualização", "produtos/atualizar")]]);
+
+  $page->setTpl("prod-update-all");
+
+  return $res;
+
+});
+
+$app->post("/admin/produtos/atualizar", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+
+  if (isset($_FILES["data"])) {
+    $stock = isset($_POST["stock"]) ? $_POST["stock"] : "off";
+    $price = isset($_POST["price"]) ? $_POST["price"] : "off";
+
+    $fname = $_FILES["data"]["tmp_name"];
+  
+    $data = csvToJson($fname);
+
+    if ($stock != "off" || $price != "off") {
+      Products::resetStock();
+  
+      foreach ($data as $key => $value) {
+        if ($stock == "on") {
+          Products::updateStock($value["Produto"], intval($value["Quant s/Vnd"]));
+        }
+
+        if ($price == "on") {
+          Products::updatePrice($value["Produto"], floatval($value["Unit s/Vnd"]));
+        }
+      }
+    }
+
+    return $res->withHeader("Location", "/admin/produtos/atualizar?update=true");
+  }
+
+  return $res;
+
+});
+
 ?>

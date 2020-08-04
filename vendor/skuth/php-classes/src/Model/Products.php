@@ -444,6 +444,12 @@ class Products {
     $p = ["stock"=>$stock, "ref"=>$ref];
     return $sql->query($q, $p);
   }
+
+  public static function resetStock() {
+    $sql = new Sql();
+    $q = "UPDATE products SET product_stock=0";
+    return $sql->query($q);
+  }
 }
 
 ?>

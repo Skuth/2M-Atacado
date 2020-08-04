@@ -5,65 +5,25 @@ use Skuth\Model\Api;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-CONST APIKEY = "kpfnmER7rQC7DRZszaxKZJcaXbbzcjQQubaLakqS";
+$app->post("/api/notification[/{action}]", function(Request $req, Response $res, $args) {
 
-function returnMessage($status, $message) {
+  $status = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/assets/admin/status.json");
+
+  $status = json_decode($status, true);
   
-  switch ($status) {
-    case 1:
-      $status = "success";
-      break;
-    case 2:
-      $status = "error";
-      break;
-    case 3:
-      $status = "info";
-      break;
-    default:
-      $status = "success";
-      break;
+  echo json_encode($status);
+
+  if(isset($args["action"]) && $args["action"] == "update") {
+    $status["status"] = ($status["status"] + 1);
   }
 
-  $msg = [
-    "status"=>$status,
-    "message"=>$message
-  ];
-
-  echo json_encode($msg);
-}
-
-$app->post("/api/produto/estoque/{ref}/{estoque}", function(Request $req, Response $res, $args) {
-
-  $key = (isset($_POST["apikey"])) ? $_POST["apikey"] : NULL;
-
-  if ($key == NULL) {
-    returnMessage(2, "Você precisa informar uma chave.");
-    return $res;
+  if(isset($args["action"]) && $args["action"] == "reset") {
+    $status["status"] = 0;
   }
 
-  if ($key != APIKEY) {
-    returnMessage(2, "Chave invalida.");
-    return $res;
-  }
+  $status = json_encode($status);
 
-  $ref = trim(strip_tags($args["ref"]));
-  $estoque = trim(strip_tags($args["estoque"]));
-
-  if (strlen($ref) < 6) {
-    returnMessage(2, "O código precisa ter no mínimo 6 dígitos.");
-    return $res;
-  }
-
-  if ($estoque < 0) {
-    returnMessage(2, "A quantidade em estoque precisa ser maior ou igual a 0.");
-    return $res;
-  } 
-
-  if (Api::updateStock($ref, $estoque)) {
-    returnMessage(1, "Sucesso ao editar estoque do produto com código {$ref} para {$estoque}");
-  } else {
-    returnMessage(2, "Falha ao editar estoque do produto com código {$ref}");
-  }
+  file_put_contents($_SERVER["DOCUMENT_ROOT"]."/assets/admin/status.json", $status);
 
   return $res;
 

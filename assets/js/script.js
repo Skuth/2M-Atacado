@@ -110,6 +110,14 @@ const checkout = (btn) => {
     },
     success: function (r) {
       let res = JSON.parse(r)
+
+      if(res.status == "success") {
+        $.ajax({
+          type: "POST",
+          url: baseUrl+"api/notification/update",
+        })
+      }
+
       Swal.fire({
         icon: res.status,
         text: res.message,

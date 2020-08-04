@@ -254,4 +254,51 @@ function deleteImage($image, $path) {
   }
 }
 
+function returnMessage($status, $message) {
+  
+  switch ($status) {
+    case 1:
+      $status = "success";
+      break;
+    case 2:
+      $status = "error";
+      break;
+    case 3:
+      $status = "info";
+      break;
+    default:
+      $status = "success";
+      break;
+  }
+
+  $msg = [
+    "status"=>$status,
+    "message"=>$message
+  ];
+
+  echo json_encode($msg);
+}
+
+function csvToJson($fname) {
+  $fp = fopen($fname, 'r');
+
+  $key = fgetcsv($fp);
+
+  $data = [];
+
+  while($row = fgetcsv($fp)) {
+    $line = array_combine($key, $row);
+    array_push($data, $line);
+  }
+
+  fclose($fp);
+
+  foreach ($data as $key => $value) {
+    $data[$key] = str_replace('"', "", $value);
+    $data[$key] = str_replace("'", "", $value);
+  }
+
+  return $data;
+}
+
 ?>

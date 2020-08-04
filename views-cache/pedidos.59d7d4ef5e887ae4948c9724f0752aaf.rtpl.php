@@ -59,7 +59,7 @@
                   <?php } ?>
                 </td>
                 <td><b>R$ <?php echo formatMoney($value1["order_subtotal"]); ?></b></td>
-                <?php if( $value1["order_pickupdate"] ){ ?>
+                <?php if( strtotime($value1["order_pickupdate"]) >= strtotime('-10 year') ){ ?>
                   <td class="text-danger"><b>
                     <?php echo date('d/m/Y H:i:s', strtotime($value1["order_pickupdate"])); ?>
                   </b></td>
