@@ -332,24 +332,35 @@ $app->post("/admin/produtos/atualizar", function(Request $req, Response $res, $a
     $price = isset($_POST["price"]) ? $_POST["price"] : "off";
 
     $fname = $_FILES["data"]["tmp_name"];
-  
-    $data = csvToJson($fname);
+    $ftype = $_FILES["data"]["type"];
 
-    if ($stock != "off" || $price != "off") {
-      Products::resetStock();
+    if ($ftype == "text/plain") {
   
-      foreach ($data as $key => $value) {
+      $data = csvToJson($fname);
+
+      if ($stock != "off" || $price != "off") {
         if ($stock == "on") {
-          Products::updateStock($value["Produto"], intval($value["Quant s/Vnd"]));
+          Products::resetStock();
         }
+        
+        foreach ($data as $key => $value) {
+          if ($stock == "on") {
+            Products::updateStock($value["Produto"], intval($value["Quant s/Vnd"]));
+          }
 
-        if ($price == "on") {
-          Products::updatePrice($value["Produto"], floatval($value["Unit s/Vnd"]));
+          if ($price == "on") {
+            Products::updatePrice($value["Produto"], floatval($value["Unit s/Vnd"]));
+          }
         }
       }
-    }
 
-    return $res->withHeader("Location", "/admin/produtos/atualizar?update=true");
+      return $res->withHeader("Location", "/admin/produtos/atualizar?update=true");
+
+    } else {
+
+      return $res->withHeader("Location", "/admin/produtos/atualizar?update=false");
+
+    }
   }
 
   return $res;
