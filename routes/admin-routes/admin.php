@@ -56,7 +56,7 @@ $app->post("/admin/administracao/editar", function(Request $req, Response $res, 
     $hf = $_POST["hf"];
 
     $cnpj = parseCpfCnpj($_POST["cnpj"]);
-    $cnpj = preg_replace("/(\d{3})(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj);
+    $cnpj = preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj);
     
     $ie = parseCpfCnpj($_POST["ie"]);
     $ie = preg_replace("/(\d{2})(\d{3})(\d{2})(\d{1})/", "\$1.\$2.\$3-\$4", $ie);

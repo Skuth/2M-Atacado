@@ -1,4 +1,13 @@
+# robots.txt file for 2M Atacado
+
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /cliente/login
+Disallow: /cliente/cadastrar
+Disallow: /cliente/dashboard
+Disallow: /cliente/conta
+Disallow: /cliente/logout
+Disallow: /carrinho
 
-Sitemap: https://www.2matacado.com.br/sitemap.xml
+Sitemap: https://2matacado.com.br/sitemap.xml

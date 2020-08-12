@@ -138,7 +138,8 @@ $app->get("/cliente/conta", function(Request $req, Response $res, $args) {
   if (Clients::verifyLogin(0)) return $res->withHeader("Location", "/cliente/login");
 
   $user = Clients::getClientOn();
-  $address = Clients::getAddress();
+  $c = new Clients();
+  $address = $c->getAddress();
 
   if (count($address) <= 1) return $res->withHeader("Location", "/cliente/dashboard");
   
