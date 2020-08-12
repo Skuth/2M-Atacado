@@ -114,11 +114,14 @@
   }
 }
 
-@media(max-width: $mobileL) {
+@media(max-width: 550px) {
   .footer {
     &-info, &-contact {
       ul li {
         font-size: em(12);
+        span {
+          white-space: pre;
+        }
       }
     }
   }
