@@ -70,7 +70,7 @@
                   <i class="fa fa-angle-left"></i>
                 </a>
               </li>
-              {loop="$total"}
+              {loop="range(1, $totalPages)"}
               {$key = $key + 1}
               <li class="page-item {if="$key == $pagina"}active{/if}"><a class="page-link" href="/admin/produtos?pagina={$key}">{$key}</a></li>
               {/loop}

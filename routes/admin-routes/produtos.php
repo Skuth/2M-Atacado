@@ -31,11 +31,9 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
   
   $total = $prod->getTotal();
 
-  $totalPage = 50;
+  $totalPage = 100;
 
   $totalPages = ceil($total / $totalPage);
-
-  $paginas = [];
 
   $offset = ($pagina - 1) * $totalPage;
 
@@ -55,17 +53,13 @@ $app->get("/admin/produtos", function(Request $req, Response $res, $args) {
       return $res->withHeader("Location", "/admin/produtos");
     }
 
-    for ($i=0; $i < $totalPages; $i++) { 
-      array_push($paginas, $i);
-    }
-
   } else {
     $produtos = $prod->getAll("LIMIT ".$totalPage." OFFSET ".$offset);
   }
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Produtos", "produtos")]]);
   
-  $page->setTpl("produtos", ["produtos"=>$produtos, "total"=>$paginas, "pagina"=>$pagina, "totalPages"=>$totalPages]);
+  $page->setTpl("produtos", ["produtos"=>$produtos, "pagina"=>$pagina, "totalPages"=>$totalPages]);
 
   return $res;
 

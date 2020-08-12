@@ -103,4 +103,9 @@
   <link rel="stylesheet" href="./assets/css/slick-theme.min.css">
 </head>
 <body>
-  
+  <div class="preloader">
+    <img src="./assets/img/logo.webp" alt="">
+    <div class="load-bar">
+      <div id="bar"></div>
+    </div>
+  </div>

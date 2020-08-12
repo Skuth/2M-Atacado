@@ -1,5 +1,17 @@
+let preLoader = $(".preloader")
+let preloaderBar = $(".preloader #bar")
+let load = Math.floor(Math.random() * 70)
+
+preloaderBar.css("width", `${load}%`)
+
 window.addEventListener("load", () => {
   registerSW()
+  setTimeout(() => {
+    preloaderBar.css("width", "100%")
+    setTimeout(() => {
+      preLoader.fadeOut()
+    }, 1000);
+  }, 1000)
 })
 
 async function registerSW() {

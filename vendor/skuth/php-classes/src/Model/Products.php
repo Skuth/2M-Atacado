@@ -224,8 +224,8 @@ class Products {
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
-    INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE brand_id=:dist LIMIT ".$limite." OFFSET ".$offset;
+    INNER JOIN departments b ON b.department_id=products.department_id
+    WHERE brand_id=:dist ORDER BY products.product_name ASC LIMIT {$limite} OFFSET {$offset}";
 
     $param = ["dist"=>$dist];
 
@@ -260,8 +260,8 @@ class Products {
 
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
-    INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE products.department_id=:dep LIMIT ".$limite." OFFSET ".$offset;
+    INNER JOIN departments b ON b.department_id=products.department_id
+    WHERE products.department_id=:dep ORDER BY products.product_name ASC LIMIT {$limite} OFFSET {$offset}";
 
     $param = ["dep"=>$dep];
     
@@ -291,7 +291,7 @@ class Products {
     $query = "SELECT * FROM products
     INNER JOIN distributors a ON a.distributor_id=products.brand_id
     INNER JOIN departments c ON c.department_id=products.department_id
-    WHERE product_price_off IS NOT NULL LIMIT ".$limite." OFFSET ".$offset;
+    WHERE product_price_off IS NOT NULL LIMIT {$limite} OFFSET {$offset}";
     
     $res = $sql->select($query);
     $res = $this->parseImage($res);
