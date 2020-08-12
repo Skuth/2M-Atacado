@@ -83,6 +83,17 @@ class Products {
     return $res;
   }
 
+  public function getToPdf() {
+    $sql = new Sql();
+
+    $query = "SELECT * FROM products ORDER BY product_name ASC";
+
+    $res = $sql->select($query);
+    $res = $this->parseImage($res);
+
+    return $res;
+  }
+
   public function getAllFull($params = "") {
     $sql = new Sql();
 

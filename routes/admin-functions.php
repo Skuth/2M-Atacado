@@ -199,10 +199,10 @@ function uploadImage($image, $path, $name = "") {
 
   
   if ($fileError == 0 && $fileType[0] == "image") {
-    if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg") {
+    if ($fileType[1] == "png" || $fileType[1] == "jpg" || $fileType[1] == "jpeg" || $fileType[1] == "webp") {
 
       if ($fileExtension != "jpg" && $fileExtension != "jpeg" && $name == "") {
-        $i = imagecreatefrompng($fileTmpName);
+        $i = ($fileExtension == "webp") ? imagecreatefromwebp($fileTmpName) : imagecreatefrompng($fileTmpName);
         list($w, $h) = getimagesize($fileTmpName);
         $o = imagecreatetruecolor($w, $h);
         $white = imagecolorallocate($o, 255, 255, 255);
@@ -239,7 +239,6 @@ function uploadImage($image, $path, $name = "") {
         return $fileNewNameB;
 
       }
-
 
     }
   }

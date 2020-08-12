@@ -2,12 +2,16 @@
 
 User-agent: *
 Allow: /
-Disallow: /admin
+Disallow: /admin$
+Disallow: /admin/
+Disallow: /cliente
 Disallow: /cliente/login
 Disallow: /cliente/cadastrar
 Disallow: /cliente/dashboard
 Disallow: /cliente/conta
 Disallow: /cliente/logout
+Disallow: /cliente/compra
 Disallow: /carrinho
+Disallow: /checkout
 
 Sitemap: https://2matacado.com.br/sitemap.xml

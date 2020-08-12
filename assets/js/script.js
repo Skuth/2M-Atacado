@@ -217,24 +217,27 @@ const switchForm = (box, e) => {
 
   const btns = box.children
 
-  if (targetAttr == 0) {
-    $(form1).addClass("form-active")
-    $(form2).removeClass("form-active")
-  } else {
-    $(form1).removeClass("form-active")
-    $(form2).addClass("form-active")
-  }
+  if (target.getAttribute("id") != null) {
 
-  for (let i = 0; i < btns.length; i++) {
-    const e = btns[i]
-    const attr = e.getAttribute("id")
-    $(e).removeClass("btn-blue")
-
-    if (attr == targetAttr) {
-      $(e).addClass("btn-blue")
+    if (targetAttr == 0) {
+      $(form1).addClass("form-active")
+      $(form2).removeClass("form-active")
+    } else {
+      $(form1).removeClass("form-active")
+      $(form2).addClass("form-active")
     }
-  }
+  
+    for (let i = 0; i < btns.length; i++) {
+      const e = btns[i]
+      const attr = e.getAttribute("id")
+      $(e).removeClass("btn-blue")
+  
+      if (attr == targetAttr) {
+        $(e).addClass("btn-blue")
+      }
+    }
 
+  }
   
 }
 

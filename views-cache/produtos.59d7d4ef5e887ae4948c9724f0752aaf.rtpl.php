@@ -15,6 +15,7 @@
             <?php $userOn=$_SESSION["user"]; ?>
             <?php if( $userOn['type'] > 1 ){ ?>
             <div class="col text-right">
+              <span onclick="pdfRequest()" class="btn btn-sm btn-primary">Gerar PDF</span>
               <a href="/admin/produtos/atualizar" class="btn btn-sm btn-primary">Atualizar</a>
               <a href="/admin/produto/novo" class="btn btn-sm btn-primary">Cadastrar</a>
             </div>

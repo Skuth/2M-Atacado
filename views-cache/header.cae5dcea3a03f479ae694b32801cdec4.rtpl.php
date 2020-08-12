@@ -30,7 +30,7 @@
 
   <meta name="description" content="<?php if( $seoTags['desc'] != '' ){ ?><?php echo htmlspecialchars( $seoTags["desc"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $description, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>">
   <meta name="keywords" content="<?php echo htmlspecialchars( $keywords, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php if( $seoTags['tags'] != '' ){ ?>, <?php echo htmlspecialchars( $seoTags["tags"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <meta name="revisit-after" content="1 day">
   <meta name="language" content="Portuguese">
   <meta name="generator" content="N/A">
