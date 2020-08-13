@@ -120,7 +120,7 @@ const pdfRequest = () => {
       return fetch(apiUrl, {method: "POST"})
       .then(response => response.json())
       .then(data => {
-        location.href = data
+        window.open(data, "_blank")
       })
       .catch(() => {
         Swal.insertQueueStep({

@@ -375,6 +375,8 @@ $app->post("/admin/produtos/pdf", function(Request $req, Response $res, $args) {
   $prods = new Products();
   $p = $prods->getToPdf();
 
+  $siteUrl = getSiteUrl();
+
   $htmlStyle = "<style>
     table { width: 100%; }
     th { background: #1A3795; color: #fff; padding: 10px 0; font-family: sans-serif; text-align: center; vertical-align: middle; }
@@ -383,10 +385,10 @@ $app->post("/admin/produtos/pdf", function(Request $req, Response $res, $args) {
 
   $tableContent = "";
 
+
   foreach ($p as $key => $value) {
     $price = formatMoney($value["product_price"]);
     $tableContent = $tableContent."<tr>
-      <td style='width: 100px;'><img src='{getSiteUrl()}/assets/produtos/{$value["product_pictures"][0]}' style='display: block; width: 60px;'></img></td>
       <td style='width: 100px;'>{$value["product_ref"]}</td>
       <td style='width: 60%;'>{$value["product_name"]}</td>
       <td style='width: 150px;'>R$ {$price}</td>
@@ -397,7 +399,6 @@ $app->post("/admin/produtos/pdf", function(Request $req, Response $res, $args) {
   <htmlpageheader name='header'>
     <table cellspacing='0' cellpadding='0'>
       <tr>
-        <th style='width: 100px;'>Foto</th>
         <th style='width: 100px;'>Código</th>
         <th style='width: 60%;'>Descrição</th>
         <th style='width: 150px;'>Preço</th>
@@ -422,12 +423,20 @@ $app->post("/admin/produtos/pdf", function(Request $req, Response $res, $args) {
   
   $html = $htmlStyle.$htmlBody;
 
-  $path = $_SERVER["DOCUMENT_ROOT"]."/assets/admin/pdf/catalogo.pdf";
+  $path = "/assets/admin/pdf/catalogo.pdf";
+
+  chmod($_SERVER["DOCUMENT_ROOT"]."/assets/admin/pdf/", 0777);
+
+  if (file_exists($_SERVER["DOCUMENT_ROOT"].$path)) {
+    unlink($_SERVER["DOCUMENT_ROOT"].$path);
+  }
   
   $mpdf->WriteHTML($html);
-  $mpdf->Output($path, \Mpdf\Output\Destination::FILE);
+  $mpdf->Output($_SERVER["DOCUMENT_ROOT"].$path, \Mpdf\Output\Destination::FILE);
 
-  echo json_encode(getSiteUrl()."/assets/admin/pdf/catalogo.pdf");
+  $date = new DateTime();
+  $date = $date->getTimestamp();
+  echo json_encode($siteUrl.$path."?date=".$date);
 
   return $res;
 
