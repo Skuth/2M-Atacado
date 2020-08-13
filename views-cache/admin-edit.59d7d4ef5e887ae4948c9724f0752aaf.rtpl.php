@@ -60,6 +60,13 @@
                   </div>
                 </div>
 
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control" name="descricao" rows="10" required><?php echo htmlspecialchars( $data["site_data_description"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+                  </div>
+                </div>
+
               </div>
 
               <button class="btn btn-icon btn-primary" type="submit" name="save">

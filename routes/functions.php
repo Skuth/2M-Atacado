@@ -107,7 +107,7 @@ function seoDescFilter($desc) {
     unset($value[0]);
     $text = array_merge($text, $value);
   }
-  $text = implode("", $text);
+  $text = implode(" ", $text);
   $text = str_replace("\n", ", ", $text);
   return $text;
 }

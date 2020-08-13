@@ -54,6 +54,7 @@ $app->post("/admin/administracao/editar", function(Request $req, Response $res, 
     $address = $_POST["address"];
     $email = $_POST["email"];
     $hf = $_POST["hf"];
+    $desc = filterDesc($_POST["descricao"]);
 
     $cnpj = parseCpfCnpj($_POST["cnpj"]);
     $cnpj = preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj);
@@ -73,7 +74,7 @@ $app->post("/admin/administracao/editar", function(Request $req, Response $res, 
       $tel = preg_replace("/(\d{2})(\d{1})(\d{4})(\d{4})/", "(\$1) \$2 \$3-\$4", $tel);
     }
 
-    if ($sd->updateData($address, $cnpj, $ie, $tel, $email, $hf) == TRUE) {
+    if ($sd->updateData($address, $cnpj, $ie, $tel, $email, $hf, $desc) == TRUE) {
       return $res->withHeader("Location", "/admin/administracao?edit=true");
     } else {
       return $res->withHeader("Location", "/admin/administracao?edit=false");

@@ -23,10 +23,10 @@ class SiteData {
     }
   }
 
-  public function updateData($address, $cnpj, $ie, $tel, $email, $hf) {
+  public function updateData($address, $cnpj, $ie, $tel, $email, $hf, $desc) {
     $sql = new Sql();
 
-    $query = "UPDATE site_data SET site_data_address=:address, site_data_cnpj=:cnpj, site_data_ie=:ie, site_data_tel=:tel, site_data_email=:email, site_data_oh=:hf WHERE site_data_id=:id";
+    $query = "UPDATE site_data SET site_data_address=:address, site_data_cnpj=:cnpj, site_data_ie=:ie, site_data_tel=:tel, site_data_email=:email, site_data_oh=:hf, site_data_description=:desc WHERE site_data_id=:id";
     $params = [
       "address"=>$address,
       "cnpj"=>$cnpj,
@@ -34,6 +34,7 @@ class SiteData {
       "tel"=>$tel,
       "email"=>$email,
       "hf"=>$hf,
+      "desc"=>$desc,
       "id"=>1
     ];
 
