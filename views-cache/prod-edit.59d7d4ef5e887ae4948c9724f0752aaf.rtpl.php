@@ -7,8 +7,11 @@
       <div class="card">
         <div class="card-header">
           <div class="row align-items-center">
-            <div class="col-8">
+            <div class="col-10">
               <h3 class="mb-0">Editando produto</h3>
+            </div>
+            <div class="col-2 text-right">
+              <img src="./assets/produtos/<?php echo htmlspecialchars( $produto["product_pictures"]["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" width="70">
             </div>
           </div>
         </div>
@@ -62,9 +65,9 @@
 
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label">Departamento</label>
+                    <label class="form-control-label">Categoria</label>
                     <select class="form-control" name="dep">
-                      <option value="" disabled>Selecione um departamento</option>
+                      <option value="" disabled>Selecione uma categoria</option>
                       <?php $counter1=-1;  if( isset($dep) && ( is_array($dep) || $dep instanceof Traversable ) && sizeof($dep) ) foreach( $dep as $key1 => $value1 ){ $counter1++; ?>
                       <option value="<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $produto["department_id"] == $value1["department_id"] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                       <?php } ?>

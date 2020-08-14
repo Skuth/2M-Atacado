@@ -10,7 +10,7 @@
               <h3 class="mb-0">Categorias</h3>
             </div>
             <div class="col text-right">
-              <a href="/admin/departamento/novo" class="btn btn-sm btn-primary">Cadastrar</a>
+              <a href="/admin/categoria/novo" class="btn btn-sm btn-primary">Cadastrar</a>
             </div>
           </div>
         </div>
@@ -32,8 +32,8 @@
                 <td><b><?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>/categoria/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
-                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/departamento/editar/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse categoria?')" href="/admin/departamento/remover/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/categoria/editar/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse categoria?')" href="/admin/categoria/remover/<?php echo htmlspecialchars( $value1["department_id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               <?php } ?>

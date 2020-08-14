@@ -19,6 +19,20 @@ use Skuth\Model\Products;
 //   }
 // }
 
+$prods = new Products();
+$p = $prods->getAll();
+$refs = [];
+foreach ($p as $key => $value) {
+  $dId = $value["department_id"];
+  if ($dId != 1 && $dId != 2 && $dId != 3 && $dId != 4 && $dId != 6 && $dId != 13) {
+    array_push($refs, $value["product_ref"]);
+  }
+}
+
+$refs = implode(", ", $refs);
+
+echo($refs);
+
 function getCardFromCookie() {
   $cart = [];
   if (isset($_COOKIE["cartId"])) {

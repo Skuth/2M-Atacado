@@ -115,6 +115,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
             
             $p = $prod->getBySearch($search, $limite, $pagina);
 
+            $search = filterString($search);
             $search = strtoupper($search);
 
             $fText = "Pesquisa por - ".$search;

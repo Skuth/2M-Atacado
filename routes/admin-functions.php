@@ -66,7 +66,7 @@ function getNav() {
     ],
     [
       "name"=>"categorias",
-      "href"=>"departamentos",
+      "href"=>"categorias",
       "icon"=>"ni ni-scissors",
       "nivel"=>2
     ],

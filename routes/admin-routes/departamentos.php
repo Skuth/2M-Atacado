@@ -7,7 +7,7 @@ use Skuth\Model\Departments;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->get("/admin/departamentos", function(Request $req, Response $res, $args) {
+$app->get("/admin/categorias", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -24,7 +24,7 @@ $app->get("/admin/departamentos", function(Request $req, Response $res, $args) {
 
 });
 
-$app->get("/admin/departamento/novo", function(Request $req, Response $res, $args) {
+$app->get("/admin/categoria/novo", function(Request $req, Response $res, $args) {
 
   $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrar categoria", "departamento/novo")]]);
 
@@ -34,7 +34,7 @@ $app->get("/admin/departamento/novo", function(Request $req, Response $res, $arg
 
 });
 
-$app->post("/admin/departamento/novo", function(Request $req, Response $res, $args) {
+$app->post("/admin/categoria/novo", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -48,9 +48,9 @@ $app->post("/admin/departamento/novo", function(Request $req, Response $res, $ar
     $dep = new Departments();
     
     if ($dep->cadDep($icon, $department, $href) == true) {
-      return $res->withHeader("Location", "/admin/departamentos?cad=true");
+      return $res->withHeader("Location", "/admin/categorias?cad=true");
     } else {
-      return $res->withHeader("Location", "/admin/departamentos?cad=false");
+      return $res->withHeader("Location", "/admin/categorias?cad=false");
     }
   }
 
@@ -58,7 +58,7 @@ $app->post("/admin/departamento/novo", function(Request $req, Response $res, $ar
 
 });
 
-$app->get("/admin/departamento/editar/{id}", function (Request $req, Response $res, $args) {
+$app->get("/admin/categoria/editar/{id}", function (Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -78,7 +78,7 @@ $app->get("/admin/departamento/editar/{id}", function (Request $req, Response $r
 
 });
 
-$app->post("/admin/departamento/editar", function(Request $req, Response $res, $args) {
+$app->post("/admin/categoria/editar", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -93,9 +93,9 @@ $app->post("/admin/departamento/editar", function(Request $req, Response $res, $
     $dep = new Departments();
 
     if ($dep->editDep($id, $icon, $department, $href) == true) {
-      return $res->withHeader("Location", "/admin/departamentos?edit=true");
+      return $res->withHeader("Location", "/admin/categorias?edit=true");
     } else {
-      return $res->withHeader("Location", "/admin/departamentos?edit=false");
+      return $res->withHeader("Location", "/admin/categorias?edit=false");
     }
   }
 
@@ -103,7 +103,7 @@ $app->post("/admin/departamento/editar", function(Request $req, Response $res, $
 
 });
 
-$app->get("/admin/departamento/remover/{id}", function(Request $req, Response $res, $args) {
+$app->get("/admin/categoria/remover/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
 
@@ -114,9 +114,9 @@ $app->get("/admin/departamento/remover/{id}", function(Request $req, Response $r
   $dep = new Departments();
 
   if ($dep->removeDep($id) == true) {
-    return $res->withHeader("Location", "/admin/departamentos?remove=true");
+    return $res->withHeader("Location", "/admin/categorias?remove=true");
   } else {
-    return $res->withHeader("Location", "/admin/departamentos?remove=false");
+    return $res->withHeader("Location", "/admin/categorias?remove=false");
   }
 
   return $res;

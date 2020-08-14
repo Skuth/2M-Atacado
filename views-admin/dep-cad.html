@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form method="POST" action="/admin/departamento/novo">
+          <form method="POST" action="/admin/categoria/novo">
             <div class="pl-lg-4">
 
               <div class="row">

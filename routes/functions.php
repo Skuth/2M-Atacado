@@ -45,6 +45,11 @@ function filterName($name) {
   return $name;
 }
 
+function filterString($string) {
+  $string = strtr(utf8_decode($string), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝº'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY-');
+  return $string;
+}
+
 function parseProductDesc($desc) {
 
   $desc = explode("#", $desc);

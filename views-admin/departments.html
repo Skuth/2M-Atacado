@@ -10,7 +10,7 @@
               <h3 class="mb-0">Categorias</h3>
             </div>
             <div class="col text-right">
-              <a href="/admin/departamento/novo" class="btn btn-sm btn-primary">Cadastrar</a>
+              <a href="/admin/categoria/novo" class="btn btn-sm btn-primary">Cadastrar</a>
             </div>
           </div>
         </div>
@@ -32,8 +32,8 @@
                 <td><b>{$value.department_text}</b></td>
                 <td>/categoria/{$value.department_href}</td>
                 <td>
-                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/departamento/editar/{$value.department_id}"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse categoria?')" href="/admin/departamento/remover/{$value.department_id}"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-icon btn-primary btn-sm" href="/admin/categoria/editar/{$value.department_id}"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-icon btn-danger btn-sm" onclick="return confirm('Deseja mesmo remover esse categoria?')" href="/admin/categoria/remover/{$value.department_id}"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
               {/loop}

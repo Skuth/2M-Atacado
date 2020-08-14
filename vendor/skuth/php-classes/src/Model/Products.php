@@ -208,7 +208,7 @@ class Products {
     $res = $sql->select($query);
     $res = $this->parseImage($res);
 
-    $count = $sql->select("SELECT count(1) FROM products WHERE product_name LIKE '%$search%' ESCAPE '$'");
+    $count = $sql->select("SELECT count(1) FROM products WHERE (product_name LIKE '%".$search."%') OR (product_ref LIKE '%".$search."%')");
     
     if (count($count) <= 0) {
       $count[0] = 0;
