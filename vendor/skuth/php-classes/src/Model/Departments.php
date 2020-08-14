@@ -6,7 +6,7 @@ use Skuth\DB\Sql;
 class Departments {
   public function getAll() {
     $sql = new Sql();
-    $query = "SELECT * FROM departments";
+    $query = "SELECT * FROM departments ORDER BY department_id ASC";
 
     return $sql->select($query);
   }

@@ -58,7 +58,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
   if(isset($args["filtro"])) {
     $filtro = $args["filtro"];
     
-    if($filtro === "distribuidor" || $filtro === "ofertas" || $filtro === "departamento" || $filtro === "pesquisa") {
+    if($filtro === "distribuidor" || $filtro === "ofertas" || $filtro === "categoria" || $filtro === "pesquisa") {
       switch ($filtro) {
 
         case 'distribuidor':
@@ -76,7 +76,7 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           
           break;
 
-        case 'departamento':
+        case 'categoria':
           $departamento = isset($args["param"]) ? $args["param"] : NULL;
           if ($departamento == NULL) return $res->withHeader("Location", "/produtos");
 
@@ -85,9 +85,9 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           
           $p = $prod->getByDeptFull($depId, $limite, $pagina);
 
-          $fText = "Produtos do departamento - ".ucfirst($dep);
+          $fText = "Produtos da categoria - ".ucfirst($dep);
 
-          $reqUrl = $reqUrl."/departamento/".$dep;
+          $reqUrl = $reqUrl."/categoria/".$dep;
 
           break;
 

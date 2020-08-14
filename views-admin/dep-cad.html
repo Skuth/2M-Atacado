@@ -8,7 +8,7 @@
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col-8">
-              <h3 class="mb-0">Cadastrando departamentos</h3>
+              <h3 class="mb-0">Cadastrando categoria</h3>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
 
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label">Departamento</label>
+                    <label class="form-control-label">Categoria</label>
                     <input type="text" class="form-control" name="departamento" required placeholder="Departamento">
                   </div>
                 </div>

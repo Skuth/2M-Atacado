@@ -2,14 +2,21 @@ let preLoader = $(".preloader")
 let preloaderBar = $(".preloader #bar")
 let load = Math.floor(Math.random() * 70)
 
+let body = $("body")
+body.scrollTop(0)
+body.css("overflow", "hidden")
+
 preloaderBar.css("width", `${load}%`)
 
 window.addEventListener("load", () => {
   registerSW()
   setTimeout(() => {
     preloaderBar.css("width", "100%")
+    window.scroll(0, 0)
     setTimeout(() => {
       preLoader.fadeOut()
+      body.removeAttr("style")
+      navCheck()
     }, 1000);
   }, 1000)
 })
@@ -369,13 +376,18 @@ const updateNav = () => {
   }
 }
 
+$(window).resize(() => {
+  if($(window).width() >= 1200) {
+    updateNav()
+  }
+})
+
 $(document).ready(() => {
 
   if($(window).width() >= 1200) {
     
     $(window).on("load", () => {
       updateNav()
-      $(window).resize(updateNav)
     })
 
   }

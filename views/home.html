@@ -20,10 +20,10 @@
   </div>
 
   <div class="departments">
-    <h2>Departamentos</h2>
+    <h2>Categorias</h2>
     <div class="departments-container">
       {loop="$departments"}
-      <a class="box" href="/produtos/departamento/{$value.department_href}">
+      <a class="box" href="/produtos/categoria/{$value.department_href}">
         <div class="icon">
           <i class="{$value.department_icon}"></i>
         </div>
@@ -43,7 +43,7 @@
 
     {loop="$cards"}
     
-    <a class="card" href="produtos/departamento/{$value.url}">
+    <a class="card" href="produtos/categoria/{$value.url}">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header {$color[$key]}" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>

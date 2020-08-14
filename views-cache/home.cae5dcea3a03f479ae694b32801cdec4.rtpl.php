@@ -20,10 +20,10 @@
   </div>
 
   <div class="departments">
-    <h2>Departamentos</h2>
+    <h2>Categorias</h2>
     <div class="departments-container">
       <?php $counter1=-1;  if( isset($departments) && ( is_array($departments) || $departments instanceof Traversable ) && sizeof($departments) ) foreach( $departments as $key1 => $value1 ){ $counter1++; ?>
-      <a class="box" href="/produtos/departamento/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+      <a class="box" href="/produtos/categoria/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
         <div class="icon">
           <i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i>
         </div>
@@ -43,7 +43,7 @@
 
     <?php $counter1=-1;  if( isset($cards) && ( is_array($cards) || $cards instanceof Traversable ) && sizeof($cards) ) foreach( $cards as $key1 => $value1 ){ $counter1++; ?>
     
-    <a class="card" href="produtos/departamento/<?php echo htmlspecialchars( $value1["url"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+    <a class="card" href="produtos/categoria/<?php echo htmlspecialchars( $value1["url"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="card-header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.931 175.06">
           <path class="card-svg-header <?php echo htmlspecialchars( $color["$key1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" d="M113,6042.624s87.134,78.225,173.486,44.7,89.451-108.392,131.993-143.073c9.711-9.248,35.452-23.635,35.452-23.635L113,5920.971Z" transform="translate(-113 -5920.615)"/>

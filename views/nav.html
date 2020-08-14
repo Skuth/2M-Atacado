@@ -31,10 +31,10 @@
           {$departments = getDepartments()}
           {if="$departments !== NULL"}
           <li class="submenu">
-            <a>Departamentos <i class="icofont-rounded-down"></i></a>
+            <a>Categorias &ThinSpace; <i class="icofont-rounded-down"></i></a>
             <ul>
               {loop="$departments"}
-              <li><a href="/produtos/departamento/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text}</a></li>
+              <li><a href="/produtos/categoria/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text}</a></li>
               {/loop}
             </ul>
           </li>
@@ -42,7 +42,7 @@
           {$distributors = getDistributors()}
           {if="$distributors !== NULL"}
           <li class="submenu">
-            <a>Distribuidoras <i class="icofont-rounded-down"></i></a>
+            <a>Distribuidores <i class="icofont-rounded-down"></i></a>
             <ul>
               {loop="$distributors"}
               {if="$value.distributor_id > 0"}<li><a href="/distribuidor/{$value.distributor_href}">{$value.distributor_name}</a></li>{/if}

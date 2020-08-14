@@ -1798,13 +1798,46 @@ textarea {
         .container .products-container .pagination .item.active:hover {
           background: #337DEC; }
 
+#mobileSearch {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.1); }
+  #mobileSearch label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    padding: 20px; }
+    #mobileSearch label i {
+      font-size: 1.5em;
+      color: #777; }
+  #mobileSearch input {
+    border: 0;
+    padding: 20px;
+    padding-left: 65px;
+    width: calc(100% - 20px - 65px); }
+
 @media (max-width: 1200px) {
   .product-box-container {
     grid-template-columns: repeat(2, 1fr) !important; } }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .container .products-container .products-container-sidebar {
-    display: none; } }
+    display: none; }
+  #mobileSearch {
+    display: block; } }
 
 @media (max-width: 768px) {
   .container .products-container .products-container-content {

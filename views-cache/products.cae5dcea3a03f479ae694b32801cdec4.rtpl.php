@@ -13,16 +13,21 @@
         </ul>
       </div>
       <div class="sidebar-box open">
-        <span>Departamentos <i class="icofont-simple-down"></i></span>
+        <span>Categorias <i class="icofont-simple-down"></i></span>
         <ul class="sidebar-items" style="max-height: 100vh;">
           <?php $counter1=-1;  if( isset($departamentos) && ( is_array($departamentos) || $departamentos instanceof Traversable ) && sizeof($departamentos) ) foreach( $departamentos as $key1 => $value1 ){ $counter1++; ?>
-          <li><a href="/produtos/departamento/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?> ( <?php echo htmlspecialchars( $value1["products_count"], ENT_COMPAT, 'UTF-8', FALSE ); ?> )</a></li>
+          <li><a href="/produtos/categoria/<?php echo htmlspecialchars( $value1["department_href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><i class="<?php echo htmlspecialchars( $value1["department_icon"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></i> <?php echo htmlspecialchars( $value1["department_text"], ENT_COMPAT, 'UTF-8', FALSE ); ?> ( <?php echo htmlspecialchars( $value1["products_count"], ENT_COMPAT, 'UTF-8', FALSE ); ?> )</a></li>
           <?php } ?>
         </ul>
       </div>
     </div>
 
     <div class="products-container-content">
+
+      <div id="mobileSearch">
+        <label for="searchProducts"><i class="icofont-search"></i></label>
+        <input type="text" name="searchProducts" placeholder="Pesquisar" onkeydown="productSearch(this.value, event)">
+      </div>
 
       <?php if( count($produtos) > 0 ){ ?>
       <div class="products-header-container">

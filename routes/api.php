@@ -31,39 +31,4 @@ $app->post("/api/notification[/{action}]", function(Request $req, Response $res,
 
 });
 
-// $app->get("/api/sitemap", function(Request $req, Response $res, $args) {
-
-//   // $prods = new Products();
-//   // $p = $prods->getAll();
-  
-//   // foreach ($p as $key => $value) {
-//   //   $slug = filterName($value['product_name']);
-//   //   $code = "
-//   //   <url>
-//   //     <loc>https://2matacado.com.br/produto/{$value['product_ref']}/{$slug}</loc>
-//   //     <lastmod>2020-08-13T17:00:00+03:00</lastmod>
-//   //     <priority>1.0</priority>
-//   //   </url>\n";
-//   //   echo $code;
-//   // }
-
-//   // $dep = new Departments();
-//   // $d = $dep->getAll();
-
-//   // foreach ($d as $key => $value) {
-//   //   $code = "
-//   //   <url>
-//   //     <loc>https://2matacado.com.br/distribuidor/{$value['department_href']}</loc>
-//   //     <lastmod>2020-08-13T17:00:00+03:00</lastmod>
-//   //     <priority>0.6</priority>
-//   //   </url>\n
-//   //   ";
-
-//   //   echo $code;
-//   // }
-
-//   // return $res;
-
-// });
-
 ?>

@@ -13,16 +13,21 @@
         </ul>
       </div>
       <div class="sidebar-box open">
-        <span>Departamentos <i class="icofont-simple-down"></i></span>
+        <span>Categorias <i class="icofont-simple-down"></i></span>
         <ul class="sidebar-items" style="max-height: 100vh;">
           {loop="$departamentos"}
-          <li><a href="/produtos/departamento/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text} ( {$value.products_count} )</a></li>
+          <li><a href="/produtos/categoria/{$value.department_href}"><i class="{$value.department_icon}"></i> {$value.department_text} ( {$value.products_count} )</a></li>
           {/loop}
         </ul>
       </div>
     </div>
 
     <div class="products-container-content">
+
+      <div id="mobileSearch">
+        <label for="searchProducts"><i class="icofont-search"></i></label>
+        <input type="text" name="searchProducts" placeholder="Pesquisar" onkeydown="productSearch(this.value, event)">
+      </div>
 
       {if="count($produtos) > 0"}
       <div class="products-header-container">

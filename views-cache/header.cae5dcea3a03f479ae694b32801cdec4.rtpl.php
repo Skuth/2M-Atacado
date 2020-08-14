@@ -24,7 +24,7 @@
   <title><?php echo htmlspecialchars( $siteData["site_data_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $seoTags["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></title>
 
   <?php $keywords = "2m atacado, 2m, atacado, material de construção, construção, casa, ferramentas, cabo frio, atacado cabo frio, melhores preços, preço baixo, material de construção com preço bom, melhores preços cabo frio, atacado preço bom cabo frio"; ?>
-  <?php $description = "2M Atacado, Empresa no mercado desde 2019 com os melhores preços no mercado, com uma grande variedade de produtos, como: ferramentas, produtos para casa, alicates, torneiras, e muito mais. Estamos localizados em Cabo Frio - RJ."; ?>
+  <?php $description = "A 2M Atacado é uma empresa familiar fundada em abril de 2019, estabelecida na cidade de Cabo Frio - RJ. somos o elo entre a indústria e o varejo focado em oferecer as melhores soluções de negócio para os lojistas atuando com grandes marcas nacionais e importadas no segmento da construção civil."; ?>
 
   <link rel="canonical" href="<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
