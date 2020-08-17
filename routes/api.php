@@ -1,8 +1,6 @@
 <?php
 
 use Skuth\Model\Api;
-use Skuth\Model\Products;
-use Skuth\Model\Departments;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

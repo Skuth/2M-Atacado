@@ -56,15 +56,16 @@
       "image": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $seoTags["thumbnail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "description": "<?php echo htmlspecialchars( $seoTags["desc"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "brand": "<?php echo htmlspecialchars( $seoTags["productInfo"]["brand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
-      "sku": "<?php echo htmlspecialchars( $seoTags["productInfo"]["ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
-      <?php if( strlen($seoTags['productInfo']['priceOff']) > 0 ){ ?>
+      "sku": "<?php echo htmlspecialchars( $seoTags["productInfo"]["ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"<?php if( strlen($seoTags['productInfo']['priceOff']) > 0 ){ ?>,
 
       "offers": {
         "@type": "Offer",
         "url": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>",
         "priceCurrency": "BRL",
         "price": "<?php echo htmlspecialchars( $seoTags["productInfo"]["priceOff"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
-        <?php if( strlen($seoTags['productInfo']['offDate']) > 0 ){ ?>"priceValidUntil": "<?php echo htmlspecialchars( $seoTags["productInfo"]["offDate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",<?php } ?>
+        <?php if( strlen($seoTags['productInfo']['offDate']) > 0 ){ ?>
+          "priceValidUntil": "<?php echo htmlspecialchars( $seoTags["productInfo"]["offDate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
+        <?php } ?>
 
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
@@ -80,7 +81,7 @@
       "@type": "Organization",
       "name": "<?php echo htmlspecialchars( $siteData["site_data_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "url": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/",
-      "logo": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/assets/img/logo.webp"
+      "logo": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/assets/img/logo.webp",
       "address": "Rio de Janeiro"
     }
   </script>
@@ -104,7 +105,7 @@
 </head>
 <body>
   <div class="preloader">
-    <img src="./assets/img/logo.webp" alt="">
+    <img src="./assets/img/logo.webp" alt="Logo carregamento">
     <div class="load-bar">
       <div id="bar"></div>
     </div>

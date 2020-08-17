@@ -56,15 +56,16 @@
       "image": "{$siteUrl}/{$seoTags["thumbnail"]}",
       "description": "{$seoTags["desc"]}",
       "brand": "{$seoTags["productInfo"]["brand"]}",
-      "sku": "{$seoTags["productInfo"]["ref"]}",
-      {if="strlen($seoTags['productInfo']['priceOff']) > 0"}
+      "sku": "{$seoTags["productInfo"]["ref"]}"{if="strlen($seoTags['productInfo']['priceOff']) > 0"},
 
       "offers": {
         "@type": "Offer",
         "url": "{$siteUrl}{$reqUrl}",
         "priceCurrency": "BRL",
         "price": "{$seoTags["productInfo"]["priceOff"]}",
-        {if="strlen($seoTags['productInfo']['offDate']) > 0"}"priceValidUntil": "{$seoTags["productInfo"]["offDate"]}",{/if}
+        {if="strlen($seoTags['productInfo']['offDate']) > 0"}
+          "priceValidUntil": "{$seoTags["productInfo"]["offDate"]}",
+        {/if}
 
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
