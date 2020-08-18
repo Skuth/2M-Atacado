@@ -3,7 +3,10 @@
     <div class="purchases-content">
 
       <div class="purchases-title">
-        <h2>Compras</h2>
+        <?php $client = $_SESSION["client"]; ?>
+        <h2>Bem vindo <?php echo htmlspecialchars( $client["client_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
+        <br>
+        <h3>Suas compras</h3>
       </div>
 
       <?php if( count($orders) == 0 ){ ?>

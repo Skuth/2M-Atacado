@@ -83,9 +83,9 @@ $app->get("/produtos[/{filtro}[/{param}]]", function(Request $req, Response $res
           $dep = $args["param"];
           $depId = $department->getDepId($dep);
           
-          $p = $prod->getByDeptFull($depId, $limite, $pagina);
+          $p = $prod->getByDeptFull($depId["department_id"], $limite, $pagina);
 
-          $fText = "Produtos da categoria - ".ucfirst($dep);
+          $fText = "Produtos da categoria - ".ucfirst($depId["department_text"]);
 
           $reqUrl = $reqUrl."/categoria/".$dep;
 

@@ -10,6 +10,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get("/admin/pedidos", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   if (isset($_GET["pagina"])) {
     $pagina = trim(strip_tags(intval($_GET["pagina"])));
@@ -43,6 +45,8 @@ $app->get("/admin/pedidos", function(Request $req, Response $res, $args) {
 $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   if (isset($_GET["pagina"])) {
     $pagina = trim(strip_tags(intval($_GET["pagina"])));
@@ -70,6 +74,8 @@ $app->get("/admin/pedidos/aberto", function(Request $req, Response $res, $args) 
 $app->get("/admin/pedido/atualizar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
 
@@ -85,6 +91,8 @@ $app->get("/admin/pedido/atualizar/{id}", function(Request $req, Response $res, 
 $app->post("/admin/pedido/atualizar", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   if (isset($_POST["save"])) {
     $id = $_POST["id"];
@@ -103,6 +111,10 @@ $app->post("/admin/pedido/atualizar", function(Request $req, Response $res, $arg
 });
 
 $app->get("/admin/pedido/visualizar/{id}", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
   

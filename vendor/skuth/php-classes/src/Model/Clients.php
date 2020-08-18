@@ -265,6 +265,7 @@ class Clients {
 
   public function cadClient($key, $data) {
     $k = $this->registerKeyVerify($key);
+    $k["status"] = "success";
 
     if ($k["status"] == "error") return $k;
 

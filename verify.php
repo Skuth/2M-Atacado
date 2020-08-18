@@ -3,36 +3,6 @@
 use Skuth\Model\Cart;
 use Skuth\Model\Products;
 
-// $prods = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/precos-att-att.json");
-// $prods = json_decode($prods, true);
-
-//$p = new Products();
-
-// foreach ($prods as $key => $value) {
-//   $ref = $value["Ref"];
-//   $price = round(floatval($value["Preco"]) * 100) / 100;
-
-//   $r = $p->getByRefFull($ref);
-  
-//   if(count($r) > 0) {
-//     Products::updatePrice($ref, $price);
-//   }
-// }
-
-$prods = new Products();
-$p = $prods->getAll();
-$refs = [];
-foreach ($p as $key => $value) {
-  $dId = $value["department_id"];
-  if ($dId != 1 && $dId != 2 && $dId != 3 && $dId != 4 && $dId != 6 && $dId != 13) {
-    array_push($refs, $value["product_ref"]);
-  }
-}
-
-$refs = implode(", ", $refs);
-
-echo($refs);
-
 function getCardFromCookie() {
   $cart = [];
   if (isset($_COOKIE["cartId"])) {

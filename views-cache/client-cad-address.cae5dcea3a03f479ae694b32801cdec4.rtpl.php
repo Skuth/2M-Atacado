@@ -3,11 +3,6 @@
 
   <form method="POST" onsubmit="return clientAddressRegister(event, this)" class="form-login form-register form-active">
     <div class="form-login-control">
-      <input type="text" id="nome" name="nome" required>
-      <label for="nome">Nome *</label>
-    </div>
-    
-    <div class="form-login-control">
       <input type="tel" id="cep" name="cep" maxlength="8" minlength="8" required onchange="verifyCep(value)">
       <label for="cep">CEP *</label>
     </div>
@@ -38,8 +33,17 @@
     </div>
 
     <div class="form-login-control">
+      <input type="text" id="nome" name="nome" required>
+      <label for="nome">Seu nome *</label>
+    </div>
+
+    <div class="form-login-control">
       <input type="tel" id="contato" name="contato" required>
       <label for="contato">Contato *</label>
+    </div>
+
+    <div class="form-login-control">
+      <p>Os campos com <span>*</span> são obrigatorios!</p>
     </div>
 
     <div class="form-login-control">

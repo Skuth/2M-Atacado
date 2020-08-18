@@ -37,7 +37,7 @@
                 <td><?php echo htmlspecialchars( $value1["user"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td>
                   <?php if( $value1["type"] == 1 ){ ?>
-                    Funcionário 
+                    Usuário 
                   <?php }else{ ?>
                     Administrador
                   <?php } ?>

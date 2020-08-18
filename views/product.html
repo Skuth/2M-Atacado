@@ -54,6 +54,8 @@
         {$priceOff = explode(",", $priceOff)}
         <s class="old-price">R$ <span>{$price[0]}</span><span>,{$price[1]}</span></s>
         <p>R$ <span>{$priceOff[0]}</span><span>,{$priceOff[1]}</span></p>
+
+        <p class="promo-message">Preço valido apenas em compras à vista ou no débito</p>
         {else}
         <p>R$ <span>{$price[0]}</span><span>,{$price[1]}</span></p>
         {/if}

@@ -10,6 +10,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get("/admin/clientes", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   if (isset($_GET["pagina"])) {
     $pagina = trim(strip_tags(intval($_GET["pagina"])));
@@ -42,6 +44,8 @@ $app->get("/admin/clientes", function(Request $req, Response $res, $args) {
 $app->get("/admin/clientes/desativados", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   if (isset($_GET["pagina"])) {
     $pagina = trim(strip_tags(intval($_GET["pagina"])));
@@ -70,6 +74,8 @@ $app->get("/admin/clientes/desativados", function(Request $req, Response $res, $
 $app->post("/admin/clientes/chave", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $chave = Clients::generateRegisterKey();
 
@@ -149,6 +155,8 @@ $app->get("/admin/cliente/remover/{id}", function(Request $req, Response $res, $
 $app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
 
@@ -166,6 +174,8 @@ $app->get("/admin/cliente/editar/{id}", function(Request $req, Response $res, $a
 $app->post("/admin/cliente/editar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
   $data = [];
@@ -196,6 +206,8 @@ $app->post("/admin/cliente/editar/{id}", function(Request $req, Response $res, $
 $app->get("/admin/cliente/visualizar/{id}", function(Request $req, Response $res, $args) {
 
   if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  
+  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
 
   $id = $args["id"];
 

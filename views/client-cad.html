@@ -35,6 +35,10 @@
     </div>
 
     <div class="form-login-control">
+      <p>Os campos com <span>*</span> são obrigatorios!</p>
+    </div>
+
+    <div class="form-login-control">
       <button type="submit" class="btn btn-circle btn-blue btn-medium">
         <span>Cadastrar</span><i class="icofont-save"></i>
       </button>
@@ -72,6 +76,10 @@
     <div class="form-login-control">
       <input type="password" id="password" name="password" required>
       <label for="password">Senha *</label>
+    </div>
+
+    <div class="form-login-control">
+      <p>Os campos com <span>*</span> são obrigatorios!</p>
     </div>
 
     <div class="form-login-control">

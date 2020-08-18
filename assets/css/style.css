@@ -1973,6 +1973,10 @@ textarea {
       .product-container .product-page-container .product-page-info .product-price {
         display: block;
         padding: 20px 0; }
+        .product-container .product-page-container .product-page-info .product-price .promo-message {
+          margin-top: 20px;
+          font-weight: bold;
+          color: #f5365c; }
         .product-container .product-page-container .product-page-info .product-price p, .product-container .product-page-container .product-page-info .product-price s {
           padding: 5px 0; }
         .product-container .product-page-container .product-page-info .product-price s {
@@ -2262,6 +2266,15 @@ textarea {
       margin-top: 0; }
     .container .form-login-control:last-child {
       margin-top: 20px; }
+    .container .form-login-control p {
+      font-size: 1.25em;
+      cursor: default; }
+      .container .form-login-control p a {
+        cursor: pointer;
+        color: #337DEC;
+        text-decoration: none; }
+      .container .form-login-control p span {
+        color: #337DEC; }
     .container .form-login-control label {
       display: block;
       position: absolute;

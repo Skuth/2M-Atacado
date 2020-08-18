@@ -3,7 +3,10 @@
     <div class="purchases-content">
 
       <div class="purchases-title">
-        <h2>Compras</h2>
+        {$client = $_SESSION["client"]}
+        <h2>Bem vindo {$client.client_name}</h2>
+        <br>
+        <h3>Suas compras</h3>
       </div>
 
       {if="count($orders) == 0"}

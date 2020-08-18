@@ -16,7 +16,7 @@
         <div class="card-body pt-0 mt-8">
           <div class="text-center">
             <h5 class="h3">{$user.fname} {$user.lname}</h5>
-            <div class="h5 font-weight-300">{if="$user.type == 1"}Funcionário{elseif="$user.type == 2"}Administrador{else}Super Administrador{/if}</div>
+            <div class="h5 font-weight-300">{if="$user.type == 1"}Usuário{elseif="$user.type == 2"}Administrador{else}Super Administrador{/if}</div>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label class="form-control-label">Cargo</label>
                     <select class="form-control" name="cargo">
-                      <option value="1" {if="$user.type == 1"}selected{/if}>Funcionário</option>
+                      <option value="1" {if="$user.type == 1"}selected{/if}>Usuário</option>
                       <option value="2" {if="$user.type == 2"}selected{/if}>Administrador</option>
                       {if="$_SESSION['user']['type'] >= 3"}
                       <option value="3" {if="$user.type == 3"}selected{/if}>Super Administrador</option>

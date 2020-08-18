@@ -31,7 +31,7 @@ class Departments {
     $res = $sql->select($query, $param);
 
     if (count($res) > 0) {
-      return $res[0]["department_id"];
+      return $res[0];
     } else {
       return 0;
     }

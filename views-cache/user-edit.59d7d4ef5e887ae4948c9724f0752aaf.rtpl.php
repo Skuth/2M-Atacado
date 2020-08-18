@@ -16,7 +16,7 @@
         <div class="card-body pt-0 mt-8">
           <div class="text-center">
             <h5 class="h3"><?php echo htmlspecialchars( $user["fname"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $user["lname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
-            <div class="h5 font-weight-300"><?php if( $user["type"] == 1 ){ ?>Funcionário<?php }elseif( $user["type"] == 2 ){ ?>Administrador<?php }else{ ?>Super Administrador<?php } ?></div>
+            <div class="h5 font-weight-300"><?php if( $user["type"] == 1 ){ ?>Usuário<?php }elseif( $user["type"] == 2 ){ ?>Administrador<?php }else{ ?>Super Administrador<?php } ?></div>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label class="form-control-label">Cargo</label>
                     <select class="form-control" name="cargo">
-                      <option value="1" <?php if( $user["type"] == 1 ){ ?>selected<?php } ?>>Funcionário</option>
+                      <option value="1" <?php if( $user["type"] == 1 ){ ?>selected<?php } ?>>Usuário</option>
                       <option value="2" <?php if( $user["type"] == 2 ){ ?>selected<?php } ?>>Administrador</option>
                       <?php if( $_SESSION['user']['type'] >= 3 ){ ?>
                       <option value="3" <?php if( $user["type"] == 3 ){ ?>selected<?php } ?>>Super Administrador</option>

@@ -120,6 +120,11 @@
       .product-price {
         display: block;
         padding: 20px 0;
+        .promo-message {
+          margin-top: 20px;
+          font-weight: bold;
+          color: $danger;
+        }
         p, s {
           padding: 5px 0;
         }

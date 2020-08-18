@@ -20,7 +20,7 @@ function getNav() {
       "name"=>"pedidos",
       "href"=>"pedidos",
       "icon"=>"ni ni-cart",
-      "nivel"=>1,
+      "nivel"=>2,
       "submenu"=>[
         [
           "name"=>"abertos",
@@ -32,7 +32,7 @@ function getNav() {
       "name"=>"clientes",
       "href"=>"clientes",
       "icon"=> "fas fa-users",
-      "nivel"=>1,
+      "nivel"=>2,
       "submenu"=>[
         [
           "name"=>"Desativados",

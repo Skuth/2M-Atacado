@@ -20,5 +20,9 @@
         <span>Entrar</span><i class="icofont-login"></i>
       </button>
     </div>
+
+    <div class="form-login-control">
+      <p>Não tem uma conta? <a href="/cliente/cadastrar">Cadastrar</a></p>
+    </div>
   </form>
 </div>

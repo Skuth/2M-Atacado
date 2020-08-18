@@ -28,6 +28,18 @@
       &:last-child {
         margin-top: 20px;
       }
+      p {
+        font-size: em(20);
+        cursor: default;
+        a {
+          cursor: pointer;
+          color: $mediumblue;
+          text-decoration: none;
+        }
+        span {
+          color: $mediumblue;
+        }
+      }
       label {
         display: block;
         position: absolute;

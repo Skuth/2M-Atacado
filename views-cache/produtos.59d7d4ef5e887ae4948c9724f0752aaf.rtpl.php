@@ -31,6 +31,7 @@
                 <th scope="col">Ref</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
                 <th scope="col">Visitas</th>
                 <th scope="col">Ação</th>
               </tr>
@@ -50,6 +51,7 @@
                   <b>R$ <?php echo formatMoney($value1["product_price"]); ?></b>
                   <?php } ?>
                 </td>
+                <td><b><?php echo htmlspecialchars( $value1["product_stock"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td><b><?php echo htmlspecialchars( $value1["product_views"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
                 <td>
                   <a class="btn btn-icon btn-default btn-sm" href="/produto/<?php echo htmlspecialchars( $value1["product_ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo filterName($value1["product_name"]); ?>" target="_blank"><i class="fas fa-eye"></i></a>
