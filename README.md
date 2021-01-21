@@ -12,11 +12,11 @@
 
 <p align="center">
   <img alt="Frontend" src=".github/picture.png" width="100%">
-  <img alt="Frontend Product" src=".github/picture-product.png" width="100%">  
+  <img alt="Frontend Product" src=".github/picture-product.png" width="100%">
+  <br><br>
+  <img alt="Frontend Mobile" src=".github/picture-sm.png" width="200px">
+  <img alt="Frontend Mobile Product" src=".github/picture-product-sm.png" width="200px">
 </p>
-
-<img alt="Frontend Mobile" src=".github/picture-sm.png" width="200px">
-<img alt="Frontend Mobile Product" src=".github/picture-product-sm.png" width="200px">
 
 ## 📋 Tecnologias
 
