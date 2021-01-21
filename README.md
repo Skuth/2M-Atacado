@@ -1,110 +1,53 @@
-# 2m
+<h1 align="center">
+    <img alt="2M Atacado"src=".github/logo.webp" width="150px" />
+</h1>
 
-### Site
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Skuth/2M-Atacado">
 
-* [X] Pagina para verificar datas e atualizar
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Skuth/2M-Atacado">
 
-### Front end
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
 
-* [X] Listar produtos
-* [X] Paginação de produtos
-* [X] Carrinho de produtos
-* [X] Adicionar ao carrinho
-* [X] Remover do carrinho
-* [X] Arrumar erro no menu
-* [X] Finalizar compra
-* [X] Mudar menu para position relative
-* [X] Menu mobile
-* [X] Verificar se quantidade de produto é maior que 0
-* [X] Remover promoção se o stock em promo for 0
-* [X] Pagina de cliente
-* [X] Listagem de compras
-* [X] Visualizar compra
-* [X] Menu cliente
-* [X] Campo de pesquisa
-* [X] Pagina de cadastro de cliente
+<p align="center">
+  <img alt="Frontend" src=".github/picture.png" width="100%">
+  <br><br>
+  <img alt="Frontend Modile" src=".github/picture-sm.jpg" width="200px">
+</p>
 
-### Para fazer
+## 📋 Tecnologias
 
-* [X] Arrumar fonte pagina de distribuidor em celular -> Alinhar texto e mudar de 80% para 90%
-* [X] Arrumar fonte carrinho no celular
-* [X] Arrumar width formularios no celular
-* [X] Setar min-width de 200px para o submenu do usuario
-* [X] Arrumar listagem de compras
-* [X] Listagem de pedidos | Paginação
-* [X] Add meta description
-* [X] Add meta keywords
-* [X] Add meta theme color
-* [X] Add icon
-* [X] Adicionar aviso de produto indisponivel
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-* [X] Add robots
-* [X] Add sitemap
+- [Slim Framework](https://www.slimframework.com/)
+- [Rain Tpl](https://github.com/feulf/raintpl3)
+- [Sass](https://sass-lang.com/)
+- [Gulp](https://gulpjs.com/)
 
-* [X] Achar imagens sem ALT
-* [X] Desc do produto sem desc padrão
-* [X] Minificar css e JS
+## 💻 Projeto
 
-* [X] Atualizar logo pra ``webP``
-* [X] Criar banner para facebook
+A 2M Atacado é um distribuidor para materiais de construção, Onde os valores são liberados apenas para clientes PJ autorizados dentro do sistema, o site conta com PWA para utilização rápido em dispositivos moveis.
 
-* [X] Pagina de edição de logo e de banner
+## 👨‍💻 Como usar
 
-* [X] Comprimir fotos em JPEG 2000, JPEG XR ou -> ``WebP`` <-
+- Necessário [Composer](https://getcomposer.org/)
 
-* [X] Ativar cache
-* [X] Mudar cor do degrade dos cards
-* [X] Adicionar direitos de uso e meios de pagamentos no footer
-* [X] Verificar se a url do banner é a url do site, se não por a tag no refer
+- Clonar este respositório:
+  ```
+  $ git clone https://github.com/Skuth/2M-Atacado
+  ```
+- Instale o [WampServer](https://www.wampserver.com/en/) ou algum servidor Apache com PHP >= 7.2
+- Configure uma **Virtual Host** para o site
+- Configure o [Banco de Dados](./db.sql)
+- Instale as dependências:
+  ```
+  $ composer install
+  ```
+- Crie e configure o arquivo [Config.php](./vendor/skuth/php-classes/src/DB/Config.example.php)
+- Acesse sua **Virtual Host**
+- Acesso para o painel é **admin** | **admin**
 
-* [X] Remover ?id random do script de do link
+## 📝 Licença
 
-* [X] Adicionar botões de compartilhamento
-
-* [X] Editar valor e ref de http://127.2.2.2/produto/0000/adesivo-175grs-krona
-
-* [X] Remover / da pesquisa
-* [X] Pesquisa de produtos painel admin
-
-* [X] Alterar tamanho da logo
-* [X] Liberar valores apenas logado
-* [X] Adicionar código na visualização
-* [X] Adicionar o sistema de pontos
-* [X] Verificar mei
-* [X] Adicionar cadastro de endereço
-* [X] Editar preço do card para x quando não logado
-* [X] Escolher dia para retirar compra
-* [X] Adicionar pagina com info do cliente -> Pontos | Info | Endereço
-* [X] Mudar entrega prevista quando tiver entrega programada
-
-### Futuro
-
-* [ ] Adicionar pagina de recuperação de senha
-* [ ] Editar endereço -> Apenas solicitando
-
-### Segurança
-
-* [X] Verificar Jquery@1.11.0
-
-### SEO
-
-* [X] Adicionar tags SEO
-* [X] Desc do produto SEO Parse
-* [X] SEO para checkout e login
-* [X] SEO para pagina de cadastro de cliente
-
-### Back end
-
-* [X] Grafico visualizações
-* [X] Pagina de edição de dados do site
-* [X] Adicionar clientes no banco de dados
-* [X] Listar pedidos
-* [X] Listar pedidos em aberto
-* [X] Visualizar & atualizar pedido
-* [X] Adicionar sistema de notificação avisando sobre estoque
-* [X] Criar pagina para listar todas as notificações
-* [X] Criar link temporario para registro de cliente
-* [X] Pagina para vizualizar cliente
-* [X] Pagina de edição de cliente
-* [X] Adicionar status cancelado no pedido
-* [X] Editar cards home
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
