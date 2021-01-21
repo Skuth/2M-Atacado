@@ -1,5 +1,5 @@
 .distributor {
-  background: $mediumblue;
+  background: $mediumColor;
   padding: 20px;
   width: calc(100% - 20px * 2);
   margin: 0 auto;
@@ -53,13 +53,13 @@
 }
 
 .footer {
-  background: $darkblue;
+  background: $darkColor;
   width: calc(100% - 20px * 2);
   padding: 40px 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: $grey;
+  color: $gray;
   &-logo {
     width: 100px;
     display: block;
@@ -107,7 +107,7 @@
 
 .footer-rights {
   padding: 30px 20px;
-  background: $mediumblue;
+  background: $mediumColor;
   text-align: center;
   p {
     color: white;

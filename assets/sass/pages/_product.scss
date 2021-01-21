@@ -67,7 +67,7 @@
         font-weight: 600;
       }
       .product-percentage {
-        background: $darkblue;
+        background: $darkColor;
         padding: 10px 20px;
         display: inline-block;
         margin-top: 8px;
@@ -94,7 +94,7 @@
         justify-content: center;
         @include select();
         .product-action {
-          background: $darkblue;
+          background: $darkColor;
           color: white;
           padding: 10px;
           font-weight: 600;
@@ -169,7 +169,7 @@
       width: calc(100% - 20px * 2);
       h3 {
         display: block;
-        background: $darkblue;
+        background: $darkColor;
         padding: 25px 40px;
         font-size: em(24);
         color: white;

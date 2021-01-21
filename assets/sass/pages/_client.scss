@@ -28,10 +28,10 @@
         font-size: em(26);
         a {
           text-decoration: none;
-          color: $mediumblue;
+          color: $mediumColor;
           @include transition(all, 0.5s);
           &:hover {
-            color: $darkblue;
+            color: $darkColor;
           }
         }
       }
@@ -60,7 +60,7 @@
             width: 100%;
             margin: 0 auto;
             height: 1px;
-            background: $grey;
+            background: $gray;
           }
           .box {
             padding: 20px;
@@ -75,10 +75,10 @@
               margin-top: 10px;
               a {
                 text-decoration: none;
-                color: $mediumblue;
+                color: $mediumColor;
                 @include transition(all, 0.5s);
                 &:hover {
-                  color: $darkblue;
+                  color: $darkColor;
                 }
               }
             }
@@ -172,10 +172,10 @@
         max-width: 100px;
         a {
           text-decoration: none;
-          color: $mediumblue;
+          color: $mediumColor;
           @include transition(all, 0.5s);
           &:hover {
-            color: $darkblue;
+            color: $darkColor;
           }
         }
       }

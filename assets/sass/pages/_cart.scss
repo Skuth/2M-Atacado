@@ -17,7 +17,7 @@
         grid-template-columns: 120px 1fr 70px 200px;
         align-items: center;
         padding: 40px;
-        border-bottom: 1px solid $grey;
+        border-bottom: 1px solid $gray;
         &:last-child {
           border-color: transparent;
         }
@@ -40,18 +40,18 @@
           .action {
             margin-top: 5px;
             font-size: em(18);
-            color: $darkblue;
+            color: $darkColor;
             display: inline-block;
             cursor: pointer;
             @include select();
             @include transition(all, 0.5s);
             &:hover {
-              color: $mediumblue;
+              color: $mediumColor;
             }
           }
         }
         .quantity {
-          background: $grey;
+          background: $gray;
           display: block;
           padding: 20px;
           text-align: center;
@@ -66,7 +66,7 @@
             margin-bottom: 10px;
             .discount {
               margin-right: 5px;
-              color: $mediumblue;
+              color: $mediumColor;
               font-weight: 450;
             }
           }
@@ -79,7 +79,7 @@
       }
     }
     &-info {
-      border-top: 1px solid$grey;
+      border-top: 1px solid$gray;
       padding: 40px 20px;
       text-align: left;
       display: table;
@@ -124,11 +124,11 @@
         font-weight: 350;
         a {
           text-decoration: none;
-          color: $mediumblue;
+          color: $mediumColor;
           font-weight: 450;
           @include transition(all, 0.5s);
           &:hover {
-            color: $darkblue;
+            color: $darkColor;
           }
         }
       }

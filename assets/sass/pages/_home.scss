@@ -20,7 +20,7 @@
       @include select();
       .box {
         $size: 90px;
-        background: $mediumblue;
+        background: $mediumColor;
         width: $size;
         height: $size;
         border-radius: 50%;
@@ -50,7 +50,7 @@
           @include transition(all, 0.5s);
         }
         &:hover {
-          background: $darkblue;
+          background: $darkColor;
           @include transform(rotate(360deg));
           .icon {
             i {

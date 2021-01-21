@@ -382,15 +382,15 @@ $(window).resize(() => {
   }
 })
 
-$(document).ready(() => {
-
-  if($(window).width() >= 1200) {
+if($(window).width() >= 1200) {
     
-    $(window).on("load", () => {
-      updateNav()
-    })
+  $(window).on("load", () => {
+    updateNav()
+  })
 
-  }
+}
+
+$(document).ready(() => {
 
   if($(window).width() <= 960) {
     const mobileBtn = $("#mobile")

@@ -29,7 +29,7 @@
           font-weight: 600;
           display: block;
           padding: 20px;
-          background: $darkblue;
+          background: $darkColor;
           color: white;
           border-radius: 4px;
           cursor: pointer;
@@ -61,7 +61,7 @@
               @include transition(all, 0.5s);
               &:hover {
                 color: white;
-                background: $darkblue;
+                background: $darkColor;
               }
             }
           }
@@ -108,10 +108,10 @@
           a {
             font-weight: 400;
             text-decoration: none;
-            color: $mediumblue;
+            color: $mediumColor;
             @include transition(all, 0.5s);
             &:hover {
-              color: $darkblue;
+              color: $darkColor;
             }
           }
         }
@@ -148,13 +148,13 @@
         @include transition(all, 0.5s);
       }
       .arrow {
-        background: $darkblue;
+        background: $darkColor;
         color: white;
         border-radius: 50%;
         font-size: em(30);
         margin: 5px 20px;
         &:hover {
-          background: $mediumblue;
+          background: $mediumColor;
         }
         &:first-child {
           letter-spacing: 3px;
@@ -168,15 +168,15 @@
         font-weight: 600;
         border-radius: 4px;
         &:hover {
-          background: $mediumblue;
+          background: $mediumColor;
           color: white;
         }
         &.active {
-          background: $darkblue;
+          background: $darkColor;
           color: white;
           padding: 25px;
           &:hover {
-          background: $mediumblue;
+          background: $mediumColor;
           }
         }
       }

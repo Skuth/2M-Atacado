@@ -34,7 +34,7 @@
         align-items: center;
         justify-content: flex-start;
         .shipment-icon {
-          background: $mediumblue;
+          background: $mediumColor;
           display: inline-block;
           padding: 15px;
           font-size: em(28);
@@ -54,7 +54,7 @@
           }
           input {
             border: 0;
-            background: $grey;
+            background: $gray;
             padding: 10px;
             margin-top: 10px;
             font-size: em(18);
@@ -65,10 +65,10 @@
           margin-left: auto;
           a {
             text-decoration: none;
-            color: $mediumblue;
+            color: $mediumColor;
             @include transition(all, 0.5s);
             &:hover {
-              color: $darkblue;
+              color: $darkColor;
             }
           }
         }
@@ -85,14 +85,14 @@
     }
   }
   &-right {
-    background: lighten($grey, 3);
+    background: lighten($gray, 3);
     .btn {
       cursor: pointer;
     }
     .checkout-info {
       padding: 20px;
       &.divider {
-        border-bottom: 1px solid darken($grey, 5);
+        border-bottom: 1px solid darken($gray, 5);
       }
       h3 {
         font-size: em(18);

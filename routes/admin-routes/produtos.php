@@ -361,82 +361,14 @@ $app->post("/admin/produtos/atualizar", function(Request $req, Response $res, $a
 
 });
 
-$app->post("/admin/produtos/pdf", function(Request $req, Response $res, $args) {
+$app->post("/admin/produtos/getById/{id}", function (Request $req, Response $res, $args) {
 
-  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+  $id = $args["id"];
 
-  if ($_SESSION["user"]["type"] < 2) return $res->withHeader("Location", "/admin/dashboard");
+  $prod = new Products();
+  $pRes = $prod->getByRefFull($id);
 
-  ini_set('memory_limit', '512M');
-  ini_set("pcre.backtrack_limit", "1000000");
-
-  $mpdf = new \Mpdf\Mpdf();
-
-  $prods = new Products();
-  $p = $prods->getToPdf();
-
-  $siteUrl = getSiteUrl();
-
-  $htmlStyle = "<style>
-    table { width: 100%; }
-    th { background: #1A3795; color: #fff; padding: 10px 0; font-family: sans-serif; text-align: center; vertical-align: middle; }
-    td { padding: 20px 0; font-family: sans-serif; text-align: center; vertical-align: middle; height: 60px; display: block; border-bottom: 1px solid #ddd; }
-  </style>";
-
-  $tableContent = "";
-
-
-  foreach ($p as $key => $value) {
-    $price = formatMoney($value["product_price"]);
-    $tableContent = $tableContent."<tr>
-      <td style='width: 100px;'>{$value["product_ref"]}</td>
-      <td style='width: 60%;'>{$value["product_name"]}</td>
-      <td style='width: 150px;'>R$ {$price}</td>
-    </tr>";
-  }
-  
-  $htmlBody = "
-  <htmlpageheader name='header'>
-    <table cellspacing='0' cellpadding='0'>
-      <tr>
-        <th style='width: 100px;'>Código</th>
-        <th style='width: 60%;'>Descrição</th>
-        <th style='width: 150px;'>Preço</th>
-      </tr>
-    </table>
-  </htmlpageheader>
-  
-  <htmlpagefooter name='footer'>
-    <table width='100%'>
-      <tr>
-        <td width='33%' align='center' style='padding: 0; vertical-align: bottom; border: 0;'>{PAGENO}/{nbpg}</td>
-      </tr>
-    </table>
-  </htmlpagefooter>
-  
-  <sethtmlpageheader name='header' value='on' show-this-page='1'/>
-  <sethtmlpagefooter name='footer' value='on' />
-  
-  <table cellspacing='0' cellpadding='0'>
-  ".$tableContent."
-  </table>";
-  
-  $html = $htmlStyle.$htmlBody;
-
-  $path = "/assets/admin/pdf/catalogo.pdf";
-
-  chmod($_SERVER["DOCUMENT_ROOT"]."/assets/admin/pdf/", 0777);
-
-  if (file_exists($_SERVER["DOCUMENT_ROOT"].$path)) {
-    unlink($_SERVER["DOCUMENT_ROOT"].$path);
-  }
-  
-  $mpdf->WriteHTML($html);
-  $mpdf->Output($_SERVER["DOCUMENT_ROOT"].$path, \Mpdf\Output\Destination::FILE);
-
-  $date = new DateTime();
-  $date = $date->getTimestamp();
-  echo json_encode($siteUrl.$path."?date=".$date);
+  echo json_encode($pRes);
 
   return $res;
 

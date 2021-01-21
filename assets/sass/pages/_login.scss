@@ -33,11 +33,11 @@
         cursor: default;
         a {
           cursor: pointer;
-          color: $mediumblue;
+          color: $mediumColor;
           text-decoration: none;
         }
         span {
-          color: $mediumblue;
+          color: $mediumColor;
         }
       }
       label {
@@ -55,8 +55,8 @@
       input:-webkit-autofill:hover, 
       input:-webkit-autofill:focus, 
       input:-webkit-autofill:active  {
-        -webkit-box-shadow: 0 0 0 30px $grey inset !important;
-        box-shadow: 0 0 0 30px $grey inset !important;
+        -webkit-box-shadow: 0 0 0 30px $gray inset !important;
+        box-shadow: 0 0 0 30px $gray inset !important;
       }
       input {
         position: relative;
@@ -68,17 +68,17 @@
         padding: 10px 20px;
         width: calc(100% - 20px * 2);
         background: transparent;
-        border-bottom: 2px solid $mediumblue;
+        border-bottom: 2px solid $mediumColor;
         color: $black;
         @include transition(all, 0.5s);
         &:focus, &:valid {
-          border-color: $darkblue;
+          border-color: $darkColor;
           + label {
             font-weight: 600;
             top: -25px;
             left: 5px;
             font-size: em(16);
-            color: $darkblue;
+            color: $darkColor;
           }
         }
       }

@@ -127,5 +127,16 @@ $app->get("/admin/pedido/visualizar/{id}", function(Request $req, Response $res,
 
 });
 
+$app->get("/admin/pedidos/novo", function(Request $req, Response $res, $args) {
+
+  if (Panel::verifyUser() !== true ) return $res->withHeader("Location", "/admin/login");
+
+  $page = new PageAdmin(["data"=>["page"=>createPage("Cadastrando novo pedido", "pedidos/novo")]]);
+  $page->setTpl("pedido-novo");
+
+  return $res;
+
+});
+
 
 ?>

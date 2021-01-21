@@ -15,15 +15,14 @@
               <?php } ?>
             </div>
             <?php $userOn=$_SESSION["user"]; ?>
+            <div class="col text-right">
+              <a href="/admin/pedidos/novo" class="btn btn-sm btn-primary">Cadastrar pedido</a>
             <?php if( count($nUrl) == 1 ){ ?>
-            <div class="col text-right">
               <a href="/admin/pedidos/aberto" class="btn btn-sm btn-primary">Em aberto</a>
-            </div>
             <?php }else{ ?>
-            <div class="col text-right">
               <a href="/admin/pedidos" class="btn btn-sm btn-primary">Todos</a>
-            </div>
             <?php } ?>
+            </div>
           </div>
         </div>
         <div class="table-responsive">

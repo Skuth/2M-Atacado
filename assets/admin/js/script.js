@@ -106,29 +106,3 @@ const productSearch = (value, e) => {
     }
   }
 }
-
-const pdfRequest = () => {
-  const apiUrl = baseUrl+"admin/produtos/pdf"
-
-  Swal.queue([{
-    title: 'Gerar arquivo pdf',
-    confirmButtonText: 'Gerar pdf',
-    text:
-    'Deseja gerar uma lista dos produtos em pdf?',
-    showLoaderOnConfirm: true,
-    preConfirm: () => {
-      return fetch(apiUrl, {method: "POST"})
-      .then(response => response.json())
-      .then(data => {
-        window.open(data, "_blank")
-      })
-      .catch(() => {
-        Swal.insertQueueStep({
-          icon: 'error',
-          title: 'Falha ao gerar PDF'
-        })
-      })
-    },
-    allowOutsideClick: () => !Swal.isLoading()
-  }])
-}

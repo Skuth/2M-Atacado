@@ -56,13 +56,12 @@
       "image": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $seoTags["thumbnail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "description": "<?php echo htmlspecialchars( $seoTags["desc"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "brand": "<?php echo htmlspecialchars( $seoTags["productInfo"]["brand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
-      "sku": "<?php echo htmlspecialchars( $seoTags["productInfo"]["ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"<?php if( strlen($seoTags['productInfo']['priceOff']) > 0 ){ ?>,
-
+      "sku": "<?php echo htmlspecialchars( $seoTags["productInfo"]["ref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
       "offers": {
         "@type": "Offer",
         "url": "<?php echo htmlspecialchars( $siteUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?><?php echo htmlspecialchars( $reqUrl, ENT_COMPAT, 'UTF-8', FALSE ); ?>",
         "priceCurrency": "BRL",
-        "price": "<?php echo htmlspecialchars( $seoTags["productInfo"]["priceOff"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
+        "price": <?php if( $seoTags['productInfo']['priceOff'] == NULL ){ ?><?php echo htmlspecialchars( $seoTags["productInfo"]["price"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $seoTags["productInfo"]["priceOff"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>,
         <?php if( strlen($seoTags['productInfo']['offDate']) > 0 ){ ?>
           "priceValidUntil": "<?php echo htmlspecialchars( $seoTags["productInfo"]["offDate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>",
         <?php } ?>
@@ -70,10 +69,9 @@
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
       }
-      <?php } ?>
 
     }
-  </script>    
+  </script> 
   <?php }else{ ?>
   <script type="application/ld+json">
     {
