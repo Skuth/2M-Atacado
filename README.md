@@ -13,7 +13,7 @@
 <p align="center">
   <img alt="Frontend" src=".github/picture.png" width="100%">
   <br><br>
-  <img alt="Frontend Modile" src=".github/picture-sm.jpg" width="200px">
+  <img alt="Frontend Mobile" src=".github/picture-sm.png" width="200px">
 </p>
 
 ## 📋 Tecnologias
